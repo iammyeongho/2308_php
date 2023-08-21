@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      fieldset {
+        width: 70px;
+        background-color: blanchedalmond;
+        color: brown;
+        opacity: 80%;
+      }
+      select {
+        background-color: wheat;
+        color: brown;
+        margin: auto;
+        height: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="04_6_ex1_atag.html">
+      <fieldset>
+        <legend>ID와 PW</legend>
+        <label for="id">ID :</label>
+        <input
+          type="text"
+          name="id"
+          id="id"
+          maxlength="10"
+          placeholder="아이디 입력"
+          required
+        />
+        <br />
+
+        <label for="pw">PW :</label>
+        <input
+          type="password"
+          name="pw"
+          id="pw"
+          maxlength="10"
+          placeholder="패스워드 입력"
+          required
+        />
+        <br />
+
+        <label for="txta">기타 :</label>
+        <textarea name="txta" id="txta" cols="30" rows="10"></textarea>
+        <br />
+
+        <label for="poketmon">poketmon :</label>
+        <select name="poketmon" id="poketmon">
+          <option value="0">A</option>
+          <option value="1">B</option>
+          <option value="2">C</option>
+        </select>
+      </fieldset>
+      <!-- <label for="id">ID :</label>
+      <input
+        type="text"
+        name="id"
+        id="id"
+        maxlength="10"
+        placeholder="아이디 입력"
+        required
+      />
+      <br />
+
+      <label for="pw">PW :</label>
+      <input
+        type="password"
+        name="pw"
+        id="pw"
+        maxlength="10"
+        placeholder="패스워드 입력"
+        required
+      />
+      <br /> -->
+
+      <label for="email">email :</label>
+      <input type="email" name="email" id="email" />
+      <!-- input 와 label은 세트 label의 for과 input의 id값이 연동됨 maxlength 제한값 -->
+      <!-- readonly 읽기만 가능 입력 x -->
+      <br />
+
+      <label for="number">number :</label>
+      <input type="number" id="number" min="0" max="100" />
+      <br />
+
+      <label for="range">range :</label>
+      <input type="range" id="range" min="0" max="100" />
+      <br />
+
+      <label for="date">date :</label>
+      <input type="date" id="date" min="0" max="100" />
+      <br />
+
+      <label for="banana">바나나</label>
+      <input type="checkbox" id="banana" name="chk_frut" checked />
+      <label for="sb">딸기</label>
+      <input type="checkbox" id="sb" name="chk_frut" />
+      <label for="wm">수박</label>
+      <input type="checkbox" id="wm" name="chk_frut" />
+      <br />
+
+      <label for="zz">짜장면</label>
+      <input type="radio" id="zz" name="foods" />
+      <label for="ta">탕수육</label>
+      <input type="radio" id="ta" name="foods" />
+      <br />
+
+      <label for="tel">tel :</label>
+      <input type="tel" id="tel" />
+      <br />
+
+      <br />
+      <input type="submit" value="제출" />
+      <input type="reset" />
+      <br />
+      <!-- submit : form action= 위치로 이동 -->
+
+      <br />
+      <button type="submit">전송</button>
+      <!-- form action= 위치로 이동 -->
+      <button type="reset">초기화</button>
+      <button type="button">버튼</button>
+
+      <br />
+      <input type="hidden" value="hidden" name="hidden" />
+      <!-- 표시 x 전송 후 관리자에게만 전송됨 -->
+    </form>
+  </body>
+</html>

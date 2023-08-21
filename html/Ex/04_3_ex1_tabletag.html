@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      th,
+      td {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        /* border-collapse = 선간격 없애기 */
+      }
+      th,
+      td {
+        border: 1px solid black;
+      }
+      .col1 {
+        width: 40px;
+      }
+      .col2 {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table>
+      <caption>
+        성적표
+      </caption>
+      <colgroup>
+        <col />
+        <col />
+        <col />
+        <col class="col2" />
+        <col />
+        <col />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>반</th>
+          <th>이름</th>
+          <th>국어</th>
+          <th>영어</th>
+          <th>수학</th>
+          <th>과학</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">1반</td>
+          <td>홍길동</td>
+          <td>90점</td>
+          <td>80점</td>
+          <td>70점</td>
+          <td>60점</td>
+          <!-- rowspan 속성 "2" 속성값 -->
+        </tr>
+        <tr>
+          <!-- <td>1반</td> -->
+          <td>김영희</td>
+          <td>60점</td>
+          <td>70점</td>
+          <td>80점</td>
+          <td>90점</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="col2">
+          <th colspan="2">펑균</th>
+          <!-- <td></td> -->
+          <td>75점</td>
+          <td>75점</td>
+          <td>75점</td>
+          <td>75점</td>
+        </tr>
+      </tfoot>
+    </table>
+    <!-- ++ Table 기본태그
+            <table> 태그 : 표를 만드는 태그, 표 전체 감싸기
+            <caption> 태그 : 표의 제목이나 설명 작성 태그
+            <tr> 태그 : 표의 행 <th> 와 <td>가 있어야함
+            <th> 태그 : 표의 제목열
+            <td> 태그 : 표의 일반열
+         ++ 행이나 열을 합치는 속성
+            rowspan : 행을 병합하는 속성
+            colspan : 열을 병합하는 속성
+        -->
+  </body>
+</html>

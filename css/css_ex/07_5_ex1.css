@@ -1,0 +1,37 @@
+div {
+  margin-top: 50px;
+}
+body {
+  margin: auto;
+}
+
+caption {
+  margin: auto;
+  border: 2px solid black;
+  width: 100px;
+  height: 40px;
+}
+
+table {
+  margin: auto;
+  width: 300px;
+  height: 200px;
+  border: 1px solid black;
+  text-align: center;
+  /* border-collapse: collapse; */
+  caption-side: top;
+  border-spacing: 5px 20px;
+}
+
+th {
+  background-color: blue;
+  color: aliceblue;
+}
+
+td {
+}
+
+th,
+td {
+  border: 2px dotted black;
+}

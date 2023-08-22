@@ -1,0 +1,27 @@
+.deco {
+  text-decoration: none;
+  text-decoration: underline;
+  text-decoration: line-through;
+  text-decoration: overline;
+}
+
+/* 줄간격 */
+.height {
+  line-height: 2em;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  background-color: burlywood;
+  text-align: center;
+  line-height: 300px;
+  /* height와 같은 값을 넣어줌으로써 글자를 중앙으로 이동함, 대신 글자가 벗어나는 문제가 있음 */
+  height: 300px;
+}

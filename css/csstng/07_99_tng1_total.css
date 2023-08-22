@@ -1,0 +1,20 @@
+div {
+  width: 500px;
+  border: 1px solid black;
+  opacity: 50%;
+}
+
+h1 {
+  padding-left: 10px;
+}
+
+ul {
+  list-style: none;
+  line-height: 200%;
+}
+
+span {
+  color: #ad3000;
+  font-weight: bold;
+}
+/* 폰트 사이즈의 경우 웹 모바일을 고려하여 REM으로 주는게 좋음 */

@@ -1,0 +1,17 @@
+.cook1 {
+  list-style-type: none;
+  list-style-type: decimal;
+  list-style-type: lower-alpha;
+  list-style-type: upper-alpha;
+}
+
+.cook2 {
+  list-style-position: outside;
+  padding-left: 0;
+}
+
+.cook3 {
+  list-style-type: none;
+  padding-left: 300px;
+  list-style-image: url(/css/Nevermind.jpg);
+}

@@ -1,0 +1,27 @@
+/* * : 모두 선택 */
+* {
+  color: skyblue;
+}
+
+/* 타입 선택자 : 특정 태그를 선택 */
+h1 {
+  color: red;
+}
+
+/* 클래스 선택자 */
+.font-color {
+  color: blue;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* ID 선택자 */
+#p1 {
+  color: chartreuse;
+}
+
+/* 그룹 선택자 */
+em,
+strong {
+  color: blueviolet;
+}

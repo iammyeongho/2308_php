@@ -1,0 +1,22 @@
+/* 스타일 우선순위
+1. !important
+2. 인라인
+3. 아이디
+4. 클래스
+5. 스타일 */
+
+#h1-id {
+  color: brown;
+}
+
+.h1-1 {
+  color: blue;
+}
+
+h1 {
+  color: red !important;
+}
+
+h1 {
+  color: orange;
+}

@@ -1,0 +1,30 @@
+div {
+  text-align: center;
+}
+
+/* 콘텐츠가 세로로 나열되면 마진이 중첩됨 (큰쪽으로) */
+.container_1 {
+  border: 5px solid black;
+  width: 400px;
+  margin: 20px auto;
+}
+
+.container_2 {
+  border: 5px solid black;
+  width: 400px;
+  margin: 20px auto;
+}
+
+h1,
+p {
+  border: 3px solid black;
+  width: 150px;
+  margin: 10px auto;
+}
+
+span {
+  border: 5px solid black;
+  width: 500px;
+  height: 500px;
+  margin: 20px;
+}

@@ -1,0 +1,54 @@
+main,
+section,
+article {
+  padding: 20px;
+}
+
+main {
+  background-color: burlywood;
+}
+section {
+  background-color: cornflowerblue;
+}
+article {
+  background-color: thistle;
+  position: relative;
+  height: 1000px;
+}
+
+.div_static {
+  background-color: seagreen;
+  position: static;
+}
+/* position 기본값 */
+
+.div_relative {
+  background-color: rgb(45, 163, 199);
+  position: relative;
+  left: -30px;
+}
+/* static 상대좌표 값으로 지정한 값으로 이동 */
+
+.div_absol {
+  background-color: rgb(199, 212, 50);
+  position: absolute;
+  top: 0px;
+}
+/* 상위 영역 중 relative 상대좌표 값으로 지정한 값으로 이동
+relative 지정을 안할 시 기본 값(최상위 body)에서 좌표 이동 
+모든 영역의 위로 겹쳐짐 */
+/* z-index: -1;으로 할 시 다른 영역 뒤로 넘어감 */
+
+.div_fixed {
+  background-color: rgb(188, 111, 211);
+  position: fixed;
+  bottom: 0px;
+}
+/* 뷰포트를 기준으로 (절대좌표) 이동함 */
+
+.div_sticky {
+  background-color: rgb(139, 46, 85);
+  position: sticky;
+  top: 0px;
+}
+/* relative 기준으로 움직이며 해당 위치에 고정된다. (스크롤 시에도 fixed와 비슷함)*/

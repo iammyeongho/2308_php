@@ -1,0 +1,23 @@
+div {
+  text-align: center;
+  margin: auto;
+}
+
+.container_1 {
+  border: 5px solid black;
+  width: 400px;
+  padding: 20px;
+}
+
+.container_2 {
+  border: 5px solid black;
+  width: 400px;
+  padding: 20px;
+}
+
+h1,
+p {
+  border: 3px solid black;
+  width: 150px;
+  margin: auto;
+}

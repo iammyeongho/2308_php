@@ -1,0 +1,28 @@
+/* ul {
+  margin: auto;
+  text-align: center;
+}
+.li {
+  line-height: 100px;
+  margin-right: -10px;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: blanchedalmond;
+} */
+
+ul {
+  margin: auto;
+  text-align: center;
+}
+
+.li {
+  background-color: blanchedalmond;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

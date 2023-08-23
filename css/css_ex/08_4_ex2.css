@@ -1,0 +1,22 @@
+/* img {
+  float: left;
+}
+
+.p-1 {
+}
+
+.p-2 {
+  clear: both;
+} */
+
+img {
+  display: inline-block;
+}
+
+.float-start {
+  float: left;
+}
+
+.float-end {
+  clear: both;
+}

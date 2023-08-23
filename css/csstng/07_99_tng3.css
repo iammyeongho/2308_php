@@ -15,10 +15,13 @@
   height: 500px;
   background-color: blue;
   border: 1px solid black;
+  text-align: center;
 }
 
 .mi-top {
-  margin: 0%;
+  margin: 0;
+  padding: 10px;
   background-color: black;
   color: aliceblue;
+  text-align: left;
 }

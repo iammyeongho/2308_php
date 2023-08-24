@@ -1,0 +1,23 @@
+.main {
+  margin: auto;
+  width: 1000px;
+}
+
+.box {
+  width: 450px;
+  height: 200px;
+  border: 1px dashed #ccc;
+  float: left;
+  padding: 10px;
+  margin: 10px;
+  /* background-image: url(/css/Nevermind.jpg);
+  background-size: cover; */
+}
+
+.footer {
+  clear: both;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}

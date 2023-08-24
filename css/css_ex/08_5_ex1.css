@@ -27,7 +27,7 @@ article {
   position: relative;
   left: -30px;
 }
-/* static 상대좌표 값으로 지정한 값으로 이동 */
+/* 기본값은 본인*/
 
 .div_absol {
   background-color: rgb(199, 212, 50);

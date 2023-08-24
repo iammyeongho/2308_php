@@ -1,0 +1,18 @@
+body {
+  background-image: url(/css/Nevermind.jpg);
+}
+/* .div-img {
+  display: inline-block;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  background-image: url(/css/Nevermind.jpg),
+    url(/css/KwjRZAK2Pt1_JUu8LFiVlf5vA8TBaHIQBKNtobaqYgjSxEB0T_k07Ph9rvwjgO91FHVjuQe0Qra8IGB6y1reZYuUJuL8fw1Fru1x.png);
+  background-repeat: no-repeat;
+  /* background-repeat: repeat-x; */
+/* background-size: 100px;
+
+  background-position: center;
+
+  overflow: scroll;
+} */

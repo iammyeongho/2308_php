@@ -1,0 +1,87 @@
+/* 
+body {
+  background-color: #02233b;
+  padding: 20px;
+}
+
+.container {
+  margin: 0px auto;
+  background-color: white;
+  width: 700px;
+}
+
+h1 {
+  padding: 20px;
+  margin: auto;
+  width: 80%;
+  text-align: center;
+  background-color: #004344;
+  color: white;
+}
+
+.container h2 {
+  margin-top: 20px;
+  text-align: center;
+}
+
+h3 {
+  margin-top: 50px;
+  margin-left: 30px;
+  color: red;
+}
+
+li {
+  list-style: none;
+  line-height: 30px;
+}
+
+.b-i {
+  margin: 0;
+  background-image: url(/css/Nevermind.jpg);
+  width: 300px;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  left: 400px;
+} */
+
+body {
+  background-color: #02233b;
+}
+
+.container {
+  margin: 0px auto;
+  background-color: white;
+  width: 700px;
+  height: 850px;
+  background-image: url(/css/Nevermind.jpg);
+  background-repeat: no-repeat;
+  background-size: 300px;
+  background-position: right bottom;
+}
+
+h1 {
+  padding: 20px;
+  margin: auto;
+  width: 80%;
+  text-align: center;
+  background-color: #004344;
+  color: white;
+}
+
+.container h2 {
+  margin-top: 20px;
+  text-align: center;
+}
+
+h3 {
+  margin-top: 50px;
+  margin-left: 30px;
+  color: red;
+}
+
+li {
+  list-style: none;
+  line-height: 30px;
+}

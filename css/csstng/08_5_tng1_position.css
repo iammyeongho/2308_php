@@ -1,0 +1,59 @@
+/* .main {
+  width: 400px;
+  height: 400px;
+  border: 1px solid black;
+  position: static;
+  top: 0;
+  left: 0;
+}
+
+.position-1,
+.position-2,
+.position-3 {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.position-1 {
+  top: 10px;
+  left: 40px;
+}
+
+.position-2 {
+  left: 180px;
+}
+
+.position-3 {
+  left: 40px;
+} */
+
+.main {
+  width: 400px;
+  height: 400px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  position: absolute;
+}
+
+.position-1 {
+  bottom: 30px;
+  left: 40px;
+}
+
+.position-2 {
+  top: 100px;
+  left: 180px;
+}
+
+.position-3 {
+  top: 20px;
+  left: 40px;
+}

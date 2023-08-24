@@ -1,0 +1,8 @@
+h1 {
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  background-color: aquamarine;
+  border: 10px solid rgba(247, 13, 13, 0.5);
+  background-clip: content-box;
+}

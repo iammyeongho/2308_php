@@ -1,0 +1,84 @@
+a {
+  color: blue;
+}
+
+a:link {
+  color: brown;
+}
+
+a:visited {
+  color: rgb(146, 98, 8);
+}
+
+/* #id1 {
+  display: none;
+}
+
+a #id1:hover {
+  background-color: aqua;
+  display: block;
+}
+
+a:active {
+  display: block;
+} */
+
+#input-1:focus {
+  outline: none;
+  border: 2px solid red;
+}
+
+input:checked + label {
+  color: blueviolet;
+  font-weight: bold;
+}
+/* 체크박스 선택시 해당 속성값 적용 */
+
+#target-1:target {
+  background-color: red;
+}
+/* target 옵션은 타겟(클릭 시) 적용됨 메뉴1 클릭 시 타겟 테스트에 백그라운드 컬러가 들어감 */
+
+.container :nth-child(4) {
+  color: rgb(58, 228, 16);
+}
+/* nth-child는 부모 요소 안에 있는 자식 중 몇번째한테 값을 줄지 */
+
+.container p:nth-of-type(1) {
+  color: rgb(58, 228, 16);
+}
+/* nth-child는 부모 요소 안에 있는 p태그 자식 중 몇번째한테 값을 줄지 */
+
+.container :not(p) {
+  color: aqua;
+}
+/* nth-child가 특정 지정이라 not보다 우선순위가 높은 것 같음 */
+
+/* #input-2::after {
+  content: "중요";
+} */
+
+#label-2::after {
+  content: "*";
+  color: brown;
+}
+/* label-2 내용 뒤에 추가 콘텐츠를 삽입 */
+
+#label-2::before {
+  content: "#";
+  color: brown;
+}
+/* label-2 내용 앞에 추가 콘텐츠를 삽입 */
+
+/* .container :nth-child 콘테이너 안에 있는 자식 태그라서 띄어쓰기 o */
+/* #label-2::before 레이벨 자체에 입력하는거기 때문에 띄어쓰기 x */
+
+.korean-1::first-letter {
+  background-color: rgb(231, 167, 84);
+}
+/* 첫글자만 적용 */
+
+.korean-2::first-line {
+  background-color: rgb(231, 167, 84);
+}
+/* 첫줄만 적용 */

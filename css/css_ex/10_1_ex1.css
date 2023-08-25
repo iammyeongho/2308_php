@@ -1,0 +1,20 @@
+header div span {
+  color: rgb(255, 102, 0);
+  font-weight: bold;
+}
+
+header > span {
+  color: yellowgreen;
+}
+/* >를 붙히면 해당 안의 요소 값만 변경 최상위의 헤더 안 스판은 적용 x
+직속 자식 태그에만 적용 */
+
+main span + p {
+  color: blue;
+}
+/* +는 인접한 요소에만 속성 적용 span 기준으로 밑에있는 형제값 하나에 (p) */
+
+footer span ~ p {
+  color: rgb(202, 49, 223);
+}
+/* ~는 밑에 있는 형제 값에 속성 적용 span 기준으로 밑에있는 형제값에 (현재는 p2 p3) */

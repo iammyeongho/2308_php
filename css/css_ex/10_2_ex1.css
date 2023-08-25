@@ -1,0 +1,39 @@
+* {
+  font-size: 50px;
+  margin: auto;
+  text-align: center;
+}
+
+[target] {
+  color: yellowgreen;
+}
+
+[target="daum"] {
+  color: aquamarine;
+}
+
+[class~="att_class"] {
+  color: aqua;
+}
+/* att_class 속성값이 속한 부분만 css 적용  */
+
+[class|="att"] {
+  color: chartreuse;
+}
+/* | 는 att가 속해있는 모든 클래스에 적용 단 언더바는 x */
+
+/* [class*="att_class"] {
+  color: brown;
+} */
+
+/* 클래스에 *입력시 해당 속성값 명칭이 들어가는 모든 클래스에 css 적용 */
+
+[class^="co"] {
+  color: chocolate;
+}
+/* co로 시작하는 속성값을 가진 모든 클래스에 css 적용 */
+
+[class$="1"] {
+  color: teal;
+}
+/* 1로 끝나는 속성값을 가진 모든 클래스에 CSS 적용 */

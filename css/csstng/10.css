@@ -1,0 +1,47 @@
+div {
+  width: 605px;
+  margin: auto;
+}
+
+.ul-a {
+  list-style: none;
+  padding: 0px;
+  margin: 50px auto;
+  display: inline-block;
+  box-shadow: 1px 10px 10px 10px rgb(83, 83, 83);
+}
+
+.ul-a li {
+  width: 100px;
+  height: 50px;
+  float: left;
+  text-align: center;
+  line-height: 50px;
+  background-color: rgb(184, 184, 184);
+  border-right: 1px solid brown;
+  box-sizing: border-box;
+  /* box-shadow: 10px 10px 10px 1px rgb(83, 83, 83); */
+}
+
+.ul-a li:not(:last-child) a:hover {
+  background-color: #555;
+}
+
+.ul-a li:last-child {
+  border: none;
+}
+
+.ul-a li:last-child:hover {
+  background-color: #b30000;
+  color: #fff;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  display: block;
+}
+
+a:hover {
+  color: #fff;
+}

@@ -1,0 +1,95 @@
+.main {
+  width: 800px;
+  margin: auto;
+}
+
+fieldset {
+  background-image: url(../uncle-sam.jpg);
+  background-size: cover;
+}
+
+legend {
+  color: fuchsia;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+ul {
+  padding-left: 0;
+  margin-left: 0;
+  list-style: none;
+}
+
+li {
+  font-weight: bold;
+}
+
+input {
+  background-color: transparent;
+}
+
+.col::before {
+  content: "*";
+  color: rgb(255, 2, 2);
+}
+
+#name:focus {
+  outline: none;
+  border: 2px solid red;
+}
+
+#age:focus {
+  outline: none;
+  border: 2px solid red;
+}
+
+/* input[type="radio"]:checked + label {
+  color: red;
+} */
+
+:checked + label {
+  color: red;
+}
+
+input[type="radio"] {
+  background-color: transparent;
+}
+
+li * {
+  vertical-align: top;
+  background-color: transparent;
+}
+
+#memo:focus {
+  outline: none;
+  border: 2px solid red;
+}
+
+.box {
+  position: relative;
+  /* display: inline-block; */
+}
+
+.submit_box {
+  display: none;
+  position: absolute;
+  top: -40px;
+  left: 60px;
+  background: #000000;
+  color: #fff;
+  font-size: 30px;
+}
+
+button:hover + p.submit_box {
+  display: block;
+}
+
+/* button:hover::after {
+  content: "내용을 다시 한 번 확인해 주세요.";
+  background-color: #000000;
+  color: #fff;
+  font-size: 30px;
+  position: absolute;
+  top: 0px;
+  left: 50px;
+} */

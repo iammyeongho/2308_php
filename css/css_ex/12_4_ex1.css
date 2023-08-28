@@ -1,0 +1,35 @@
+.container {
+  width: 60vw;
+  height: 60vh;
+  background-color: gray;
+  margin: 10px auto;
+  display: flex;
+  /* flex-direction: row;
+  flex-wrap: wrap; */
+  flex-flow: row wrap;
+  /* justify-content: center; */
+  /* justify-content: space-around; */
+  align-items: baseline;
+}
+/* flex는 정렬하고싶은 영역의 부모요소한테 */
+/* direection은 정렬되는 방향 */
+/* nowrap 기본 값 자식 값을 자동으로 조절해 한 줄에 정렬함 */
+/* wrap는 자식 값에 맞춰 크기를 맞춰줌 상단이 한 줄 나열이면 해당 속성은 부모 영역보다 크면 밑으로 내려감 */
+/* flex-flow 는 direction + wrap를 한 줄에 */
+/* justify-content: flex-end; 주축(수평)을 기준으로 정렬함 현재 row기준이기 때문에 end면 우측 정렬임*/
+/* justify-content: center; 중앙 정렬 */
+/* justify-content: space-between; 처음과 끝을 좌우 끝에 배치 후 공백을 맞춰줌 */
+/* justify-content: space-around; 주축을 기준으로 간격을 맞춰줌 */
+/* align-items: flex-end; 교차축(수직)을 기준으로 정렬  */
+
+.item {
+  width: 15vw;
+  height: 15vh;
+  text-align: center;
+  background-color: rgb(65, 189, 65);
+  border: 1px solid black;
+}
+
+.item2 {
+  font-size: 30px;
+}

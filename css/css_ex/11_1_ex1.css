@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+}
+
+.ball {
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(67, 151, 184);
+  border-radius: 50%;
+  animation: moveUpDown 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes moveUpDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translatey(500px);
+  }
+}
+
+.ball2 {
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(243, 84, 21);
+  border-radius: 50%;
+  animation: moveUpDown2 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes moveUpDown2 {
+  from {
+    transform: translatex(0);
+  }
+  to {
+    transform: translatex(400px);
+  }
+}
+
+.ball3 {
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(243, 84, 21);
+  border-radius: 50%;
+  animation: moveUpDown3 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes moveUpDown3 {
+  from {
+    transform: translatex(0);
+  }
+  to {
+    transform: translatex(-400px);
+  }
+}

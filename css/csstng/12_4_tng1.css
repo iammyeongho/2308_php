@@ -1,0 +1,34 @@
+.container {
+  width: 60vw;
+  height: 60vh;
+  background-color: gray;
+  margin: 10px auto;
+}
+
+.item {
+  width: 15vw;
+  height: 15vh;
+  text-align: center;
+  background-color: rgb(65, 189, 65);
+  border: 1px solid black;
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+}
+
+.box {
+  width: 45vw;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.box-center {
+  display: block;
+  margin: auto;
+}

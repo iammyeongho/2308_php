@@ -9,7 +9,10 @@
   flex-flow: row wrap;
   /* justify-content: center; */
   /* justify-content: space-around; */
-  align-items: baseline;
+  /* align-items: baseline; */
+  /* align-items: stretch; */
+  /* align-content: flex-start; */
+  align-content: space-around;
 }
 /* flex는 정렬하고싶은 영역의 부모요소한테 */
 /* direection은 정렬되는 방향 */
@@ -21,6 +24,8 @@
 /* justify-content: space-between; 처음과 끝을 좌우 끝에 배치 후 공백을 맞춰줌 */
 /* justify-content: space-around; 주축을 기준으로 간격을 맞춰줌 */
 /* align-items: flex-end; 교차축(수직)을 기준으로 정렬  */
+/* align-items: stretch;  하이값이 최대로 늘어남*/
+/* align-content: flex-start; 시작 지점을 기준으로 정렬 */
 
 .item {
   width: 15vw;
@@ -28,8 +33,14 @@
   text-align: center;
   background-color: rgb(65, 189, 65);
   border: 1px solid black;
+  box-sizing: border-box;
 }
+/*   box-sizing: border-box; 어그러지는 박스의 크기를 맞춰줌 */
 
 .item2 {
   font-size: 30px;
+  /* align-self: center; */
+  /* align-self: flex-end; */
 }
+
+/* align-self: center; 각 개체의 위치를 중앙으로 이동시켜줌 */

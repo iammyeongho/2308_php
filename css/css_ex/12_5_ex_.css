@@ -1,0 +1,59 @@
+.container {
+  background-color: darkgray;
+  display: grid;
+  /* grid-template-columns: 50px 100px 50px; */
+  grid-template-columns: repeat(auto-fit, 50px);
+  /* grid-template-columns: repeat(3, 50px); */
+  /* grid-template-columns: repeat(3, minmax(200px, 1fr)); */
+  /* grid-template-rows: 50px 50px; */
+  /* grid-column-gap: 10px; */
+  /* grid-row-gap: 10px; */
+  grid-gap: 10px 5px;
+}
+/* colums 넓이 값을 각 영역 순서대로 1234 */
+/* rows 높이 값을 각 영역 순서대로 1234 */
+/* repeat(auto-fit, 50px) 모든 값에 50px */
+/* repeat(3, 50px) 3개 후의 영역은 아래로 내려감 */
+/* repeat(3, minmax(200px, 1fr)) 반응형을 위한 값으로 최소크기가 200px로 제한됨 */
+/* 1fr = 3개로 쪼갰을 때 퍼센트로 값을 가져간다는 말 (적절한 값으로) */
+
+/* repeat(auto-fit, minmax(200px, 1fr)) 는 자동으로 수를 조절하기 때문에 
+최소 크기가 200px보다 작아지면 아래로 내려감 */
+
+/* grid-column-gap: 10px; column간격을 10px로 설정해줌 */
+/* grid-gap는 column + row 간격 설정 */
+
+.container2 {
+  background-color: darkgray;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 50px);
+  /* grid-template-rows: 50px 50px; */
+}
+/* grid-template-columns: repeat(auto-fill, 50px);은 영역을 미리 잡아둠 
+개발자 모드로 보면 이해하기 편함 */
+
+.container3 {
+  background-color: darkgray;
+  display: grid;
+  grid-template-columns: repeat(2, 50px);
+  grid-template-rows: repeat(4, 50px);
+  grid-gap: 10px;
+}
+
+.item {
+  background-color: chartreuse;
+}
+
+.item-1 {
+  grid-column: 1/3;
+}
+/* 1번 컬럼의 3영역까지 차지 */
+
+.item-5 {
+  grid-row: 3/5;
+}
+/* 5번이 2번 컬럼의 3의 앞까지 차지 */
+/* 5번이 3번 로우의 5의 앞까지 차지*/
+
+/* 모든 칼럼과 로우의 경우 시작 부분이 1ㅁ2ㅁ3ㅁ 이렇게 앞쪽임 */
+/* 겂 자정한 영역부터 배치 */

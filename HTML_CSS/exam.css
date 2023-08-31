@@ -1,0 +1,127 @@
+@import url(https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap);
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Sedgwick Ave Display", "cursive";
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  background-color: rgb(231, 180, 70);
+}
+
+header {
+  color: #ffffff;
+  background-image: url(./img/img_1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.theme {
+  font-size: 4rem;
+  width: 60%;
+  padding: 60px;
+}
+
+/* @media screen and (min-width: 650px max-width: 980px) {
+  .theme {
+    width: 100%;
+  }
+} */
+
+.sentence {
+  /* width: 70%; */
+  padding: 60px;
+}
+
+.sentence > p {
+  font-size: 1.5rem;
+}
+
+.button-1 {
+  font-size: 1.5rem;
+  padding: 2%;
+}
+
+main {
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+article {
+  border-radius: 5px;
+  border: 2px solid #e2e2e2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+figure {
+  position: relative;
+}
+
+figcaption {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+figcaption > h3 {
+  margin: auto;
+  color: #ffffff;
+  padding: 20px;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+article > p {
+  margin-top: 20px;
+}
+
+article > a {
+  display: block;
+  margin-top: 20px;
+  position: relative;
+  bottom: 0px;
+  padding: 20px;
+  font-size: 1rem;
+}
+
+footer {
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 30px;
+  text-align: center;
+}
+
+footer > p {
+  color: #ffffff;
+  font-size: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+a:hover {
+  opacity: 0.6;
+  transition-duration: 0.5s;
+}

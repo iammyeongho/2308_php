@@ -17,3 +17,10 @@ DELETE FROM departments
 WHERE dept_no = 'd010';
 
 SELECT * FROM departments;
+
+-- 사원 정보 테이블에서 사원번호가 500001이상인 사원의 데이터를 모두 삭제해주세요
+
+
+DELETE FROM employees
+WHERE emp_no >= 500001;
+

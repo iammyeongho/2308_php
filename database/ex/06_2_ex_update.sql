@@ -12,3 +12,16 @@ UPDATE titles
 WHERE emp_no = 500000;
 
 SELECT * FROM titles WHERE emp_no = 500000;
+
+-- 500000번 사원의 직급을 'Staff', 연봉을 '25000',
+
+UPDATE titles
+	SET title = 'Staff'
+WHERE emp_no = 500000;
+
+UPDATE salaries
+	SET salary = 25000
+WHERE emp_no = 500000;
+
+SELECT * FROM titles order by emp_no DESC;
+SELECT * FROM salaries order by emp_no DESC;

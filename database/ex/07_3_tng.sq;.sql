@@ -92,16 +92,24 @@ SELECT COUNT(title)
 		
 		
 -- 11. 퇴사한 여직원 수
-SELECT COUNT(emp.emp_no)
+SELECT emp.gender, COUNT(*) 
 	FROM employees emp, (
-		SELECT emp_no, MAX(to_date) as max_date
-		FROM titles
-		GROUP BY emp_no
-		HAVING max_date != 99990101
+			SELECT emp_no, MAX(to_date) max_date
+			FROM titles
+			GROUP BY emp_no
+			HAVING max_date != 99990101
 		) tit
 		WHERE emp.emp_no = tit.emp_no
 		GROUP BY emp.gender;
 -- 		HAVING emp.gender = 'f';
 		
-
+SELECT emp.gender, COUNT(*)
+FROM employees emp
+	INNER JOIN (
+			select emp_no
+			FROM titles t
+			GROUP BY t.emp_no HAVING MAX(t.to_date) != 99990101
+		) tit
+		ON emp.emp_no = tit.emp_no
+GROUP BY emp.gender HAVING emp.gender = 'F';
 		

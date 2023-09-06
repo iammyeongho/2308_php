@@ -95,7 +95,7 @@ SELECT dept.dept_name, emp.first_name, emp.hire_date
 	INNER JOIN departments dept
 	ON de_emp.dept_no = dept.dept_no
 	WHERE dept.dept_name = 'sales'
-	AND emp.hire_date >= 19850101 AND emp.hire_date < 19860101;
+	where (emp.hire_date >= 19850101 AND emp.hire_date < 19860101);
 
 
 -- "Marketing" 부서와 "Sales" 부서의 직원 중에서 현재 연봉이 60000 이상인 직원의 수를 각각 계산하세요
@@ -103,7 +103,7 @@ SELECT dept.dept_name, emp.first_name, emp.hire_date
 SELECT sal.emp_no, sal.salary, dept.dept_name
 	FROM salaries sal
 	INNER JOIN dept_emp de_emp
-	ON sal.emp_no = de_emp.emp_no
+	ON sal.emp_no = de_emp.emp_no  
 	INNER JOIN departments dept
 	ON de_emp.dept_no = dept.dept_no
 	WHERE (dept.dept_name = 'Marketing' OR dept.dept_name = 'Sales')

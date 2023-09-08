@@ -116,6 +116,7 @@
     // array_push() : 기존 배열에 값을 추가 하는 함수
     $arr_push = [ 1, 2, 3 ];
     array_push( $arr_push, 4, 5);
+    // $arr_push[] = 4; 배열 제일 뒤에 하나만 추가됨
 
     print_r( $arr_push );
 

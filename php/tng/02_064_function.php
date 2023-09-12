@@ -86,16 +86,27 @@
     // 숫자로 이루어진 문자열을 하나 받습니다.
     // 이 문자열의 모든 숫자를 더 해주세요
 
+    // function my_str($str)
+    // {
+    //     $sum = 0;
+    //     for($i = 0; $i < mb_strlen($str); $i++)
+    //     {
+    //         $sum += $str[$i];
+    //     }
+    //     return $sum;
+    // }
+    // echo my_str("3467");
+    
     function my_str($str)
-    {
+    {   
+        $str_mb = mb_strlen($str);
         $sum = 0;
-        for($i = 0; $i < strlen($str); $i++)
+        for($i = 0; $i < $str_mb - 1; $i++)
         {
-            $sum += $str[$i];
+            $sum = (int)mb_strlen($str_mb, $i, 1);
         }
         return $sum;
     }
-    echo my_str("3467");
-    
 
+    echo my_str("3467");
 ?>

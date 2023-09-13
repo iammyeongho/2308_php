@@ -96,17 +96,29 @@
     //     return $sum;
     // }
     // echo my_str("3467");
-    
-    function my_str($str)
-    {   
-        $str_mb = mb_strlen($str);
-        $sum = 0;
-        for($i = 0; $i < $str_mb - 1; $i++)
-        {
-            $sum = (int)mb_strlen($str_mb, $i, 1);
-        }
-        return $sum;
-    }
 
-    echo my_str("3467");
+   
+    // $str = "43433";
+    // function my_str(string $str)
+    // {   
+    //     $str_mb = mb_strlen($str); // mb_strlen() 문자열의 길이를 구하는 함수
+    //     $sum = 0;
+    //     for($i = 0; $i <= $str_mb - 1; $i++)
+    //     {
+    //         $sum += (int)mb_substr($str, $i, 1); // mb_substr() 문자열, 시작 지점, 길이
+    //     }
+    //     return $sum;
+    // }
+    // echo my_str($str);
+
+
+    $str = "4343344";
+    function my_str(string $str)
+    {
+        $arr = str_split($str); //str_split() 대상 문자열을 분할하여 배열로 리턴하는 역활
+        return array_sum($arr);
+
+    }
+    echo my_str($str); 
+
 ?>

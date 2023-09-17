@@ -187,52 +187,52 @@
      // $result = "당신의 패는 {$user} 상대의 패는 {$computer_value}";
 
 
-    $computer = ["0", "1", "2"];
-    $error = "잘못된 입력입니다.";
-    $rule = "가위는 0, 주먹은 1, 보자기는 2";
-    echo "\n종료는 esc입니다.\n";
+    // $computer = ["0", "1", "2"];
+    // $error = "잘못된 입력입니다.";
+    // $rule = "가위는 0, 주먹은 1, 보자기는 2";
+    // echo "\n종료는 esc입니다.\n";
 
-    while(1)
-    {
-    // echo $rule, "\n";
-    echo "\n당신의 입력값은 ";
-    $user = trim(fgets(STDIN));
-    $computer_rand = array_rand($computer);
-    $computer_value = $computer[$computer_rand];
-    $result = "당신의 패는 {$user} 상대의 패는 {$computer_value}";
+    // while(1)
+    // {
+    // // echo $rule, "\n";
+    // echo "\n당신의 입력값은 ";
+    // $user = trim(fgets(STDIN));
+    // $computer_rand = array_rand($computer);
+    // $computer_value = $computer[$computer_rand];
+    // $result = "당신의 패는 {$user} 상대의 패는 {$computer_value}";
 
-        if ($user === $computer_value)
-        {
-            echo $result, "\n";
-            echo "결과는 : 무승부 \n";
-        }
+    //     if ($user === $computer_value)
+    //     {
+    //         echo $result, "\n";
+    //         echo "결과는 : 무승부 \n";
+    //     }
         
-        else if ((($user === $computer[0]) && ($computer_value === $computer[2]))
-        || (($user === $computer[1]) && ($computer_value === $computer[0]))
-        || (($user === $computer[2]) && ($computer_value === $computer[1])))
-        {
-            echo $result, "\n";
-            echo "결과는 : 승 \n";
-        }
+    //     else if ((($user === $computer[0]) && ($computer_value === $computer[2]))
+    //     || (($user === $computer[1]) && ($computer_value === $computer[0]))
+    //     || (($user === $computer[2]) && ($computer_value === $computer[1])))
+    //     {
+    //         echo $result, "\n";
+    //         echo "결과는 : 승 \n";
+    //     }
 
-        else if ((($user === $computer[0]) && ($computer_value === $computer[1]))
-        || (($user === $computer[1]) && ($computer_value === $computer[2]))
-        || (($user === $computer[2]) && ($computer_value === $computer[0])))
-        {
-            echo $result, "\n";
-            echo "결과는 : 패 \n";
-        }
+    //     else if ((($user === $computer[0]) && ($computer_value === $computer[1]))
+    //     || (($user === $computer[1]) && ($computer_value === $computer[2]))
+    //     || (($user === $computer[2]) && ($computer_value === $computer[0])))
+    //     {
+    //         echo $result, "\n";
+    //         echo "결과는 : 패 \n";
+    //     }
 
-        else if($user === "esc")
-        {
-            break;
-        }
+    //     else if($user === "esc")
+    //     {
+    //         break;
+    //     }
 
-        else
-        {
-            echo "잘못된 입력값입니다.";
-        }
-    }
+    //     else
+    //     {
+    //         echo "잘못된 입력값입니다.";
+    //     }
+    // }
 
 
     // $rand_num = rand(1, 100);
@@ -328,24 +328,90 @@
     // chatGPT 문제
 
     // 1
-    // 주어진 배열
-    // $numbers = array(45, 78, 23, 56, 12, 67, 89, 34);
+    // $numarr = [45, 78, 23, 56, 12, 67, 89, 34];
 
-    // // 배열에서 최대값과 최소값을 찾는 코드를 작성하세요.
-    // $maxValue = $numbers[0];
-    // $minValue = $numbers[0];
+    // $maxarr = $numarr[0];
+    // $minarr = $numarr[0];
 
-    // foreach ($numbers as $number) {
-    //     if ($number > $maxValue) {
-    //         $maxValue = $number;
+    // foreach ($numarr as $num) 
+    // {
+    //     if ($num > $maxarr) 
+    //     {
+    //         $maxarr = $num;
     //     }
-    //     if ($number < $minValue) {
-    //         $minValue = $number;
+
+    //     if ($num < $minarr) 
+    //     {
+    //         $min = $num;
     //     }
     // }
 
-    // // 결과를 출력합니다.
-    // echo "배열의 최대값: " . $maxValue . "\n";
-    // echo "배열의 최소값: " . $minValue;
+    // echo "배열의 최대값: " . $maxarr . "\n";
+    // echo "배열의 최소값: " . $minarr;
 
+
+    // 2
+    // $numbers = [];
+
+    // while (true) 
+    // {
+    //     echo "숫자를 입력하세요 (종료 : esc): ";
+    //     $user = trim(fgets(STDIN));
+
+    //     if ($user === 'esc') 
+    //     {
+    //         break;
+    //     }
+
+    //     $numbers[] = (int)$user;
+    // }
+
+    // echo "입력한 숫자: ";
+    // print_r($numbers);
+
+    // $max = max($numbers);
+    // echo "가장 큰 수: $max\n";
+
+    // $min = min($numbers);
+    // echo "가장 작은 수: $min\n";
+
+    // $sum = array_sum($numbers);
+    // echo "숫자 합: $sum\n";
+
+    // $average = $sum / count($numbers);
+    // echo "숫자 평균: $average\n";
+
+    // 3
+    // 숫자를 저장할 배열 초기화
+    // $num = [];
+
+    // // 사용자로부터 숫자 입력 받기
+    // echo "평균을 계산할 숫자를 입력하세요 (종료 : esc): ";
+    // while (true) 
+    // {
+    //     $uesr = trim(fgets(STDIN));
+
+    //     if ($uesr === 'esc') 
+    //     {
+    //         break;
+    //     }
+
+    //     $num[] = (float)$user;
+    // }
+
+    // $count = count($num);
+
+    // $sum = array_sum($num);
+
+    // // 평균 계산하기
+    // if ($count > 0) 
+    // {
+    //     $average = $sum / $count;
+    //     echo "평균: $average\n";
+    // } 
+    //    else 
+    // {
+    //     echo "숫자를 입력하지 않았습니다.\n";
+    // }
+    
 ?>

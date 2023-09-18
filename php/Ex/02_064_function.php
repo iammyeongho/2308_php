@@ -69,10 +69,45 @@
 
 
     // php-5.6 이상에서 사용 방법
-    function my_args_param(...$items)
+    // function my_args_param(...$items)
+    // {
+    //     echo $items[1];
+    // }
+    // my_args_param("a","b","c");
+
+    // 레퍼런스 파라미터
+    // function에 있는 변수와 밖에 있는 변수는 다른 변수 | function 메모리와 main 메모리에 따로 따로 저장됨
+
+    function test1 ( $str )
     {
-        echo $items[1];
+        $str = "함수 test1";
+        return $str;
     }
-    my_args_param("a","b","c");
+
+    // $str = "???";
+
+    // $result = test1($str);
+
+    // echo "\n";
+
+    // echo $str;
+
+    // echo $result;
+
+    function test2 ( &$a )
+    {
+        $a = "함수 test2";
+        return $a;
+    }
+
+    $str = "???";
+
+    $result = test2($str);  
+
+    echo $str;
+ 
+    echo "\n";
+
+    echo $result;
 
 ?>

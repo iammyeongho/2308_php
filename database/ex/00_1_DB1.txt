@@ -1,4 +1,10 @@
 
+Client 				: 브라우저	|
+Web Server 			: 아파치	|
+Application Server 	: PHP 		| 처리
+Database 			: mariaDB 	| 데이터 저장
+
+
 1. 데이터베이스(Database, DB)란? ( 참조 : 0_img1_WebDev.png )
 	다수의 사용자에 의해 공유되어 사용될 목적으로 통합하여 관리되는 "데이터의 집합"을 말합니다.
  

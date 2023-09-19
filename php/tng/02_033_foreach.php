@@ -16,9 +16,11 @@
     ];
 
     echo "ID list \n";
-    foreach($arr as $val)
+    foreach($arr as $key => $val)
     {
-        echo $val["id"],"\n";
+        // echo $val["id"],"\n";
+        print_r($key);
+        echo $key[1];
     }
 
 

@@ -138,28 +138,27 @@
 
 	foreach($result as $key => $val)
 	{
-		$emp_no = $val["emp_no"];
+
+		$sql = " INSERT INTO titles ( "
+		."		emp_no " 
+		."		,title "
+		."		,from_date "
+		."		,to_date "
+		." 		) "
+		." VALUES ( "
+		."		:emp_no "
+		."		,:title "
+		."		,:from_date "
+		."		,:to_date "
+		." 		) ";
+
+		$arr_ps = [
+			":emp_no" => $val["emp_no"]
+			,":title" => "green"
+			,":from_date" => 20230919
+			,":to_date" => 99990101
+		];
 	}
-
-	$sql = " INSERT INTO titles ( "
-	."		emp_no " 
-	."		,title "
-	."		,from_date "
-	."		,to_date "
-	." 		) "
-	." VALUES ( "
-	."		:emp_no "
-	."		,:title "
-	."		,:from_date "
-	."		,:to_date "
-	." 		) ";
-
-	$arr_ps = [
-		":emp_no" => $emp_no
-		,":title" => "green"
-		,":from_date" => 20230919
-		,":to_date" => 99990101
-	];
 
 	$stmt = $conn -> prepare($sql);
 	$result = $stmt -> execute($arr_ps);

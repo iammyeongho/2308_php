@@ -70,22 +70,22 @@
 	// var_dump($result);
 
 	// 3. 자신의 정보를 출력해 주세요.
-	// $sql = 	" SELECT "
-	// 	." 		* "
-	// 	." FROM " 
-	// 	." 		employees "
-	// 	." WHERE "
-	// 	." 		emp_no = :emp_no "
-	// 	;
+	$sql = 	" SELECT "
+		." 		* "
+		." FROM " 
+		." 		employees "
+		." WHERE "
+		." 		emp_no = :emp_no "
+		;
 
-	// $arr_ps = [
-	// 	":emp_no" => 500003
-	// ];
+	$arr_ps = [
+		":emp_no" => 500003
+	];
 
-	// $stmt = $conn -> prepare($sql); 
-	// $stmt -> execute($arr_ps);
-	// $result = $stmt -> fetchAll(); 
-	// print_r($result);
+	$stmt = $conn -> prepare($sql); 
+	$stmt -> execute($arr_ps);
+	$result = $stmt -> fetchAll(); 
+	print_r($result);
 
 	// 4. 자신의 정보를 삭제해 주세요.	
 	// $sql = " DELETE FROM employees "
@@ -112,59 +112,59 @@
 	// 3.DB에 저장될 것
 
 
-	$sql = 	" SELECT "
-		."		emp.emp_no "
-		." 		,tit.title "
-		." 		,from_date "
-		." 		,to_date "
-		." FROM " 
-		." 		employees emp "
-		." LEFT OUTER JOIN "
-		." 		titles tit "
-		." ON "
-		." 		emp.emp_no = tit.emp_no "
-		." WHERE "
-		." tit.emp_no IS NULL "
-		;
+	// $sql = 	" SELECT "
+	// 	."		emp.emp_no "
+	// 	." 		,tit.title "
+	// 	." 		,from_date "
+	// 	." 		,to_date "
+	// 	." FROM " 
+	// 	." 		employees emp "
+	// 	." LEFT OUTER JOIN "
+	// 	." 		titles tit "
+	// 	." ON "
+	// 	." 		emp.emp_no = tit.emp_no "
+	// 	." WHERE "
+	// 	." tit.emp_no IS NULL "
+	// 	;
 
-	$arr_ps = [
+	// $arr_ps = [
 		
-	];
+	// ];
 
-	$stmt = $conn -> prepare($sql); 
-	$stmt -> execute($arr_ps);
-	$result = $stmt -> fetchAll(); 
-	print_r($result);
+	// $stmt = $conn -> prepare($sql); 
+	// $stmt -> execute($arr_ps);
+	// $result = $stmt -> fetchAll(); 
+	// print_r($result);
 
-	foreach($result as $key => $val)
-	{
+	// foreach($result as $key => $val)
+	// {
 
-		$sql = " INSERT INTO titles ( "
-		."		emp_no " 
-		."		,title "
-		."		,from_date "
-		."		,to_date "
-		." 		) "
-		." VALUES ( "
-		."		:emp_no "
-		."		,:title "
-		."		,:from_date "
-		."		,:to_date "
-		." 		) ";
+	// 	$sql = " INSERT INTO titles ( "
+	// 	."		emp_no " 
+	// 	."		,title "
+	// 	."		,from_date "
+	// 	."		,to_date "
+	// 	." 		) "
+	// 	." VALUES ( "
+	// 	."		:emp_no "
+	// 	."		,:title "
+	// 	."		,:from_date "
+	// 	."		,:to_date "
+	// 	." 		) ";
 
-		$arr_ps = [
-			":emp_no" => $val["emp_no"]
-			,":title" => "green"
-			,":from_date" => 20230919
-			,":to_date" => 99990101
-		];
-	}
+	// 	$arr_ps = [
+	// 		":emp_no" => $val["emp_no"]
+	// 		,":title" => "green"
+	// 		,":from_date" => 20230919
+	// 		,":to_date" => 99990101
+	// 	];
+	// }
 
-	$stmt = $conn -> prepare($sql);
-	$result = $stmt -> execute($arr_ps);
-	$result = $stmt -> fetchAll(); 
-	$conn -> commit();
-	print_r($result);
+	// $stmt = $conn -> prepare($sql);
+	// $result = $stmt -> execute($arr_ps);
+	// $result = $stmt -> fetchAll(); 
+	// $conn -> commit();
+	// print_r($result);
 
 	// $sql = 	" SELECT "
 	// ."		* "
@@ -195,9 +195,7 @@
 	// ." FROM " 
 	// ." 		titles tit "
 	// ." WHERE " 
-	// ." 		emp_no "
-	// ." AND " 
-	// ." 		emp.emp_no = tit.emp_no "
+	// ." 		emp.emp_no = tit.emp_no  "
 	// ." ) "
 	// ;
 	

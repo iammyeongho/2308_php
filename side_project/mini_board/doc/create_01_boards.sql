@@ -1,0 +1,12 @@
+CREATE DATABASE mini_board;
+
+USE mini_board;
+
+CREATE TABLE boards(
+	id INT PRIMARY KEY AUTO_INCREMENT
+	,title varchar(100) NOT null
+	,content VARCHAR(1000) NOT null
+	,creat_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+	,delete_fig CHAR(1) NOT NULL DEFAULT '0'
+	,delete_at DATETIME DEFAULT NULL
+);

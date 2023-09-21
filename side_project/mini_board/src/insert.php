@@ -23,6 +23,10 @@
 				throw new Exception("DB Error : Insert Boards");
 			}
 			$conn->commit(); // 모든 처리 완료 시 커밋
+
+			// 리스트 페이지로 이동
+			header("Location: list.php"); //Location을 콜론(:) 이후의 주소로 이동하라는 헤더 메시지이다
+			exit;
 		}
 		catch(Exception $e) {
 			$conn->rollBack();
@@ -33,8 +37,6 @@
 		finally {
 			my_db_destroy_conn($conn); // DB 파기
 		}
-
-		// insert
 
 	}
 

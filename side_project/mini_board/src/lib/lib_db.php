@@ -155,10 +155,72 @@
 		}
 	}
 
+	
+	// ----------------------------
+	// 함수명 	: my_db_select_boards_id
+	// 기능 	: boards id 조회
+	// 파라미터 : PDO 		&$conn
+	// 리턴 	: Array / false
+	// ----------------------------
+
+	// function my_db_select_boards_id(&$conn, $id) {
+	// 	$sql =
+	// 		" SELECT "
+	// 		." 		title "
+	// 		." 		,content "
+	// 		." FROM "
+	// 		." 		boards "
+	// 		." WHERE "
+	// 		." 		id = :id "
+	// 		;
+
+	// 		$arr_ps = [
+	// 			":id" => $id
+	// 		];
+			
+	// 	try {
+	// 		$stmt = $conn->prepare($sql);
+	// 		$stmt->execute($arr_ps);
+	// 		$result = $stmt->fetchAll();
+	// 		return $result;
+	// 	}
+	// 	catch(Exception $e) {
+	// 		return false; // 예외 발생 : flase 리턴
+	// 	} 
+	// }
+
+	function my_db_select_boards_id(&$conn, &$arr_param) {
+		$sql =
+			" SELECT "
+			." 		id "
+			." 		,title "
+			." 		,content "
+			." 		,creat_at "
+			." FROM "
+			." 		boards "
+			." WHERE "
+			." 		id = :id "
+			;
+
+			$arr_ps = [
+				":id" => $arr_param["id"]
+			];
+			
+		try {
+			$stmt = $conn->prepare($sql);
+			$stmt->execute($arr_ps);
+			$result = $stmt->fetchAll();
+			return $result;
+		}
+		catch(Exception $e) {
+			return false; // 예외 발생 : flase 리턴
+		} 
+	}
+
 
 	// $conn = null;
 	// my_db_conn($conn);
 	// echo my_db_select_boards_cnt($conn);
 	// $conn = null;
 
-?>
+?> 

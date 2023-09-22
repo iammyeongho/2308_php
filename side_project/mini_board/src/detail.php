@@ -61,30 +61,33 @@
 	<?php
 		require_once(FILE_HEADER);
 	?>
-	<table>
-		<tr>
-			<th>글 번호</th>
-			<td><?php echo $item["id"]; ?></td>
-		</tr>
+	<div class="detail-page">
+		<table>
+			<tr>
+				<th>글 번호</th>
+				<td><?php echo $item["id"]; ?></td>
+			</tr>
 
-		<tr>
-			<th>제목</th>
-			<td><?php echo $item["title"] ?></td>
-		</tr>
+			<tr>
+				<th>제목</th>
+				<td><?php echo $item["title"] ?></td>
+			</tr>
 
-		<tr>
-			<th>내용</th>
-			<td><?php echo $item["content"] ?></td>
-		</tr>
+			<tr>
+				<th>내용</th>
+				<td><?php echo $item["content"] ?></td>
+			</tr>
 
-		<tr>
-			<th>작성일자</th>
-			<td><?php echo $item["creat_at"] ?></td>
-		</tr>
-	</table>
-	<a href="">수정</a>
-	<a href="/mini_board/src/list.php/?page=<?php echo $page; ?>">취소</a>
-	<a href="">삭제</a>
-
+			<tr>
+				<th>작성일자</th>
+				<td><?php echo $item["creat_at"] ?></td>
+			</tr>
+		</table>
+		<div class="detail-page-a">
+			<a href="">수정</a>
+			<a href="/mini_board/src/list.php/?page=<?php echo $page; ?>">취소</a>
+			<a href="">삭제</a>
+		</div>
+	</div>
 </body>
 </html>

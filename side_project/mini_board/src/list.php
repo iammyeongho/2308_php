@@ -110,7 +110,7 @@
 					<tr>
 						<td><?php echo $item["id"]; ?></td>
 						<td>
-							<a href="/mini_board/src/detail.php/?id=<?php echo $item["id"]; ?> &page=<?php echo $page_num; ?>"><?php echo $item["title"]; ?></a>
+							<a class="table-tr-td-a" href="/mini_board/src/detail.php/?id=<?php echo $item["id"]; ?> &page=<?php echo $page_num; ?>"><?php echo $item["title"]; ?></a>
 						</td>
 						<td><?php echo $item["creat_at"]; ?></td>
 					</tr>
@@ -118,13 +118,21 @@
 				} 
 			?>
 		</table>
-		<a class="main_a" href="/mini_board/src/insert.php">글 작성</a>
+		<div class="main-div">
+			<a class="main-div-a" href="/mini_board/src/insert.php">글 작성</a>
+		</div>
 		
 		<section>
 			<a class="page-btn" href="/mini_board/src/list.php/?page=<? echo $prev_page_num; ?>">↼</a>
 			<?php
-				for($i = 1; $i <= $max_page_num; $i++)
-				{
+				// for($i = 1; $i <= $max_page_num; $i++)
+				// {
+				$culc=((ceil($page_num/10))*5);
+				$i=$culc-4;
+					for($i;$i<=$culc;$i++) {
+						if($i>$max_page_num) {   
+							break; 
+						}
 			?>
 					<a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $i; ?>"><?php echo $i; ?></a>
 			<?php

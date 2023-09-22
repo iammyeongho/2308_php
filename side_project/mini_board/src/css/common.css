@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+
+/* list 페이지 */
 * {
 	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 body {
@@ -26,10 +30,15 @@ header > h1 {
 	font-size: 2rem;
 }
 
-.header-a {
+header > h1 > a {
 	color: #fff;
 	text-decoration-line: none;
 }
+
+/* .header-a {
+	color: #fff;
+	text-decoration-line: none;
+} */
 
 table {
 	border-collapse: collapse;
@@ -60,6 +69,11 @@ tr, td {
 	color: #fff;
 }
 
+.table-tr-td-a {
+	color: #fff;
+	text-decoration-line: none;
+}
+
 section {
 	background-color: rgba(0,0,0);
 	text-align: center;
@@ -68,10 +82,16 @@ section {
 	margin: auto;
 }
 
-.main_a{
+.main-div {
+	width: 1000px;
+	margin: auto;
+}
+
+.main-div-a{
 	color: #000;
 	display: inline-block;
-	margin-left: 500px;
+	text-align: left;
+	text-decoration: none;
 }
 
 section > a {
@@ -90,5 +110,33 @@ section > a {
 
 .page-btn:hover {
 	color: #fff;
+	/* background-color: #fff; */
+}
+
+/* ------------------------------------------------------------------------------- */
+
+/* detail 페이지 */
+
+.detail-page-a {
+	width: 1000px;
+	margin: auto;
+	text-align: right;
+}
+
+.detail-page-a > a {
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+	margin: auto;
+	width: 60px;
+	padding: 10px;
+	background-color: #808080;
+	color: #ffffff;
+	border-radius: 30px;
+	font-size: 800;
+}
+
+.detail-page-a > a:hover {
+	color: #000000;
 	/* background-color: #fff; */
 }

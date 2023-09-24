@@ -1,4 +1,4 @@
-<?
+<?php
 	// PDO클래스를 이용해서 아래 쿼리를 실행해 주세요.
 	// 1. 자신의 사원 정보를 employees 테이블에 등록해 주세요.
 	// 2. 자신의 이름을 "둘리", 성을 "호이"로 변경해주세요.
@@ -36,33 +36,33 @@
         // $conn = null;
 
 
-    foreach ($result as $key => $val)
-    {
-        $sql = " INSERT INTO titles ( "
-            ." emp_no "
-            ." ,title "
-            ." ,from_date "
-            ." ,to_date "
-            ." ) "
-            ." VALUES ( "
-            ." :emp_no "
-            ." ,:title " 
-            ." ,:from_date "
-            ." ,:to_date "
-            ." ) ";
+    // foreach ($result as $key => $val)
+    // {
+    //     $sql = " INSERT INTO titles ( "
+    //         ." emp_no "
+    //         ." ,title "
+    //         ." ,from_date "
+    //         ." ,to_date "
+    //         ." ) "
+    //         ." VALUES ( "
+    //         ." :emp_no "
+    //         ." ,:title " 
+    //         ." ,:from_date "
+    //         ." ,:to_date "
+    //         ." ) ";
 
-        $arr_ps = [
-			":emp_no" => $val["emp_no"]
-			,":title" => "green"
-			,":from_date" => 20230919
-			,":to_date" => 99990101
-		];
-    }
+    //     $arr_ps = [
+	// 		":emp_no" => $val["emp_no"]
+	// 		,":title" => "green"
+	// 		,":from_date" => 20230919
+	// 		,":to_date" => 99990101
+	// 	];
+    // }
 
-    $stmt = $conn -> prepare($sql);
-	$result = $stmt -> execute($arr_ps);
-	$result = $stmt -> fetchAll(); 
-	$conn -> commit();
-	print_r($result);
+    // $stmt = $conn -> prepare($sql);
+	// $result = $stmt -> execute($arr_ps);
+	// $result = $stmt -> fetchAll(); 
+	// $conn -> commit();
+	// print_r($result);
 			
 ?>

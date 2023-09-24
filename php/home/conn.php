@@ -19,7 +19,7 @@
 	{
 		$db_host 	= "localhost"; //host | 127.0.0.1 = localhost 
 		$db_user 	= "root"; // user
-		$db_pw 		= "jmhaudgh1!"; // password
+		$db_pw 		= "php504"; // password
 		$db_name 	= "employees"; // DB name
 		$db_charset = "utf8mb4"; // charset
 		$db_dns		= "mysql:host=".$db_host.";dbname=".$db_name.";charset=".$db_charset;

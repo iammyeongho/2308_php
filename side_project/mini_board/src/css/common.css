@@ -4,21 +4,69 @@
 * {
 	box-sizing: border-box;
 	font-family: 'Noto Sans KR', sans-serif;
+	/* cursor: url('/mini_board/src/css/img/mouse.png'),auto; */
 }
 
 body {
 	margin: 0px;
 	padding: 0px;
-	background-image: url(/mini_board/src/css/img/2.jpg);
+	background-image: url(/mini_board/src/css/img/1.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 	/* background-position: -50px 0px; */
 }
 
+main {
+	width: 1200px;
+	height: 700px;
+	margin: 230px auto;
+	background-color: rgba(255, 255, 255,0.3);
+	border-radius: 50px 50px 50px 50px;
+}
+
+.main-top {
+	border-radius: 50px 50px 0px 0px;
+	height: 70px;
+	background-color: rgba(255, 255, 255,0.3);
+	padding: 20px 50px;
+}
+
+.main-top-1 {
+	width: 30px;
+	height: 30px;
+	background-color: #E66E5D;
+	border-radius: 50%;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.main-top-2 {
+	width: 30px;
+	height: 30px;
+	background-color: #F2C051;
+	border-radius: 50%;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.main-top-3 {
+	width: 30px;
+	height: 30px;
+	background-color: #67C358;
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.main-top > p {
+	margin: 0;
+	margin-left: 10px;
+	display: inline-block;
+	font-size: large;
+}
 
 header {
 	width: 100%;
-	background-color: rgba(0,0,0,0.5);
+	/* background-color: rgba(0,0,0,0.5); */
 	padding: 1.5rem;
 	border-bottom: 1px solid #929292;
 }
@@ -31,7 +79,7 @@ header > h1 {
 }
 
 header > h1 > a {
-	color: #fff;
+	color: #000000;
 	text-decoration-line: none;
 }
 
@@ -42,83 +90,120 @@ header > h1 > a {
 
 table {
 	border-collapse: collapse;
-	width: 1000px;
+	width: 1100px;
 	height: 500px;
-	margin: 150px auto 20px;
+	margin: 10px auto;
 	font-size: 1.5rem;
 	border: 1px solid #929292;
 	border-style: hidden;
+	border-bottom: 1px solid #d6d6d6;
 
-}
-
-tr, td {
-	border-bottom: 1px solid #000;
-	background-color: rgba(0,0,0,0.3);
-	text-align: center;
-	color: #fff;
 }
 
 .table-title {
-	border-collapse:separate;
-	border-radius: 100px;
-}
-
-.table-title {
-	border: none;
-	background-color: rgba(0,0,0);
+	/* border-radius: 50px 50px 0px 0px; */
+	/* border: none; */
+	/* background-color: rgba(255, 255, 255,0.3);; */
+	/* border-bottom: 1px solid #000 ; */
+	font-weight: bold;
 	color: #fff;
+	border-bottom: 1px solid #d6d6d6;
 }
 
 .table-tr-td-a {
-	color: #fff;
+	color: #ffffffc5;
 	text-decoration-line: none;
 }
 
-section {
-	background-color: rgba(0,0,0);
+tr, td {
+	/* border-bottom: 1px solid #000; */
 	text-align: center;
-	border: 1px solid #929292;
-	width: 1000px;
-	margin: auto;
+	color: #ffffffc5;
+}
+
+tr.colored:hover td{
+	font-size: 1.7rem;
+	background-color: #a4c6f6;
+	color: #fff;
+}
+
+tr.colored:hover a {
+	font-size: 1.7rem;
+	color: #fff;
+	/* color: #4d7cbd; */
+	/* text-decoration-line: underline; */
 }
 
 .main-div {
 	width: 1000px;
 	margin: auto;
+	text-align: right;
 }
 
 .main-div-a{
-	color: #000;
+	text-align: center;
+	color: #ffffff;
+	width: 100px;
+	padding: 5px;
+	border-radius: 30px;
+	background-color: rgba(255, 255, 255,0.3);
 	display: inline-block;
-	text-align: left;
 	text-decoration: none;
+}
+
+section {
+	text-align: center;
+	width: 1100px;
+	margin: auto;
+	/* background-color: #67C358; */
 }
 
 section > a {
 	text-decoration: none;
 	display: inline-block;
+	border-radius: 50%;
+	/* background-color: #000; */
 	/* border-radius: 25%; */
 }
 
 .page-btn {
-	width: 100px;
+	width: 50px;
 	height: 50px;
-	text-align: center;
+	margin-left: 10px;
 	line-height: 50px;
-	color: #808080;
+	/* padding: 80px; */
+	text-align: center;
+	/* background-color: rgba(255, 255, 255,0.3); */
+	color: #ffffffc5;
 }
 
 .page-btn:hover {
 	color: #fff;
-	/* background-color: #fff; */
+	font-size: 1.5rem;
 }
+
+.page-on {
+	font-size: 1.5rem;
+	color: #fff;
+}
+
+/* ------------------------------------------------------------------------------- */
+
+/* insert 페이지 */
+
+/* .insert-form {
+	width: 1100px;
+	height: 700px;
+	display: inline-block;
+} */
+
 
 /* ------------------------------------------------------------------------------- */
 
 /* detail 페이지 */
 
 .detail-page-a {
-	width: 1000px;
+	width: 1100px;
 	margin: auto;
 	text-align: right;
 }
@@ -128,9 +213,10 @@ section > a {
 	text-decoration: none;
 	text-align: center;
 	margin: auto;
+	margin-left: 10px;
 	width: 60px;
 	padding: 10px;
-	background-color: #808080;
+	background-color: rgba(255, 255, 255,0.3);
 	color: #ffffff;
 	border-radius: 30px;
 	font-size: 800;

@@ -53,21 +53,29 @@
 </head>
 <body>
 	<?php
-		require_once(FILE_HEADER);
+		// require_once(FILE_HEADER);
 	?>
-	<form action="/mini_board/src/insert.php" method="post">
-		<!-- <fieldset> -->
-			<table>
-				<label for="title">제목 :</label>
-				<input type="text" name="title" id="title">
-				<br>
-				<label for="content">내용 :</label>
-				<textarea name="content" id="content" cols="30" rows="10"></textarea>
-				<br>
-				<button type="submit">작성</button>
-				<a href="/mini_board/src/list.php/">취소</a>
-			</table>
-		<!-- </fieldset> -->
-	</form>
+	<main>
+	<div class="main-top">
+		<div class="main-top-1"></div>
+		<div class="main-top-2"></div>
+		<div class="main-top-3"></div>
+			<!-- <p>: MINI BOARD</p> -->
+	</div>
+		<form class="insert-form" action="/mini_board/src/insert.php" method="post">
+			<!-- <fieldset> -->
+				<table>
+					<label for="title">제목 :</label>
+					<input type="text" name="title" id="title">
+					<br>
+					<label for="content">내용 :</label>
+					<textarea name="content" id="content" cols="30" rows="10"></textarea>
+					<br>
+					<button type="submit">작성</button>
+					<a href="/mini_board/src/list.php/">취소</a>
+				</table>
+			<!-- </fieldset> -->
+		</form>
+	<main>
 </body>
 </html>

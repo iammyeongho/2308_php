@@ -59,35 +59,49 @@
 </head>
 <body>
 	<?php
-		require_once(FILE_HEADER);
+		//require_once(FILE_HEADER);
 	?>
-	<div class="detail-page">
-		<table>
-			<tr>
-				<th>글 번호</th>
-				<td><?php echo $item["id"]; ?></td>
-			</tr>
-
-			<tr>
-				<th>제목</th>
-				<td><?php echo $item["title"] ?></td>
-			</tr>
-
-			<tr>
-				<th>내용</th>
-				<td><?php echo $item["content"] ?></td>
-			</tr>
-
-			<tr>
-				<th>작성일자</th>
-				<td><?php echo $item["creat_at"] ?></td>
-			</tr>
-		</table>
-		<div class="detail-page-a">
-			<a href="">수정</a>
-			<a href="/mini_board/src/list.php/?page=<?php echo $page; ?>">취소</a>
-			<a href="">삭제</a>
+	<main>
+		<div class="main-top">
+			<div class="main-top-1"></div>
+			<div class="main-top-2"></div>
+			<div class="main-top-3"></div>
+			<!-- <p>: MINI BOARD</p> -->
 		</div>
-	</div>
+		<div class="detail-page">
+			<table>
+			<rowgroup>
+				<row width="10%" />
+				<row width="20%" />
+				<row width="30%" />
+				<row width="40%" />
+			</rowgroup>
+				<tr>
+					<th>글 번호</th>
+					<td><?php echo $item["id"]; ?></td>
+				</tr>
+
+				<tr>
+					<th>제목</th>
+					<td><?php echo $item["title"] ?></td>
+				</tr>
+
+				<tr>
+					<th>내용</th>
+					<td><?php echo $item["content"] ?></td>
+				</tr>
+
+				<tr>
+					<th>작성일자</th>
+					<td><?php echo $item["creat_at"] ?></td>
+				</tr>
+			</table>
+			<div class="detail-page-a">
+				<a href="">수정</a>
+				<a href="/mini_board/src/list.php/?page=<?php echo $page; ?>">취소</a>
+				<a href="">삭제</a>
+			</div>
+		</div>
+	</main>
 </body>
 </html>

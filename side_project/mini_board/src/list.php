@@ -52,7 +52,7 @@
 		// 	// 	$page_num = 1; // 넘어온 페이지가 없으면 1로 설정
 		// 	// }
 		// }
-		$page_num = isset($_GET['page']) ? $_GET['page'] : 1;
+		$page_num = isset($_GET["page"]) ? $_GET["page"] : 1;
 
 		// 오프셋 계산
 		$offset = ($page_num - 1) * $list_cnt;
@@ -113,73 +113,72 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="/mini_board/src/css/common.css">
-	<title>리스트 페이지</title>
-</head>
-<body>
-	<?php
-		//require_once(FILE_HEADER);
-	?>
-	<main>
-		<div class="main-top">
-			<div class="main-top-1"></div>
-			<div class="main-top-2"></div>
-			<div class="main-top-3"></div>
-			<!-- <p>: MINI BOARD</p> -->
-		</div>
-		<table>
-			<colgroup>
-				<col width="15%" />
-				<col width="50%" />
-				<col width="35%" />
-			</colgroup>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/mini_board/src/css/common.css">
+		<title>리스트 페이지</title>
+	</head>
+
+	<body>
+		<main>
+			<?php
+				require_once(FILE_HEADER);
+			?>
+			<div class="main-top">
+				<div class="main-top-1"></div>
+				<div class="main-top-2"></div>
+				<div class="main-top-3"></div>
+			</div>
+				<!-- <p>: MINI BOARD</p> -->
+			<table>
+				<colgroup>
+					<col width="15%" />
+					<col width="50%" />
+					<col width="35%" />
+				</colgroup>
+				
+				<tr class="table-title">
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성일자</th>
+				</tr>
+				<?php
+					// 리스트를 생성
+					foreach($result as $item) {
+				?>
+						<tr class="colored">
+							<td><?php echo $item["id"]; ?></td>
+							<td class="th-title">
+								<a class="table-tr-td-a" href="/mini_board/src/detail.php/?id=<?php echo $item["id"]; ?> &page=<?php echo $page_num; ?>"><?php echo $item["title"]; ?></a>
+							</td>
+							<td><?php echo $item["creat_at"]; ?></td>
+						</tr>
+				<?php	
+					} 
+				?>
+			</table>	
 			
-			<tr class="table-title">
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성일자</th>
-			</tr>
-			<?php
-				// 리스트를 생성
-				foreach($result as $item) {
-			?>
-					<tr class="colored">
-						<td><?php echo $item["id"]; ?></td>
-						<td>
-							<a class="table-tr-td-a" href="/mini_board/src/detail.php/?id=<?php echo $item["id"]; ?> &page=<?php echo $page_num; ?>"><?php echo $item["title"]; ?></a>
-						</td>
-						<td><?php echo $item["creat_at"]; ?></td>
-					</tr>
-			<?php	
-				} 
-			?>
-		</table>
-		<div class="main-div">
-			<a class="main-div-a" href="/mini_board/src/insert.php">글 작성</a>
-		</div>
-		
-		<section>
-			<a class="page-btn" href="/mini_board/src/list.php/?page=<? echo 1; ?>"><<</a>
-			<a class="page-btn" href="/mini_board/src/list.php/?page=<? echo $prev_page_num; ?>"><</a>
-			<?php
-				for($page_link = $block_start; $page_link <= $block_end; $page_link++) {
-					if($page_link == $page_num) {
-			?> 
-					<a class="page-on page-btn" href="/mini_board/src/list.php/?page=<?php echo $page_link; ?>"><?php echo $page_link; ?></a>
-				<?php } 
-				else {
-			?>
-					<a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $page_link; ?>"><?php echo $page_link; ?></a>
-			<?php
+			<section>
+				<a class="page-btn" href="/mini_board/src/list.php/?page=<? echo 1; ?>"><<</a>
+				<a class="page-btn" href="/mini_board/src/list.php/?page=<? echo $prev_page_num; ?>"><</a>
+				<?php
+					for($page_link = $block_start; $page_link <= $block_end; $page_link++) {
+						if($page_link == $page_num) {
+				?> 
+						<a class="page-on page-btn" href="/mini_board/src/list.php/?page=<?php echo $page_link; ?>"><?php echo $page_link; ?></a>
+					<?php } 
+					else {
+				?>
+						<a class="page-btn" href="/mini_board/src/list.php/?page=<?php echo $page_link; ?>"><?php echo $page_link; ?></a>
+				<?php
+						}
 					}
-				}
-			?>
-			<a class="page-btn" href="/mini_board/src/list.php/?page=<? echo $next_page_num; ?>">></a>
-			<a class="page-btn" href="/mini_board/src/list.php/?page=<? echo $max_page_num ?>">>></a>
-		</section>
-	</main>
-</body>
+				?>
+				<a class="page-btn" href="/mini_board/src/list.php/?page=<? echo $next_page_num; ?>">></a>
+				<a class="page-btn" href="/mini_board/src/list.php/?page=<? echo $max_page_num ?>">>></a>
+			</section>
+		</main>
+		<div class="insert-box"><a class="insert-btn" href="/mini_board/src/insert.php">글 작성</a></div>
+	</body>
 </html>

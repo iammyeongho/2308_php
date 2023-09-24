@@ -19,9 +19,26 @@ body {
 main {
 	width: 1200px;
 	height: 700px;
-	margin: 230px auto;
+	margin: 180px auto 0px;
 	background-color: rgba(255, 255, 255,0.3);
 	border-radius: 50px 50px 50px 50px;
+	position: relative;
+	box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.5);
+}
+
+header > h1 {
+	margin: 0;
+	color: #ffffff;
+	text-align: center;
+	font-size: 1.5rem;
+	position: absolute;
+	top: -50px;
+	left: 500px;
+}
+
+header > h1 > a {
+	color: #ffffff;
+	text-decoration-line: none;
 }
 
 .main-top {
@@ -64,40 +81,20 @@ main {
 	font-size: large;
 }
 
-header {
-	width: 100%;
-	/* background-color: rgba(0,0,0,0.5); */
-	padding: 1.5rem;
-	border-bottom: 1px solid #929292;
-}
-
-header > h1 {
-	margin: 0;
-	color: #ffffff;
-	text-align: center;
-	font-size: 2rem;
-}
-
-header > h1 > a {
-	color: #000000;
-	text-decoration-line: none;
-}
-
 /* .header-a {
 	color: #fff;
 	text-decoration-line: none;
 } */
 
 table {
-	border-collapse: collapse;
-	width: 1100px;
+		border-collapse: collapse;
+		width: 1100px;
 	height: 500px;
 	margin: 10px auto;
 	font-size: 1.5rem;
 	border: 1px solid #929292;
 	border-style: hidden;
 	border-bottom: 1px solid #d6d6d6;
-
 }
 
 .table-title {
@@ -111,50 +108,68 @@ table {
 }
 
 .table-tr-td-a {
-	color: #ffffffc5;
+	color: #ffffff8e;
 	text-decoration-line: none;
 }
 
 tr, td {
 	/* border-bottom: 1px solid #000; */
 	text-align: center;
-	color: #ffffffc5;
+	color: #ffffff8e;
 }
 
 tr.colored:hover td{
-	font-size: 1.7rem;
+	transform: scale(1.2);
+	transition-duration: 0.3s;
 	background-color: #a4c6f6;
-	color: #fff;
+	color: rgba(255, 255, 255,0.8);
+	/* color: #fff; */
 }
 
-tr.colored:hover a {
-	font-size: 1.7rem;
-	color: #fff;
+.th-title:hover {
+	/* transform: scale(1.2);
+	background-color: #a4c6f6;
+	color: rgba(255, 255, 255,0.8); */
+}
+
+tr.colored:hover .table-tr-td-a {
+	/* font-size: 1.7rem; */
+	color: #ffffff;
 	/* color: #4d7cbd; */
 	/* text-decoration-line: underline; */
 }
 
-.main-div {
-	width: 1000px;
+.insert-box {
+	/* width: 1150px; */
 	margin: auto;
-	text-align: right;
+	text-align: center;
 }
 
-.main-div-a{
+.insert-btn{
+	margin-top: 20px;
 	text-align: center;
 	color: #ffffff;
 	width: 100px;
-	padding: 5px;
+	padding: 10px;
 	border-radius: 30px;
 	background-color: rgba(255, 255, 255,0.3);
 	display: inline-block;
 	text-decoration: none;
 }
 
+.insert-btn:hover {
+	outline: 3px solid #fff;
+	transform: scale(1.2);
+	transition-duration: 0.3s;
+	color: #fff;
+}
+
 section {
 	text-align: center;
 	width: 1100px;
 	margin: auto;
+	margin-top: 25px;
+	font-size: 1.3rem;
 	/* background-color: #67C358; */
 }
 
@@ -179,28 +194,124 @@ section > a {
 
 .page-btn:hover {
 	color: #fff;
-	font-size: 1.5rem;
+	transform: scale(1.2);
+	transition-duration: 0.3s;
+	background-color: rgba(255, 255, 255,0.3);
 }
 
 .page-on {
 	font-size: 1.5rem;
 	color: #fff;
+	background-color: rgba(255, 255, 255,0.3);
 }
 
 /* ------------------------------------------------------------------------------- */
 
 /* insert 페이지 */
-
-/* .insert-form {
+.insert-table {
+	height: 0;
+}
+.insert-form {
+	/* display: inline-block; */
+	border-collapse: collapse;
 	width: 1100px;
-	height: 700px;
-	display: inline-block;
-} */
+	height: 550px;
+	margin: 20px 50px;
+	/* background-color: #5896c3; */
+	border: 1px solid #929292;
+	border-style: hidden;
+	vertical-align:middle;
+	font-size: 1.5rem;
+	color: #fff;
+}
 
+.title-box {
+	/* background-color: rgba(255, 255, 255,0.3); */
+	height: 80px;
+	border-radius: 50px 50px 0 0;
+	padding: 25px 30px;
+	border-bottom: 1px solid rgba(255, 255, 255);
+}
+
+input {
+	/* display: inline-block; */
+	border: none;
+	background-color: transparent;
+	height: 40px;
+	width: 960px;
+	border: 1px solid rgba(255, 255, 255,0.3);
+}
+
+.content-box {
+	/* background-color: rgba(255, 255, 255,0.3); */
+	padding: 15px 30px;
+	width: 1100px;
+	height: 430px;
+}
+
+textarea {
+	/* display: inline-block; */
+	border: none;
+	background-color: transparent;
+	resize: none;
+	vertical-align: top;
+	border: 1px solid rgba(255, 255, 255,0.3);
+}
+
+.but-box {
+	text-align: center;
+}
+
+.insert-but {
+	text-align: center;
+	display: inline-block;
+	background-color: transparent;
+	border: none;
+	text-decoration-line: none;
+	margin: auto;
+	margin-left: 20px;
+	width: 80px;
+	padding: 10px;
+	background-color: rgba(255, 255, 255,0.3);
+	color: #ffffff;
+	border-radius: 30px;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+input {
+	margin-left: 10px;
+}
+
+textarea {
+	margin-left: 10px;
+}
+
+input:focus {
+	border: none;
+    outline: none;
+	outline: 2px solid #fff;
+}
+
+textarea:focus {
+	border: none;
+    outline: none;
+	outline: 2px solid #fff;
+}
+
+.insert-but:hover {
+	outline: 3px solid #fff;
+	transform: scale(1.2);
+	transition-duration: 0.3s;
+	font-size: 1.1rem;
+}
 
 /* ------------------------------------------------------------------------------- */
 
 /* detail 페이지 */
+.detail-page{
+	color: #fff;
+}
 
 .detail-page-a {
 	width: 1100px;
@@ -212,9 +323,9 @@ section > a {
 	display: inline-block;
 	text-decoration: none;
 	text-align: center;
-	margin: auto;
-	margin-left: 10px;
-	width: 60px;
+	margin: 20px auto;
+	margin-left: 20px;
+	width: 80px;
 	padding: 10px;
 	background-color: rgba(255, 255, 255,0.3);
 	color: #ffffff;
@@ -223,6 +334,9 @@ section > a {
 }
 
 .detail-page-a > a:hover {
-	color: #000000;
+	outline: 3px solid #fff;
+	transform: scale(1.2);
+	transition-duration: 0.3s;
+	font-size: 1.1rem;
 	/* background-color: #fff; */
 }

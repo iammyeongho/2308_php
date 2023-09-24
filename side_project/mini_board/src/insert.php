@@ -45,37 +45,44 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="/mini_board/src/css/common.css">
-	<title>작성 페이지</title>
-</head>
-<body>
-	<?php
-		// require_once(FILE_HEADER);
-	?>
-	<main>
-	<div class="main-top">
-		<div class="main-top-1"></div>
-		<div class="main-top-2"></div>
-		<div class="main-top-3"></div>
-			<!-- <p>: MINI BOARD</p> -->
-	</div>
-		<form class="insert-form" action="/mini_board/src/insert.php" method="post">
-			<!-- <fieldset> -->
-				<table>
-					<label for="title">제목 :</label>
-					<input type="text" name="title" id="title">
-					<br>
-					<label for="content">내용 :</label>
-					<textarea name="content" id="content" cols="30" rows="10"></textarea>
-					<br>
-					<button type="submit">작성</button>
-					<a href="/mini_board/src/list.php/">취소</a>
-				</table>
-			<!-- </fieldset> -->
-		</form>
-	<main>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/mini_board/src/css/common.css">
+		<title>작성 페이지</title>
+	</head>
+
+	<body>
+		<main>
+			<?php
+			require_once(FILE_HEADER);
+			?>
+			<div class="main-top">
+				<div class="main-top-1"></div>
+				<div class="main-top-2"></div>
+				<div class="main-top-3"></div>
+					<!-- <p>: MINI BOARD</p> -->
+			</div>
+
+			<form class="insert-form" action="/mini_board/src/insert.php" method="post">
+				<!-- <fieldset> -->
+					<table class="insert-table">
+						<div class="title-box">
+							<label for="title">제목 : </label>
+							<input type="text" name="title" id="title">
+						</div>
+						
+						<div class="content-box">
+							<label for="content">내용 : </label>
+							<textarea name="content" id="content" cols="125" rows="20"></textarea>
+						</div>
+						<div class="but-box">
+							<button class="insert-but" type="submit">작성</button>
+							<a class="insert-but" href="/mini_board/src/list.php/">취소</a>
+						</div>
+					</table>
+				<!-- </fieldset> -->
+			</form>
+		</main>
+	</body>
 </html>

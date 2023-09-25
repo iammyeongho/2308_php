@@ -208,6 +208,23 @@
 		} 
 	}
 
+	// ----------------------------
+	// 함수명 	: my_db_update_boards_id
+	// 기능 	: boards 레코드 업데이트
+	// 파라미터 : PDO 		&$conn
+	// 리턴 	: boolean
+	// ----------------------------
+	
+	function my_db_update_boards_id(&$conn, &$arr_param) {
+		$sql = 
+			" UPDATE boards "
+			" SET "
+			." title = :title "
+			" ,content = :content "
+			" WHERE id = :id "
+			;
+	}
+
 
 	// $conn = null;
 	// my_db_conn($conn);

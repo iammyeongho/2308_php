@@ -130,7 +130,6 @@
 				<div class="main-top-2"></div>
 				<div class="main-top-3"></div>
 			</div>
-				<!-- <p>: MINI BOARD</p> -->
 			<table>
 				<colgroup>
 					<col width="15%" />
@@ -150,7 +149,7 @@
 						<tr class="colored">
 							<td><?php echo $item["id"]; ?></td>
 							<td class="th-title">
-								<a class="table-tr-td-a" href="/mini_board/src/detail.php/?id=<?php echo $item["id"]; ?> &page=<?php echo $page_num; ?>"><?php echo $item["title"]; ?></a>
+								<a class="table-tr-td-a" href="/mini_board/src/detail.php/?id=<?php echo $item["id"]; ?>&page=<?php echo $page_num; ?>"><?php echo $item["title"]; ?></a>
 							</td>
 							<td><?php echo $item["creat_at"]; ?></td>
 						</tr>

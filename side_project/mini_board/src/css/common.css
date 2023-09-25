@@ -1,4 +1,7 @@
+/* 공통 CSS */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+
+/* ------------------------------------------------------------------------------- */
 
 /* list 페이지 */
 * {
@@ -281,10 +284,14 @@ textarea {
 
 input {
 	margin-left: 10px;
+	color: #fff;
+	/* padding: 10px; */
 }
 
 textarea {
 	margin-left: 10px;
+	color: #fff;
+	/* padding: 10px; */
 }
 
 input:focus {
@@ -311,6 +318,7 @@ textarea:focus {
 /* detail 페이지 */
 .detail-page{
 	color: #fff;
+	margin-top: 20px;
 }
 
 .detail-page-a {
@@ -340,3 +348,7 @@ textarea:focus {
 	font-size: 1.1rem;
 	/* background-color: #fff; */
 }
+
+/* ------------------------------------------------------------------------------- */
+
+/* update 페이지 */

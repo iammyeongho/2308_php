@@ -61,7 +61,6 @@
 				<div class="main-top-1"></div>
 				<div class="main-top-2"></div>
 				<div class="main-top-3"></div>
-					<!-- <p>: MINI BOARD</p> -->
 			</div>
 
 			<form class="insert-form" action="/mini_board/src/insert.php" method="post">

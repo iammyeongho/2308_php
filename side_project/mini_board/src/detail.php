@@ -3,6 +3,7 @@
 	define("FILE_HEADER", ROOT."header.php");
 	require_once(ROOT."lib/lib_db.php");
 	$conn = null;
+
 	
 	$id = ""; // 게시글 id
 	try {
@@ -20,7 +21,6 @@
 
 		$id = $_GET["id"]; //id 세팅
 		$page = $_GET["page"]; //페이지 세팅
-		// var_dump($_GET["page"]);
 		
 		// 게시글 데이터 조회
 		$arr_param = [
@@ -68,7 +68,6 @@
 				<div class="main-top-1"></div>
 				<div class="main-top-2"></div>
 				<div class="main-top-3"></div>
-				<!-- <p>: MINI BOARD</p> -->
 			</div>
 			<div class="detail-page">
 				<table>
@@ -99,7 +98,7 @@
 					</tr>
 				</table>
 				<div class="detail-page-a">
-					<a href="">수정</a>
+					<a href="/mini_board/src/update.php/?id=<?php echo $id; ?>&page=<?php echo $page; ?>">수정</a>
 					<a href="/mini_board/src/list.php/?page=<?php echo $page; ?>">취소</a>
 					<a href="">삭제</a>
 				</div>

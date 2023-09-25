@@ -44,20 +44,27 @@
             ];
 
             // 게시글 수정 처리
-            
+            $conn->beginTransaction(); // 트랜잭션 시작
+
+            if(!my_db_update_boards_id($conn, $arr_param)) {
+				throw new Exception("DB Error : UPDATE Boards id");
+			}
+			$conn->commit(); // 모든 처리 완료 시 커밋
+
+            header("Location: detail.php/?id={$id}&page={$page}"); //디테일 페이지로 이동
+            exit;
         }
-
-			
-
     }
     catch(Exception $e) {
+        if($http_method === "POST") {
+            $conn->rollBack(); //rollback
+        }
         echo $e->getMessage();
 		exit;
     }
     finally { 
         my_db_destroy_conn($conn);
     }
-    
 
 ?>
 
@@ -95,6 +102,7 @@
                         <tr>
                             <th>글 번호</th>
                             <td><?php echo $item["id"]; ?></td>
+                            
                         </tr>
 
                         <tr>

@@ -218,12 +218,56 @@
 	function my_db_update_boards_id(&$conn, &$arr_param) {
 		$sql = 
 			" UPDATE boards "
-			" SET "
+			." SET "
 			." title = :title "
-			" ,content = :content "
-			" WHERE id = :id "
+			." ,content = :content "
+			." WHERE id = :id "
 			;
+
+			$arr_ps = [
+				":title" => $arr_param["title"]
+				,":content" => $arr_param["content"]
+				,":id" => $arr_param["id"]
+			];
+
+			try {
+				$stmt = $conn->prepare($sql);
+				$result = $stmt->execute($arr_ps);
+				return $result;
+			}
+			catch(Exception $e) {
+				echo $e->getMessage();
+				return false; // 예외 발생 : flase 리턴
+			} 
 	}
+
+		// ----------------------------
+	// 함수명 	: my_db_update_boards_id
+	// 기능 	: boards 레코드 업데이트
+	// 파라미터 : PDO 		&$conn
+	// 리턴 	: boolean
+	// ----------------------------
+	
+	// function my_db_delete_boards_id(&$conn, &$arr_param) {
+	// 	$sql = 
+	// 		" DELETE boards "
+	// 		." WHERE id = :id "
+	// 		;
+
+	// 		$arr_ps = [
+	// 			":id" => $arr_param["id"]
+	// 		];
+
+	// 		try {
+	// 			$stmt = $conn->prepare($sql);
+	// 			$result = $stmt->execute($arr_ps);
+	// 			return $result;
+	// 		}
+	// 		catch(Exception $e) {
+	// 			echo $e->getMessage();
+	// 			return false; // 예외 발생 : flase 리턴
+	// 		} 
+	// }
 
 
 	// $conn = null;

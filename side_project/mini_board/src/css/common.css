@@ -8,6 +8,7 @@
 	box-sizing: border-box;
 	font-family: 'Noto Sans KR', sans-serif;
 	/* cursor: url('/mini_board/src/css/img/mouse.png'),auto; */
+	cursor: url(/mini_board/src/css/img/gam1564.cur), auto;
 }
 
 body {

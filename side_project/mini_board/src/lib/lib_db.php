@@ -64,6 +64,8 @@
 				."		,creat_at "
 				." FROM "
 				."		boards "
+				." WHERE "
+				." 		delete_flg = '0' "
 				." ORDER BY "
 				." 		id DESC "
 				." LIMIT :list_cnt OFFSET :offset "
@@ -97,6 +99,8 @@
 			." 		count(id) as cnt "
 			." FROM "
 			." 		boards "
+			." WHERE "
+			."		delete_flg = '0' "
 			;
 			
 		try {
@@ -191,6 +195,8 @@
 			." 		boards "
 			." WHERE "
 			." 		id = :id "
+			." AND "
+			."		delete_flg = '0' "
 			;
 
 			$arr_ps = [
@@ -212,6 +218,7 @@
 	// 함수명 	: my_db_update_boards_id
 	// 기능 	: boards 레코드 업데이트
 	// 파라미터 : PDO 		&$conn
+	// 			: Array 	&$arr_param | 쿼리 작성용 배열
 	// 리턴 	: boolean
 	// ----------------------------
 	
@@ -219,9 +226,10 @@
 		$sql = 
 			" UPDATE boards "
 			." SET "
-			." title = :title "
-			." ,content = :content "
-			." WHERE id = :id "
+			." 		title = :title "
+			." 		,content = :content "
+			." WHERE "
+			."		id = :id "
 			;
 
 			$arr_ps = [
@@ -242,37 +250,36 @@
 	}
 
 		// ----------------------------
-	// 함수명 	: my_db_update_boards_id
-	// 기능 	: boards 레코드 업데이트
+	// 함수명 	: my_db_delete_boards_id
+	// 기능 	: boards 레코드 삭제 업데이트
 	// 파라미터 : PDO 		&$conn
+	// 			: Array 	&$arr_param | 쿼리 작성용 배열
 	// 리턴 	: boolean
 	// ----------------------------
-	
-	// function my_db_delete_boards_id(&$conn, &$arr_param) {
-	// 	$sql = 
-	// 		" DELETE boards "
-	// 		." WHERE id = :id "
-	// 		;
+	function my_db_delete_boards_id(&$conn, &$arr_param) {
+		$sql = 
+			" UPDATE boards "
+			." SET "
+			." 		delete_flg = '1' "
+			." 		,delete_at = now() "
+			." WHERE "
+			." 		id = :id "
+			;
 
-	// 		$arr_ps = [
-	// 			":id" => $arr_param["id"]
-	// 		];
+			$arr_ps = [
+				":id" => $arr_param["id"]
+			];
 
-	// 		try {
-	// 			$stmt = $conn->prepare($sql);
-	// 			$result = $stmt->execute($arr_ps);
-	// 			return $result;
-	// 		}
-	// 		catch(Exception $e) {
-	// 			echo $e->getMessage();
-	// 			return false; // 예외 발생 : flase 리턴
-	// 		} 
-	// }
+			try {  
+				$stmt = $conn->prepare($sql);
+				$result = $stmt->execute($arr_ps);
+				return $result;
+			}
+			catch(Exception $e) {
+				echo $e->getMessage();
+				return false; // 예외 발생 : false 리턴
+			} 
+	}
 
-
-	// $conn = null;
-	// my_db_conn($conn);
-	// echo my_db_select_boards_cnt($conn);
-	// $conn = null;
 
 ?> 

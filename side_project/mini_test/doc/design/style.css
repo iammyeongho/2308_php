@@ -1,7 +1,11 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Inter', sans-serif;
 }
 /* reset.css */
 html, body, div, span, applet, object, iframe,
@@ -53,48 +57,107 @@ table {
 /* 공통 css */ 
 
 body {
+	background-image: url(./img/1.png );
+	background-repeat: no-repeat;
+	background-size: cover;
 	padding: 50px 60px;
 }
 
 main {
-	background-color: #C8DEFE;
+	background-color: rgba(0, 0, 0, 0.5);
 	width: 1800px;
 	height: 950px;
-	border-radius: 30px;
-	padding: 50px;
+	border-radius: 20px;
 }
 
 .side {
+	background-color: rgba(255, 255, 255, 0.7);
 	display: inline-block;
-	background-color: rgb(255, 255, 255);
 	width: 430px;
 	height: 850px;
+	margin-top: 50px;
+	margin-left: 50px;
+	border-radius: 30px;
+}
+
+.side-top {
+	background-color: aqua;
+	width: 380px;
+	height: 36px;
+	margin: auto;
+	margin-top: 30px;
+	position: relative;
+}
+
+.home-icon {
+	display: inline-block;
+	position: absolute;
+	top: 4px;
+}
+
+.side-top > p {
+	position: absolute;
+}
+.side-search {
+	background-color: aqua;
+	width: 380px;
+	height: 50px;
+	margin: auto;
+	margin-top: 20px;
+	border-radius: 15px;
+}
+
+.side-calendar {
+	background-color: aqua;
+	width: 380px;
+	height: 257px;
+	margin: auto;
+	margin-top: 20px;
+	border-radius: 25px;
+}
+
+.side-content {
+	background-color: aqua;
+	width: 380px;
+	height: 387px;
+	margin: auto;
+	margin-top: 20px;
+	border-radius: 25px;
+}
+
+
+
+
+
+
+
+section {
+	display: inline-block;
+	width: 1215px;
+	height: 850px;
+	margin-left: 50px;
 	border-radius: 30px;
 }
 
 .content-top {
-	display: inline-block;
-	background-color: #fff;
+	background-color: rgba(255, 255, 255, 0.7);
 	width: 1215px;
-	height: 850px;
-	border-radius: 30px;
-	margin-left: 45px;
+	height: 80px;
+	margin-bottom: 20px;
+	border-radius: 30px 30px 0px 0px;
 }
 
 .content-mid {
-	display: inline-block;
-	background-color: #fff;
+	background-color: rgba(255, 255, 255, 0.7);
 	width: 1215px;
-	height: 850px;
-	border-radius: 30px;
-	margin-left: 45px;
+	height: 650px;
+	margin-bottom: 20px;
 }
-
+ 
 .content-btm {
-	display: inline-block;
-	background-color: #fff;
+	background-color: rgba(255, 255,  255, 0.7);
 	width: 1215px;
-	height: 850px;
-	border-radius: 30px;
-	margin-left: 45px;
+	height: 80px;
+	margin-bottom: 20px;
+	border-radius: 0px 0px 30px 30px;
 }

@@ -15,10 +15,12 @@
 				</div>
 
 				<div class="side-search">
-					<table>
-						<label for="search"><img src="./icon/search.png" alt=""></label>
-						<input type="text" name="search" id="search">
-					</table>
+					<form action="/mini_test/src/list.php" method="get">
+						<table>
+							<button class="side-search-btm"><img src="/mini_test/src/css/icon/search.png" alt=""></button>
+							<input class="side-search-input" type="text" name="search" id="search" required="required">
+						</table>
+					</form>
 				</div>
 
 				<div class="side-calendar">
@@ -29,66 +31,66 @@
 					<ul class="slides">
 						<input type="radio" name="radio-btn" id="img-1" checked />
 						<li class="slide-container">
-						<div class="slide">
-						  <img src="./new/newjeans1.jpg" />
+							<div class="slide">
+								<img src="/mini_test/src/css/new/newjeans1.jpg" />
 							</div>
 						<div class="nav">
-						  <label for="img-5" class="prev">&#x2039;</label>
-						  <label for="img-2" class="next">&#x203a;</label>
+							<label for="img-5" class="prev">&#x2039;</label>
+							<label for="img-2" class="next">&#x203a;</label>
 						</div>
 						</li>
 					
 						<input type="radio" name="radio-btn" id="img-2" />
 						<li class="slide-container">
 							<div class="slide">
-							  <img src="./new/newjeans2.jpg" />
+								<img src="/mini_test/src/css/new/newjeans2.jpg" />
 							</div>
 						<div class="nav">
-						  <label for="img-1" class="prev">&#x2039;</label>
-						  <label for="img-3" class="next">&#x203a;</label>
+							<label for="img-1" class="prev">&#x2039;</label>
+							<label for="img-3" class="next">&#x203a;</label>
 						</div>
 						</li>
 					
 						<input type="radio" name="radio-btn" id="img-3" />
 						<li class="slide-container">
 							<div class="slide">
-							  <img src="./new/newjeans3.jpg" />
+								<img src="/mini_test/src/css/new/newjeans3.jpg" />
 							</div>
 						<div class="nav">
-						  <label for="img-2" class="prev">&#x2039;</label>
-						  <label for="img-4" class="next">&#x203a;</label>
+							<label for="img-2" class="prev">&#x2039;</label>
+							<label for="img-4" class="next">&#x203a;</label>
 						</div>
 						</li>
 					
 						<input type="radio" name="radio-btn" id="img-4" />
 						<li class="slide-container">
 							<div class="slide">
-							  <img src="./new/newjeans4.jpg" />
+								<img src="/mini_test/src/css/new/newjeans4.jpg" />
 							</div>
 						<div class="nav">
-						  <label for="img-3" class="prev">&#x2039;</label>
-						  <label for="img-5" class="next">&#x203a;</label>
+							<label for="img-3" class="prev">&#x2039;</label>
+							<label for="img-5" class="next">&#x203a;</label>
 						</div>
 						</li>
 					
 						<input type="radio" name="radio-btn" id="img-5" />
 						<li class="slide-container">
 							<div class="slide">
-							  <img src="./new/newjeans5.jpg" />
+								<img src="/mini_test/src/css/new/newjeans5.jpg" />
 							</div>
 						<div class="nav">
-						  <label for="img-4" class="prev">&#x2039;</label>
-						  <label for="img-1" class="next">&#x203a;</label>
+							<label for="img-4" class="prev">&#x2039;</label>
+							<label for="img-1" class="next">&#x203a;</label>
 						</div>
 						</li>
 					
 					
 						<li class="nav-dots">
-						  <label for="img-1" class="nav-dot" id="img-dot-1"></label>
-						  <label for="img-2" class="nav-dot" id="img-dot-2"></label>
-						  <label for="img-3" class="nav-dot" id="img-dot-3"></label>
-						  <label for="img-4" class="nav-dot" id="img-dot-4"></label>
-						  <label for="img-5" class="nav-dot" id="img-dot-5"></label>
+							<label for="img-1" class="nav-dot" id="img-dot-1"></label>
+							<label for="img-2" class="nav-dot" id="img-dot-2"></label>
+							<label for="img-3" class="nav-dot" id="img-dot-3"></label>
+							<label for="img-4" class="nav-dot" id="img-dot-4"></label>
+							<label for="img-5" class="nav-dot" id="img-dot-5"></label>
 						</li>
 					</ul>
 				</div>
@@ -96,64 +98,81 @@
 
 			<section>
 				<div class="content-top">
-					<div class="content-grid">
-						<span class="content-top-grid-1">번호</span>
-						<span class="content-top-grid-2">제목</span>
-						<span class="content-top-grid-3">작성자</span>
-						<span class="content-top-grid-4">작성일자</span>
-					</div>
+					<table class="content-table">
+						<colgroup>
+							<col width="10%" />
+							<col width="40%" />
+							<col width="15%" />
+							<col width="15%" />
+						</colgroup>
+						<tr>
+							<th class="content-top-grid-1">번호</th>
+							<th class="content-top-grid-2">제목</th>
+							<th class="content-top-grid-3">작성자</th>
+							<th class="content-top-grid-4">작성일자</th>
+						</tr>
+					</table>
 				</div>
 				
 
 				<div class="content-mid">
-						<div class="content-grid">
-							<span class="content-top-grid-span">번호</span>
-							<span class="content-top-grid-span">제목</span>
-							<span class="content-top-grid-span">작성자</span>
-							<span class="content-top-grid-span">작성일자</span>
-						</div>
-						<div class="content-grid">
-							<span class="content-top-grid-span">번호</span>
-							<span class="content-top-grid-span">제목</span>
-							<span class="content-top-grid-span">작성자</span>
-							<span class="content-top-grid-span">작성일자</span>
-						</div>
-						<div class="content-grid">
-							<span class="content-top-grid-span">번호</span>
-							<span class="content-top-grid-span">제목</span>
-							<span class="content-top-grid-span">작성자</span>
-							<span class="content-top-grid-span">작성일자</span>
-						</div>
-						<div class="content-grid">
-							<span class="content-top-grid-span">번호</span>
-							<span class="content-top-grid-span">제목</span>
-							<span class="content-top-grid-span">작성자</span>
-							<span class="content-top-grid-span">작성일자</span>
-						</div>
-						<div class="content-grid">
-							<span class="content-top-grid-span">번호</span>
-							<span class="content-top-grid-span">제목</span>
-							<span class="content-top-grid-span">작성자</span>
-							<span class="content-top-grid-span">작성일자</span>
-						</div>
-						<div class="content-grid">
-							<span class="content-top-grid-span">번호</span>
-							<span class="content-top-grid-span">제목</span>
-							<span class="content-top-grid-span">작성자</span>
-							<span class="content-top-grid-span">작성일자</span>
-						</div>
-						<div class="content-grid">
-							<span class="content-top-grid-span">번호</span>
-							<span class="content-top-grid-span">제목</span>
-							<span class="content-top-grid-span">작성자</span>
-							<span class="content-top-grid-span">작성일자</span>
-						</div>
-						<div class="content-grid">
-							<span class="content-top-grid-span">번호</span>
-							<span class="content-top-grid-span">제목</span>
-							<span class="content-top-grid-span">작성자</span>
-							<span class="content-top-grid-span">작성일자</span>
-						</div>
+					<table class="content-table">
+						<colgroup>
+							<col width="10%" />
+							<col width="40%" />
+							<col width="15%" />
+							<col width="15%" />
+						</colgroup>
+
+						<tr class="content-top-tr">
+							<td class="content-top-td">번호</td>
+							<td class="content-top-td">제목</td>
+							<td class="content-top-td">작성자</td>
+							<td class="content-top-td">작성일자</td>
+						</tr>
+						<tr class="content-top-tr">
+							<td class="content-top-td">번호</td>
+							<td class="content-top-td">제목</td>
+							<td class="content-top-td">작성자</td>
+							<td class="content-top-td">작성일자</td>
+						</tr>
+						<tr class="content-top-tr">
+							<td class="content-top-td">번호</td>
+							<td class="content-top-td">제목</td>
+							<td class="content-top-td">작성자</td>
+							<td class="content-top-td">작성일자</td>
+						</tr>
+						<tr class="content-top-tr">
+							<td class="content-top-td">번호</td>
+							<td class="content-top-td">제목</td>
+							<td class="content-top-td">작성자</td>
+							<td class="content-top-td">작성일자</td>
+						</tr>
+						<tr class="content-top-tr">
+							<td class="content-top-td">번호</td>
+							<td class="content-top-td">제목</td>
+							<td class="content-top-td">작성자</td>
+							<td class="content-top-td">작성일자</td>
+						</tr>
+						<tr class="content-top-tr">
+							<td class="content-top-td">번호</td>
+							<td class="content-top-td">제목</td>
+							<td class="content-top-td">작성자</td>
+							<td class="content-top-td">작성일자</td>
+						</tr>
+						<tr class="content-top-tr">
+							<td class="content-top-td">번호</td>
+							<td class="content-top-td">제목</td>
+							<td class="content-top-td">작성자</td>
+							<td class="content-top-td">작성일자</td>
+						</tr>
+						<tr class="content-top-tr">
+							<td class="content-top-td">번호</td>
+							<td class="content-top-td">제목</td>
+							<td class="content-top-td">작성자</td>
+							<td class="content-top-td">작성일자</td>
+						</tr>
+					</table>
 		
 				</div>
 

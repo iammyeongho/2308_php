@@ -6,6 +6,8 @@
 	// 리턴 	: 없음
 	// ----------------------------
 
+	
+
 	function db_conn( &$conn )
 	{
 		$db_host 	= "localhost"; //host | 127.0.0.1 = localhost 
@@ -113,4 +115,126 @@
 		}
 	}
 
+	// ----------------------------
+	// 함수명 	: db_select_search
+	// 기능 	: boards search
+	// 파라미터 : PDO 		&$conn
+	// 리턴 	: int / false
+	// ----------------------------
+
+	function db_select_search(&$conn, &$arr_param) {
+		$sql =
+			" SELECT "
+			." 		* "
+			." 		,date_format(created_date, '%Y-%m-%d') date "
+			." FROM "
+			." 		boards "
+			." WHERE "
+			."		title "
+			." LIKE "
+			." 		:search " // 서치 변수가 포함된 단어 조건
+			// ." OR "
+			// ."		writet = '%search%' "
+			." ORDER BY "
+			." 		id desc "
+			." LIMIT :list_cnt OFFSET :offset "
+			;
+			
+			// 검색 결과도 출력값 개수에 제한을 줘야하기 때문에
+			$arr_ps = 
+			[
+				":search" => $arr_param["search"]
+				,":list_cnt" => $arr_param["list_cnt"]
+				,":offset" => $arr_param["offset"]
+			];
+
+			
+		try {
+			// $result = $conn->query($sql);
+			$stmt = $conn->prepare($sql);
+			$stmt->bindParam(':search', $search_term, PDO::PARAM_STR);
+			$stmt->execute($arr_ps);
+			$result = $stmt->fetchAll();
+			return $result;
+		}
+		catch(Exception $e) {
+			return false; // 예외 발생 : flase 리턴
+		}
+	}
+
+	// ----------------------------
+	// 함수명 	: db_select_search
+	// 기능 	: boards search
+	// 파라미터 : PDO 		&$conn
+	// 리턴 	: int / false
+	// ----------------------------
+
+	function db_search_boards_cnt(&$conn, &$arr_param) {
+		$sql =
+			" SELECT "
+			." 		count(id) as cnt "
+			." FROM "
+			." 		boards "
+			." WHERE "
+			."		title "
+			." LIKE "
+			." 		:search " // 서치 변수가 포함된 단어 조건
+			;
+
+			$arr_ps = 
+			[
+				":search" => $arr_param["search"]
+			];
+
+		try {
+			$stmt = $conn->prepare($sql);
+			$stmt->execute($arr_ps);
+			$result = $stmt->fetchAll();
+			return (int)$result[0]["cnt"];
+		}
+		catch(Exception $e) {
+			return false; // 예외 발생 : flase 리턴
+		}
+	}
+
+	
+		// ----------------------------
+	// 함수명 	: db_select_created_date
+	// 기능 	: boards created_date
+	// 파라미터 : PDO 		&$conn
+	// 리턴 	: int / false
+	// ----------------------------
+
+	// function db_search_created_date(&$conn, &$arr_param) {
+	// 	$sql =
+	// 		" SELECT "
+	// 		." 		* "
+	// 		." 		,date_format(created_date, '%Y-%m-%d') AS created_date "
+	// 		." FROM "
+	// 		." 		boards "
+	// 		." WHERE "
+	// 		." 		date_format(created_date, '%Y-%m-%d') "
+	// 		." BETWEEN "
+	// 		."		:first_date "
+	// 		." AND "
+	// 		." 		:last_date " // 서치 변수가 포함된 단어 조건
+	// 		;
+
+	// 		$arr_ps = 
+	// 		[
+	// 			":first_date" => $arr_param["first_date"]
+	// 			,":last_date" => $arr_param["last_date"]
+	// 		];
+
+	// 	try {
+	// 		$stmt = $conn->prepare($sql);
+	// 		$stmt->execute($arr_ps);
+	// 		$result = $stmt->fetchAll();
+	// 		return $result;
+	// 	}
+	// 	catch(Exception $e) {
+	// 		die("DB Error: " . $e->getMessage());
+	// 		return false; // 예외 발생 : flase 리턴
+	// 	}
+	// }
 ?>

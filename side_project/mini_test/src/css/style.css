@@ -223,6 +223,11 @@ main {
 	border: none;
 	outline: none;
 }
+
+.side-search-btm {
+	border: 0;
+	background-color: transparent;
+}
 /* -------------------------------------------- */
 
 .side-calendar {
@@ -232,7 +237,77 @@ main {
 	margin: auto;
 	margin-top: 20px;
 	border-radius: 25px;
+	padding: 10px;
 }
+
+.action{ 
+	text-align: center; 
+	margin: 10px 0; 
+}
+
+.prev_date {
+	font-weight: bold;
+	margin-right: 50px;
+	font-size: 1.5rem;
+}
+
+.next_date {
+	font-weight: bold;
+	margin-left: 50px;
+	font-size: 1.5rem;
+}
+
+.calendar_table {
+	margin-top: 15px;
+}
+
+.action strong{ 
+	font-size: 1.2rem; 
+	font-weight: bold;
+}
+
+.action a{ 
+	text-decoration: none; color:#333; 
+}
+
+.calendar_table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 10px 10px;
+}
+
+.calendar_table th {
+	font-size: 15px;
+	font-weight: bold;
+	color: #797979;
+}
+
+.calendar_table td {
+	border-spacing: 10px;
+}
+
+/* .side-calendar > table th, td { 
+	width: 14%; 
+	text-align:center; 
+}
+
+.side-calendar > table th, td { 
+	width: 14%; 
+	text-align:center; 
+} */
+
+.calendar_table th.wcode_6, .calendar_table td.wcode_6 { 
+	color: blue; 
+}
+
+.calendar_table th.wcode_0, .calendar_table td.wcode_0 { 
+	color: red; 
+}
+
+.calendar_table td.prevnext { 
+	color: #eee; 
+}
+
 /* -------------------------------------------- */
 
 /* -------------------------------------------- */
@@ -317,6 +392,9 @@ section {
 	color: #FFF;
 }
 
+.content-top-td {
+	color: #FFF;
+}
 /* .content-top-grid-span:hover {
 	transform: scale(1.4);
 	transition-duration: 0.3s;

@@ -452,3 +452,10 @@ tr.content-top-tr:hover a {
 	transition-duration: 0.3s;
 	color: #3862BA;
 }
+
+
+/* --------------------detail 페이지------------------------ */
+.content-top h1 {
+	display: inline-block;
+	margin-left: 50px;
+}

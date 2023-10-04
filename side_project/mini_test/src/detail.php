@@ -5,6 +5,91 @@
 	require_once(ROOT."lib/lib_db.php");
 	$conn = null;
 
+	try {
+		if(!db_conn($conn))
+		{
+			//강제 예외 발생 : DB Instance
+			throw new Exception("DB Error : PDO Instance");
+		}
+
+		$http_method = $_SERVER["REQUEST_METHOD"];
+
+		if($http_method === "GET") {
+			$id = isset($_GET["id"]) ? $_GET["id"] : "";
+			$page = isset($_GET["page"]) ? $_GET["page"] : "";
+			$arr_err_msg = [];
+
+			if($id === "" ) {
+				$arr_err_msg[] = "Parameter Error : id";
+			}
+
+			if($page === "") {
+				$arr_err_msg[] = "Parameter Error : page";
+			}
+
+			// 위의 2가지의 if문에 배열이 2가지 이상 들어가면 해당 에러 출력
+			if(count($arr_err_msg) >= 1) {
+				// 배열을 특정 문자열로 qoduf
+				throw new Exception(implode("<br>", $arr_err_msg));
+			}
+
+			$arr_param = [
+				"id" => $id
+			];
+
+			$result = db_select_boards_id($conn, $arr_param);
+	
+			if($result === false) {
+				throw new Exception("DB Error : Select id");
+			}
+
+			else if(!(count($result) === 1)) {
+				throw new Exception("DB Error : Select id Count");
+			}
+			$item = $result[0];
+		} 
+		else {
+			$id = isset($_POST["id"]) ? $_POST["id"] : "";
+
+			$arr_err_msg = [];
+
+			if($id === "" ) {
+				$arr_err_msg[] = "Parameter Error : id";
+			}
+
+			if(count($arr_err_msg) >= 1) {
+				// 배열을 특정 문자열로 qoduf
+				throw new Exception(implode("<br>", $arr_err_msg));
+			}
+
+			$conn->beginTransaction();
+
+			// 게시글 아이디 정보
+			$arr_param = [
+				"id" => $id
+			];
+
+			// 예외 처리
+			if(!db_delete_boards_id($conn, $arr_param)) {
+				throw new Exception("DB Error : Delete Boards id");
+			}
+			$conn->commit(); // 모든 처리 완료 시 커밋
+
+            header("Location: list.php"); //리스트 페이지로 이동
+            exit;
+		}
+	}
+	catch(Exception $e) {
+		if($http_method === "POST") {
+            $conn->rollBack(); //rollback
+        }
+		echo $e->getMessage();
+		exit;
+	}
+	finally {
+		db_destroy_conn($conn);
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -107,10 +192,30 @@
 
 			<section>
 				<div class="content-top">
+					<h1>글 번호 : <?php echo $item["id"]; ?></h1>
+					<h1>|</h1>
+					<h1>제목 : <?php echo $item["title"] ?></h1>
+					<h1>|</h1>
+					<h1>작성자 : <?php echo $item["writet"] ?></h1>
 				</div>
 				
 
 				<div class="content-mid">
+					<table>
+					<rowgroup>
+						<row width="20%" />
+						<row width="20%" />
+					</rowgroup>
+						<tr>
+							<th>내용</th>
+							<td><?php echo $item["content"] ?></td>
+						</tr>
+
+						<tr>
+							<th>작성일자</th>
+							<td><?php echo $item["created_date"] ?></td>
+						</tr>
+					</table>
 				</div>
 
 				<div class="content-btm">

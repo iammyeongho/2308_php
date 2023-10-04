@@ -237,4 +237,42 @@
 	// 		return false; // 예외 발생 : flase 리턴
 	// 	}
 	// }
+
+	// ----------------------------
+	// 함수명 	: my_db_select_boards_id
+	// 기능 	: boards id 조회
+	// 파라미터 : PDO 		&$conn
+	// 리턴 	: Array / false
+	// ----------------------------
+
+	function db_select_boards_id(&$conn, &$arr_param) {
+		$sql =
+			" SELECT "
+			." 		id "
+			." 		,title "
+			." 		,writet "
+			." 		,content "
+			." 		,created_date "
+			." FROM "
+			." 		boards "
+			." WHERE "
+			." 		id = :id "
+			// ." AND "
+			// ."		delete_flg = '0' "
+			;
+
+			$arr_ps = [
+				":id" => $arr_param["id"]
+			];
+			
+		try {
+			$stmt = $conn->prepare($sql);
+			$stmt->execute($arr_ps);
+			$result = $stmt->fetchAll();
+			return $result;
+		}
+		catch(Exception $e) {
+			return false; // 예외 발생 : flase 리턴
+		} 
+	}
 ?>

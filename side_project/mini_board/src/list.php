@@ -53,6 +53,13 @@
 		// 	// }
 		// }
 		$page_num = isset($_GET["page"]) ? $_GET["page"] : 1;
+		// if($page_num === "") {
+		// 	$arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "page");
+		// }
+		// if(count($arr_err_msg) >= 1) {
+		// 	throw new Exception(implode("<br>", $arr_err_msg));
+		// }
+
 
 		// 오프셋 계산
 		$offset = ($page_num - 1) * $list_cnt;
@@ -101,7 +108,8 @@
 	}
 
 	catch(Exception $e) {
-		echo $e->getMessage(); // 예외발생 메세지 출력
+		// echo $e->getMessage(); // 예외발생 메세지 출력
+		header("Location: error.php/?err_msg={$e->getMessage()}"); // 에러 메세지 error.php로 이동
 		exit; // 처리 종료
 	}
 

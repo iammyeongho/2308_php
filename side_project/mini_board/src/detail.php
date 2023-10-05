@@ -39,7 +39,8 @@
 		$item = $result[0];
 	}
 	catch(Exception $e) {
-		echo $e->getMessage();
+		// echo $e->getMessage(); // 예외발생 메세지 출력
+		header("Location: error.php/?err_msg={$e->getMessage()}"); // 에러 메세지 error.php로 이동
 		exit;
 	}
 	finally {

@@ -82,7 +82,8 @@
 		if($http_method === "POST") {
             $conn->rollBack(); //rollback
         }
-		echo $e->getMessage();
+		// echo $e->getMessage(); // 예외발생 메세지 출력
+		header("Location: error.php/?err_msg={$e->getMessage()}"); // 에러 메세지 error.php로 이동
 		exit;
 	}
 	finally {
@@ -112,8 +113,8 @@
 				<div class="main-top-3"></div>
 			</div>
 
-			<table>
-				<caption>
+			<table class="table-box">
+				<caption class="box">
 					삭제하면 영구적으로 복구할 수 없습니다.
 					<br>
 					정말로 삭제 하시겠습니까?

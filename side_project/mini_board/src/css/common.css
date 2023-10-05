@@ -353,3 +353,50 @@ textarea:focus {
 /* ------------------------------------------------------------------------------- */
 
 /* update 페이지 */
+.box {
+	border: 5px solid rgb(255, 93, 72);
+	width: 500px;
+	padding: 10px;
+	margin: auto;
+	color: rgb(255, 93, 72);
+}
+
+.table-box {
+	border: none;
+}
+/* 
+input {
+	font-size: 20px;
+}
+
+textarea {
+	font-size: 20px;
+} */
+
+.error-btn {
+
+	padding: 30px;
+	margin-left: 10px;
+	line-height: 50px;
+	/* padding: 80px; */
+	text-align: center;
+	/* background-color: rgba(255, 255, 255,0.3); */
+	color: #ffffffc5;
+}
+
+.error-btn:hover {
+	color: #fff;
+	transform: scale(1.2);
+	transition-duration: 0.3s;
+	background-color: rgba(255, 255, 255,0.3);
+}
+
+.error-box {
+	margin-top: 150px;
+	font-size: 30px;
+}
+
+.err_msg {
+	margin: auto;
+	text-align: center;
+}

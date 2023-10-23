@@ -18,17 +18,17 @@
     // ////////////////
 
     // 파일 생성 | "a" 값에 따라 파일 생성 수정 삭제가 가능 | "a"는 쓰기 권한 | "r" 쓰기 권한
-    // $file = fopen("zz.txt", "r");
+    $file = fopen("zz.txt", "r");
 
     // 파일 오류 확인
-    // if($file)
-    // {
-    //     echo "참";
-    // }
-    // else
-    // {
-    //     echo "거짓";
-    // }
+    if($file)
+    {
+        echo "참";
+    }
+    else
+    {
+        echo "거짓";
+    }
 
     // 파일 쓰기
     // $f_write = fwrite($file, "탕수육\n");

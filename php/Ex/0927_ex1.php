@@ -29,6 +29,7 @@ $daysInMonth = date('t');
 
 // 일일 급여 계산
 $dailySalary = $monthlySalary / $daysInMonth;
+$daily;
 
 echo date('Y-m-d H:i:s'); 
 echo "\n";

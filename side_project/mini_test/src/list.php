@@ -255,10 +255,10 @@
 				<div class="content-top">
 					<table class="content-table">
 						<colgroup>
-							<col width="10%" />
-							<col width="40%" />
-							<col width="15%" />
-							<col width="15%" />
+							<col width="25%" />
+							<col width="25%" />
+							<col width="25%" />
+							<col width="25%" />
 						</colgroup>
 						<tr>
 							<th class="content-top-grid-1">번호</th>

@@ -1,0 +1,259 @@
+@font-face {
+    font-family: 'all';
+    src: url('../css/all.ttf') format('truetype');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: 25px;
+	font-weight: 600;
+	font-family: 'all';
+}
+
+/* reset.css */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+	text-decoration-line: none;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+input {
+	border: none;
+	background-color: transparent;
+}
+
+body {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: url(../css/img/background.png);
+}
+
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+	outline: none;
+	border: none;
+}
+
+.background {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ************************************************************* */
+
+/* ************************************************************* */
+/* 헤더 */
+.header {
+	background-color: rgba(255, 255, 255, 0.8);
+	height: 85px; 
+	text-align: center;
+	padding-top: 15px;
+	padding-left: 30px;
+	padding-right: 30px;
+	line-height: 50px;
+}
+
+.user-icon {
+	background-image: url(../css/img/user.png);
+	width: 50px;
+	height: 50px;
+	float: left;
+}
+
+h1 {
+	display: inline-block;
+}
+
+.search-icon {
+	background-image: url(../css/img/search.png);
+	width: 50px;
+	height: 50px;
+	float: right;
+}
+/* ************************************************************* */
+
+/* ************************************************************* */
+/* 푸터 */
+.footer {
+	background-color: rgba(255, 255, 255, 0.8);
+	height: 85px;
+	padding-top: 15px;
+	padding-left: 30px;
+	line-height: 50px;
+	text-align: left;
+}
+
+.music-icon {
+	background-image: url(../css/img/music.png);
+	width: 50px;
+	height: 50px;
+	float: left;
+}
+
+.music-lyrics {
+	height: 50px;
+	margin-left: 70px;
+	background-color: antiquewhite;
+}
+/* ************************************************************* */
+
+/* ************************************************************* */
+/* 유저 페이지 */
+
+.user-main {
+	height: 880px;
+	padding-top: 250px;
+}
+
+.user-content {
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	justify-content: space-around;
+	text-align: center;
+}
+
+.user-character-jjanggu {
+	background-image: url(../css/img/jjanggu.png);
+	background-size: cover;
+	width: 300px;
+	height: 300px;
+}
+
+
+.user-character-cheolsu {
+	background-image: url(../css/img/cheolsu.png);
+	background-size: cover;
+	width: 300px;
+	height: 300px;
+}
+
+.user-character-maenggu {
+	background-image: url(../css/img/maenggu.png);
+	background-size: cover;
+	width: 300px;
+	height: 300px;
+}
+
+.user-character-yuli {
+	background-image: url(../css/img/yuli.png);
+	background-size: cover;
+	width: 300px;
+	height: 300px;
+}
+
+.user_name {
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	justify-content: space-around;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.user_name_gap {
+	margin-top: 320px;
+}
+/* ************************************************************* */
+
+/* ************************************************************* */
+/* 리스트 페이지 */
+
+.list-main {
+	height: 880px;
+	padding-top: 70px;
+}
+
+.list-content {
+	width: 1500px;
+	height: 700px;
+	margin: auto;
+	background-color: rgba(255, 255, 255, 0.3);
+	box-shadow: 0px 0px 50px 0px rgb(180, 180, 180)
+}
+
+.list-content table {
+	width: 1500px;
+	height: 100px;
+	/* background-color: #FE8F8F; */
+	line-height: 100px;
+	text-align: center;
+}
+
+.list-content table th {
+	background-color: #FE8F8F;
+}
+
+.list-content table td {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.list-content-btn:hover {
+	transform: scale(1);
+	font-size: 1.2rem;
+	transition-duration: 0.3s;
+	background-color: aliceblue;
+}
+
+.list-content-num-btn {
+	text-align: center;
+	height: 50px;
+	background-color: #FE8F8F;
+}
+
+.list-content-num-btn a {
+	display: inline-block;
+	line-height: 50px;
+	margin-right: 40px;
+	width: 50px;
+	height: 50px;
+	/* background-color: rgb(143, 143, 251); */
+}
+
+.list-content-num-btn a:last-child {
+	margin-right: 0px;
+}

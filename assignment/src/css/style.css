@@ -1,16 +1,15 @@
 @font-face {
-    font-family: 'all';
-    src: url('../css/all.ttf') format('truetype');
+	src: url(/assignment/src/css/a신디나루M.ttf);
+    font-family: "main-font";
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-size: 25px;
-	font-weight: 600;
-	font-family: 'all';
+	font-family: "main-font";
 }
+
 
 /* reset.css */
 html, body, div, span, applet, object, iframe,
@@ -65,7 +64,9 @@ input {
 body {
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-image: url(../css/img/background.png);
+	background-image: url(/assignment/src/css/img/background.png);
+	font-family: "main-font";
+	font-size: 20px;
 }
 
 button {
@@ -78,7 +79,7 @@ button {
 }
 
 .background {
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 /* ************************************************************* */
@@ -96,21 +97,26 @@ button {
 }
 
 .user-icon {
-	background-image: url(../css/img/user.png);
+	background-image: url(/assignment/src/css/img/user.png);
 	width: 50px;
 	height: 50px;
 	float: left;
+	cursor: pointer;
 }
 
-h1 {
+.header-a {
 	display: inline-block;
+	font-size: 40px;
+	color:#FE8F8F;
+	font-weight: 600;
 }
 
 .search-icon {
-	background-image: url(../css/img/search.png);
+	background-image: url(/assignment/src/css/img/search.png);
 	width: 50px;
 	height: 50px;
 	float: right;
+	cursor: pointer;
 }
 /* ************************************************************* */
 
@@ -126,7 +132,7 @@ h1 {
 }
 
 .music-icon {
-	background-image: url(../css/img/music.png);
+	background-image: url(/assignment/src/css/img/music.png);
 	width: 50px;
 	height: 50px;
 	float: left;
@@ -157,29 +163,28 @@ h1 {
 }
 
 .user-character-jjanggu {
-	background-image: url(../css/img/jjanggu.png);
+	background-image: url(/assignment/src/css/img/jjanggu.png);
 	background-size: cover;
 	width: 300px;
 	height: 300px;
 }
 
-
 .user-character-cheolsu {
-	background-image: url(../css/img/cheolsu.png);
+	background-image: url(/assignment/src/css/img/cheolsu.png);
 	background-size: cover;
 	width: 300px;
 	height: 300px;
 }
 
 .user-character-maenggu {
-	background-image: url(../css/img/maenggu.png);
+	background-image: url(/assignment/src/css/img/maenggu.png);
 	background-size: cover;
 	width: 300px;
 	height: 300px;
 }
 
 .user-character-yuli {
-	background-image: url(../css/img/yuli.png);
+	background-image: url(/assignment/src/css/img/yuli.png);
 	background-size: cover;
 	width: 300px;
 	height: 300px;
@@ -197,6 +202,9 @@ h1 {
 
 .user_name_gap {
 	margin-top: 320px;
+	color: #fff;
+	font-size: 30px;
+	font-weight: 600;
 }
 /* ************************************************************* */
 
@@ -205,15 +213,16 @@ h1 {
 
 .list-main {
 	height: 880px;
-	padding-top: 70px;
+	padding-top: 50px;
 }
 
 .list-content {
 	width: 1500px;
 	height: 700px;
 	margin: auto;
-	background-color: rgba(255, 255, 255, 0.5);
-	box-shadow: 0px 0px 50px 0px rgb(180, 180, 180)
+	background-color: rgba(255, 255, 255, 0.3);
+	box-shadow: 0px 0px 50px 0px rgb(180, 180, 180);
+	position: relative;
 }
 
 .list-content table {
@@ -225,24 +234,38 @@ h1 {
 }
 
 .list-content table th {
-	background-color: #FE8F8F;
+	background-color: #fe8f8fda;
+	font-size: 25px;
+	color: #fff;
 }
 
 .list-content table td {
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.3);
+	color: rgba(0, 0, 0, 0.8);
+}
+
+.list-content-btn {
+	cursor: pointer;
 }
 
 .list-content-btn:hover {
 	transform: scale(1);
-	font-size: 1.2rem;
-	transition-duration: 0.3s;
-	background-color: aliceblue;
+	font-weight: 600;
+	background-color: rgba(255, 255, 255, 0.8);
+	font-size: 1.5rem;
+	transition-duration: 0.1s;
+	color: #fe8f8fda;
 }
+
 
 .list-content-num-btn {
 	text-align: center;
-	height: 50px;
-	background-color: #FE8F8F;
+	height: 70px;
+	background-color: #fe8f8fda;
+	position: absolute;
+	bottom: -70px;
+	width: 100%;
+	padding: 10px;
 }
 
 .list-content-num-btn a {
@@ -251,9 +274,16 @@ h1 {
 	margin-right: 40px;
 	width: 50px;
 	height: 50px;
+	color: #fff;
 	/* background-color: rgb(143, 143, 251); */
 }
 
 .list-content-num-btn a:last-child {
 	margin-right: 0px;
+}
+
+.page-on {
+	border-radius: 50px;
+	color: #FE8F8F;
+	background-color: rgba(255, 255, 255, 0.5);
 }

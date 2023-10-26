@@ -42,7 +42,7 @@ WHERE delete_date IS null
 ORDER BY list_id DESC
 LIMIT 5 OFFSET 0;
 
-SELECT list_t.list_id, list_t.title, list_t.content, list_t.views, DATE_FORMAT(list_t.CREATE_date, '%Y-%m-%d') date_val, list_t.delete_date, user_id
+SELECT list_t.list_id, list_t.title, list_t.content, list_t.views, DATE_FORMAT(list_t.CREATE_date, '%Y-%m-%d') date_val, list_t.delete_date, user_t.user_name
 FROM list_table list_t
 JOIN user_table user_t
 ON list_t.user_id = user_t.user_id

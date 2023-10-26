@@ -1,3 +1,30 @@
+<?php 
+	define("ROOT",$_SERVER["DOCUMENT_ROOT"]."/assignment/src/");
+	// define("FILE_HEADER", ROOT."header.php");
+	define("ERROR_MSG_PARAM", "%s : 필수 입력 사항입니다.");
+	require_once(ROOT."lib/lib.php");
+
+	$conn = null;
+	$http_method = $_SERVER["REQUEST_METHOD"];
+	$arr_err_msg = [];
+
+	try {
+		if(!db_conn($conn))
+			{
+				throw new Exception("DB Error : PDO Instance");
+			}
+		if($http_method === "GET") {
+
+			}
+
+	} catch(Exception $e) {
+
+	} finally {
+
+	}
+
+?>
+
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -14,7 +41,32 @@
 				<div class="search-icon"></div>
 			</div>
 
-			<div class="list-main">
+			<div class="detail-main">
+				<div class="detail-content">
+					<table>
+						<tr>
+							<th>a</th>
+							<td>1</td>
+						</tr>
+						<tr>
+							<th>b</th>
+							<td>2</td>
+						</tr>
+						<tr>
+							<th>c</th>
+							<td>3</td>
+						</tr>
+						<tr>
+							<th>d</th>
+							<td>4</td>
+						</tr>
+						<tr>
+							<th>e</th>
+							<td>5</td>
+						</tr>
+					</table>
+
+				</div>
 			</div>
 
 			<div class="footer">

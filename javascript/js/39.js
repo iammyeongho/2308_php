@@ -53,3 +53,70 @@ TITLE.style.color = 'red';
 // classList : 클래스로 스타일 추가
 TITLE.classList.add('class1','class2','class3');
 TITLE.classList.remove('class2');
+
+// 5. 새로운 요소 생성
+// 요소 만들기
+// const LI = document.createElement('li');
+// LI.innerHTML = "글글글글";
+
+// 삽입할 부모 요소
+// const UL = document.querySelector('#ul');
+
+// 부모요소의 가장 마지막 위치에 삽입
+// UL.appendChild(LI);
+// UL.prepend(LI);
+
+// 요소를 특정 위치에 삽입하는 방법 ( Selector() 안에 클래스 명 넣어서 해도됨)
+// const SPACE = document.querySelector('ul>li:nth-child(3)');
+// const SPACE = document.querySelector('li:nth-child(3)');
+
+// UL.insertBefore(LI, SPACE);
+
+// 1. 사과게임 위에 장기를 넣어주세요.
+// const LI = document.createElement('li');
+// LI.innerHTML = "장기";
+// const UL = document.querySelector('#ul');
+// const LONG = document.querySelector('li:nth-child(5)');
+// UL.insertBefore(LI, LONG);
+
+const UL = document.querySelector('#ul')
+const LIJANGGI = document.createElement('li');
+LIJANGGI.innerHTML = '장기';
+const LIAPPLE = document.getElementById('apple');
+UL.insertBefore(LIJANGGI, LIAPPLE);
+
+// 2. 어메이징 브릭에 베이지색 배경색을 넣어주세요
+// const LI_COLOR = document.getElementsByTagName('li');
+// LI_COLOR[9].style.backgroundColor = 'beige';
+
+const LI_COLOR = document.querySelector('li:last-child');
+LI_COLOR.style.backgroundColor = 'beige';
+
+// 3. 리스트에서 짝수는 빨간색 글씨, 홀수는 파랑색 글씨
+const LI_EVEN = document.querySelectorAll('li:nth-child(even)');
+for(let val of LI_EVEN) {
+	val.style.color = 'red';
+	// console.log(val);
+}
+
+const LI_ODD = document.querySelectorAll('li:nth-child(odd)');
+for(let val of LI_ODD) {
+	val.style.color = 'blue';
+}
+
+// 위와 같음
+// const LI_ALL = document.querySelectorAll('LI');
+// for(let i = 0; i < LI_ALL.length; i++) {
+// 	if( i % 2 === 0 ) {
+// 		LI_ALL[i].style.color = 'blue';
+// 	} else {
+// 		LI_ALL[i].style.color = 'red';
+// 	}
+// }
+
+// 6. 참조
+// DOM 속성
+// https://developer.mozilla.org/en/docs/web/API/Element
+
+// Document
+// 

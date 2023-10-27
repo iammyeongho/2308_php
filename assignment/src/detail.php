@@ -43,29 +43,11 @@
 
 			<div class="detail-main">
 				<div class="detail-content">
-					<table>
-						<tr>
-							<th>a</th>
-							<td>1</td>
-						</tr>
-						<tr>
-							<th>b</th>
-							<td>2</td>
-						</tr>
-						<tr>
-							<th>c</th>
-							<td>3</td>
-						</tr>
-						<tr>
-							<th>d</th>
-							<td>4</td>
-						</tr>
-						<tr>
-							<th>e</th>
-							<td>5</td>
-						</tr>
-					</table>
-
+					<div>1</div>
+					<div>2</div>
+					<div>3</div>
+					<div>4</div>
+					<div>5</div>
 				</div>
 			</div>
 

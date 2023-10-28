@@ -27,6 +27,7 @@
 //         alert('들켰다');
 //         INTERIOR.style.backgroundColor = '#000000';
 //         i = 1; // 들켰다 상태로 변경
+//     } else {
 //         INTERIOR.removeEventListener('click', divClick);
 //         SUBURB.removeEventListener('mouseenter', divmous);
 //         INTERIOR.addEventListener('click', divClick2);

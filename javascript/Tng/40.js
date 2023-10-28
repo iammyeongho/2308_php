@@ -48,36 +48,42 @@
 //     i = 0; // 다시 숨는다 상태로 변경
 // }
 
-const SUBURB = document.querySelector('#suburb');
+
+const SUBURB = document.querySelector('#suburb');.
 const INTERIOR = document.querySelector('#interior');
-let i = true;
-// let i_false = true;
 
-SUBURB.addEventListener('mouseenter', divmous);
+function btn_ale() {
+	alert('안녕하세요.\n숨어있는 div를 찾아보세요');
 
-function divmous() {
-    if (i) {
-        alert('두근두근');
-    }
+	let i = true;
+	SUBURB.addEventListener('mouseenter', divmous);
+
+	var x = Math.floor(Math.random() * window.innerWidth);
+	var y = Math.floor(Math.random() * window.innerHeight);
+
+	SUBURB.style.left = x + 'px';
+	SUBURB.style.top = y + 'px';
+
+	function divmous() {
+		if (i) {
+			alert('두근두근');
+		}
+	}
+
+	INTERIOR.addEventListener('click', divClick);
+
+	function divClick() {
+		if (i) {
+			alert('들켰다');
+			INTERIOR.style.backgroundColor = 'beige';
+		} else {
+			alert('다시 숨는다');
+			INTERIOR.style.backgroundColor = '#ffffff';
+		}
+		i = !i;
+	}
 }
 
-INTERIOR.addEventListener('click', divClick);
-
-function divClick() {
-    if (i) {
-        alert('들켰다');
-        INTERIOR.style.backgroundColor = '#000000';
-    } else {
-        alert('다시 숨는다');
-        INTERIOR.style.backgroundColor = '#ffffff';
-
-        var x = Math.floor(Math.random() * window.innerWidth);
-        var y = Math.floor(Math.random() * window.innerHeight);
-
-        // INTERIOR 위치 변경
-        SUBURB.style.left = x + 'px';
-        SUBURB.style.top = y + 'px';
-    }
-
-    i = !i;
-}
+// 객체.classList.toggle 객체의 클래스의 css리스트를 가지고옴 강사님 40.js 확인할  것
+// toggle 있으면 삭제, 없으면 추가
+// getEventListeners(객체) 누르면 해당 객체의 이벤트를 알 수 있음

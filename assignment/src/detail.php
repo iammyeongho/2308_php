@@ -14,13 +14,57 @@
 				throw new Exception("DB Error : PDO Instance");
 			}
 		if($http_method === "GET") {
+				$user = isset($_GET["user"]) ? $_GET["user"] : "";
+				$id = isset($_GET["id"]) ? $_GET["id"] : "";
+				$page = isset($_GET["page"]) ? $_GET["page"] : "";
+
+				if($id === "" ) {
+					$arr_err_msg[] = "Parameter Error : id";
+				}
+	
+				if($page === "") {
+					$arr_err_msg[] = "Parameter Error : page";
+				}
+
+				if(count($arr_err_msg) >= 1) {
+					throw new Exception(implode("<br>", $arr_err_msg));
+				}
+
+				if(count($arr_err_msg) === 0) {
+
+					$arr_param = [
+						"id" => $id
+					];
+
+					$result = update_views_id($conn, $arr_param);
+
+					if($result === false) {
+						throw new Exception("DB Error : Select id");
+					}
+
+
+					$arr_param = [
+						"id" => $id
+					];
+	
+					$result = select_boards_id($conn, $arr_param);
+	
+					if($result === false) {
+						throw new Exception("DB Error : Select id");
+					}
+
+					else if(!(count($result) === 1)) {
+						throw new Exception("DB Error : Select id Count");
+					}
+					$item = $result[0];
+				}
 
 			}
-
 	} catch(Exception $e) {
-
+		echo $e->getMessage();
+		exit;
 	} finally {
-
+		db_destroy_conn($conn);
 	}
 
 ?>
@@ -35,24 +79,31 @@
 	</head>
 	<body>
 		<div class="background">
-			<div class="header">
-				<div class="user-icon" onclick="location.href='/assignment/src/user.php'"></div>
-				<a class="header-a" href="/assignment/src/list.php">짱구는 못말려</a>
-				<div class="search-icon"></div>
-			</div>
+		<?php require_once(ROOT."header.php"); ?>
 
 			<div class="detail-main">
 				<div class="detail-content">
-					<div>1</div>
-					<div>2</div>
-					<div>3</div>
-					<div>4</div>
-					<div>5</div>
+					<div class="detail-content-item detail-color-title-1 <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>"><h1>글 작성자</h1></div>
+					<div class="detail-content-item detail-color-content-1"><?php echo $item["user_name"];?></div>
+					<div class="detail-content-item detail-color-title-1 <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">작성일자</div>
+					<div class="detail-content-item detail-color-content-2"><?php echo $item["date_val"];?></div>
+					<div class="detail-content-item detail-color-title-1 <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">제목</div>
+					<div class="detail-content-item detail-color-content-1"><?php echo $item["title"];?></div>
+					<div class="detail-content-item detail-color-title-1 <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">조회수</div>
+					<div class="detail-content-item detail-color-content-2"><?php echo $item["views"];?></div>
+					<div class="detail-content-item detail-color-title-2 <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">내용</div>
+					<div class="detail-content-item merged" colspan="3"><?php echo $item["content"];?></div>
+				</div>
+				<div class="detail-content-icon <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">
+					<div class="icon-1" onclick="location.href='/assignment/src/list.php'"></div>
+					<div class="icon-2"></div>
+					<div class="icon-3"></div>
 				</div>
 			</div>
 
 			<div class="footer">
-				<div class="music-icon"></div>
+				<div class="music-icon">
+				</div>
 				<div class="music-lyrics">노래 가사 들어감</div>
 			</div>
 		</div>	

@@ -1,3 +1,36 @@
+<?php
+	define("ROOT",$_SERVER["DOCUMENT_ROOT"]."/assignment/src/");
+	// define("FILE_HEADER", ROOT."header.php");
+	define("ERROR_MSG_PARAM", "%s : 필수 입력 사항입니다.");
+	require_once(ROOT."lib/lib.php");
+
+	$conn = null;
+	$http_method = $_SERVER["REQUEST_METHOD"];
+	$arr_err_msg = [];
+
+	try {
+		if(!db_conn($conn))
+			{
+				throw new Exception("DB Error : PDO Instance");
+			}
+		if($http_method === "GET") {
+			$result = select_user_name($conn);
+			if(!$result)
+			{
+				throw new Exception("DB Error : SELECT boards");
+			}
+		}
+
+	} catch(Exception $e) {
+		echo $e->getMessage();
+		exit;
+	} finally { 
+        db_destroy_conn($conn);
+    }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -10,23 +43,23 @@
 		<div class="background">
 			<div class="header">
 				<div class="user-icon"></div>
-				<a class="header-a" href="/assignment/src/list.php">짱구는 못말려</a>
+				<a class="header-a" href="/assignment/src/user.php">캐릭터를 선택하세요</a>
 				<div class="search-icon"></div>
 			</div>
 
 			<div class="user-main">
 				<div class="user-content">
-					<div class="user-character-jjanggu">
-						<p class="user_name_gap">신짱구</p>
+					<div class="user-character-jjanggu user-character" onclick="location.href='/assignment/src/list.php/?user=<?php echo $result[0]["user_id"]; ?>'">
+						<p class="user_name_gap"><?php echo $result[0]["user_name"] ?></p>
 					</div>
-					<div class="user-character-cheolsu">
-						<p class="user_name_gap">김철수</p>
+					<div class="user-character-cheolsu user-character" onclick="location.href='/assignment/src/list.php?user=<?php echo $result[1]["user_id"]; ?>'">
+						<p class="user_name_gap"><?php echo $result[1]["user_name"] ?></p>
 					</div>
-					<div class="user-character-maenggu">
-						<p class="user_name_gap">유나이티드 맹구</p>
+					<div class="user-character-maenggu user-character" onclick="location.href='/assignment/src/list.php?user=<?php echo $result[2]["user_id"]; ?>'">
+						<p class="user_name_gap"><?php echo $result[2]["user_name"] ?></p>
 					</div>
-					<div class="user-character-yuli">
-						<p class="user_name_gap">한유리</p>
+					<div class="user-character-yuli user-character" onclick="location.href='/assignment/src/list.php?user=<?php echo $result[3]["user_id"]; ?>'">
+						<p class="user_name_gap"><?php echo $result[3]["user_name"] ?></p>
 					</div>
 				</div>
 			</div>

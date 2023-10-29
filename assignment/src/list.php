@@ -14,6 +14,17 @@
 				throw new Exception("DB Error : PDO Instance");
 			}
 		if($http_method === "GET") {
+
+			$user = isset($_GET["user"]) ? $_GET["user"] : "";
+
+			if($user === "" ) {
+				$arr_err_msg[] = "Parameter Error : user";
+			}
+
+			if(count($arr_err_msg) >= 1) {
+				header("Location: /assignment/src/user.php");
+				exit;
+			}
 			// ------------------------------------------------------------------------
 			// 페이징 처리
 			// ------------------------------------------------------------------------
@@ -104,14 +115,11 @@
 	</head>
 	<body>
 		<div class="background">
-			<div class="header">
-				<div class="user-icon" onclick="location.href='/assignment/src/user.php'"></div>
-				<a class="header-a" href="/assignment/src/list.php">짱구는 못말려</a>
-				<div class="search-icon"></div>
-			</div>
+			<?php require_once(ROOT."header.php"); ?>
+			<a href="/assignment/src/insert.php/?user=<?php echo $user; ?>">작성</a>
 
 			<div class="list-main">
-				<div class="list-content">
+				<div class="list-content <?php if($user == 1) { ?> list-content-1<?php } else if($user == 2) { ?> list-content-2 <?php } else if($user == 3) {?> list-content-3 <?php } else if($user == 4) { ?> list-content-4 <?php } ?> ">
 					<table>
 						<colgroup>
 							<col width="15%" />
@@ -128,7 +136,7 @@
 							<th>조회수</th>
 						</tr>
 						<?php foreach($result as $item) { ?>
-						<tr class="list-content-btn" onclick="location.href='/assignment/src/detail.php/?id=<?php echo $item["list_id"]; ?>&page=<?php echo $page; ?>'">
+						<tr class="list-content-btn" onclick="location.href='/assignment/src/detail.php/?id=<?php echo $item["list_id"]; ?>&page=<?php echo $page; ?>&user=<?php echo $user;?>'">
 							<td><?php echo $item["user_name"]?></td>
 							<td><?php echo $item["list_id"]?></td>
 							<td><?php echo $item["title"]?></td>
@@ -137,21 +145,21 @@
 						</tr>
 						<?php } ?>
 					</table>
-					<div class="list-content-num-btn">
-						<a href="/assignment/src/list.php/?page=<? echo $prev_page; ?>"><</a>
+					<div class="list-content-num-btn <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">
+						<a href="/assignment/src/list.php/?page=<? echo $prev_page; ?>&user=<?php echo $user;?>"><</a>
 						<?php 
 							for($page_link = $block_start; $page_link <= $block_end; $page_link++) {
-							if($page_link == $page) {?>
-							<a class="page-on" href="/assignment/src/list.php/?page=<?php echo $page_link; ?>"><?php echo $page_link; ?></a>
+							if($page_link == $page) { ?>
+							<a class="page-on" href="/assignment/src/list.php/?page=<?php echo $page_link; ?>&user=<?php echo $user;?>"><?php echo $page_link; ?></a>
 						<?php } 
 							else {
 						?>
-							<a href="/assignment/src/list.php/?page=<?php echo $page_link; ?>"><?php echo $page_link; ?></a>
+							<a href="/assignment/src/list.php/?page=<?php echo $page_link; ?>&user=<?php echo $user;?>"><?php echo $page_link; ?></a>
 						<?php
 								}
 							}
 						?>
-						<a href="/assignment/src/list.php/?page=<? echo $next_page; ?>">></a>
+						<a href="/assignment/src/list.php/?page=<? echo $next_page; ?>&user=<?php echo $user;?>">></a>
 					</div>
 				</div>
 			</div>

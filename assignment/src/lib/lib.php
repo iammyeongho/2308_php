@@ -56,37 +56,37 @@
 	// ----------------------------
 
 	function select_boards_paging(&$conn, &$arr_param) {
-		try {
-			$sql = 
-				" SELECT "
-				."		list_t.list_id "
-				."		,list_t.title "
-				."		,list_t.content "
-				."		,list_t.views "
-				."		,date_format(list_t.create_date, '%Y-%m-%d') date_val "
-				."		,list_t.delete_date "
-				."		,user_t.user_name "
-				." FROM "
-				."		list_table list_t "
-				." JOIN "
-				." 		user_table user_t "
-				." ON "
-				." 		list_t.user_id = user_t.user_id "
-				." WHERE "
-				." 		list_t.delete_date "
-				." IS "
-				."		NULL "
-				." ORDER BY "
-				." 		list_t.list_id DESC "
-				." LIMIT :list_cnt OFFSET :offset "
-				;
+		$sql = 
+			" SELECT "
+			."		list_t.list_id "
+			."		,list_t.title "
+			."		,list_t.content "
+			."		,list_t.views "
+			."		,date_format(list_t.create_date, '%Y-%m-%d') date_val "
+			."		,list_t.delete_date "
+			."		,user_t.user_name "
+			." FROM "
+			."		list_table list_t "
+			." JOIN "
+			." 		user_table user_t "
+			." ON "
+			." 		list_t.user_id = user_t.user_id "
+			." WHERE "
+			." 		list_t.delete_date "
+			." IS "
+			."		NULL "
+			." ORDER BY "
+			." 		list_t.list_id DESC "
+			." LIMIT :list_cnt OFFSET :offset "
+			;
 				
-			$arr_ps = 
-			[
-				":list_cnt" => $arr_param["list_cnt"]
-				,":offset" => $arr_param["offset"]
-			];
+		$arr_ps = 
+		[
+			":list_cnt" => $arr_param["list_cnt"]
+			,":offset" => $arr_param["offset"]
+		];
 
+		try {
 			$stmt = $conn->prepare($sql);
 			$stmt->execute($arr_ps);
 			$result = $stmt->fetchAll();
@@ -126,4 +126,108 @@
 			return false; // 예외 발생 : flase 리턴
 		}
 	}
+
+	// ----------------------------
+	// 함수명 	: select_boards_id
+	// 기능 	: boards id 조회
+	// 파라미터 : PDO 		&$conn
+	// 리턴 	: Array / false
+	// ----------------------------
+
+	function select_boards_id(&$conn, &$arr_param) {
+		$sql = 
+			" SELECT "
+			."		user_t.user_name "
+			."		,date_format(list_t.create_date, '%Y-%m-%d') date_val "
+			."		,list_t.title "
+			."		,list_t.content "
+			."		,list_t.views "
+			."		,list_t.delete_date "
+			." FROM "
+			."		list_table list_t "
+			." JOIN "
+			." 		user_table user_t "
+			." ON "
+			." 		list_t.user_id = user_t.user_id "
+			." WHERE "
+			." 		list_t.list_id = :id "
+			." AND "
+			." 		list_t.delete_date "
+			." IS "
+			."		NULL "
+			;
+
+		$arr_ps = [
+			":id" => $arr_param["id"]
+		];
+			
+		try {
+			$stmt = $conn->prepare($sql);
+			$stmt->execute($arr_ps);
+			$result = $stmt->fetchAll();
+			return $result;
+		}
+		catch(Exception $e) {
+			return false; // 예외 발생 : flase 리턴
+		} 
+	}
+
+	// ----------------------------
+	// 함수명 	: update_views_id
+	// 기능 	: 조회수 증가
+	// 파라미터 : PDO 		&$conn
+	// 리턴 	: Array / false
+	// ----------------------------
+
+	function update_views_id(&$conn, &$arr_param) {
+		$sql =
+			" UPDATE "
+			." 		list_table "
+			." SET "
+			." 		views = views + 1 "
+			." WHERE "
+			." 		list_id = :id "
+			;
+
+		$arr_ps = [
+			":id" => $arr_param["id"]
+		];
+
+		try {
+			$stmt = $conn->prepare($sql);
+			$stmt->execute($arr_ps);
+			$result = $stmt->fetchAll();
+			return $result;
+		}
+		catch(Exception $e) {
+			return false; // 예외 발생 : flase 리턴
+		} 
+	}
+
+	// ----------------------------
+	// 함수명 	: select_user_name
+	// 기능 	: 유저 네임 조회
+	// 파라미터 : PDO 		&$conn
+	// 리턴 	: Array / false
+	// ----------------------------
+
+	function select_user_name(&$conn) {
+		$sql =
+			" SELECT "
+			." 		user_id "
+			." 		,user_name "
+			." FROM "
+			." 		user_table "
+			;
+
+		try {
+			$stmt = $conn->query($sql);
+			$result = $stmt->fetchAll();
+			return $result;
+		}
+		catch(Exception $e) {
+			return false; // 예외 발생 : flase 리턴
+		} 
+	}
+
 ?>

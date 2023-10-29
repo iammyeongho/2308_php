@@ -10,4 +10,6 @@ xcopy C:\github\2308_php\side_project\mini_board\src C:\Apache24\htdocs\mini_boa
 
 xcopy C:\github\2308_php\side_project\mini_test\src C:\Apache24\htdocs\mini_test\src /E /Y
 
+xcopy C:\github\2308_php\assignment\src C:\Apache24\htdocs\assignment\src /E /Y
+
 해당 코드를 터미널로

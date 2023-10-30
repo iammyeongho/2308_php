@@ -230,4 +230,41 @@
 		} 
 	}
 
+	// ----------------------------
+	// 함수명 	: insert_boards
+	// 기능 	: boards 레코드 작성
+	// 파라미터 : PDO 		&$conn
+	// 			: Array 	&$arr_param | 쿼리 작성용 배열
+	// 리턴 	: Boolean
+	// ----------------------------
+
+	function insert_boards(&$conn, &$arr_param) {
+		$sql = 
+			" INSERT INTO list_table ( "
+			." 		user_id "
+			."		,title "
+			."		,content "
+			." ) "
+			." VALUES ( "
+			." 		:user "
+			."		,:title "
+			."		,:content "
+			." ) "
+			;
+
+		$arr_ps = [
+			":user" => $arr_param["user"]
+			,":title" => $arr_param["title"]
+			,":content" => $arr_param["content"]
+		];
+
+		try {
+			$stmt = $conn->prepare($sql);
+			$result = $stmt->execute($arr_ps);
+			return $result; // 결과 리턴
+		}
+		catch(Exception $e) {
+			return false; // 예외 발생 : flase 리턴
+		}
+	}
 ?>

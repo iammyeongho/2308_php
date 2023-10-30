@@ -49,3 +49,17 @@ ON list_t.user_id = user_t.user_id
 WHERE DELETE_date IS null
 ORDER BY LIST_id DESC
 LIMIT 5 OFFSET 0;
+
+			" INSERT INTO list_table ( "
+			." 		user_id "
+			."		,title "
+			."		,content "
+			." ) "
+			." VALUES ( "
+			." 		:user "
+			."		:title "
+			."		,:content "
+			." ) "
+			;
+			
+FLUSH PRIVILEGES;

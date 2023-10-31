@@ -18,7 +18,7 @@
 // 		</data>
 // <xml>
 
-// 3. JSON ( JavaScript Object Notation ) 이란?
+// 3. JSON ( JavaScript Object Notation ) 이란? 간단하게 말해서 문자열 : 규칙을 전해서 서버에 전달 (규칙 : 자바스크립트의 객체와 같다고해서 제이슨)
 // 	JavaSctipt의 Object에 큰 영감을 받아 만들어진 서버 간의 HTTP 통신을 위한 텍스트 데이터 포맷입니다.
 // 	장점은 다음과 같습니다.
 // 	- 데이터를 주고 받을 때 쓸 수 있는 가장 간단한 파일 포맷
@@ -30,6 +30,7 @@
 
 // 	JSON.stringify (obj) : Object를 JSON 포맷의 String으로 변환 (Serializing)해주는 메소드
 // 	JSON.parse (json) : JSON 포맷의 String을 Object로 변환 (Deserializing)해주는 메소드
+//  요즘은 api 또는 node.js 또는 제이쿼리 주로 사용
 
 // json
 // {
@@ -37,4 +38,59 @@
 // 			id: 56
 // 			,name: '홍길동'
 // 		}
+// }
+
+// 	4. API 예제 사이트
+// 		https://picsum.photos/
+
+// const MY_URL = "https://picsum.photos/v2/list?page=2&limit=5";
+// 프라미스 객체를 실행하면, resolve, reject로 옴
+// 아래 코드의 status : 200번대는 정상처리, 300번대 통신 정상, 서버에서 예외처리, 400번대 서버 통신 실패 시
+// fetch(MY_URL)
+// .then(response => console.log(response))
+// .catch(error => console.log(error))
+
+// body안에 있는 json 값을 자바스크립트 배열로 바꿔줌 
+// 윌와 서버간의 규칙 api
+const BTN_API = document.querySelector('#btn-api');
+const BTN_CLOSE = document.querySelector('#btn-close');
+BTN_API.addEventListener('click', my_fetch);
+BTN_CLOSE.addEventListener('click', my_close);
+
+function my_fetch() {
+	const INPUT_URL = document.querySelector('#input-url');
+	fetch(INPUT_URL.value.trim())
+	.then(response => response.json()) // 화살표 함수라서 리턴 생략 리턴 값은 data로 들어감 // 제이슨을 통해 response값을 배열로 만들어줌
+	.then(data => makeImg(data)) // data에 MY_URL의 값이 들어있고 makeImg함수를 불러옴
+	.catch(error => console.log(error))
+}
+
+function makeImg(data) {
+	data.forEach( item => {
+		const NEW_IMG = document.createElement('img');
+		const DIV_IMG = document.querySelector('#div-img');
+
+		NEW_IMG.setAttribute('src',item.download_url);
+		NEW_IMG.style.width = '200px';
+		NEW_IMG.style.height = '200px';
+		DIV_IMG.appendChild(NEW_IMG);
+	});
+}
+
+function my_close() {
+	const DIV_IMG = document.querySelector('#div-img');
+	DIV_IMG.replaceChildren();
+	// 강사님 코드 따오기
+}
+
+// 관호님 코드
+// function del() { // ****************선생님과 오류 탐색******************231031
+//  const OLD_IMG = document.querySelectorAll('#div-img > img');
+//  // const OLD_IMG = document.getElementsbyTagName('img'); // 1. OLD_IMG => {0~4, entries, keys, values, forEach, length, item} 프로토타입까지 가져옴
+//  // const OLD_IMG2 = document.getElementById('div-img');
+//  for ( let item in OLD_IMG ) { // 2. for in으로 하면 entries, keys 등등을 지우려해서 오류.
+//                                // 3. for of로 하면 하나를 지울 때마다 순서가 당겨져서 절반정도만 삭제.
+//      OLD_IMG[item].remove();
+//  }
+//  // OLD_IMG2.remove();
 // }

@@ -1,0 +1,45 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.main {
+	background-color: black;
+	padding: 80px;
+	color: #FFF;
+	text-align: center;
+	font-size: 50px;
+}
+
+.content {
+	margin: auto;
+	padding: 50px;
+}
+
+.content-btn {
+	width: 900px;
+	margin: auto;
+	margin-bottom: 50px;
+}
+
+#input-url {
+	text-align: center;
+	display: inline-block;
+	width: 800px;
+}
+
+button {
+	width: 100px;
+	padding: 10px;
+}
+
+#div-img {
+	margin: auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	/* grid-template-rows: repeat(auto-fit, minmax(400px, 1fr)); */
+	grid-gap: 20px;
+	text-align: center;
+	/* place-items: center; */
+}
+

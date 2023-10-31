@@ -88,16 +88,14 @@
 					<div class="detail-content-item detail-color-title-1 <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">작성일자</div>
 					<div class="detail-content-item detail-color-content-2"><?php echo $item["date_val"];?></div>
 					<div class="detail-content-item detail-color-title-1 <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">제목</div>
-					<div class="detail-content-item detail-color-content-1"><?php echo $item["title"];?></div>
-					<div class="detail-content-item detail-color-title-1 <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">조회수</div>
-					<div class="detail-content-item detail-color-content-2"><?php echo $item["views"];?></div>
+					<div class="detail-content-item detail-color-content-1 merged-2"><?php echo $item["title"];?></div>
 					<div class="detail-content-item detail-color-title-2 <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">내용</div>
 					<div class="detail-content-item merged" colspan="3"><?php echo $item["content"];?></div>
 				</div>
 				<div class="detail-content-icon <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">
 					<div class="icon-1" onclick="location.href='/assignment/src/list.php'"></div>
 					<div class="icon-2"></div>
-					<div class="icon-3"></div>
+					<div class="icon-3" onclick="location.href='/assignment/src/delete.php/?user=<?php echo $user ?>&id=<?php echo $id; ?>&page=<?php echo $page ?>'"></div>
 				</div>
 			</div>
 

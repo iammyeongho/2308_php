@@ -79,8 +79,6 @@
 			<?php require_once(ROOT."header.php"); ?>
 
 			<div class="delete-main">
-
-			</div>
 					<div class="delete-content">
 						<div class="delete-content-item delete-color-title-1 <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>"><h1>글 작성자</h1></div>
 						<div class="delete-content-item delete-color-content-1"><?php echo $item["user_name"];?></div>
@@ -92,7 +90,7 @@
 						<div class="delete-content-item merged" colspan="3"><?php echo $item["content"];?></div>
 					</div>
 					<div class="delete-content-icon <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">
-						<div class="delete-icon-1" onclick="location.href='/assignment/src/detail.php/?id=<?php echo $id; ?>&page=<?php $page?>'"></div>
+						<div class="delete-icon-1" onclick="location.href='/assignment/src/detail.php/?user=<?php echo $user ?>&id=<?php echo $id; ?>&page=<?php echo $page?>'"></div>
 						<div class="delete-icon-3" onclick="location.href='/assignment/src/delete.php/?user=<?php echo $user ?>&id=<?php echo $id; ?>'"></div>
 					</div>
 				</div>
@@ -102,6 +100,5 @@
 				<div class="music-lyrics">노래 가사 들어감</div>
 			</div>
 		</div>
-		<script src="/assignment/src/css/assignment.js"></script>
 	</body>
 </html>

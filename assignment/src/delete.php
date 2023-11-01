@@ -72,7 +72,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="/assignment/src/css/style.css">
-		<title>디테일 페이지</title>
+		<title>삭제 페이지</title>
 	</head>
 	<body>
 		<div class="background">
@@ -90,8 +90,13 @@
 						<div class="delete-content-item merged" colspan="3"><?php echo $item["content"];?></div>
 					</div>
 					<div class="delete-content-icon <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">
+					<form action="/assignment/src/delete.php" method="post">
+						<input type="hidden" name="id" value="<?php echo $id; ?>">
+						<input type="hidden" name="user" value="<?php echo $user; ?>">
+						<input type="hidden" name="page" value="<?php echo $page; ?>">
 						<div class="delete-icon-1" onclick="location.href='/assignment/src/detail.php/?user=<?php echo $user ?>&id=<?php echo $id; ?>&page=<?php echo $page?>'"></div>
-						<div class="delete-icon-3" onclick="location.href='/assignment/src/delete.php/?user=<?php echo $user ?>&id=<?php echo $id; ?>'"></div>
+						<button class="delete-icon-3" onclick="location.href='/assignment/src/delete.php/?user=<?php echo $user ?>&id=<?php echo $id; ?>'"></ㅍ>
+					</form>
 					</div>
 				</div>
 

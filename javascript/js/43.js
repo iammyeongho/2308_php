@@ -94,3 +94,24 @@ function my_close() {
 //  }
 //  // OLD_IMG2.remove();
 // }
+
+
+// fetch 2번째 아규먼트 세팅 방법
+function infinityLopp() {
+	let apiUrl = "http://192.168.0.82:6001/03_insert.php"
+	let init = {
+		method: "POST"
+		,headers: {
+			accept: "*"
+		}
+		,body: {
+			title: "아아아아"
+			,content: "오오오오"
+			,em_id: "2"
+		}
+	};
+
+	fetch(apiUrl, init)
+	.then(response => console.log(response))
+	.catch(error => console.log(error));
+}

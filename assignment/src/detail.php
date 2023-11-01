@@ -120,10 +120,10 @@
 						<button type="button" class="icon-3" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
 
 						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog modal-dialog-maxwidth ">
+							<div class="modal-dialog modal-dialog-delete-maxwidth">
 								<div class="modal-content modal-content-option">
 									<div class="modal-header">
-										<h5 class="modal-title modal-title-color" id="exampleModalLabel">정말로 삭제하시겠습니까?</h5>
+										<h5 class="modal-title modal-title-delete-color" id="exampleModalLabel">정말로 삭제하시겠습니까?</h5>
 									</div>
 									<div class="modal-body">
 										삭제하시면 되돌릴 수 없습니다.

@@ -7,7 +7,18 @@
     <?php } else if($user == 3) { ?>
         <a class="header-c" href="/assignment/src/list.php?user=<?php echo $user; ?>">맹구는 못말려</a>
     <?php } else if($user == 4) { ?>
-        <a class="header-d" href="/assignment/src/list.php?user=<?php echo $user; ?>">유리는 못말려</a>
+        <a class="header-d" href="/assign   ment/src/list.php?user=<?php echo $user; ?>">유리는 못말려</a>
     <?php } ?>
-    <div class="search-icon"></div>	<!-- <div class="search-insert"></div> -->
+    <!-- <div class="search-icon"></div> -->
+
+    <button id="open-header-modal-btn" class="search-icon"></button>
+    <div id="header-modal-id" class="header-modal">
+        <div class="header-modal-content">
+            <form action="">
+                <input class="search-modal-input" type="text">
+                <button class="search-icon"></button>
+            </form>
+        </div>
+    </div>
+    <script src="/assignment/src/js/assignment.js"></script>
 </div>

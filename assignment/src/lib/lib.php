@@ -276,17 +276,17 @@
 	// 리턴 	: Boolean
 	// ----------------------------
 
-	function delete_id(&$conn, &$arr_param) {
-		$sql =
-			" UPDATE "
+	// function delete_id(&$conn, &$arr_param) {
+	// 	$sql =
+	// 		" UPDATE "
 
-		$arr_ps = [
+	// 	$arr_ps = [
 
-		]
-		try {
+	// 	]
+	// 	try {
 			
-		} catch(Exception $e) {
-			return false; // 예외 발생 : flase 리턴
-		}
-	}
+	// 	} catch(Exception $e) {
+	// 		return false; // 예외 발생 : flase 리턴
+	// 	}
+	// }
 ?>

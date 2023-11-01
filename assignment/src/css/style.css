@@ -221,8 +221,27 @@ textarea:focus {
 /* ************************************************************* */
 /* ************************************************************* */
 /* 모달 */
+.modal-dialog-maxwidth {
+	max-width: 800px;
+}
+.modal-content-option {
+	width: 80%;
+	margin: 30% auto;
+}
 
+.modal-title-color {
+	color: #d50000;
+	font-size: 1.5rem;
+}
 
+.modal-delete-btn {
+	background-color: #d50000cc;
+	border: none;
+}
+
+.modal-delete-btn:hover{
+	background-color: #d50000;
+}
 /* ************************************************************* */
 /* ************************************************************* */
 /* 푸터 */

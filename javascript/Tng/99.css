@@ -40,6 +40,6 @@ button {
 	/* grid-template-rows: repeat(auto-fit, minmax(400px, 1fr)); */
 	grid-gap: 20px;
 	text-align: center;
-	/* place-items: center; */
+	/* place-items : center; */
 }
 

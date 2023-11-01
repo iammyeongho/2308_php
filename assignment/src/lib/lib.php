@@ -267,4 +267,26 @@
 			return false; // 예외 발생 : flase 리턴
 		}
 	}
+
+	// ----------------------------
+	// 함수명 	: delete_id
+	// 기능 	: 게시물 삭제
+	// 파라미터 : PDO 		&$conn
+	// 			: Array 	&$arr_param | 쿼리 작성용 배열
+	// 리턴 	: Boolean
+	// ----------------------------
+
+	function delete_id(&$conn, &$arr_param) {
+		$sql =
+			" UPDATE "
+
+		$arr_ps = [
+
+		]
+		try {
+			
+		} catch(Exception $e) {
+			return false; // 예외 발생 : flase 리턴
+		}
+	}
 ?>

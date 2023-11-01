@@ -46,6 +46,7 @@
 				throw new Exception("DB Error : Select id Count");
 			}
 			$item = $result[0];
+			
 		} 
 		else {
 			$id = isset($_POST["id"]) ? $_POST["id"] : "";

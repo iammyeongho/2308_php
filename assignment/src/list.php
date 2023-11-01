@@ -116,50 +116,53 @@
 	<body>
 		<div class="background">
 			<?php require_once(ROOT."header.php"); ?>
+
 			<a href="/assignment/src/insert.php/?user=<?php echo $user; ?>">작성</a>
 
-			<div class="list-main">
-				<div class="list-content <?php if($user == 1) { ?> list-content-1<?php } else if($user == 2) { ?> list-content-2 <?php } else if($user == 3) {?> list-content-3 <?php } else if($user == 4) { ?> list-content-4 <?php } ?> ">
-					<table>
-						<colgroup>
-							<col width="15%" />
-							<col width="10%" />
-							<col width="45%" />
-							<col width="20%" />
-							<col width="10%" />
-						</colgroup>
-						<tr>
-							<th>유저</th>
-							<th>번호</th>
-							<th>제목</th>
-							<th>날짜</th>
-							<th>조회수</th>
-						</tr>
-						<?php foreach($result as $item) { ?>
-						<tr class="list-content-btn" onclick="location.href='/assignment/src/detail.php/?id=<?php echo $item["list_id"]; ?>&page=<?php echo $page; ?>&user=<?php echo $user;?>'">
-							<td><?php echo $item["user_name"]?></td>
-							<td><?php echo $item["list_id"]?></td>
-							<td><?php echo $item["title"]?></td>
-							<td><?php echo $item["date_val"]?></td>
-							<td><?php echo $item["views"]?></td>
-						</tr>
-						<?php } ?>
-					</table>
-					<div class="list-content-num-btn <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">
-						<a href="/assignment/src/list.php/?page=<? echo $prev_page; ?>&user=<?php echo $user;?>"><</a>
-						<?php 
-							for($page_link = $block_start; $page_link <= $block_end; $page_link++) {
-							if($page_link == $page) { ?>
-							<a class="page-on" href="/assignment/src/list.php/?page=<?php echo $page_link; ?>&user=<?php echo $user;?>"><?php echo $page_link; ?></a>
-						<?php } 
-							else {
-						?>
-							<a href="/assignment/src/list.php/?page=<?php echo $page_link; ?>&user=<?php echo $user;?>"><?php echo $page_link; ?></a>
-						<?php
+			<div class="container">
+				<div class="list-main">
+					<div class="list-content <?php if($user == 1) { ?> list-content-1<?php } else if($user == 2) { ?> list-content-2 <?php } else if($user == 3) {?> list-content-3 <?php } else if($user == 4) { ?> list-content-4 <?php } ?> ">
+						<table>
+							<colgroup>
+								<col width="15%" />
+								<col width="10%" />
+								<col width="45%" />
+								<col width="20%" />
+								<col width="10%" />
+							</colgroup>
+							<tr>
+								<th>유저</th>
+								<th>번호</th>
+								<th>제목</th>
+								<th>날짜</th>
+								<th>조회수</th>
+							</tr>
+							<?php foreach($result as $item) { ?>
+							<tr class="list-content-btn" onclick="location.href='/assignment/src/detail.php/?id=<?php echo $item["list_id"]; ?>&page=<?php echo $page; ?>&user=<?php echo $user;?>'">
+								<td><?php echo $item["user_name"]?></td>
+								<td><?php echo $item["list_id"]?></td>
+								<td><?php echo $item["title"]?></td>
+								<td><?php echo $item["date_val"]?></td>
+								<td><?php echo $item["views"]?></td>
+							</tr>
+							<?php } ?>
+						</table>
+						<div class="list-content-num-btn <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">
+							<a href="/assignment/src/list.php/?page=<? echo $prev_page; ?>&user=<?php echo $user;?>"><</a>
+							<?php 
+								for($page_link = $block_start; $page_link <= $block_end; $page_link++) {
+								if($page_link == $page) { ?>
+								<a class="page-on" href="/assignment/src/list.php/?page=<?php echo $page_link; ?>&user=<?php echo $user;?>"><?php echo $page_link; ?></a>
+							<?php } 
+								else {
+							?>
+								<a href="/assignment/src/list.php/?page=<?php echo $page_link; ?>&user=<?php echo $user;?>"><?php echo $page_link; ?></a>
+							<?php
+									}
 								}
-							}
-						?>
-						<a href="/assignment/src/list.php/?page=<? echo $next_page; ?>&user=<?php echo $user;?>">></a>
+							?>
+							<a href="/assignment/src/list.php/?page=<? echo $next_page; ?>&user=<?php echo $user;?>">></a>
+						</div>
 					</div>
 				</div>
 			</div>

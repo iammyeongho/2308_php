@@ -257,6 +257,7 @@
 			,":title" => $arr_param["title"]
 			,":content" => $arr_param["content"]
 		];
+		var_dump($arr_ps);
 
 		try {
 			$stmt = $conn->prepare($sql);
@@ -276,17 +277,27 @@
 	// 리턴 	: Boolean
 	// ----------------------------
 
-	// function delete_id(&$conn, &$arr_param) {
-	// 	$sql =
-	// 		" UPDATE "
+	function delete_id(&$conn, &$arr_param) {
+		$sql = 
+			" UPDATE list_table "
+			." SET "
+			." 		delete_date = now() "
+			." WHERE "
+			." 		list_id = :id "
+			;
 
-	// 	$arr_ps = [
+			$arr_ps = [
+				":id" => $arr_param["id"]
+			];
 
-	// 	]
-	// 	try {
-			
-	// 	} catch(Exception $e) {
-	// 		return false; // 예외 발생 : flase 리턴
-	// 	}
-	// }
+			try {  
+				$stmt = $conn->prepare($sql);
+				$result = $stmt->execute($arr_ps);
+				return $result;
+			}
+			catch(Exception $e) {
+				echo $e->getMessage();
+				return false; // 예외 발생 : false 리턴
+			} 
+	}
 ?>

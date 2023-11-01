@@ -145,6 +145,36 @@ textarea:focus {
 	cursor: pointer;
 }
 /* ************************************************************* */
+/* 에러 모달 */
+.error-modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.4);
+}
+
+.error-modal-content {
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	max-width: 400px;
+	text-align: center;
+	position: relative;
+}
+
+.error-close {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	font-size: 24px;
+	cursor: pointer;
+}
 
 /* ************************************************************* */
 /* 헤더 */
@@ -173,11 +203,19 @@ textarea:focus {
 	font-weight: 600;
 }
 
+.header-a:hover {
+	color:#FE8F8F;
+}
+
 .header-b {
 	display: inline-block;
 	font-size: 40px;
 	color:#71c7f9;
 	font-weight: 600;
+}
+
+.header-b:hover {
+	color: #71c7f9;
 }
 
 .header-c {
@@ -187,11 +225,19 @@ textarea:focus {
 	font-weight: 600;
 }
 
+.header-c:hover {
+	color:#f6cc64;
+}
+
 .header-d {
 	display: inline-block;
 	font-size: 40px;
 	color:#FE8FB7;
 	font-weight: 600;
+}
+
+.header-c:hover {
+	color:#FE8FB7;
 }
 
 .header-e {
@@ -458,7 +504,7 @@ textarea:focus {
 }
 
 .list-content-num-btn a:last-child {
-	margin-right: 0px;
+	margin-right: 0px;	
 }
 
 .page-on {
@@ -471,19 +517,24 @@ textarea:focus {
 
 /* ************************************************************* */
 /* 디테일 페이지 */
+
+.container {
+	display: flex; /* 가로 중앙 정렬을 위해 flex 사용 */
+	justify-content: center; /* 가로 방향 가운데 정렬 */
+	align-items: center; /* 세로 방향 가운데 정렬 */
+	height: 100vh; /* 화면 높이에 맞게 설정 (viewport height) */
+}
 .detail-main {
 	height: 966px;
 	padding-top: 50px;
-	padding-left: 210px;
-	padding-right: 210px;
 	display: grid;
+	margin: auto;
 	grid-template-columns: 1420px 90px;
 }
 
 .detail-content {
 	width: 1500px;
 	height: 770px;
-	/* margin: auto; */
 	background-color: rgba(255, 255, 255, 0.3);
 	box-shadow: 0px 0px 50px 0px rgb(180, 180, 180);
 	display: grid;
@@ -491,6 +542,7 @@ textarea:focus {
 	grid-template-rows: 100px 100px 570px;
 	place-items: center;
 	border: 1px solid #ffffffbe;
+	margin: 0 auto;
 }
 
 .detail-color-title-1 {

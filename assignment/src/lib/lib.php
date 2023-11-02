@@ -379,4 +379,37 @@
 			return false; // 예외 발생 : flase 리턴
 		}
 	}
+
+	// ------------------------
+	// 함수명 	: update_boards_id
+	// 기능 	: 게시물 수정
+	// 파라미터 : PDO 		&$conn
+	// 리턴 	: int / false
+    // ------------------------
+
+	function update_boards_id(&$conn, &$arr_param) {
+		try {
+			$sql = 
+			" UPDATE list_table " 
+			." SET " 
+			." 		title = :title "
+			.", 	content = :content "
+			." WHERE "
+			." 	 	list_id = :id "
+			;
+		// prepare 설정 준비
+			$arr_ps = [
+				":id" => $arr_param["id"]
+				,":title" => $arr_param["title"]
+				,":content" => $arr_param["content"]
+			];
+			
+			$stmt = $conn->prepare($sql);
+			$result = $stmt->execute($arr_ps);
+			return $result;
+		} catch (Exception $e) {
+			echo $e->getMessage(); // Exception 메세지 출력
+			return false; // 예외발생 : false 리턴
+		}
+	}
 ?>

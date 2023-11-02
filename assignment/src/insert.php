@@ -85,7 +85,7 @@
 
             <div class="container">
                 <div class="insert-main">
-                    <form action="/assignment/src/insert.php/?user=<?php echo $user; ?>" method="post">
+                    <form action="/assignment/src/insert.php" method="POST">
                         <div class="insert-content">
                             <input type="hidden" name="user" value="<?php echo $user; ?>">
                             <div class="insert-content-item insert-color-title-1<?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">작성자</div>

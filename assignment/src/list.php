@@ -149,7 +149,7 @@
 	<body>
 		<div class="background">
 			<?php require_once(ROOT."header.php"); ?>
-			<a href="/assignment/src/insert.php/?user=<?php echo $user; ?>">작성</a>
+			<a class="list-insert-btn icon-2" href="/assignment/src/insert.php/?user=<?php echo $user; ?>"></a>
 			<div class="container">
 				<div class="list-main">
 					<div class="list-content <?php if($user == 1) { ?> list-content-1<?php } else if($user == 2) { ?> list-content-2 <?php } else if($user == 3) {?> list-content-3 <?php } else if($user == 4) { ?> list-content-4 <?php } ?> ">

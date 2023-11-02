@@ -73,7 +73,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 		<link rel="stylesheet" href="/assignment/src/css/style.css">
-		<title>삭제 페이지</title>
+		<title>수정 페이지</title>
 	</head>
 	<body>
 		<div class="background">
@@ -83,10 +83,14 @@
 			<div class="update-main">
 				<div class="update-content-box">
 					<div class="update-title">
-						<input class="update-title-input" type="text" name="" id="">
+						<input class="update-title-input" type="text" name="" id="" placeholder="변경할 제목을 입력해주세요. (50자 제한)" maxlength='50'>
 					</div>
 					<div class="update-content">
-						<textarea style="background-color: #fff" name="" id=""></textarea>
+						<textarea class="upadte-content-textarea" name="" id="" placeholder="변경할 내용을 입력해주세요. (100자 제한)" maxlength='100'></textarea>
+					</div>
+					<div class="update-btn-box">
+						<button class="update-btn">작성</button>
+						<button class="update-close-btn">취소</button>
 					</div>
 				</div>
 			</div>

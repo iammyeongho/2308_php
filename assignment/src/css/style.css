@@ -796,24 +796,71 @@ textarea:focus {
 	padding-top: 60px;
 }
 
-.update-content-box {
+/* .update-content-box {
 	width: 1500px;
 	height: 770px;
 	background-color: rgba(255, 255, 255, 0.3);
-	border: 1px solid #ffffffbe;
 	margin: 0 auto;
-}
+} */
 
 .update-title {
-	border: 1px solid #00000074;
 	margin: auto;
+	width: 1300px;
+	margin-bottom: 20px;
 }
 
 .update-title-input {
-	width: 1200px;
+	background-color: rgba(255, 255, 255, 0.635);
+	width: 1300px;
 	height: 100px;
-	padding: 10px;
+	padding: 20px;
 	font-size: 30px;
+}
+
+.update-title-input::placeholder {
+	text-align: center;
+}
+
+.update-content{
+	margin: auto;
+	width: 1300px;
+	margin-bottom: 20px;
+}
+
+.upadte-content-textarea {
+	background-color: rgba(255, 255, 255, 0.635);
+	width: 100%;
+	height: 450px;
+	padding: 20px;
+	font-size: 30px;
+}
+
+.upadte-content-textarea::placeholder {
+	text-align: center;
+}
+
+.update-btn-box {
+	margin: auto;
+	width: 1300px;
+	text-align: center;
+}
+
+.update-btn {
+	padding: 20px;
+	padding-left: 50px;
+	padding-right: 50px;
+	font-size: 30px;
+	background-color: rgba(255, 255, 255, 0.635);
+	border-radius: 10px;
+}
+
+.update-close-btn {
+	padding: 20px;
+	padding-left: 50px;
+	padding-right: 50px;
+	font-size: 30px;
+	background-color: rgba(255, 255, 255, 0.635);
+	border-radius: 10px;
 }
 /* ************************************************************* */
 /* 오류처리 */

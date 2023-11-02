@@ -55,6 +55,48 @@
 	// 리턴 	: Array / false
 	// ----------------------------
 
+	// function select_boards_paging(&$conn, &$arr_param) {
+	// 	$sql = 
+	// 		" SELECT "
+	// 		."		list_t.list_id "
+	// 		."		,list_t.title "
+	// 		."		,list_t.content "
+	// 		."		,list_t.views "
+	// 		."		,date_format(list_t.create_date, '%Y-%m-%d') date_val "
+	// 		."		,list_t.delete_date "
+	// 		."		,user_t.user_name "
+	// 		." FROM "
+	// 		."		list_table list_t "
+	// 		." JOIN "
+	// 		." 		user_table user_t "
+	// 		." ON "
+	// 		." 		list_t.user_id = user_t.user_id "
+	// 		." WHERE "
+	// 		." 		list_t.delete_date "
+	// 		." IS "
+	// 		."		NULL "
+	// 		." ORDER BY "
+	// 		." 		list_t.list_id DESC "
+	// 		." LIMIT :list_cnt OFFSET :offset "
+	// 		;
+				
+	// 	$arr_ps = 
+	// 	[
+	// 		":list_cnt" => $arr_param["list_cnt"]
+	// 		,":offset" => $arr_param["offset"]
+	// 	];
+			
+	// 	try {
+	// 		$stmt = $conn->prepare($sql);
+	// 		$stmt->execute($arr_ps);
+	// 		$result = $stmt->fetchAll();
+	// 		return $result; // 정상 : 쿼리 결과 리턴
+	// 	}
+	// 	catch(Exception $e) {
+	// 		return false; // 예외 발생 : flase 리턴
+	// 	}
+	// }
+
 	function select_boards_paging(&$conn, &$arr_param) {
 		$sql = 
 			" SELECT "
@@ -72,20 +114,22 @@
 			." ON "
 			." 		list_t.user_id = user_t.user_id "
 			." WHERE "
-			." 		list_t.delete_date "
-			." IS "
-			."		NULL "
-			." ORDER BY "
-			." 		list_t.list_id DESC "
-			." LIMIT :list_cnt OFFSET :offset "
+			." 		list_t.delete_date IS NULL "
 			;
-				
+
 		$arr_ps = 
 		[
 			":list_cnt" => $arr_param["list_cnt"]
 			,":offset" => $arr_param["offset"]
 		];
 
+		if(!empty($arr_param["search"])) {
+			$sql .=" AND title LIKE :search ";
+			$arr_ps[":search"] = $arr_param["search"];
+		}
+			$sql .=" ORDER BY list_t.list_id DESC " 
+				." LIMIT :list_cnt OFFSET :offset "
+				;
 		try {
 			$stmt = $conn->prepare($sql);
 			$stmt->execute($arr_ps);
@@ -97,39 +141,39 @@
 		}
 	}
 
-	// ----------------------------
-	// 함수명 	: select_boards_cnt
-	// 기능 	: boards count 조회
-	// 파라미터 : PDO 		&$conn
-	// 리턴 	: int / false
-	// ----------------------------
+	// // ----------------------------
+	// // 함수명 	: select_boards_cnt
+	// // 기능 	: boards count 조회
+	// // 파라미터 : PDO 		&$conn
+	// // 리턴 	: int / false
+	// // ----------------------------
 
-	function select_boards_cnt(&$conn) {
-		$sql =
-			" SELECT "
-			." 		count(list_id) as cnt "
-			." FROM "
-			." 		list_table "
-			." WHERE "
-			."		delete_date "
-			." IS "
-			."		NULL "
-			;
+	// function select_boards_cnt(&$conn) {
+	// 	$sql =
+	// 		" SELECT "
+	// 		." 		count(list_id) as cnt "
+	// 		." FROM "
+	// 		." 		list_table "
+	// 		." WHERE "
+	// 		."		delete_date "
+	// 		." IS "
+	// 		."		NULL "
+	// 		;
 			
-		try {
-			$stmt = $conn->query($sql);
-			$result = $stmt->fetchAll();
+	// 	try {
+	// 		$stmt = $conn->query($sql);
+	// 		$result = $stmt->fetchAll();
 			
-			return (int)$result[0]["cnt"];
-		}
-		catch(Exception $e) {
-			return false; // 예외 발생 : flase 리턴
-		}
-	}
+	// 		return (int)$result[0]["cnt"];
+	// 	}
+	// 	catch(Exception $e) {
+	// 		return false; // 예외 발생 : flase 리턴
+	// 	}
+	// }
 
 	// ----------------------------
 	// 함수명 	: select_boards_id
-	// 기능 	: boards id 조회
+	// 기능 	: boards id 조회 (디테일)
 	// 파라미터 : PDO 		&$conn
 	// 리턴 	: Array / false
 	// ----------------------------
@@ -299,5 +343,40 @@
 				echo $e->getMessage();
 				return false; // 예외 발생 : false 리턴
 			} 
+	}
+
+	// ----------------------------
+	// 함수명 	: select_search_cnt
+	// 기능 	: boards search
+	// 파라미터 : PDO 		&$conn
+	// 리턴 	: int / false
+	// ----------------------------
+
+	function select_search_cnt(&$conn, &$arr_param) {
+		$sql =
+			" SELECT "
+			." 		count(list_id) as cnt "
+			." FROM "
+			." 		list_table "
+			." WHERE "
+			."		title "
+			." LIKE "
+			." 		:search " // 서치 변수가 포함된 단어 조건
+			;
+
+			$arr_ps = 
+			[
+				":search" => $arr_param["search"]
+			];
+
+		try {
+			$stmt = $conn->prepare($sql);
+			$stmt->execute($arr_ps);
+			$result = $stmt->fetchAll();
+			return (int)$result[0]["cnt"];
+		}
+		catch(Exception $e) {
+			return false; // 예외 발생 : flase 리턴
+		}
 	}
 ?>

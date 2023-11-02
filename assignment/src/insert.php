@@ -22,14 +22,14 @@
             $content = isset($_POST["content"]) ? $_POST["content"] : "";
 
             if($title === "" ) {
-                $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "제목은");
+                $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "제목");
 			}
             if($content === "" ) {
-                $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "내용은");
+                $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "내용");
 			}
-            if(count($arr_err_msg) >= 1) {
-                throw new Exception(implode("<br>", $arr_err_msg));
-			}
+            // if(count($arr_err_msg) >= 1) {
+            //     throw new Exception(implode("<br>", $arr_err_msg));
+			// }
 
             if(count($arr_err_msg) === 0) {
 
@@ -41,7 +41,7 @@
 					,"content" => $_POST["content"]
 				];
 
-                if(!insert_boards($conn, $arr_param)) {
+                if(insert_boards($conn, $arr_param) === false) {
                     // DB Insert 에러
                     throw new Exception("DB Error : Insert Boards");
                 }
@@ -94,7 +94,6 @@
                             <div class="insert-content-item insert-color-content-1"><input type="text" name="title" placeholder="제목을 입력해주세요. (50자 제한)" maxlength='50'></div>
                             <div class="insert-content-item insert-color-title-2<?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">내용</div>
                             <div class="insert-content-item insert-color-content-2"><textarea type="text" name="content" placeholder="내용을 입력해주세요."></textarea></div>
-
                             <div class="insert-btn <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>"><button></button></div>
                         </div>  
                     </form>

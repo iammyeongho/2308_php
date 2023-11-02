@@ -1,7 +1,7 @@
 <?php
 	define("ROOT",$_SERVER["DOCUMENT_ROOT"]."/assignment/src/");
 	// define("FILE_HEADER", ROOT."header.php");
-	define("ERROR_MSG_PARAM", "%s : 필수 입력 사항입니다.");
+	define("ERROR_MSG_PARAM", "%s : 결과가 없습니다.");
 	require_once(ROOT."lib/lib.php");
 
 	$conn = null;
@@ -16,10 +16,17 @@
 		if($http_method === "GET") {
 
 			$user = isset($_GET["user"]) ? $_GET["user"] : "";
+			$search = isset($_GET["search"]) ? $_GET["search"] : "";
+
+			$search_term = '%' . $search . '%';
 
 			if($user === "" ) {
 				$arr_err_msg[] = "Parameter Error : user";
 			}
+
+			// if($search === "" ) {
+			// 	$arr_err_msg[] = "Parameter Error : user";
+			// }
 
 			if(count($arr_err_msg) >= 1) {
 				header("Location: /assignment/src/user.php");
@@ -28,12 +35,24 @@
 			// ------------------------------------------------------------------------
 			// 페이징 처리
 			// ------------------------------------------------------------------------
-			$boards_cnt = select_boards_cnt($conn);
+
+			// $boards_cnt = select_boards_cnt($conn);
+			// if($boards_cnt === false)
+			// {
+			// 	throw new Exception("DB Error : SELECT Count");
+			// }
+
+			$arr_param = 
+			[
+				"search" => $search_term
+			];
+
+			$boards_cnt = select_search_cnt($conn, $arr_param);
 			if($boards_cnt === false)
 			{
-				throw new Exception("DB Error : SELECT Count");
+				throw new Exception("DB Error : select_search");
 			}
-
+		
 			$list_cnt = 6; // 한 페이지당 데이터 수
 			$page = 1; // 페이지 번호 초기화
 			$block = 5; // 한 블럭 당 페이지 수
@@ -42,38 +61,38 @@
 			$max_page = ceil($boards_cnt / $list_cnt);
 			
 			$page = isset($_GET["page"]) ? $_GET["page"] : 1;
-
+	
 			// 오프셋 계산
 			$offset = ($page - 1) * $list_cnt;
-
+	
 			// 이전버튼 설정
 			$prev_page = $page - 1;
 			if($prev_page === 0)
 			{
 				$prev_page = 1;
 			}
-
+	
 			// 다음버튼 설정
 			$next_page = $page + 1;
 			if($next_page > $max_page)
 			{
 				$next_page = $max_page;
 			}
-
+	
 			// 현재 블럭 지정
 			$now_block = ceil($page / $block);
-
+	
 			// 블럭의 시작 지점
 			$block_start = ($now_block-1) * $block + 1;
-
+	
 			// 블럭의 마지막 지점
 			$block_end = $block_start + $block - 1;
-
+	
 			// 한 페이지당 블럭 개수 제한
 			if($block_end > $max_page) {
 				$block_end = $max_page;
 			}
-
+	
 			// ------------------------------------------------------------------------
 			// 게시글 조회
 			// ------------------------------------------------------------------------
@@ -82,23 +101,36 @@
 				"list_cnt" => $list_cnt
 				,"offset" => $offset
 			];
-			
 	
+			if (!empty($search_term)) {
+				$arr_param["search"] = $search_term;
+			}
 			// 게시글 리스트 조회
 			$result = select_boards_paging($conn, $arr_param);
-			if(!$result)
+
+			if(empty($result)) {
+				$arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "검색");
+			}
+
+			if(count($arr_err_msg) >= 1) {
+				// throw new Exception(implode("<br>", $arr_err_msg));
+			}
+
+
+			if($result === false)
 			{
 				throw new Exception("DB Error : SELECT boards");
 			}
 
-		}
-		else {
-			
+		} else {
+
 		}
 
 	} catch(Exception $e) {
-		echo $e->getMessage();
-		exit;
+
+			echo $e->getMessage();
+			exit;
+		
 	} finally { 
         db_destroy_conn($conn);
     }
@@ -117,9 +149,7 @@
 	<body>
 		<div class="background">
 			<?php require_once(ROOT."header.php"); ?>
-
 			<a href="/assignment/src/insert.php/?user=<?php echo $user; ?>">작성</a>
-
 			<div class="container">
 				<div class="list-main">
 					<div class="list-content <?php if($user == 1) { ?> list-content-1<?php } else if($user == 2) { ?> list-content-2 <?php } else if($user == 3) {?> list-content-3 <?php } else if($user == 4) { ?> list-content-4 <?php } ?> ">
@@ -148,6 +178,7 @@
 							</tr>
 							<?php } ?>
 						</table>
+						<?php if(count($arr_err_msg)>=1) { ?> <div class="arr_err_msg"><?php echo implode("<br>", $arr_err_msg); ?></div><?php }?>
 						<div class="list-content-num-btn <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">
 							<a href="/assignment/src/list.php/?page=<? echo $prev_page; ?>&user=<?php echo $user;?>"><</a>
 							<?php 
@@ -157,7 +188,7 @@
 							<?php } 
 								else {
 							?>
-								<a href="/assignment/src/list.php/?page=<?php echo $page_link; ?>&user=<?php echo $user;?>"><?php echo $page_link; ?></a>
+								<a href="/assignment/src/list.php/?page=<?php echo $page_link; ?>&user=<?php echo $user;?>&search=<?php echo $search;?>"><?php echo $page_link; ?></a>
 							<?php
 									}
 								}

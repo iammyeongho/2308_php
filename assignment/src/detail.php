@@ -115,11 +115,11 @@
 						<div class="detail-content-item merged" colspan="3"><?php echo $item["content"];?></div>
 					</div>
 					<div class="detail-content-icon <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">
-						<div class="icon-1" onclick="location.href='/assignment/src/list.php'"></div>
-						<div class="icon-2"></div>
-						<button type="button" class="icon-3" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+						<div class="icon-1" onclick="location.href='/assignment/src/list.php?user=<?php echo $user; ?>'"></div>
+						<div class="icon-2" onclick="location.href='/assignment/src/update.php?user=<?php echo $user; ?>&id=<?php echo $id;?>&page=<?php echo $page?>'"></div>
+						<button type="button" class="icon-3" data-bs-toggle="modal" data-bs-target="#btn-delete"></button>
 
-						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal fade" id="btn-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-delete-maxwidth">
 								<div class="modal-content modal-content-option">
 									<div class="modal-header">
@@ -138,6 +138,8 @@
 									</div>
 								</div>
 							</div>
+						</div>
+
 						</div>
 					</div>
 				</div>

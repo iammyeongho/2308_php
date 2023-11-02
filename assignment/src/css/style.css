@@ -110,6 +110,13 @@ textarea{
 textarea:focus {
 	outline: none;
 }
+
+.container {
+	display: flex; /* 가로 중앙 정렬을 위해 flex 사용 */
+	justify-content: center; /* 가로 방향 가운데 정렬 */
+	align-items: center; /* 세로 방향 가운데 정렬 */
+	height: 100vh; /* 화면 높이에 맞게 설정 (viewport height) */
+}
 /* ************************************************************* */
 
 /* ************************************************************* */
@@ -130,6 +137,11 @@ textarea:focus {
 	height: 50px;
 	float: left;
 	cursor: pointer;
+	opacity: 50%;
+}
+
+.user-icon:hover {
+	opacity: 100%;
 }
 
 .header-a {
@@ -199,8 +211,14 @@ textarea:focus {
 	float: right;
 	cursor: pointer;
 	margin-left: 30px;
+	opacity: 50%;
+}
+
+.search-icon:hover {
+	opacity: 100%;
 }
 /* ************************************************************* */
+/* 업데이트 모달 */
 /* ************************************************************* */
 /* 딜리트 모달 */
 .modal-dialog-delete-maxwidth {
@@ -226,7 +244,23 @@ textarea:focus {
 }
 /* ************************************************************* */
 /* 헤더 모달 */
-.header-modal {
+.modal-dialog-header-maxwidth {
+	max-width: 1000px;
+}
+
+.modal-hedaer-option {
+	width: 90%;
+	margin: 10% auto;
+}
+
+.search-modal-input {
+	margin-top:  -10px;
+	width: 90%;
+	border: 1px solid #30303034;
+	padding-left: 10px;
+}
+
+/* .header-modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -245,21 +279,23 @@ textarea:focus {
     border: 1px solid #888;
     width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
 }
 
 .search-modal-input {
 	margin-top:  -10px;
 	width: 90%;
-	border: 1px solid #303030;
-}
+	border: 1px solid #30303034;
+	padding-left: 10px;
+} */
 
 /* 모달 창 열기/닫기 버튼 스타일 */
-#open-header-modal-btn {
+/* #open-header-modal-btn {
     padding: 10px;
     color: #fff;
     border: none;
     cursor: pointer;
-}
+} */
 
 /* ************************************************************* */
 /* 푸터 */
@@ -489,13 +525,6 @@ textarea:focus {
 
 /* ************************************************************* */
 /* 디테일 페이지 */
-
-.container {
-	display: flex; /* 가로 중앙 정렬을 위해 flex 사용 */
-	justify-content: center; /* 가로 방향 가운데 정렬 */
-	align-items: center; /* 세로 방향 가운데 정렬 */
-	height: 100vh; /* 화면 높이에 맞게 설정 (viewport height) */
-}
 .detail-main {
 	height: 966px;
 	padding-top: 50px;
@@ -657,12 +686,12 @@ textarea:focus {
 
 .insert-main {
 	height: 966px;
-	padding-top: 50px;
+	padding-top: 70px;
 }
 
 .insert-content {
 	width: 1500px;
-	height: 770px;
+	height: 760px;
 	margin: auto;
 	background-color: rgba(255, 255, 255, 0.3);
 	box-shadow: 0px 0px 50px 0px rgb(180, 180, 180);
@@ -670,7 +699,7 @@ textarea:focus {
 	padding-right: 80px;
 	display: grid;
 	grid-template-columns: 300px 1110px;
-	grid-template-rows: 100px 100px 570px;
+	grid-template-rows: 100px 100px 560px;
 	place-items: center;
 }
 
@@ -691,7 +720,7 @@ textarea:focus {
 
 .insert-color-title-2 {
 	width: 300px;
-	height: 570px;
+	height: 560px;
 	/* background-color: #fe8f8fda; */
 	text-align: center;
 	line-height: 100px;
@@ -728,7 +757,7 @@ textarea:focus {
 
 .insert-color-content-2 {
 	width: 1110px;
-	height: 570px;
+	height: 560px;
 	text-align: center;
 	line-height: 100px;
 	background-color: rgba(255, 255, 255, 0.3);
@@ -737,11 +766,12 @@ textarea:focus {
 
 .insert-btn {
 	width: 90px;
-	height: 770px;
+	height: 760px;
 	position: absolute;
 	left: 1410px;
 	top: 0px;
 	padding: 20px;
+	border: 1px solid #00000025;
 }
 
 .insert-btn button {
@@ -760,146 +790,36 @@ textarea:focus {
 /* ************************************************************* */
 
 /* ************************************************************* */
-/* 삭제 페이지 */
-
-.delete-main {
+/* 업데이트 페이지 */
+.update-main {
 	height: 966px;
-	padding-top: 50px;
-	padding-left: 210px;
-	padding-right: 210px;
-	display: grid;
-	grid-template-columns: 1420px 90px;
+	padding-top: 60px;
 }
 
-.delete-content {
+.update-content-box {
 	width: 1500px;
 	height: 770px;
-	/* margin: auto; */
-	background-color: rgba(255, 255, 255, 0.3);
-	box-shadow: 0px 0px 50px 0px rgb(180, 180, 180);
-	display: grid;
-	grid-template-columns: 300px 455px 300px 370px;
-	grid-template-rows: 100px 100px 570px;
-	place-items: center;
-	border: 1px solid #ffffffbe;
-}
-
-.delete-color-title-1 {
-	width: 300px;
-	height: 100px;
-	/* background-color: #fe8f8fda; */
-	text-align: center;
-	line-height: 100px;
-	border: 1px solid #ffffffbe;
-	color: #fff;
-	border-right: none;
-	border-left: none;
-	border-top: none;
-}
-
-.delete-color-title-2 {
-	width: 300px;
-	height: 570px;
-	text-align: center;
-	line-height: 80px;
-	border: 1px solid #ffffffbe;
-	color: #fff;
-	border-right: none;
-	border-left: none;
-	border-top: none;
-}
-
-.delete-color-content-1 {
-	width: 455px;
-	height: 100px;
-	text-align: center;
-	line-height: 100px;
 	background-color: rgba(255, 255, 255, 0.3);
 	border: 1px solid #ffffffbe;
-	overflow:hidden;
-	white-space:nowrap;
-	text-overflow:ellipsis;
-	border-top: none;
-	border-right: none;
-	border-left: none;
+	margin: 0 auto;
 }
 
-.delete-color-content-2 {
-	width: 370px;
+.update-title {
+	border: 1px solid #00000074;
+	margin: auto;
+}
+
+.update-title-input {
+	width: 1200px;
 	height: 100px;
-	text-align: center;
-	line-height: 100px;
-	background-color: rgba(255, 255, 255, 0.3);
-	border: 1px solid #ffffffbe;
-	border-top: none;
-	border-right: none;
-	border-left: none;
-}
-
-.delete-color-content-3 {
-	width: 370px;
-	height: 100px;
-	text-align: center;
-	line-height: 100px;
-	background-color: rgba(255, 255, 255, 0.3);
-	border: 1px solid #ffffffbe;
-	border-top: none;
-	border-right: none;
-	border-left: none;
-}
-
-
-.merged {
-	grid-column: span 3; 
-	width: 1125px;
-	height: 570px;
-	padding: 30px;
-	background-color: rgba(255, 255, 255, 0.3);
-	border: 1px solid #ffffffbe;
-	border-bottom: none;
-}
-
-.merged-2 {
-	grid-column: span 3; 
-	width: 1125px;
-	height: 100px;
-	padding-left: 30px;
-	padding-right: 30px;
-}
-
-.delete-content-icon {
-	width: 80px;
-	height: 771px;
-	/* background-color: #FE8F8F; */
-	border: 1px solid #ffffffbe;
-	padding: 15px;
-}
-
-.delete-icon-1 {
-	width: 50px;
-	height: 54px;
-	background-image: url(/assignment/src/css/img/before.png);
-	background-size: cover;
-	margin-top: 268px;
-	cursor: pointer;
-	opacity: 50%;
-}
-
-.delete-icon-1:hover {
-	opacity: 100%;
-}
-
-.delete-icon-3 {
-	width: 50px;
-	height: 51px;
-	background-image: url(/assignment/src/css/img/clear.png);
-	background-size: cover;
-	margin-top: 60px;
-	cursor: pointer;
-	opacity: 50%;
-}
-
-.delete-icon-3:hover {
-	opacity: 100%;
+	padding: 10px;
+	font-size: 30px;
 }
 /* ************************************************************* */
+/* 오류처리 */
+.arr_err_msg {
+	line-height: 600px;
+	text-align: center;
+	font-size: 50px;
+	color: #d50000;
+}

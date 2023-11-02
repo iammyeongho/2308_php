@@ -46,20 +46,20 @@ SELECT list_t.list_id, list_t.title, list_t.content, list_t.views, DATE_FORMAT(l
 FROM list_table list_t
 JOIN user_table user_t
 ON list_t.user_id = user_t.user_id
-WHERE DELETE_date IS null
+WHERE title
+LIKE "%제목%"
+AND DELETE_date IS NULL
 ORDER BY LIST_id DESC
 LIMIT 5 OFFSET 0;
 
-			" INSERT INTO list_table ( "
-			." 		user_id "
-			."		,title "
-			."		,content "
-			." ) "
-			." VALUES ( "
-			." 		:user "
-			."		:title "
-			."		,:content "
-			." ) "
-			;
+INSERT INTO list_table (user_id ,title ,content )
+VALUES (1,"제목","내용");
 			
 FLUSH PRIVILEGES;
+
+SELECT 		list_t.list_id 		,list_t.title 		,list_t.content 		,list_t.views 		,date_format(list_t.create_date, '%Y-%m-%d') date_val 		,list_t.delete_date 		,user_t.user_name  FROM 		list_table list_t  JOIN  		user_table user_t  ON  		list_t.user_id = user_t.user_id  WHERE  		title  LIKE "%제목%"  AND list_t.delete_date IS NULL 
+ ORDER BY list_t.list_id DESC  LIMIT 5 OFFSET 0
+ 
+ 
+ SELECT 		list_t.list_id 		,list_t.title 		,list_t.content 		,list_t.views 		,date_format(list_t.create_date, '%Y-%m-%d') date_val 		,list_t.delete_date 		,user_t.user_name  FROM 		list_table list_t  JOIN  		user_table user_t  ON  		list_t.user_id = user_t.user_id  
+ WHERE list_t.delete_date IS NULL   AND  		title   LIKE "%제목%" ORDER BY list_t.list_id DESC  LIMIT 5 OFFSET 0

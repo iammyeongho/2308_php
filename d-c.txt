@@ -12,4 +12,8 @@ xcopy C:\github\2308_php\side_project\mini_test\src C:\Apache24\htdocs\mini_test
 
 xcopy C:\github\2308_php\assignment\src C:\Apache24\htdocs\assignment\src /E /Y
 
+xcopy D:\workspace\2308_php\assignment\src C:\Apache24\htdocs\assignment\src /E /Y
+
+xcopy D:\workspace\2308_php\side_project\mini_multi_board C:\Apache24\htdocs\mini_multi_board /E /Y
+
 해당 코드를 터미널로

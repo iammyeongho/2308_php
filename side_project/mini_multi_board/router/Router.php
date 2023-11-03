@@ -1,4 +1,6 @@
 <?php
+	// 인덱스에 어떤 url이 왔는지 분석해줌 그 후 컨트롤러로 이동
+
 	// 클래스 이름이 겹칠 수도 있기 때문에 해당 경로를 적어줌
 	namespace router;
 	
@@ -35,7 +37,7 @@
 			} else if($url === "user/logout") {
 				if($method === "GET") {
 					// 해당 컨트롤러 호출
-					// new User("logoutGet");
+					new UC("logoutGet");
 				} else {
 					// 해당 컨트롤러 호출
 				}

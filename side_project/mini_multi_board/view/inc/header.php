@@ -17,7 +17,7 @@
 				</ul>
 			</li>
 			</ul>
-			<a href="../user/login" class="text-light nav-link">로그아웃</a>
+			<a href="/user/logout" class="text-light nav-link">로그아웃</a>
 		</div>
 		<?php }?>
 		</div>

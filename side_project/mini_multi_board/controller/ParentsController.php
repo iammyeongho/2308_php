@@ -39,7 +39,7 @@
 			if(!isset($_SESSION["u_id"]) && in_array($url, $this->arrNeedAuth)) {
 				header("Location: /user/login");
 				exit();
-			}
+			} 
 		}
 
 		// 뷰 호출용 메소드

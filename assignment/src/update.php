@@ -76,6 +76,20 @@
 				exit;
 			}
 		}
+		$arr_param = [
+			"id" => $id
+		];
+
+		$result = select_boards_id($conn, $arr_param);
+
+		if($result === false) {
+			throw new Exception("DB Error : Select id");
+		}
+
+		else if(!(count($result) === 1)) {
+			throw new Exception("DB Error : Select id Count");
+		}
+		$item = $result[0];
 		} catch(Exception $e) {
 			echo $e->getMessage();
 			exit;
@@ -104,10 +118,12 @@
 						<input type="hidden" name="id" value="<?php echo $id; ?>">
 						<input type="hidden" name="page" value="<?php echo $page; ?>">
 						<input type="hidden" name="user" value="<?php echo $user; ?>">
-						<input class="update-title-input <?php if($user == 1) { ?> color-1 <?php } else if($user == 2) { ?> color-2 <?php } else if($user == 3) {?> color-3 <?php } else if($user == 4) { ?> color-4 <?php } ?>" type="text" name="title" id="" placeholder="변경할 제목을 입력해주세요. (50자 제한)" maxlength='50'>
+						<p class="update-title-p <?php if($user == 1) { ?> color-1 <?php } else if($user == 2) { ?> color-2 <?php } else if($user == 3) {?> color-3 <?php } else if($user == 4) { ?> color-4 <?php } ?>">제목</p>
+						<input class="update-title-input <?php if($user == 1) { ?> color-1 <?php } else if($user == 2) { ?> color-2 <?php } else if($user == 3) {?> color-3 <?php } else if($user == 4) { ?> color-4 <?php } ?>" type="text" name="title" id="" placeholder="<?php echo $item["title"]; ?>" maxlength='50' value="">
 					</div>
 					<div class="update-content">
-						<textarea class="upadte-content-textarea <?php if($user == 1) { ?> color-1 <?php } else if($user == 2) { ?> color-2 <?php } else if($user == 3) {?> color-3 <?php } else if($user == 4) { ?> color-4 <?php } ?>" name="content" id="" placeholder="변경할 내용을 입력해주세요. (100자 제한)" maxlength='100'></textarea>
+						<p class="update-content-p <?php if($user == 1) { ?> color-1 <?php } else if($user == 2) { ?> color-2 <?php } else if($user == 3) {?> color-3 <?php } else if($user == 4) { ?> color-4 <?php } ?>">내용</p>
+						<textarea class="upadte-content-textarea <?php if($user == 1) { ?> color-1 <?php } else if($user == 2) { ?> color-2 <?php } else if($user == 3) {?> color-3 <?php } else if($user == 4) { ?> color-4 <?php } ?>" name="content" id="" placeholder="<?php echo $item["content"]; ?>" maxlength='100'></textarea>
 					</div>
 					<div class="update-btn-box">
 						<button class="update-btn <?php if($user == 1) { ?> color-1 <?php } else if($user == 2) { ?> color-2 <?php } else if($user == 3) {?> color-3 <?php } else if($user == 4) { ?> color-4 <?php } ?>">작성</button>

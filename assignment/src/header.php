@@ -9,7 +9,8 @@
     <?php } else if($user == 4) { ?>
         <a class="header-d" href="/assignment/src/list.php?user=<?php echo $user; ?>">유리는 못말려</a>
     <?php } ?>
-    <!-- <div class="search-icon"></div> -->
+    <button type="button" class="search-icon" data-bs-toggle="modal" data-bs-target="#searchModal"></button>
+    <div class="header-insert-btn" onclick="location.href='/assignment/src/insert.php/?user=<?php echo $user; ?>'"></div>
 
     <!-- <button id="open-header-modal-btn" class="search-icon"></button>
     <div id="header-modal-id" class="header-modal">
@@ -21,10 +22,6 @@
         </div>
     </div>
     <script src="/assignment/src/js/assignment.js"></script> -->
-
-    <!-- Button trigger modal -->
-<button type="button" class="search-icon" data-bs-toggle="modal" data-bs-target="#searchModal">
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

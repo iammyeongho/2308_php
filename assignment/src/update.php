@@ -13,9 +13,9 @@
 				throw new Exception("DB Error : PDO Instance");
 			}
 			if($http_method === "GET") { 
-				$user = isset($_GET["user"]) ? $_GET["user"] : "";
-				$id = isset($_GET["id"]) ? $_GET["id"] : "";
-				$page = isset($_GET["page"]) ? $_GET["page"] : "";
+			$user = isset($_GET["user"]) ? $_GET["user"] : "";
+			$id = isset($_GET["id"]) ? $_GET["id"] : "";
+			$page = isset($_GET["page"]) ? $_GET["page"] : "";
 			
 
 			if($id === "" ) {

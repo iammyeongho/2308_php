@@ -16,6 +16,8 @@
         if($http_method === "GET") {
             $user = isset($_GET["user"]) ? $_GET["user"] : "";
         } else {
+            // *************************************************************************************
+            // 값 확인 및 POST로 빈값이 오면 alert 출력
             $user = isset($_POST["user"]) ? $_POST["user"] : "";
             $title = isset($_POST["title"]) ? $_POST["title"] : "";
             $content = isset($_POST["content"]) ? $_POST["content"] : "";
@@ -36,7 +38,10 @@
 				echo '};';
 				echo '</script>';
 			}
+            // *************************************************************************************
 
+            // *************************************************************************************
+            // 작성 구문 실행
             if(count($arr_err_msg) === 0) {
 
                 $true_conn = $conn->beginTransaction();
@@ -58,8 +63,11 @@
                 header("Location: /assignment/src/list.php/?user=$user");
                 exit;
             }
+            // *************************************************************************************
         }
         
+        // *************************************************************************************
+        // 값 저장
         $tit_stay = isset($_POST["title"]) ? $_POST["title"] : "";
         $con_stay = isset($_POST["content"]) ? $_POST["content"] : "";
 

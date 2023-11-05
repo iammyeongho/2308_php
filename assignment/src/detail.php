@@ -1,6 +1,5 @@
 <?php 
 	define("ROOT",$_SERVER["DOCUMENT_ROOT"]."/assignment/src/");
-	// define("FILE_HEADER", ROOT."header.php");
 	define("ERROR_MSG_PARAM", "%s : 필수 입력 사항입니다.");
 	require_once(ROOT."lib/lib.php");
 
@@ -9,62 +8,46 @@
 	$arr_err_msg = [];
 
 	try {
-		if(!db_conn($conn))
-			{
-				throw new Exception("DB Error : PDO Instance");
-			}
+		if(!db_conn($conn)) {
+			throw new Exception("DB Error : PDO Instance");
+		}
+		
 		if($http_method === "GET") {
-				$user = isset($_GET["user"]) ? $_GET["user"] : "";
-				$id = isset($_GET["id"]) ? $_GET["id"] : "";
-				$page = isset($_GET["page"]) ? $_GET["page"] : "";
+			// *************************************************************************************
+			// 디테일 페이지에 필요한 기본 url값 확인
+			$user = isset($_GET["user"]) ? $_GET["user"] : "";
+			$id = isset($_GET["id"]) ? $_GET["id"] : "";
+			$page = isset($_GET["page"]) ? $_GET["page"] : "";
+			// *************************************************************************************
+			
+			// *************************************************************************************
+			// 값 여부 확인 후 에러 처리
+			if($id === "" ) {
+				$arr_err_msg[] = "Parameter Error : id";
+			}
 
-				if($id === "" ) {
-					$arr_err_msg[] = "Parameter Error : id";
-				}
-	
-				if($page === "") {
-					$arr_err_msg[] = "Parameter Error : page";
-				}
+			if($page === "") {
+				$arr_err_msg[] = "Parameter Error : page";
+			}
 
-				if(count($arr_err_msg) >= 1) {
-					throw new Exception(implode("<br>", $arr_err_msg));
-				}
+			if(count($arr_err_msg) >= 1) {
+				throw new Exception(implode("<br>", $arr_err_msg));
+			}
+			// *************************************************************************************
 
-				if(count($arr_err_msg) === 0) {
+			// *************************************************************************************
+			// 조회수 부분
+			if(count($arr_err_msg) === 0) {
 
-					$arr_param = [
-						"id" => $id
-					];
-
-					$result = update_views_id($conn, $arr_param);
-
-					if($result === false) {
-						throw new Exception("DB Error : Select id");
-					}
-
-
-				}
-			} else {
-				$user = isset($_POST["user"]) ? $_POST["user"] : "";
-				$id = isset($_POST["id"]) ? $_POST["id"] : "";
-				// $page = isset($_POST["page"]) ? $_POST["page"] : "";
-
-				$conn->beginTransaction();
-
-				// 게시글 아이디 정보
 				$arr_param = [
 					"id" => $id
 				];
 
-				// 예외 처리
-				if(!delete_id($conn, $arr_param)) {
-					throw new Exception("DB Error : Delete Boards id");
+				$result = update_views_id($conn, $arr_param);
+
+				if($result === false) {
+					throw new Exception("DB Error : Select id");
 				}
-				$conn->commit(); // 모든 처리 완료 시 커밋
-
-				header("Location: /assignment/src/list.php/?user=$user"); //리스트 페이지로 이동
-				exit;
-
 			}
 			$arr_param = [
 				"id" => $id
@@ -80,6 +63,27 @@
 				throw new Exception("DB Error : Select id Count");
 			}
 			$item = $result[0];
+			} else {
+				// *************************************************************************************
+				// 삭제 처리
+				$user = isset($_POST["user"]) ? $_POST["user"] : "";
+				$id = isset($_POST["id"]) ? $_POST["id"] : "";
+
+				$conn->beginTransaction();
+
+				$arr_param = [
+					"id" => $id
+				];
+
+				if(!delete_id($conn, $arr_param)) {
+					throw new Exception("DB Error : Delete Boards id");
+				}
+				$conn->commit(); // 모든 처리 완료 시 커밋
+
+				header("Location: /assignment/src/list.php/?user=$user"); //리스트 페이지로 이동
+				exit;
+				// *************************************************************************************
+			}
 	} catch(Exception $e) {
 		echo $e->getMessage();
 		exit;
@@ -139,17 +143,11 @@
 								</div>
 							</div>
 						</div>
-
-						</div>
 					</div>
 				</div>
 			</div>
-			<div class="footer">
-				<div class="music-icon">
-				</div>
-				<div class="music-lyrics">노래 가사 들어감</div>
-			</div>
+			<?php require_once(ROOT."footer.php"); ?>
 		</div>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	</body>
 </html>

@@ -166,6 +166,7 @@ textarea:focus {
 	font-size: 40px;
 	color:#FE8F8F;
 	font-weight: 600;
+	margin-left: 55px;
 }
 
 .header-a:hover {
@@ -177,6 +178,7 @@ textarea:focus {
 	font-size: 40px;
 	color:#71c7f9;
 	font-weight: 600;
+	margin-left: 55px;
 }
 
 .header-b:hover {
@@ -188,6 +190,7 @@ textarea:focus {
 	font-size: 40px;
 	color:#f6cc64;
 	font-weight: 600;
+	margin-left: 55px;
 }
 
 .header-c:hover {
@@ -199,6 +202,7 @@ textarea:focus {
 	font-size: 40px;
 	color:#FE8FB7;
 	font-weight: 600;
+	margin-left: 55px;
 }
 
 .header-d:hover {
@@ -338,6 +342,7 @@ textarea:focus {
 	padding-bottom: 20px;
 	padding-top: 15px;
 	padding-left: 30px;
+	padding-right: 80px;
 	line-height: 50px;
 	text-align: left;
 	position:fixed;
@@ -353,8 +358,7 @@ textarea:focus {
 
 .music-lyrics {
 	height: 50px;
-	margin-left: 70px;
-	background-color: antiquewhite;
+	text-align: center;
 }
 /* ************************************************************* */
 
@@ -362,7 +366,7 @@ textarea:focus {
 /* 유저 페이지 */
 
 .user-main {
-	height: 880px;
+	height: 920px;
 	padding-top: 250px;
 }
 
@@ -855,7 +859,7 @@ textarea:focus {
 	width: 1300px;
 	height: 80px;
 	padding: 20px;
-	font-size: 35px;
+	font-size: 30px;
 	text-align: center;
 	border-radius: 10px;
 	border: 1px solid #3030307e;
@@ -891,7 +895,7 @@ textarea:focus {
 	width: 100%;
 	height: 400px;
 	padding: 20px;
-	font-size: 35px;
+	font-size: 30px;
 	text-align: center;
 	border-radius: 10px;
 	border: 1px solid #3030307e;

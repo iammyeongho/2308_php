@@ -46,28 +46,25 @@
 				<a class="header-a" href="/assignment/src/user.php">캐릭터를 선택하세요</a>
 				<div class="search-icon"></div>
 			</div>
-
-			<div class="user-main">
-				<div class="user-content">
-					<div class="user-character-jjanggu user-character" onclick="location.href='/assignment/src/list.php/?user=<?php echo $result[0]["user_id"]; ?>'">
-						<p class="user_name_gap"><?php echo $result[0]["user_name"] ?></p>
-					</div>
-					<div class="user-character-cheolsu user-character" onclick="location.href='/assignment/src/list.php?user=<?php echo $result[1]["user_id"]; ?>'">
-						<p class="user_name_gap"><?php echo $result[1]["user_name"] ?></p>
-					</div>
-					<div class="user-character-maenggu user-character" onclick="location.href='/assignment/src/list.php?user=<?php echo $result[2]["user_id"]; ?>'">
-						<p class="user_name_gap"><?php echo $result[2]["user_name"] ?></p>
-					</div>
-					<div class="user-character-yuli user-character" onclick="location.href='/assignment/src/list.php?user=<?php echo $result[3]["user_id"]; ?>'">
-						<p class="user_name_gap"><?php echo $result[3]["user_name"] ?></p>
+				<div class="user-main">
+					<div class="user-content">
+						<div class="user-character-jjanggu user-character" onclick="location.href='/assignment/src/list.php/?user=<?php echo $result[0]["user_id"]; ?>'">
+							<p class="user_name_gap"><?php echo $result[0]["user_name"] ?></p>
+						</div>
+						<div class="user-character-cheolsu user-character" onclick="location.href='/assignment/src/list.php?user=<?php echo $result[1]["user_id"]; ?>'">
+							<p class="user_name_gap"><?php echo $result[1]["user_name"] ?></p>
+						</div>
+						<div class="user-character-maenggu user-character" onclick="location.href='/assignment/src/list.php?user=<?php echo $result[2]["user_id"]; ?>'">
+							<p class="user_name_gap"><?php echo $result[2]["user_name"] ?></p>
+						</div>
+						<div class="user-character-yuli user-character" onclick="location.href='/assignment/src/list.php?user=<?php echo $result[3]["user_id"]; ?>'">
+							<p class="user_name_gap"><?php echo $result[3]["user_name"] ?></p>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="footer">
-				<div class="music-icon"></div>
-				<div class="music-lyrics">노래 가사 들어감</div>
-			</div>
+
+			<?php require_once(ROOT."footer.php"); ?>
 		</div>
 	</body>
 </html>

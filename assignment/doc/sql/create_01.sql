@@ -19,7 +19,7 @@ CREATE TABLE list_table(
 );
 
 INSERT user_table (user_name)
-VALUES ("신짱구"), ("안철수"), ("유나이티드 맹구"), ("한유라");
+VALUES ("신짱구"), ("김철수"), ("유나이티드 맹구"), ("한유리");
 
 INSERT list_table (
 	title

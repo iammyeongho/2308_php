@@ -1,6 +1,5 @@
 <?php
 	define("ROOT",$_SERVER["DOCUMENT_ROOT"]."/assignment/src/");
-	// define("FILE_HEADER", ROOT."header.php");
 	define("ERROR_MSG_PARAM", "%s : 결과가 없습니다.");
 	require_once(ROOT."lib/lib.php");
 
@@ -9,128 +8,114 @@
 	$arr_err_msg = [];
 
 	try {
-		if(!db_conn($conn))
-			{
-				throw new Exception("DB Error : PDO Instance");
-			}
+		if(!db_conn($conn)) {
+			throw new Exception("DB Error : PDO Instance");
+		}
+
 		if($http_method === "GET") {
+			// *************************************************************************************
+			// 값 확인 부분
+			$page = isset($_GET["page"]) ? (int)$_GET["page"] : 1; // 페이지 확인 페이지 기본 값 1로 세팅
+			$user = isset($_GET["user"]) ? $_GET["user"] : ""; // 유저 값 확인
+			$search = isset($_GET["search"]) ? $_GET["search"] : ""; // 검색 결과 확인
 
-			$user = isset($_GET["user"]) ? $_GET["user"] : "";
-			$search = isset($_GET["search"]) ? $_GET["search"] : "";
+			$search_term = '%' . $search . '%'; // 단어를 포함한 모든 검색 결과를 위해
+			// *************************************************************************************
 
-			$search_term = '%' . $search . '%';
-
-			if($user === "" ) {
-				$arr_err_msg[] = "Parameter Error : user";
+			// *************************************************************************************
+			// 유저 값 없을 시 유저 페이지로 강제 이동
+			if($user < 0 || $user > 4) {
+				$arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "유저");
 			}
-
-			// if($search === "" ) {
-			// 	$arr_err_msg[] = "Parameter Error : user";
-			// }
-
 			if(count($arr_err_msg) >= 1) {
 				header("Location: /assignment/src/user.php");
 				exit;
 			}
-			// ------------------------------------------------------------------------
-			// 페이징 처리
-			// ------------------------------------------------------------------------
+			// *************************************************************************************
 
-			// $boards_cnt = select_boards_cnt($conn);
-			// if($boards_cnt === false)
-			// {
-			// 	throw new Exception("DB Error : SELECT Count");
-			// }
+			// *************************************************************************************
+			if($page === "" ) {
+				throw new Exception("DB Error : select_page");
+			}
+			// *************************************************************************************
 
-			$arr_param = 
-			[
-				"search" => $search_term
-			];
+			// *************************************************************************************
+			// 검색 결과에 대한 카운터 (페이징을 위한)
+			$arr_param = [];
+
+			if (!empty($search_term)) {
+				$arr_param["search"] = $search_term;
+			}
 
 			$boards_cnt = select_search_cnt($conn, $arr_param);
-			if($boards_cnt === false)
-			{
+			if($boards_cnt === false) {
 				throw new Exception("DB Error : select_search");
 			}
+			// *************************************************************************************
 		
+			// *************************************************************************************
+			// 페이징 처리할 계산식
 			$list_cnt = 6; // 한 페이지당 데이터 수
-			$page = 1; // 페이지 번호 초기화
 			$block = 5; // 한 블럭 당 페이지 수
 			
-			//최대 페이지 수 :ex) 전체데이터(19개) / 페이지당 데이터 개수(5) = 3.8 | 5/5/5/4 이런식으로 페이지가 구성됨 -> 총 4개의 페이지가 필요
 			$max_page = ceil($boards_cnt / $list_cnt);
-			
-			$page = isset($_GET["page"]) ? $_GET["page"] : 1;
 	
-			// 오프셋 계산
 			$offset = ($page - 1) * $list_cnt;
 	
-			// 이전버튼 설정
 			$prev_page = $page - 1;
-			if($prev_page === 0)
-			{
+			if($prev_page === 0) {
 				$prev_page = 1;
 			}
-	
-			// 다음버튼 설정
+
 			$next_page = $page + 1;
-			if($next_page > $max_page)
-			{
+
+			if($next_page > $max_page) {
 				$next_page = $max_page;
 			}
-	
-			// 현재 블럭 지정
+
 			$now_block = ceil($page / $block);
-	
-			// 블럭의 시작 지점
+
 			$block_start = ($now_block-1) * $block + 1;
-	
-			// 블럭의 마지막 지점
+
 			$block_end = $block_start + $block - 1;
 	
-			// 한 페이지당 블럭 개수 제한
 			if($block_end > $max_page) {
 				$block_end = $max_page;
 			}
+			// *************************************************************************************
 	
-			// ------------------------------------------------------------------------
+			// *************************************************************************************
 			// 게시글 조회
-			// ------------------------------------------------------------------------
-			$arr_param = 
-			[
+			$arr_param = [
 				"list_cnt" => $list_cnt
 				,"offset" => $offset
 			];
 	
+			// 검색 값이 있을 때만 arr_param에 넣어줌
 			if (!empty($search_term)) {
 				$arr_param["search"] = $search_term;
 			}
+
 			// 게시글 리스트 조회
 			$result = select_boards_paging($conn, $arr_param);
 
+			// lib에서 값이 뭐가 오느냐에 따라 오류 처리
 			if(empty($result)) {
 				$arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "검색");
 			}
 
-			if(count($arr_err_msg) >= 1) {
-				// throw new Exception(implode("<br>", $arr_err_msg));
-			}
-
-
-			if($result === false)
-			{
+			if($result === false) {
 				throw new Exception("DB Error : SELECT boards");
 			}
+			// *************************************************************************************
 
 		} else {
-
+			// post처리 없음
 		}
 
 	} catch(Exception $e) {
-
-			echo $e->getMessage();
-			exit;
-		
+		echo $e->getMessage();
+		exit;
 	} finally { 
         db_destroy_conn($conn);
     }
@@ -180,29 +165,26 @@
 						</table>
 						<?php if(count($arr_err_msg)>=1) { ?> <div class="arr_err_msg"><?php echo implode("<br>", $arr_err_msg); ?></div><?php }?>
 						<div class="list-content-num-btn <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">
-							<a href="/assignment/src/list.php/?page=<? echo $prev_page; ?>&user=<?php echo $user;?>"><</a>
-							<?php 
+							<a href="/assignment/src/list.php/?page=<?php echo $prev_page; ?>&user=<?php echo $user;?>&search=<?php echo $search;?>"><</a>
+								<?php 
 								for($page_link = $block_start; $page_link <= $block_end; $page_link++) {
-								if($page_link == $page) { ?>
-								<a class="page-on" href="/assignment/src/list.php/?page=<?php echo $page_link; ?>&user=<?php echo $user;?>"><?php echo $page_link; ?></a>
-							<?php } 
-								else {
-							?>
-								<a href="/assignment/src/list.php/?page=<?php echo $page_link; ?>&user=<?php echo $user;?>&search=<?php echo $search;?>"><?php echo $page_link; ?></a>
-							<?php
+									if($page_link == $page) { ?>
+									<a class="page-on" href="/assignment/src/list.php/?page=<?php echo $page_link; ?>&user=<?php echo $user;?>"><?php echo $page_link; ?></a>
+								<?php } 
+									else {
+								?>
+									<a href="/assignment/src/list.php/?page=<?php echo $page_link; ?>&user=<?php echo $user;?>&search=<?php echo $search;?>"><?php echo $page_link; ?></a>
+								<?php
 									}
 								}
-							?>
-							<a href="/assignment/src/list.php/?page=<? echo $next_page; ?>&user=<?php echo $user;?>">></a>
+								?>
+							<a href="/assignment/src/list.php/?page=<? echo $next_page; ?>&user=<?php echo $user;?>&search=<?php echo $search;?>">></a>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="footer">
-				<div class="music-icon"></div>
-				<div class="music-lyrics">노래 가사 들어감</div>
-			</div>
+			<?php require_once(ROOT."footer.php"); ?>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	</body>

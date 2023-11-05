@@ -1,6 +1,5 @@
 <?php 
     define("ROOT",$_SERVER["DOCUMENT_ROOT"]."/assignment/src/");
-    // define("FILE_HEADER", ROOT."header.php");
     define("ERROR_MSG_PARAM", "%s : 필수 입력 사항입니다.");
     require_once(ROOT."lib/lib.php");
 
@@ -27,9 +26,16 @@
             if($content === "" ) {
                 $arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "내용");
 			}
-            // if(count($arr_err_msg) >= 1) {
-            //     throw new Exception(implode("<br>", $arr_err_msg));
-			// }
+			if (count($arr_err_msg) >= 1) {
+				$error_messages = implode("\n", $arr_err_msg);
+    
+				echo '<script>';
+				echo 'window.onload = function() {';
+				echo '   var error_message = "' . addslashes($error_messages) . '";';
+				echo '   alert(error_message);';
+				echo '};';
+				echo '</script>';
+			}
 
             if(count($arr_err_msg) === 0) {
 
@@ -52,8 +58,10 @@
                 header("Location: /assignment/src/list.php/?user=$user");
                 exit;
             }
-
         }
+        
+        $tit_stay = isset($_POST["title"]) ? $_POST["title"] : "";
+        $con_stay = isset($_POST["content"]) ? $_POST["content"] : "";
 
     } catch(Exception $e) {
 		if($http_method === "POST") {
@@ -82,7 +90,6 @@
 	<body>
 		<div class="background">
 			<?php require_once(ROOT."header.php"); ?>
-
             <div class="container">
                 <div class="insert-main">
                     <form action="/assignment/src/insert.php" method="POST">
@@ -91,20 +98,17 @@
                             <div class="insert-content-item insert-color-title-1<?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">작성자</div>
                             <div class="insert-content-item insert-color-content-1"><?php if($user == 1) { echo "신짱구" ;} else if($user == 2) { echo "안철수"; } else if($user == 3) { echo "유나이티드 맹구"; } else if($user == 4) { echo "한유라"; }?></div>
                             <div class="insert-content-item insert-color-title-1<?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">제목</div>
-                            <div class="insert-content-item insert-color-content-1"><input type="text" name="title" placeholder="제목을 입력해주세요. (50자 제한)" maxlength='50'></div>
+                            <div class="insert-content-item insert-color-content-1"><input type="text" name="title" placeholder="제목을 입력해주세요. (50자 제한)" maxlength='50' value="<?php echo $tit_stay; ?>"></div>
                             <div class="insert-content-item insert-color-title-2<?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>">내용</div>
-                            <div class="insert-content-item insert-color-content-2"><textarea type="text" name="content" placeholder="내용을 입력해주세요. (100자 제한)" maxlength='100'></textarea></div>
+                            <div class="insert-content-item insert-color-content-2"><textarea type="text" name="content" placeholder="내용을 입력해주세요. (100자 제한)" maxlength='100'><?php echo $con_stay; ?></textarea></div>
                             <div class="insert-btn <?php if($user == 1) { ?> background-color-1 <?php } else if($user == 2) { ?> background-color-2 <?php } else if($user == 3) {?> background-color-3 <?php } else if($user == 4) { ?> background-color-4 <?php } ?>"><button></button></div>
                         </div>  
                     </form>
                 </div>
             </div>
 
-			<div class="footer">
-				<div class="music-icon"></div>
-				<div class="music-lyrics">노래 가사 들어감</div>
-			</div>
+        <?php require_once(ROOT."footer.php"); ?>
 		</div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>	
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	</body>
 </html>

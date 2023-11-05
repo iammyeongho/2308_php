@@ -1,6 +1,5 @@
 <?php 
 		define("ROOT",$_SERVER["DOCUMENT_ROOT"]."/assignment/src/");
-		// define("FILE_HEADER", ROOT."header.php");
 		define("ERROR_MSG_PARAM", "%s : 필수 입력 사항입니다.");
 		require_once(ROOT."lib/lib.php");
 	
@@ -30,6 +29,7 @@
 			if(count($arr_err_msg) === 0) {
 
 			}
+
 		} else {	
 			$user = isset($_POST["user"]) ? $_POST["user"] : "";
 			$id = isset($_POST["id"]) ? $_POST["id"] : "";
@@ -54,6 +54,17 @@
 			}
 			if($content === "") {
 				$arr_err_msg[] = sprintf(ERROR_MSG_PARAM, "내용");
+			}
+
+			if (count($arr_err_msg) >= 1) {
+				$error_messages = implode("\n", $arr_err_msg);
+    
+				echo '<script>';
+				echo 'window.onload = function() {';
+				echo '   var error_message = "' . addslashes($error_messages) . '";';
+				echo '   alert(error_message);';
+				echo '};';
+				echo '</script>';
 			}
 
 			if(count($arr_err_msg) === 0) {
@@ -90,11 +101,19 @@
 			throw new Exception("DB Error : Select id Count");
 		}
 		$item = $result[0];
+
+		if($http_method === "GET"){
+			$tit_stay= $item["title"];
+			$con_stay= $item["content"];
+		} else { 
+			$tit_stay= $_POST["title"];
+			$con_stay= $_POST["content"];
+		}
 		} catch(Exception $e) {
 			echo $e->getMessage();
 			exit;
 		} finally {
-
+			db_destroy_conn($conn);
 		}
 ?>
 
@@ -119,11 +138,11 @@
 						<input type="hidden" name="page" value="<?php echo $page; ?>">
 						<input type="hidden" name="user" value="<?php echo $user; ?>">
 						<p class="update-title-p <?php if($user == 1) { ?> color-1 <?php } else if($user == 2) { ?> color-2 <?php } else if($user == 3) {?> color-3 <?php } else if($user == 4) { ?> color-4 <?php } ?>">제목</p>
-						<input class="update-title-input <?php if($user == 1) { ?> color-1 <?php } else if($user == 2) { ?> color-2 <?php } else if($user == 3) {?> color-3 <?php } else if($user == 4) { ?> color-4 <?php } ?>" type="text" name="title" id="" placeholder="<?php echo $item["title"]; ?>" maxlength='50' value="">
+						<input class="update-title-input" type="text" name="title" id="" placeholder="<?php echo $item["title"]; ?>" maxlength='50' value="<?php echo $tit_stay; ?>">
 					</div>
 					<div class="update-content">
 						<p class="update-content-p <?php if($user == 1) { ?> color-1 <?php } else if($user == 2) { ?> color-2 <?php } else if($user == 3) {?> color-3 <?php } else if($user == 4) { ?> color-4 <?php } ?>">내용</p>
-						<textarea class="upadte-content-textarea <?php if($user == 1) { ?> color-1 <?php } else if($user == 2) { ?> color-2 <?php } else if($user == 3) {?> color-3 <?php } else if($user == 4) { ?> color-4 <?php } ?>" name="content" id="" placeholder="<?php echo $item["content"]; ?>" maxlength='100'></textarea>
+						<textarea class="upadte-content-textarea" name="content" id="" placeholder="<?php echo $item["content"]; ?>" maxlength='100'><?php echo $con_stay;?></textarea>
 					</div>
 					<div class="update-btn-box">
 						<button class="update-btn <?php if($user == 1) { ?> color-1 <?php } else if($user == 2) { ?> color-2 <?php } else if($user == 3) {?> color-3 <?php } else if($user == 4) { ?> color-4 <?php } ?>">작성</button>
@@ -134,10 +153,7 @@
 			</div>
 		</div>
 		
-			<div class="footer">
-				<div class="music-icon"></div>
-				<div class="music-lyrics">노래 가사 들어감</div>
-			</div>
+		<?php require_once(ROOT."footer.php"); ?>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	</body>

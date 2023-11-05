@@ -141,6 +141,42 @@
 		}
 	}
 
+	// ----------------------------
+	// 함수명 	: select_search_cnt
+	// 기능 	: 검색 결과 시 카운트
+	// 파라미터 : PDO 		&$conn
+	// 			: Array 	&$arr_param | 쿼리 작성용 배열
+	// 리턴 	: int / false
+	// ----------------------------
+
+	function select_search_cnt(&$conn, &$arr_param) {
+		$sql =
+			" SELECT "
+			." 		count(list_id) as cnt "
+			." FROM "
+			." 		list_table "
+			." WHERE "
+			." 		delete_date IS NULL "
+			;
+
+			$arr_ps = [];
+
+			if(!empty($arr_param["search"])) {
+				$sql .=" AND title LIKE :search ";
+				$arr_ps[":search"] = $arr_param["search"];
+			}
+
+		try {
+			$stmt = $conn->prepare($sql);
+			$stmt->execute($arr_ps);
+			$result = $stmt->fetchAll();
+			return (int)$result[0]["cnt"];
+		}
+		catch(Exception $e) {
+			return false; // 예외 발생 : flase 리턴
+		}
+	}
+
 	// // ----------------------------
 	// // 함수명 	: select_boards_cnt
 	// // 기능 	: boards count 조회
@@ -175,6 +211,7 @@
 	// 함수명 	: select_boards_id
 	// 기능 	: boards id 조회 (디테일)
 	// 파라미터 : PDO 		&$conn
+	// 			: Array 	&$arr_param | 쿼리 작성용 배열
 	// 리턴 	: Array / false
 	// ----------------------------
 
@@ -220,6 +257,7 @@
 	// 함수명 	: update_views_id
 	// 기능 	: 조회수 증가
 	// 파라미터 : PDO 		&$conn
+	// 			: Array 	&$arr_param | 쿼리 작성용 배열
 	// 리턴 	: Array / false
 	// ----------------------------
 
@@ -345,46 +383,12 @@
 			} 
 	}
 
-	// ----------------------------
-	// 함수명 	: select_search_cnt
-	// 기능 	: boards search
-	// 파라미터 : PDO 		&$conn
-	// 리턴 	: int / false
-	// ----------------------------
-
-	function select_search_cnt(&$conn, &$arr_param) {
-		$sql =
-			" SELECT "
-			." 		count(list_id) as cnt "
-			." FROM "
-			." 		list_table "
-			." WHERE "
-			."		title "
-			." LIKE "
-			." 		:search " // 서치 변수가 포함된 단어 조건
-			;
-
-			$arr_ps = 
-			[
-				":search" => $arr_param["search"]
-			];
-
-		try {
-			$stmt = $conn->prepare($sql);
-			$stmt->execute($arr_ps);
-			$result = $stmt->fetchAll();
-			return (int)$result[0]["cnt"];
-		}
-		catch(Exception $e) {
-			return false; // 예외 발생 : flase 리턴
-		}
-	}
-
 	// ------------------------
 	// 함수명 	: update_boards_id
 	// 기능 	: 게시물 수정
 	// 파라미터 : PDO 		&$conn
-	// 리턴 	: int / false
+	// 			: Array 	&$arr_param | 쿼리 작성용 배열
+	// 리턴 	: Boolean
     // ------------------------
 
 	function update_boards_id(&$conn, &$arr_param) {

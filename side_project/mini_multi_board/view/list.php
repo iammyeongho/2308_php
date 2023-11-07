@@ -27,12 +27,13 @@
 		<?php
 			foreach($this->arrBoardInfo as $item) {
 		?>
-		<div class="card">
+		<div class="card" id="card<?php echo $item["id"]; ?>">
 			<img src="<?php echo isset($item["b_img"]) ? "/"._PATH_USERIMG.$item["b_img"] : "";?>" class="card-img-top h-50" alt="이미지없음">
 			<div class="card-body">
 				<h5 class="card-title"><?php echo $item["b_title"];?></h5>
 				<p class="card-text"><?php echo mb_substr($item["b_content"],0,10)."...";?> </p>
-				<button id="btnDetail" class="btn btn-dark"data-bs-toggle="modal" data-bs-target="#modalDetail">상세</button>
+				<button class="btn btn-dark" onclick="openDetail(<?php echo $item['id']; ?>); return false;">상세</button>
+				<!-- <button id="btnDetail" class="btn btn-dark"data-bs-toggle="modal" data-bs-target="#modalDetail">상세</button> -->
 			</div>
 		</div>
 		<?php 
@@ -45,15 +46,20 @@
 	<div class="modal-dialog modal-dialog-scrollable">
 	  <div class="modal-content">
 		<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">짱구입니다.</h5>
-			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			<h5 class="modal-title" id="b_title"></h5>
+			<button type="button" onclick="closeDetailModal(); return false;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		</div>
 		<div class="modal-body">
-			<span>살려주세요</span>
-			<img src="./img/80242953-짱구는_못말려_극장판__폭풍수면!_꿈꾸는_세계_대돌격.jpeg" class="card-img-top" alt="">
+			<span>작성 일자 :</span>
+			<span id="created_at"></span>
+			<br>
+			<span>수정 일자 :</span>
+			<span id="updated_at"></span>
+			<img id="b_img" src="" class="card-img-top" alt="">
+			<span id="b_content"></span>
 		</div>
 		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+			<button type="button" onclick="closeDetailModal(); return false;" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 		</div>
 	  </div>
 	</div>

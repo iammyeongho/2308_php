@@ -47,3 +47,11 @@ insert INTO boardname(b_type, b_name)
 VALUES('0','자유게시판')
 ,('1','질문게시판');
 
+insert INTO boardname(b_type, b_name)
+VALUES('2','상담게시판')
+
+SELECT b_title
+FROM board
+WHERE b_type = 0;
+
+COMMIT;

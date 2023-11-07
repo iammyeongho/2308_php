@@ -45,7 +45,7 @@
 				if($method === "GET") {
 					new UC("registGet");
 				} else {
-
+					new UC("registPost");
 				}
 			} else if($url === "board/list") {
 				if($method === "GET") {
@@ -56,6 +56,12 @@
 					// 처리 없음
 				} else {
 					new BC("addPost");
+				}
+			} else if($url === "board/detail") {
+				if($method === "GET") {
+					new BC("detailGet");
+				} else {
+					// 처리 없음
 				}
 			}
 			echo "이상한 URL : ".$url;

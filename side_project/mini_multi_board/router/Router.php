@@ -26,7 +26,7 @@
 
 			if($url === "user/login") {
 				if($method === "GET") {
-					// 해당 컨트롤러 호출
+					// 해당  컨트롤러 호출
 					// new 클래스("메소드명");
 					// 소괄호가 있으면 해당 메소드의 CONSTRUCT를 실행 
 					new UC("loginGet");
@@ -45,13 +45,23 @@
 				if($method === "GET") {
 					new UC("registGet");
 				} else {
-
+					new UC("registPost");
 				}
 			} else if($url === "board/list") {
 				if($method === "GET") {
 					new BC("listGet");
+				}
+			} else if($url === "board/add") {
+				if($method === "GET") {
+					// 처리 없음
 				} else {
-
+					new BC("addPost");
+				}
+			} else if($url === "board/detail") {
+				if($method === "GET") {
+					new BC("detailGet");
+				} else {
+					// 처리 없음
 				}
 			}
 			echo "이상한 URL : ".$url;

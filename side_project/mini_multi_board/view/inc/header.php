@@ -2,7 +2,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
 		<a class="navbar-brand" href="../board/list">미니보드</a>
-		<?php if($this -> controllerChkUrl !== "user/login") {?>
+		<?php if($this -> controllerChkUrl !== "user/login" && $this -> controllerChkUrl !== "user/regist") {?>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -12,8 +12,13 @@
 					Dropdown
 				</a>
 				<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-				<li><a class="dropdown-item" href="./free.html">자유 게시판</a></li>
-				<li><a class="dropdown-item" href="./question.html">질문 게시판</a></li>
+					<?php 
+						foreach($this->arrBoardNameInfo as $item) {
+					?>
+						<li><a class="dropdown-item" href="/board/list?b_type=<?php echo $item["b_type"]; ?>"><?php echo $item["b_name"]; ?></a></li>
+					<?php 
+						}
+					?>
 				</ul>
 			</li>
 			</ul>

@@ -47,6 +47,11 @@
 				} else {
 					new UC("registPost");
 				}
+			} else if($url === "user/idchk") {
+				if($method === "GET") {
+				} else {
+					new UC("idChkPost");
+				}
 			} else if($url === "board/list") {
 				if($method === "GET") {
 					new BC("listGet");

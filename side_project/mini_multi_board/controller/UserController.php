@@ -2,6 +2,7 @@
 	namespace controller;
 
 	use model\UserModel as UM;
+	use lib\Validation;
 
 	class UserController extends ParentsController {
 		// 로그인 페이지 이동
@@ -11,11 +12,23 @@
 
 		// 로그인 처리
 		protected function loginPost() {
+			$inputData = [
+				"u_id" => $_POST["u_id"]
+				,"u_pw" => $_POST["u_pw"]
+			];
+			// 유효성 체크
+			if(!Validation::userChk($inputData)) {
+				$this->arrErrorMsg = Validation::getArrErrorMsg();
+				return "view/login.php";
+			}
+
 			// ID, PW 설정 (DB에서 사용할 데이터 가공)
 			$arrInput = [];
 			$arrInput["u_id"] = $_POST["u_id"];
 			$arrInput["u_pw"] = $this->encryptionPassword($_POST["u_pw"]);
 			
+
+			// 유저 정보 획득
 			$modelUser = new UM();
 			$resultUserInfo = $modelUser->getUserInfo($arrInput, true);
 
@@ -49,46 +62,31 @@
 
 		// 회원가입 처리
 		protected function registPost() {
-			$u_id = $_POST["u_id"];
-			$u_pw = $_POST["u_pw"];
-			$u_name = $_POST["u_name"];
-			$u_pw_chk = $_POST["u_pw_chk"];
-
-			$arrAddUserInfo = [
-				"u_id" => $u_id
-				,"u_pw" => $this->encryptionPassword($u_pw)
-				,"u_name" => $u_name
+			// $u_id = $_POST["u_id"];
+			// $u_pw = $_POST["u_pw"];
+			// $u_name = $_POST["u_name"];
+			// $u_pw_chk = $_POST["u_pw_chk"];
+			$inputData = [
+				"u_id" => $_POST["u_id"]
+				,"u_pw" => $_POST["u_pw"]
+				,"u_name" => $_POST["u_name"]
+				,"u_pw_chk" => $_POST["u_pw_chk"]
 			];
 
-			$patternId = "/^[a-zA-Z0-9]{8,20}$/";
-			$patternPw = "/^[a-zA-Z0-9!@]{8,20}$/";
-			$patternName = "/^[a-zA-Z가-힣]{2,20}$/u";
-
-			if(preg_match($patternId, $u_id, $match) === 0) {
-				// ID 에러 처리
-				$this->arrErrorMsg[] = "아이디는 영어와 숫자로 8~20자로 입력해 주세요.";
-			}
-			if(preg_match($patternPw, $u_pw, $match) === 0) {
-				// PW 에러 처리
-				$this->arrErrorMsg[] = "비밀번호는 영어와 숫자에 특수문자(!, @)를 포함한 8~20자로 입력해 주세요.";
-			}
-			if(preg_match($patternName, $u_name, $match) === 0) {
-				// Name 에러 처리
-				$this->arrErrorMsg[] = "이름은 영어또는 한글로 8~50자로 입력해 주세요.";
-			}
-			if($u_pw !== $u_pw_chk) {
-				// Name 에러 처리
-				$this->arrErrorMsg[] = "비밀번호가 맞지않습니다.";
-			}
-
-			// 나중에 해야할 일을 TODO로 해놓고 편집기로 찾으면 진행 가능
-			// TODO : 아이디 중복 체크 필요
+			$arrAddUserInfo = [
+				"u_id" => $_POST["u_id"]
+				,"u_pw" => $this->encryptionPassword($_POST["u_pw"])
+				,"u_name" => $_POST["u_name"]
+			];
 			
-			// 유효성 체크 값 오류
-			if(count($this->arrErrorMsg) > 0) {
+			// 유효성 체크
+			// 받는 파라미터에 POST를 넣어주면 원본 데이터를 건드리지않고 값을 받아옴
+			if(!Validation::userChk($inputData)) {
+				$this->arrErrorMsg = Validation::getArrErrorMsg();
 				return "view/regist.php";
-				exit();
 			}
+
+			// TODO : 아이디 중복 체크 필요
 
 			// 회원가입 처리
 			$userModel = new UM();
@@ -105,9 +103,84 @@
 			return "Location: /user/login";
 		}
 
+		// protected function userIdChk() {
+		// 	$id = isset($_POST["u_id"]) ? $_POST["u_id"] : "";
+
+		// 	$arrUserIdChkInfo = [
+		// 		"u_id" => $u_id
+		// 	];
+
+		// 	$userModel = new UM(); 
+		// 	$result = $userModel->getBoardDetail($arrUserIdChkInfo);
+
+		// 	// 레스폰스 데이터 작성
+		// 	$arrTmp = [
+		// 		"errflg" => "0"
+		// 		,"msg" => ""
+		// 		,"data" => $result[0]
+		// 	];
+		// 	$response = json_encode($arrTmp);
+
+		// 	// rsponse 처리
+		// 	header('Content-type: application/json');
+		// 	echo $response;
+		// 	exit();
+		// }
+
+		// protected function idChkGet() {
+		// 	$u_id = $_GET["u_id"];
+		// 	$userModel = new UM();
+
+		// 	$result = $userModel->userIdChk($u_id);
+
+		// 	$arrTmp = [
+		// 		"errflg" => "0"
+		// 		,"msg" => ""
+		// 		,"data" => $result[0]
+		// 	];
+		// 	$response = json_encode($arrTmp);
+			
+		// 	// response 처리
+		// 	header('Content-type: application/json');
+		// 	echo $response;
+		// 	exit();
+    	// }
+
+		protected function idChkPost() {
+			$errorFlg = "0";
+			$errorMlg = "";
+			$inputData = [
+				"u_id" => $_POST["u_id"]
+			];
+
+			// 유효성 체크
+			if(!Validation::userChk($inputData)) {
+				$errorFlg = "1";
+				$errorMlg = Validation::getArrErrorMsg()[0];
+			}
+
+			$userModel = new UM();
+			$result = $userModel->getUserInfo($inputData);
+			$userModel->destroy();
+
+			if(count($result) > 0) {
+				$errorFlg = "1";
+				$errorMlg = "중복된 아이디입니다.";
+			}
+
+			$response = [
+				"errflg" => $errorFlg
+				,"msg" => $errorMsg
+			];
+			// $response = json_encode($arrTmp);
+			
+			header('Content-type: application/json');
+			echo json_encode($response);
+			exit();
+    	}
+	
 		// 비밀번호 암호화
 		private function encryptionPassword($pw) {
 			return base64_encode($pw);
 		}
-
 	}

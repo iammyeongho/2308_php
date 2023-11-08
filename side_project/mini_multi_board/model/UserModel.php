@@ -66,6 +66,53 @@
 				echo "UserModel->addUserInfo Error : ".$e->getMessage();
 				return false; // 예외 발생 : flase 리턴
 			}
-
 		}
+
+		// public function userIdChk($arrUserIdChkInfo) {
+		// 	$sql =
+		// 		" SELECT "
+		// 		." 		count(u_id) as id_cnt "
+		// 		." FROM "
+		// 		." 		user "
+		// 		." WHERE "
+		// 		." 		u_id = u_id "
+		// 		;
+
+		// 		$prepare = [
+		// 			"u_id" => $arrUserIdChkInfo["u_id"]
+		// 		];
+
+		// 		try {
+		// 			$stmt = $this->conn->prepare($sql);
+		// 			$result = $stmt->execute($prepare);
+		// 			return $result; // 결과 리턴
+		// 		}
+		// 		catch(Exception $e) {
+		// 			echo "UserModel->addUserInfo Error : ".$e->getMessage();
+		// 			return false; // 예외 발생 : flase 리턴
+		// 		}
+		// }
+
+	// 	public function userIdChk($u_id) {
+    //     $sql =
+    //         " SELECT "
+    //         ."     count(u_id) as cnt "
+    //         ." FROM "
+	// 		." 		user "
+    //         ." WHERE "
+    //         ."     u_id = :u_id "
+    //     ;
+    //     $prepare = [
+    //         ":u_id" => $u_id
+    //     ];
+    //     try {
+    //         $stmt = $this->conn->prepare($sql);
+    //         $stmt->execute($prepare);
+    //         $result = $stmt->fetchAll();
+    //         return $result;
+    //     } catch (Exception $e) {
+    //         echo "UserModel->idChk Error: " . $e->getMessage();
+    //         exit();
+    //     }
+    // }
 	}

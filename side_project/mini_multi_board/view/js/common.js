@@ -67,7 +67,7 @@ function idChk() {
 	const formData = new FormData();
 	formData.append("u_id", U_ID.value);
 
-	const HEADER = {
+	const HEADER = {	
 		method: "POST"
 		,body: formData
 	};
@@ -76,10 +76,10 @@ function idChk() {
 	.then( response => response.json() )
 	.then( data => {
 		if(data.errflg === "0") {
-			ID_CHK_MSG.innerHTML = '사용 가능한 아이디입니다.';
+			ID_CHK_MSG.innerHTML = '사용 가능한 아이디입니다.'
 			ID_CHK_MSG.classList = 'text-success';
 		} else {
-			ID_CHK_MSG.innerHTML = '사용 불가능한 아이디입니다.';
+			ID_CHK_MSG.innerHTML = '사용 불가능한 아이디입니다.'
 			ID_CHK_MSG.classList = 'text-danger';
 		}
 		// let msg = arr.data.cnt === 0 ? '가능' : '불가능';

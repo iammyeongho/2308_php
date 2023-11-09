@@ -84,6 +84,7 @@
 
 		// 상세 정보 API
 		protected function detailGet() {
+			// $deleteFlg = "";
 			$id = isset($_GET["id"]) ? $_GET["id"] : "";
 
 			$arrBoardDetailInfo = [
@@ -95,6 +96,15 @@
 
 			// 이미지 패스 재설정
 			$result[0]["b_img"] = "/"._PATH_USERIMG.$result[0]["b_img"];
+
+			// 작성 유저 플래그 설정
+			$result[0]["uFlg"] = $result[0]["u_pk"] === $_SESSION["u_pk"] ? "1" : "0";
+
+			// if($result[0]["u_pk"] === $_SESSION["u_pk"]) {
+			// 	$deleteFlg = 1;
+			// } else {
+			// 	$deleteFlg = 0;
+			// }
 			
 			// 레스폰스 데이터 작성
 			$arrTmp = [
@@ -108,5 +118,65 @@
 			header('Content-type: application/json');
 			echo $response;
 			exit();
+	}
+
+	// protected function deleteGet() {
+	// 	$id = $_GET["id"];
+	// 	$b_type = $_GET["b_type"];
+
+	// 	$arrBoardDeleteInfo = [
+	// 		"id" => $id
+	// 	];
+
+	// 	$boardModel = new BM(); 
+
+	// 	$boardModel->beginTransaction();
+
+	// 	$result = $boardModel->getBoardDelete($arrBoardDeleteInfo);
+	// 	if($result !== true) {
+	// 		$boardModel->commit();
+	// 	} else {
+	// 		$boardModel->rollBack();
+	// 	}
+
+	// 	$boardModel->destroy();
+
+	// 	return "Location: /board/list?b_type=".$b_type;
+	// }
+
+	// 삭제처리 API
+	protected function removeGet() {
+		$errFlg = "0";
+		$errMsg = "";
+		$arrDeleteBoardInfo = [
+			"id" => $_GET["id"]
+			,"u_pk" => $_SESSION["u_pk"]
+		];
+
+		// 삭제 처리
+		$boardModel = new BM();
+		$boardModel->beginTransaction();
+		$result = $boardModel->removeBoardCard($arrDeleteBoardInfo);
+
+		if($result !== 1) {
+			$errFlg = "1";
+			$errMsg = "삭제 처리 이상";
+			$boardModel->rollBack();
+		} else {
+			$boardModel->commit();
+		}
+
+		$boardModel->destroy();
+
+		$arrTmp = [
+			"errflg" => $errFlg
+			,"msg" => $errMsg
+			,"id" => $arrDeleteBoardInfo["id"]
+		];
+		$response = json_encode($arrTmp);
+
+		header('Content-type: application/json');
+		echo $response;
+		exit();
 	}
 }

@@ -32,7 +32,8 @@
 			<div class="card-body">
 				<h5 class="card-title"><?php echo $item["b_title"];?></h5>
 				<p class="card-text"><?php echo mb_substr($item["b_content"],0,10)."...";?> </p>
-				<button class="btn btn-dark" onclick="openDetail(<?php echo $item['id']; ?>); return false;">상세</button>
+				<button class="btn btn-dark" onclick="openDetail(<?php echo $item['id']; ?>); 
+				return false;">상세</button>
 				<!-- <button id="btnDetail" class="btn btn-dark"data-bs-toggle="modal" data-bs-target="#modalDetail">상세</button> -->
 			</div>
 		</div>
@@ -59,6 +60,10 @@
 			<span id="b_content"></span>
 		</div>
 		<div class="modal-footer">
+			<!-- <a id="modalPk" class="btn btn-secondary me-auto p-2 bd-highlight">삭제</a> -->
+			<input id="del_id" type="hidden" value="">
+			<button type="button" id="btn_del" onclick="deleteCard(); return false;" class="btn btn-secondary me-auto p-2 bd-highlight d-none">삭제</button>
+			<button type="button" class="btn btn-secondary">수정</button>
 			<button type="button" onclick="closeDetailModal(); return false;" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 		</div>
 	  </div>
@@ -93,7 +98,7 @@
 	</div>
 
 	<footercl class="fixed-bottom bg-dark text-light text-center p-3">저작권</footercl>
-	<script src="/view/js/common.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="/view/js/common.js"></script>
 </body>
 </html>

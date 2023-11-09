@@ -68,6 +68,18 @@
 				} else {
 					// 처리 없음
 				}
+			} // else if($url === "board/delete") {
+			// 	if($method === "GET") {
+			// 		new BC("deleteGet");
+			// 	} else {
+			// 		// 처리 없음
+			// 	}
+			else if($url === "board/remove") {
+				if($method === "GET") {
+					new BC("removeGet");
+				} else {
+					// 처리 없음
+				}
 			}
 			echo "이상한 URL : ".$url;
 			exit();

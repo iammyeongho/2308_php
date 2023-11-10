@@ -132,3 +132,9 @@ root/
 		POST 	http://localhost/members		:  	회원 정보 리소스 생성
 		PUT  	http://localhost/members/1  	:  	1번 회원 정보 수정
 		DELETE 	http://localhost/members/1		: 	1번 회원 정보 삭제
+
+4. vendor, env 파일을 재설치하는 방법
+    4-1. D:\workspace\2308_php\laravel_edu 이동 (vendor를 내려받을 라라벨 프로젝트로 이동)
+    4-2. 커맨드 실행 : composer install (해당 코드를 치면 vendor를 다운로드함)
+    4-3. .env.example 파일을 카피해서 .env로 이름 변
+    4-4. 커맨드 실행 : php artisan key:generate

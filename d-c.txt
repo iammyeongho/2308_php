@@ -19,3 +19,11 @@ xcopy D:\workspace\2308_php\side_project\mini_multi_board C:\Apache24\htdocs\min
 xcopy C:\github\2308_php\side_project\mini_multi_board C:\Apache24\htdocs\mini_multi_board /E /Y
 
 해당 코드를 터미널로
+
+php.ini
+extension=curl
+extension=ftp
+extension=fileinfo
+
+
+https://getcomposer.org/download/ 설치

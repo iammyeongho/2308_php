@@ -138,3 +138,4 @@ root/
     4-2. 커맨드 실행 : composer install (해당 코드를 치면 vendor를 다운로드함)
     4-3. .env.example 파일을 카피해서 .env로 이름 변
     4-4. 커맨드 실행 : php artisan key:generate
+    4-5. 그 외 설정들 세팅

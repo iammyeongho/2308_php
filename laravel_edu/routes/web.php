@@ -131,4 +131,34 @@ Route::get('/test', [TestController::class,'index'])->name('test.index');
 use App\Http\Controllers\TaskController;
 // Route:get('/task', [TaskController::class, 'index']->name('task.index'));
 // resource 안의 값을 지우면 에러 걸림
-Route::resource('/task', TaskController::class);        
+Route::resource('/task', TaskController::class);
+//GET|HEAD        task .................... task.index › TaskController@index  
+//POST            task .................... task.store › TaskController@store  
+//GET|HEAD        task/create ............. task.create › TaskController@create  
+//GET|HEAD        task/{task} ............. task.show › TaskController@show  
+//PUT|PATCH       task/{task} ............. task.update › TaskController@update  
+//DELETE          task/{task} ............. task.destroy › TaskController@destroy  
+//GET|HEAD        task/{task}/edit ........ task.edit › TaskController@edit
+
+
+Route::get('/layout', function () {
+    return view('inc.layout');
+});
+
+// child1,2는 html 값이 없지만 화면에 표시되는 이유는 layout를 상속 받기 때문에
+Route::get('/child1', function () {
+    $arr = [
+        'name' => '김민정'
+        ,'age' => '30'
+        ,'gender' => '에이젠더'
+    ];
+    $arr2 = [];
+    return view('child1')
+                ->with('gender', '0')
+                ->with('data', $arr)
+                ->with('data2', $arr2);
+});
+
+Route::get('/child2', function () {
+    return view('child2');
+});

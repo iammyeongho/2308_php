@@ -28,6 +28,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // 해당 부분은 히든으로 셀렉트되지 않는 값
     protected $hidden = [
         'password',
         'remember_token',

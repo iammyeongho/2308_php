@@ -17,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // 해당 값과 blade 값 이름을 동일하게 했기 때문에
     protected $fillable = [
         'name',
         'email',

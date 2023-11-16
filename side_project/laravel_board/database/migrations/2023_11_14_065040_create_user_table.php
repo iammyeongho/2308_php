@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
+            // 해당 부분의 timestamps의 디폴트 값이 적용되게 하려면 엘로퀀트 모델로 쿼리를 쏴줘야함
             $table->timestamps();
             $table->softDeletes();
         });

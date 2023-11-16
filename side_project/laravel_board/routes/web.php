@@ -16,6 +16,7 @@ use App\Http\Controllers\BoardController;
 |
 */
 
+// 오류 츌력 부 = lang/en/validation/required 부분 한글로 수정 | 최하단 attributes 값 확인
 
 Route::get('/', function () {
     return view('login');
@@ -41,7 +42,8 @@ Route::get('/', function () {
 // 로그인 화면 이동
 Route::get('/user/login', [UserController::class, 'loginget'])->name('user.login.get');
 // 로그인 처리
-Route::post('/user/login', [UserController::class, 'loginpost'])->name('user.login.post');
+// 해당 미들웨어 사용 시에 Kernel의 최하단 작성
+Route::middleware('my.user.validation')->post('/user/login', [UserController::class, 'loginpost'])->name('user.login.post');
 
 // 로그아웃 처리
 Route::get('/user/logout', [UserController::class, 'logoutget'])->name('user.logout.get');
@@ -49,18 +51,21 @@ Route::get('/user/logout', [UserController::class, 'logoutget'])->name('user.log
 // 회원가입 화면 이동
 Route::get('/user/registration', [UserController::class, 'registrationget'])->name('user.registration.get');
 // 회원가입 처리
-Route::post('/user/registration', [UserController::class, 'registrationpost'])->name('user.registration.post');
+Route::middleware('my.user.validation')->post('/user/registration', [UserController::class, 'registrationpost'])->name('user.registration.post');
 
 
 // ----------------------------------------------------------------------------------------
 // 보드 관련
-Route::resource('/board', BoardController::class);
-
-
 // GET|HEAD        board ..................... board.index › BoardController@index  
-// POST            board ..................... board.store › BoardController@store  
-// GET|HEAD        board/create ............ board.create › BoardController@create  
-// GET|HEAD        board/{board} ............... board.show › BoardController@show  
+// POST            board ..................... board.store › BoardController@store  작성
+// GET|HEAD        board/create ............ board.create › BoardController@create  작성 페이지
+// GET|HEAD        board/{board} ............... board.show › BoardController@show  디테일 페이지
 // PUT|PATCH       board/{board} ........... board.update › BoardController@update  
 // DELETE          board/{board} ......... board.destroy › BoardController@destroy  
 // GET|HEAD        board/{board}/edit .......... board.edit › BoardController@edit  
+
+// Middleware/Authenticate/protected function redirectTo
+// Middleware 수정 후 kernel 수정해야함
+// 로그인 인증과 관련된 내용
+// middleware('auth')로 로그인 관련 체크를 해줌
+Route::middleware('auth')->resource('/board', BoardController::class);

@@ -16,8 +16,8 @@
                     <p class="card-text">작성일자 : {{$data->created_at}}</p>
                     {{-- <button id="btnDetail" class="btn btn-dark"data-bs-toggle="modal" data-bs-target="#modalDetail">상세</button> --}}
                     <button class="btn btn-danger">삭제</button>
-                    {{-- <a href="{{route('board.show', ['board' => 1])}}"class="btn btn-dark">수정</a>
-                    <a href="{{route('board.show', ['board' => 1])}}"class="btn btn-dark">이전</a> --}}
+                    <a href="{{route('board.edit', ['board' => $data->b_id])}}"class="btn btn-dark">수정</a>
+                    <a href="{{route('board.index')}}"class="btn btn-dark">이전</a>
                 </form>
             </div>
         </div>

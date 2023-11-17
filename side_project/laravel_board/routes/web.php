@@ -56,13 +56,17 @@ Route::middleware('my.user.validation')->post('/user/registration', [UserControl
 
 // ----------------------------------------------------------------------------------------
 // 보드 관련
-// GET|HEAD        board ..................... board.index › BoardController@index  
-// POST            board ..................... board.store › BoardController@store  작성
+// GET|HEAD        board ..................... board.index › BoardController@index  메인 화면
+
 // GET|HEAD        board/create ............ board.create › BoardController@create  작성 페이지
+// POST            board ..................... board.store › BoardController@store  작성 처리
+
 // GET|HEAD        board/{board} ............... board.show › BoardController@show  디테일 페이지
-// PUT|PATCH       board/{board} ........... board.update › BoardController@update  
-// DELETE          board/{board} ......... board.destroy › BoardController@destroy  
-// GET|HEAD        board/{board}/edit .......... board.edit › BoardController@edit  
+
+// GET|HEAD        board/{board}/edit .......... board.edit › BoardController@edit  수정 페이지
+// PUT|PATCH       board/{board} ........... board.update › BoardController@update  수정 처리
+
+// DELETE          board/{board} ......... board.destroy › BoardController@destroy  삭제 처리
 
 // Middleware/Authenticate/protected function redirectTo
 // Middleware 수정 후 kernel 수정해야함

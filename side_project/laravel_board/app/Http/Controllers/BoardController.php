@@ -7,8 +7,8 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Models\Board;
 use Illuminate\Support\Facades\Log;
+use App\Models\Board;
 
 class BoardController extends Controller
 {
@@ -101,7 +101,8 @@ class BoardController extends Controller
      */
     public function edit($id)
     {
-        //
+        $result = Board::find($id);
+        return view('edit')->with('data', $result);
     }
 
     /**
@@ -113,7 +114,18 @@ class BoardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = Board::find($id);
+
+        // 첫번째 방법
+        // $result->b_title = $request->b_title;
+        // $result->b_content = $request->b_content;
+        // $result->save();
+
+        // 두번째 방법
+        $arrInpuDate = $request->only('b_title', 'b_content');
+        $result->update($arrInpuDate);
+
+        return redirect()->route('board.show', $id);
     }
 
     /**

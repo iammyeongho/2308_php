@@ -1,28 +1,40 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <!-- 헤더 -->
-  <div class="nav">
+  <!-- 상속 -->
+  <Header :data="navList"></Header>
+  <!-- 컴포넌트 Header 파일로 이관 -->
+  <!-- <div class="nav"> -->
     <!-- <a href="#">홈</a>
     <a href="#">상품</a>
     <a href="#">기타</a> -->
 
-    <!-- 반복문 -->
-    <a v-for="item in navList" :key="item">{{ item }}</a>
+  <!-- 반복문 -->
+    <!-- <a v-for="item in navList" :key="item">{{ item }}</a> -->
   <!-- <a v-for="(item, i) in navList" :key="item">{{ i + ' : ' + item }}</a> -->
-  </div>
+  <!-- </div> -->
+
+  <!-- 할인 배너 -->
+  <Discount></Discount>
+  <!-- 컴포넌트 Discount 파일로 이관 -->
+  <!-- <div class="discount">
+    <p>지금 구매하시면, 30% 할인</p>
+  </div> -->
 
   <!-- 모달 -->
   <transition name="modalAni">
-    <div class="bg_balck" v-if="modalFlg" @click="closeModal">
+    <Modal v-if = "modalFlg" :data = "item" @modalClose = "modalClose"></Modal>
+    <!-- 컴포넌트 Modal 파일로 이관 -->
+    <!-- <div class="bg_balck" v-if="modalFlg" @click="modalClose()">
     <div class="bg_white">
       <h4>{{ item.name }}</h4>
       <p>{{ item.content }}</p>
       <img :src="item.img" alt="이미지 없음">
       <p>가격 : {{ item.price }}</p>
       <p>신고수 : {{ item.reportCnt }}</p>
-      <button @click="modalFlg=false">닫기</button>
+      <button @click="modalClose()">닫기</button>
     </div>
-    </div>
+    </div> -->
   </transition>
   
 
@@ -55,13 +67,17 @@
         <h4 v-for="item in products[1]" :key="item">{{ item }}</h4>
         <h4 v-for="item in products[2]" :key="item">{{ item }}</h4> -->
 
-        <div v-for="(item, i) in products" :key="i">
+        <!-- 컴포넌트 List로 이관 -->
+        <div>
+          <ProductsList v-for="(item, i) in products" :key="i" :data="item" :productKey = "i" @openModal = "openModal" @plusOne = "plusOne"></ProductsList>
+        </div>
+        <!-- <div v-for="(item, i) in products" :key="i">
           <h4 @click="openModal(item)">{{ item.name }}</h4>
           <p>{{ item.price }}</p>
           <button @click="plusOne(i)" type="button">허위 신고</button>
           <p>신고수 : {{ item.reportCnt }}</p>
           <hr>
-        </div>
+        </div> -->
         <!-- <h4 v-for="item in products" :key="item"> {{ item.name + " : " + item.price }}</h4> -->
     </div>
   </div>
@@ -69,13 +85,19 @@
 
 <script>
 import data from './assets/js/data.js';
+
+import Discount from './components/Discount.vue';
+import Header from './components/Header.vue';
+import Modal from './components/Modal.vue';
+import ProductsList from './components/ProductsList.vue';
+
 export default {
   name: 'App',
-
+  
   // 데이터 바인딩 : 우리가 사용할 데이터를 저장하는 공간
   data() {
     return {
-      navList: ['홈', '상품', '기타'],
+      navList: ['홈', '상품', '기타', '문의'],
       // products : [ {item : '양말'}, {item : '티셔츠'}, {item : '바지'}],
       // products : ['양말', '티셔츠', '바지'],
       // prices : ['1,500', '40,000', '60,000'],
@@ -99,14 +121,23 @@ export default {
     openModal(item) {
       this.item = item;
       this.modalFlg = true;
+      // this.$emit('openModal', item);
     },
     plusOne(i) {
       this.products[i].reportCnt++;
+      // this.$emit('plusOne', i);
     },
-    closeModal() {
+    modalClose() {
       this.modalFlg = false;
     }
   }, 
+  // components : 컴포넌트를 등록하는 영역
+  components: {
+    Discount,
+    Header,
+    Modal,
+    ProductsList,
+  },
 }
 </script>
 

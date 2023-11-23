@@ -13,7 +13,9 @@
   <ContainerComponent></ContainerComponent>
 
   <!-- 더보기 버튼 -->
-  <button v-if="$store.state.moreFlg === 0" @click="lastList()" class="label-store" style=" margin: 30px; padding: 10px; width: 300px;">더보기</button>
+  <!-- 더보기 버튼을 클릭 했을 시에 데이터를 통신해야함 클릭을 만들면 store에 actions으로 일단 이동 -->
+  <!-- 플래그를 boo으로 만들어서 트루 펄스로 정리, 그리고 flgTapUI 플래그를 줘서 작성 페이지에는 안나오게 -->
+  <button v-if="$store.state.flgBtnMoreView && $store.state.flgTapUI === 0 " @click="lastList()" class="label-store" style=" margin: 30px; padding: 10px; width: 300px;">더보기</button>
 
   <!-- 푸터 -->
   <div class="footer">

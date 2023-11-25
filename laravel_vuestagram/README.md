@@ -29,3 +29,5 @@ routes/
     api.php
     web.php
 .env.example        Authorization용 키(APP_AUTHORIZATION_KEY) 추가
+
+

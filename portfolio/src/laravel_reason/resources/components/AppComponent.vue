@@ -34,15 +34,26 @@
         
     <router-view></router-view>
 </template>
+
 <script>
 
 import LoginComponent from './LoginComponent.vue';
 
 export default {
     name: 'AppComponent',
+    mounted() {
+    // 휠 이벤트 리스너 등록
+    document.addEventListener('wheel', this.handleWheelEvent, { passive: false });
+    },
+    beforeDestroy() {
+        // 컴포넌트가 파괴되기 전에 이벤트 리스너 제거
+        document.removeEventListener('wheel', this.handleWheelEvent);
+    },
 
     methods: {
-
+        handleWheelEvent(event) {
+            event.preventDefault();
+        },
     },
 
     components: {

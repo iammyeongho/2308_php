@@ -22,7 +22,7 @@
             <label for="">비밀번호</label>
             <input type="password" name="password" v-model="frmUserData.password">
             <label for="">비밀번호 확인</label>
-            <!-- <input type="password" name="password_chk" v-model="frmUserData.password_chk"> -->
+            <input type="password" name="password_chk" v-model="frmUserData.password_chk">
             <button type="button" @click="regiflg1=false; regiflg2=true;">이전</button>
             <button type="button" @click="submitUserData()">회원가입</button>
         </div>
@@ -43,7 +43,7 @@ export default {
                 phone_number: '',
                 email: '',
                 password: '',
-                // password_chk: '',
+                password_chk: '',
             },
         }
     },

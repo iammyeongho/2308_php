@@ -5,26 +5,71 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-    function store(Request $request) {
-        // 요청에서 받은 데이터를 데이터베이스에 저장하기 전에 유효성 검사 등을 수행할 수 있습니다.
-        // $validatedData = $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'gender' => 'required|string|max:255',
-        //     'birthdate' => 'required|date',
-        //     'phone_number' => 'required|string|max:255',
-        //     'email' => 'required|email|unique:users|max:255',
-        //     'password' => 'required|string|min:6|same:passwordchk',
-        //     'password_cnk' => 'required|string|min:6|confirmed',
-        // ]);
 
-        $data = $request->only('email', 'password', 'name', 'gender', 'birthdate', 'phone_number');
+    // 로그인
+    public function loginpost(Request $request) {
+        // Log::debug("****************** login 시작 ******************");
+        // 유저 정보 획득
+        $result = User::where('email', $request->email)->first();
+    
+        // Log::debug("값 :" .$request);
+        // Log::debug("값 :" .$result);
+        // 받은 값과 있는 값의 비밀번호를 체크
+        if(!$result || !(Hash::check($request->password, $result->password))) {
+            return response()->json([
+                'success' => false,
+                'message' => '아이디와 비밀번호를 확인해주세요.',
+            ]);
+        }
+    
+        // 유저 인증 작업
+        Auth::login($result);
+    
+        if (Auth::check()) {
+            session(['user' => Auth::user()]);
+            $allSessionData = session()->all();
+
+            Log::debug( $allSessionData);
+
+            $request->session()->put('login_status', 'authenticated');
+
+            return response()->json([
+                'success' => true,
+                'message' => '로그인이 성공적으로 수행되었습니다.',
+            ]);
+
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => '인증 에러가 발생했습니다.',
+            ]);
+        }
+    }
+
+    // 로그아웃 처리
+    public function logout() {
+        // 세션 파기
+        Session::flush();
+        // 로그아웃 처리
+        Auth::logout();
+
+        return route('/');
+    }
+
+    // 회원가입
+    function store (Request $request) {
+
+        $data = $request->only('email', 'password', 'password_chk', 'name', 'gender', 'birthdate', 'phone_number');
 
         // 비밀번호 암호화
         $data['password'] = Hash::make($data['password']);
-
+        Log::info($request);
         // 회원가입 정보 DB 저장
         $result = User::create($data);
 

@@ -1,8 +1,8 @@
 require('./bootstrap.js');
 
 import { createApp } from 'vue';
-import router from '../js/router.js';
-import store from '../js/store.js';
+import router from './router.js';
+import store from './store.js';
 import AppComponent from '../components/AppComponent.vue';
 
 createApp({

@@ -4,12 +4,10 @@
             <h2>회원 로그인</h2>
             <p>가입하신 아이디와 비밀번호를 입력해주세요.</p>
             <p>비밀번호는 대소문자를 구분합니다.</p>
-            <form action="">
-                <input type="text" placeholder="ID">
-                <input type="password" placeholder="PASSWORD">
-                <button>로그인</button>
-            </form>
-            <button type="button">회원가입 / 계정 찾기</button>
+            <input type="text" placeholder="email" name="email" v-model="frmUserLoginData.email">
+            <input type="password" placeholder="password" name="password" v-model="frmUserLoginData.password">
+            <button type="button" @click="submitUserLoginData()">로그인</button>
+            <router-link to="/registration">회원가입</router-link>
             <!-- <button type="button">아이디 / 비밀번호 찾기</button> -->
         </div>
     </main>
@@ -18,8 +16,21 @@
 export default {
     name: 'LoginComponent',
 
-    methods: {
+    data() {
+        return {
+            frmUserLoginData: {
+                email: '',
+                password: '',
+            },
+        }
+    },
 
+    methods: {
+        submitUserLoginData() {
+            console.log(this.frmUserLoginData);
+            this.$store.dispatch('submitUserLoginData', this.frmUserLoginData);
+        },
+        
     },
 
     components: {

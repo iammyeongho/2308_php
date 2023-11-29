@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from 'vue-router';
 import MainComponent from '../components/MainComponent.vue';
 import LoginComponent from '../components/LoginComponent.vue';
 import RegistrationComponent from '../components/RegistrationComponent.vue';
+import VueCookies from 'vue-cookies';
 import store from './store';
 
 const routes = [
@@ -14,10 +15,15 @@ const routes = [
         component: MainComponent,
     },
     {
+        path: '/registration',
+        component: RegistrationComponent,
+    },
+    {
         path: '/login',
         component: LoginComponent,
         beforeEnter: (to, from, next) => {
-            if (store.state.isLoggedIn) {
+            const rememberToken = VueCookies.get('remember_token');
+            if (rememberToken) {
                 // 이미 로그인된 경우 로그인 페이지로 이동 방지
                 next('/');
             } else {
@@ -26,8 +32,8 @@ const routes = [
         },
     },
     {
-        path: '/registration',
-        component: RegistrationComponent,
+        path: '/logout',
+        component: MainComponent,
     },
 ];
 

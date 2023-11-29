@@ -1,6 +1,6 @@
 <template>
-        <div id="modal">
-            <p class="close" id="close-modal">X</p>
+        <div v-show="modalVisible" id="modal">
+            <p class="close" @click="closeModal">X</p>
             <div class="modal-content">
                 <ul>
                     <li><a href="">소개</a></li>
@@ -13,9 +13,9 @@
         </div>
 
         <header>
-            <img src="/img/menu.png" alt="" id="open-modal">
-            <img src="/img/icon.png" alt="">
-            <img src="/img/user.png" alt="">
+            <img @click="openModal" src="/img/menu.png" alt="" id="open-modal">
+            <router-link to="/"><img src="/img/icon.png" alt=""></router-link>
+            <router-link to="/login"><img src="/img/user.png" alt=""></router-link>
         </header>
 
 
@@ -41,6 +41,7 @@ import LoginComponent from './LoginComponent.vue';
 
 export default {
     name: 'AppComponent',
+
     mounted() {
     // 휠 이벤트 리스너 등록
     document.addEventListener('wheel', this.handleWheelEvent, { passive: false });
@@ -50,9 +51,23 @@ export default {
         document.removeEventListener('wheel', this.handleWheelEvent);
     },
 
+    data() {
+        return {
+            modalVisible: false,
+        };
+    },
+
     methods: {
         handleWheelEvent(event) {
             event.preventDefault();
+        },
+        openModal() {
+            this.modalVisible = true;
+            document.body.style.overflow = "hidden";
+        },
+        closeModal() {
+            this.modalVisible = false;
+            document.body.style.overflow = "auto";
         },
     },
 

@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cookie;
+
 
 class UserController extends Controller
 {
@@ -17,7 +20,7 @@ class UserController extends Controller
         // Log::debug("****************** login 시작 ******************");
         // 유저 정보 획득
         $result = User::where('email', $request->email)->first();
-    
+
         // Log::debug("값 :" .$request);
         // Log::debug("값 :" .$result);
         // 받은 값과 있는 값의 비밀번호를 체크
@@ -31,17 +34,25 @@ class UserController extends Controller
         // 유저 인증 작업
         Auth::login($result);
     
+        $token = Str::random(60);
+
+        // 데이터베이스에 토큰 저장
+        $result->update(['remember_token' => $token]);
+
+        Log::debug($token);
+        Log::debug($request);
         if (Auth::check()) {
             session(['user' => Auth::user()]);
             $allSessionData = session()->all();
 
-            Log::debug( $allSessionData);
+            Log::debug($allSessionData);
 
-            $request->session()->put('login_status', 'authenticated');
+            // $request->session()->put('login_status', 'authenticated');
 
             return response()->json([
                 'success' => true,
                 'message' => '로그인이 성공적으로 수행되었습니다.',
+                'cookie' => $token,
             ]);
 
         } else {
@@ -59,7 +70,7 @@ class UserController extends Controller
         // 로그아웃 처리
         Auth::logout();
 
-        return route('/');
+        return response()->json(['message' => '로그아웃 성공']);
     }
 
     // 회원가입

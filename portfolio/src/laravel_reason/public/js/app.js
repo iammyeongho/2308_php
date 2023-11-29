@@ -19349,9 +19349,22 @@ __webpack_require__.r(__webpack_exports__);
     // 컴포넌트가 파괴되기 전에 이벤트 리스너 제거
     document.removeEventListener('wheel', this.handleWheelEvent);
   },
+  data: function data() {
+    return {
+      modalVisible: false
+    };
+  },
   methods: {
     handleWheelEvent: function handleWheelEvent(event) {
       event.preventDefault();
+    },
+    openModal: function openModal() {
+      this.modalVisible = true;
+      document.body.style.overflow = "hidden";
+    },
+    closeModal: function closeModal() {
+      this.modalVisible = false;
+      document.body.style.overflow = "auto";
     }
   },
   components: {
@@ -19379,12 +19392,18 @@ __webpack_require__.r(__webpack_exports__);
       frmUserLoginData: {
         email: '',
         password: ''
-      }
+      },
+      userBasePTag1: '가입하신 아이디와 비밀번호를 입력해주세요.',
+      userBasePTag2: '비밀번호는 대소문자를 구분합니다'
     };
+  },
+  computed: {
+    loginErrorMessage: function loginErrorMessage() {
+      return this.$store.state.loginErrorMessage;
+    }
   },
   methods: {
     submitUserLoginData: function submitUserLoginData() {
-      console.log(this.frmUserLoginData);
       this.$store.dispatch('submitUserLoginData', this.frmUserLoginData);
     }
   },
@@ -19404,7 +19423,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  methods: {
+    logout: function logout() {
+      this.$store.dispatch('logout');
+    }
+  }
+});
 
 /***/ }),
 
@@ -19458,10 +19483,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div id=\"modal\"><p class=\"close\" id=\"close-modal\">X</p><div class=\"modal-content\"><ul><li><a href=\"\">소개</a></li><li><a href=\"\">전체 도서</a></li><li><a href=\"\">추천 도서</a></li><li><a href=\"\">문장 수집</a></li><li><a href=\"\">문의</a></li></ul></div></div><header><img src=\"/img/menu.png\" alt=\"\" id=\"open-modal\"><img src=\"/img/icon.png\" alt=\"\"><img src=\"/img/user.png\" alt=\"\"></header><footer><div class=\"footer-span\"><a class=\"footer-span1\" href=\"\">이용약관</a><span> | </span><a class=\"footer-span2\" href=\"\">개인정보보호</a></div><div><img src=\"/img/test.png\" alt=\"\"><img src=\"/img/test.png\" alt=\"\"><img src=\"/img/test.png\" alt=\"\"></div></footer>", 3);
+var _hoisted_1 = {
+  id: "modal"
+};
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal-content\"><ul><li><a href=\"\">소개</a></li><li><a href=\"\">전체 도서</a></li><li><a href=\"\">추천 도서</a></li><li><a href=\"\">문장 수집</a></li><li><a href=\"\">문의</a></li></ul></div>", 1);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/icon.png",
+  alt: ""
+}, null, -1 /* HOISTED */);
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/user.png",
+  alt: ""
+}, null, -1 /* HOISTED */);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer><div class=\"footer-span\"><a class=\"footer-span1\" href=\"\">이용약관</a><span> | </span><a class=\"footer-span2\" href=\"\">개인정보보호</a></div><div><img src=\"/img/test.png\" alt=\"\"><img src=\"/img/test.png\" alt=\"\"><img src=\"/img/test.png\" alt=\"\"></div></footer>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)], 64 /* STABLE_FRAGMENT */);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+    "class": "close",
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $options.closeModal && $options.closeModal.apply($options, arguments);
+    })
+  }, "X"), _hoisted_2], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.modalVisible]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $options.openModal && $options.openModal.apply($options, arguments);
+    }),
+    src: "/img/menu.png",
+    alt: "",
+    id: "open-modal"
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_3];
+    }),
+    _: 1 /* STABLE */
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/login"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_4];
+    }),
+    _: 1 /* STABLE */
+  })]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -19486,12 +19550,25 @@ var _hoisted_2 = {
   "class": "login-main-center"
 };
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "회원 로그인", -1 /* HOISTED */);
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "가입하신 아이디와 비밀번호를 입력해주세요.", -1 /* HOISTED */);
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "비밀번호는 대소문자를 구분합니다.", -1 /* HOISTED */);
-
+var _hoisted_4 = {
+  key: 0
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  style: {
+    "color": "#F03"
+  }
+}, "잘못된 아이디 또는 비밀번호입니다.", -1 /* HOISTED */);
+var _hoisted_6 = {
+  style: {
+    "color": "#F03"
+  }
+};
+var _hoisted_7 = {
+  key: 1
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, _hoisted_4, _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, $options.loginErrorMessage ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.loginErrorMessage), 1 /* TEXT */)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.userBasePTag1), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.userBasePTag2), 1 /* TEXT */)])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     placeholder: "email",
     name: "email",
@@ -19517,7 +19594,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("회원가입")];
     }),
     _: 1 /* STABLE */
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button type=\"button\">아이디 / 비밀번호 찾기</button> ")])]);
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <h4>{{ $VueCookies }}</h4> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button type=\"button\">아이디 / 비밀번호 찾기</button> ")])]);
 }
 
 /***/ }),
@@ -19541,10 +19618,6 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "login-main-center"
 };
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  type: "button"
-}, "로그아웃", -1 /* HOISTED */);
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
@@ -19554,7 +19627,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("로그인")];
     }),
     _: 1 /* STABLE */
-  }), _hoisted_3])]);
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $options.logout && $options.logout.apply($options, arguments);
+    })
+  }, "로그아웃")])]);
 }
 
 /***/ }),
@@ -19695,7 +19773,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router.js */ "./resources/js/router.js");
 /* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store.js */ "./resources/js/store.js");
 /* harmony import */ var _components_AppComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/AppComponent.vue */ "./resources/components/AppComponent.vue");
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-cookies */ "./node_modules/vue-cookies/vue-cookies.js");
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_cookies__WEBPACK_IMPORTED_MODULE_4__);
 __webpack_require__(/*! ./bootstrap.js */ "./resources/js/bootstrap.js");
+
 
 
 
@@ -19704,7 +19785,7 @@ __webpack_require__(/*! ./bootstrap.js */ "./resources/js/bootstrap.js");
   components: {
     AppComponent: _components_AppComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }
-}).use(_router_js__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_store_js__WEBPACK_IMPORTED_MODULE_2__["default"]).mount("#app");
+}).use((vue_cookies__WEBPACK_IMPORTED_MODULE_4___default())).use(_router_js__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_store_js__WEBPACK_IMPORTED_MODULE_2__["default"]).mount("#app");
 
 /***/ }),
 
@@ -19755,11 +19836,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
 /* harmony import */ var _components_MainComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/MainComponent.vue */ "./resources/components/MainComponent.vue");
 /* harmony import */ var _components_LoginComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/LoginComponent.vue */ "./resources/components/LoginComponent.vue");
 /* harmony import */ var _components_RegistrationComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/RegistrationComponent.vue */ "./resources/components/RegistrationComponent.vue");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-cookies */ "./node_modules/vue-cookies/vue-cookies.js");
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_cookies__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
+
 
 
 
@@ -19772,10 +19856,14 @@ var routes = [{
   path: '/main',
   component: _components_MainComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
+  path: '/registration',
+  component: _components_RegistrationComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+}, {
   path: '/login',
   component: _components_LoginComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
   beforeEnter: function beforeEnter(to, from, next) {
-    if (_store__WEBPACK_IMPORTED_MODULE_3__["default"].state.isLoggedIn) {
+    var rememberToken = vue_cookies__WEBPACK_IMPORTED_MODULE_3___default().get('remember_token');
+    if (rememberToken) {
       // 이미 로그인된 경우 로그인 페이지로 이동 방지
       next('/');
     } else {
@@ -19783,11 +19871,11 @@ var routes = [{
     }
   }
 }, {
-  path: '/registration',
-  component: _components_RegistrationComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  path: '/logout',
+  component: _components_MainComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }];
-var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createWebHistory)(),
+var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.createWebHistory)(),
   routes: routes
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
@@ -19805,22 +19893,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router.js */ "./resources/js/router.js");
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-cookies */ "./node_modules/vue-cookies/vue-cookies.js");
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_cookies__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
-var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
+
+var store = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.createStore)({
   // state() : 데이터를 저장하는 영역
   state: function state() {
     return {
       allowScroll: true,
-      // 토큰을 저장하는 상태
-      email_token: null,
-      // 로그인 상태 플래그
-      isLoggedIn: false
+      loggedIn: false,
+      // 로그인 상태 토큰
+      userToken: null,
+      loginErrorMessage: ''
     };
   },
   // mutations : 데이터 수정용 함수 저장 영역
@@ -19829,17 +19920,14 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
     setScrollPermission: function setScrollPermission(state, value) {
       state.allowScroll = value;
     },
-    setToken: function setToken(state, token) {
-      state.email_token = token;
-    },
-    clearToken: function clearToken(state) {
-      state.email_token = null;
-    },
     setLoggedIn: function setLoggedIn(state, isLoggedIn) {
-      state.isLoggedIn = isLoggedIn;
+      state.loggedIn = isLoggedIn;
     },
-    setUserData: function setUserData(state, userData) {
-      state.userData = userData;
+    setToken: function setToken(state, token) {
+      state.userToken = token;
+    },
+    setLoginErrorMessage: function setLoginErrorMessage(state, message) {
+      state.loginErrorMessage = message;
     }
   },
   // actions : ajax로 서버에 데이터를 요청할 때나 시간 함수등 비동기 처리는 actions에 정의
@@ -19860,7 +19948,8 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
       frm.append('password', data.password);
       frm.append('password_cnk', data.password_chk);
       axios__WEBPACK_IMPORTED_MODULE_0___default().post(url, frm, header).then(function (res) {
-        console.log(res.data);
+        // console.log(res.data);
+        _router_js__WEBPACK_IMPORTED_MODULE_1__["default"].push('/');
       })["catch"](function (err) {
         return console.log(err.response.data);
       });
@@ -19879,37 +19968,43 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
       axios__WEBPACK_IMPORTED_MODULE_0___default().post(url, requestData, header).then(function (res) {
         // console.log(res.data);
         if (res.data.success) {
-          // context.commit('setToken', res.data.token);
-          // 로그인이 성공했을 때의 처리
-          // context.commit('setToken', res.data.token);
-          // console.log(res.data);
-          // context.commit('setUserData', res.data.user);
-          context.commit('setLoggedIn', true);
+          var oneDayInSeconds = 24 * 60 * 60;
+          vue_cookies__WEBPACK_IMPORTED_MODULE_2___default().set('remember_token', res.data.cookie, oneDayInSeconds, '/');
+          // console.log(VueCookies.get('remember_token'));
           _router_js__WEBPACK_IMPORTED_MODULE_1__["default"].push('/');
         } else {
           // 로그인이 실패했을 때의 처리
-          console.log(res.data.message);
+          // console.log('로그인 실패');
+          // console.log(res.data.message);
+          context.commit('setLoginErrorMessage', res.data.message);
+          // console.log('로그인 실패:', res.data.message);
           // 예: 에러 메시지를 표시
         }
       })["catch"](function (err) {
         return console.log(err.response.data);
       });
     },
-    checkLoginStatus: function checkLoginStatus(context) {
-      // 이 부분에서 서버로부터 사용자 정보를 가져오는 API 호출을 수행하고
-      // 성공한 경우 사용자 정보를 스토어에 저장할 수 있습니다.
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/login').then(function (response) {
-        var userData = response.data; // 서버에서 받아온 사용자 정보
-        context.commit('setLoggedIn', true);
-        context.commit('setUserData', userData);
-      })["catch"](function (error) {
-        // 로그인 상태가 아닌 경우에 대한 처리
-        context.commit('setLoggedIn', false);
-        context.commit('setUserData', null);
+    logout: function logout(context, data) {
+      var url = '/api/Logout';
+      var header = {
+        headers: {
+          "Content-Type": 'application/json'
+        }
+      };
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post(url, header).then(function (res) {
+        // console.log(res);
+      })["catch"](function (err) {
+        return console.log(err.response.data);
       });
+      // 쿠키 삭제
+      vue_cookies__WEBPACK_IMPORTED_MODULE_2___default().remove('remember_token');
+      _router_js__WEBPACK_IMPORTED_MODULE_1__["default"].push('/login');
+
+      // commit('SET_USER', null);
     }
   }
 });
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
 
 /***/ }),
@@ -20013,7 +20108,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\tbox-sizing: border-box;\r\n}\r\n/* reset.css */\r\nhtml, body, div, span, applet, object, iframe,\r\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\r\na, abbr, acronym, address, big, cite, code,\r\ndel, dfn, em, img, ins, kbd, q, s, samp,\r\nsmall, strike, strong, sub, sup, tt, var,\r\nb, u, i, center,\r\ndl, dt, dd, ol, ul, li,\r\nfieldset, form, label, legend,\r\ntable, caption, tbody, tfoot, thead, tr, th, td,\r\narticle, aside, canvas, details, embed, \r\nfigure, figcaption, footer, header, hgroup, \r\nmenu, nav, output, ruby, section, summary,\r\ntime, mark, audio, video {\r\n    margin: 0;\r\n    padding: 0;\r\n    border: 0;\r\n    font-size: 100%;\r\n    font: inherit;\r\n    vertical-align: baseline;\r\n\ttext-decoration-line: none;\r\n    text-decoration: none;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle, aside, details, figcaption, figure, \r\nfooter, header, hgroup, menu, nav, section {\r\n    display: block;\r\n}\r\nbody {\r\n    line-height: 1;\r\n    background-color: #1B1C1F;\r\n    font-family: 'Noto Sans KR', sans-serif;\r\n    /* overflow: hidden; */\r\n    background-image: url(/img/backgroundimg.png);\r\n    background-size: cover; \r\n    background-repeat: no-repeat;\r\n    background-position: center;\r\n}\r\nol, ul {\r\n    list-style: none;\r\n}\r\nblockquote, q {\r\n    quotes: none;\r\n}\r\nblockquote:before, blockquote:after,\r\nq:before, q:after {\r\n    content: '';\r\n    content: none;\r\n}\r\ntable {\r\n    border-collapse: collapse;\r\n    border-spacing: 0;\r\n}\r\ninput {\r\n\tborder: none;\r\n\tbackground-color: transparent;\r\n}\r\n/* ========================================================= */\r\n\r\nheader {\r\n    padding: 20px;\r\n    padding-left: 50px;\r\n    padding-right: 50px;\r\n    width: 100%;\r\n    background-color: rgba(0, 0, 0, 1);\r\n    display: flex;\r\n    justify-content: space-between;\r\n    position:absolute;\r\n    top: 0px;\r\n}\r\n\r\nheader img {\r\n    opacity: 0.5;\r\n}\r\n\r\nheader img:hover {\r\n    opacity: 1;\r\n    cursor: pointer;\r\n}\r\n\r\n/* ========================================================= */\r\n\r\n/* ========================================================= */\r\nmain {\r\n    width: 100%;\r\n    background-size: cover; \r\n    background-repeat: no-repeat;\r\n    background-position: center;\r\n    height: 100vh;\r\n    /* background-image: url(../img/a.png); */\r\n}\r\n\r\nmain span { \r\n    color: #fff;\r\n    font-size: 15rem;\r\n    font-weight: bold;\r\n    opacity: 0.5;\r\n}\r\n\r\n/* ========================================================= */\r\n\r\n/* ========================================================= */\r\n\r\nfooter {\r\n    padding: 20px;\r\n    padding-left: 50px;\r\n    padding-right: 50px;\r\n    width: 100%;\r\n    background-color: rgba(0, 0, 0, 1);\r\n    display: flex;\r\n    justify-content: space-between;\r\n    position:absolute;\r\n    bottom: 0px;\r\n}\r\n\r\n.footer-span {\r\n    font-size: 1.2rem;\r\n    font-weight: bold;\r\n    color: #fff;\r\n    display: flex;\r\n    align-items : center;\r\n}\r\n\r\n.footer-span1 {\r\n    color: #fff;\r\n    opacity: 0.5;\r\n    margin-right: 10px;\r\n}\r\n\r\n.footer-span1:hover {\r\n    opacity: 1;\r\n}\r\n\r\n.footer-span2 {\r\n    color: #fff;\r\n    opacity: 0.5;\r\n    margin-left: 10px;\r\n}\r\n\r\n.footer-span2:hover {\r\n    opacity: 1;\r\n}\r\n\r\n/* ========================================================= */\r\n\r\n.modal-body {\r\n    background-color: black;\r\n    position:absolute;\r\n    justify-content: center;\r\n    top:0;\r\n    left:0;\r\n    z-index: 1;\r\n    width: 100%;\r\n    height: 100%;\r\n    display: none;\r\n}\r\n\r\n#modal {\r\n    background-color: black;\r\n    opacity: 0.9;\r\n    position:absolute;\r\n    justify-content: center;\r\n    top:0;\r\n    left:0;\r\n    z-index: 1;\r\n    width: 100%;\r\n    height: 100%;\r\n    display: none;\r\n}\r\n\r\n.modal-content {\r\n    margin: 5% auto;\r\n    padding: 20px;\r\n    width: 80%;\r\n    font-size: 5rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    text-align: center;\r\n}\r\n\r\n.modal-content li {\r\n    margin-top: 30px;\r\n}\r\n\r\n.modal-content a {\r\n    color: #fff;\r\n    opacity: 0.5;\r\n}\r\n\r\n.modal-content a:hover {\r\n    opacity: 1;\r\n}\r\n\r\n.close {\r\n    color: #ffffff;\r\n    opacity: 0.5;\r\n    margin-top: 50px;\r\n    margin-right: 100px;\r\n    float: right;\r\n    font-size: 2rem;\r\n    font-weight: bold;\r\n}\r\n\r\n.close:hover,\r\n.close:focus {\r\n    text-decoration: none;\r\n    cursor: pointer;\r\n    opacity: 1;\r\n}\r\n\r\n/* ========================================================= */\r\n\r\n/* .login-main {\r\n    width: 70%;\r\n    display: grid;\r\n    grid-template-columns: repeat(2, minmax(550px, 1fr));\r\n    justify-content: center;\r\n    align-items: center;\r\n} */\r\n\r\n.login-main {\r\n    width: 50%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: auto;\r\n    text-align: center;\r\n    padding-left: 100px;\r\n    padding-right: 100px;\r\n}\r\n\r\n\r\n.login-main-center h2 { \r\n    font-size: 2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.login-main-center p { \r\n    font-size: 1rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    opacity: 0.7;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.login-main-center input {\r\n    margin-top: 15px;\r\n    width: 400px;\r\n    /* height: 50px; */\r\n    /* width: 80%; */\r\n    background: rgba(255, 255, 255, 0.2);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n}\r\n\r\n.login-main-center input:focus {\r\n    outline: none;\r\n    background: rgba(255, 255, 255, 0.5);\r\n}\r\n\r\n.login-main-center button {\r\n    margin-top: 15px;\r\n    /* width: 80%; */\r\n    width: 400px;\r\n    color: #000000c5;\r\n    background: rgba(255, 255, 255, 1);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    opacity: 0.7;\r\n}\r\n\r\n.login-main-center a {\r\n    margin-top: 15px;\r\n    /* width: 80%; */\r\n    width: 400px;\r\n    color: #000000c5;\r\n    background: rgba(255, 255, 255, 1);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 14px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    opacity: 0.7;\r\n    display: inline-block;\r\n}\r\n\r\n.login-main-center button:hover {\r\n    opacity: 1;\r\n}\r\n\r\n.login-main-center a:hover {\r\n    opacity: 1;\r\n}\r\n\r\n/* \r\n.login-main-right h2 {\r\n    font-size: 2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.login-main-right p { \r\n    font-size: 1rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    opacity: 0.7;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.login-main-right button {\r\n    margin-top: 15px;\r\n    width: 500px;\r\n    height: 50px;\r\n    background: rgba(255, 255, 255, 1);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    color: #000000c5;\r\n    margin-bottom: 20px;\r\n    opacity: 0.7;\r\n}\r\n\r\n.login-main-right button:hover {\r\n    opacity: 1;\r\n    cursor: pointer;\r\n} */\r\n\r\n/* .login-main-right {\r\n    height: 500px;\r\n    padding-left: 160px;\r\n}\r\n\r\n@media (max-width: 900px) {\r\n    .login-main {\r\n        grid-template-columns: repeat(1, minmax(0, 1fr));\r\n    }\r\n} */\r\n/* ========================================================= */\r\n\r\n.registation-main {\r\n    width: 50%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: auto;\r\n    text-align: center;\r\n    padding-left: 100px;\r\n    padding-right: 100px;\r\n}\r\n\r\n.registation-main-center h2 { \r\n    font-size: 2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.registation-main-center label { \r\n    width: 400px;\r\n    margin-bottom: 10px;\r\n    display: inline-block;\r\n    font-size: 1rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    opacity: 0.7;\r\n    text-align: left;\r\n}\r\n\r\n.registation-main-center input {\r\n    width: 400px;\r\n    /* height: 50px; */\r\n    /* width: 80%; */\r\n    background: rgba(255, 255, 255, 0.2);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.registation-main-center input:focus {\r\n    outline: none;\r\n    background: rgba(255, 255, 255, 0.5);\r\n}\r\n\r\n.registation-main-center button {\r\n    /* width: 80%; */\r\n    margin-top: 10px;\r\n    width: 400px;\r\n    color: #000000c5;\r\n    background: rgba(255, 255, 255, 1);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    opacity: 0.7;\r\n}\r\n\r\n\r\n.registation-main-center button:hover {\r\n    opacity: 1;\r\n}\r\n\r\n.registation-main-center-none {\r\n    display: none;\r\n}\r\n\r\n.genderbox {\r\n    width: 400px;\r\n    margin: auto;\r\n    color: #fff;\r\n    text-align: left;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.genderbox input {\r\n    width: 20px;\r\n    display: inline-block;\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\tbox-sizing: border-box;\r\n}\r\n/* reset.css */\r\nhtml, body, div, span, applet, object, iframe,\r\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\r\na, abbr, acronym, address, big, cite, code,\r\ndel, dfn, em, img, ins, kbd, q, s, samp,\r\nsmall, strike, strong, sub, sup, tt, var,\r\nb, u, i, center,\r\ndl, dt, dd, ol, ul, li,\r\nfieldset, form, label, legend,\r\ntable, caption, tbody, tfoot, thead, tr, th, td,\r\narticle, aside, canvas, details, embed, \r\nfigure, figcaption, footer, header, hgroup, \r\nmenu, nav, output, ruby, section, summary,\r\ntime, mark, audio, video {\r\n    margin: 0;\r\n    padding: 0;\r\n    border: 0;\r\n    font-size: 100%;\r\n    font: inherit;\r\n    vertical-align: baseline;\r\n\ttext-decoration-line: none;\r\n    text-decoration: none;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle, aside, details, figcaption, figure, \r\nfooter, header, hgroup, menu, nav, section {\r\n    display: block;\r\n}\r\nbody {\r\n    line-height: 1;\r\n    background-color: #1B1C1F;\r\n    font-family: 'Noto Sans KR', sans-serif;\r\n    /* overflow: hidden; */\r\n    background-image: url(/img/backgroundimg.png);\r\n    background-size: cover; \r\n    background-repeat: no-repeat;\r\n    background-position: center;\r\n}\r\nol, ul {\r\n    list-style: none;\r\n}\r\nblockquote, q {\r\n    quotes: none;\r\n}\r\nblockquote:before, blockquote:after,\r\nq:before, q:after {\r\n    content: '';\r\n    content: none;\r\n}\r\ntable {\r\n    border-collapse: collapse;\r\n    border-spacing: 0;\r\n}\r\ninput {\r\n\tborder: none;\r\n\tbackground-color: transparent;\r\n}\r\n/* ========================================================= */\r\n\r\nheader {\r\n    padding: 20px;\r\n    padding-left: 50px;\r\n    padding-right: 50px;\r\n    width: 100%;\r\n    background-color: rgba(0, 0, 0, 1);\r\n    display: flex;\r\n    justify-content: space-between;\r\n    position:absolute;\r\n    top: 0px;\r\n}\r\n\r\nheader img {\r\n    opacity: 0.5;\r\n}\r\n\r\nheader img:hover {\r\n    opacity: 1;\r\n    cursor: pointer;\r\n}\r\n\r\n/* ========================================================= */\r\n\r\n/* ========================================================= */\r\nmain {\r\n    width: 100%;\r\n    background-size: cover; \r\n    background-repeat: no-repeat;\r\n    background-position: center;\r\n    height: 100vh;\r\n    /* background-image: url(../img/a.png); */\r\n}\r\n\r\nmain span { \r\n    color: #fff;\r\n    font-size: 15rem;\r\n    font-weight: bold;\r\n    opacity: 0.5;\r\n}\r\n\r\n/* ========================================================= */\r\n\r\n/* ========================================================= */\r\n\r\nfooter {\r\n    padding: 20px;\r\n    padding-left: 50px;\r\n    padding-right: 50px;\r\n    width: 100%;\r\n    background-color: rgba(0, 0, 0, 1);\r\n    display: flex;\r\n    justify-content: space-between;\r\n    position:absolute;\r\n    bottom: 0px;\r\n}\r\n\r\n.footer-span {\r\n    font-size: 1.2rem;\r\n    font-weight: bold;\r\n    color: #fff;\r\n    display: flex;\r\n    align-items : center;\r\n}\r\n\r\n.footer-span1 {\r\n    color: #fff;\r\n    opacity: 0.5;\r\n    margin-right: 10px;\r\n}\r\n\r\n.footer-span1:hover {\r\n    opacity: 1;\r\n}\r\n\r\n.footer-span2 {\r\n    color: #fff;\r\n    opacity: 0.5;\r\n    margin-left: 10px;\r\n}\r\n\r\n.footer-span2:hover {\r\n    opacity: 1;\r\n}\r\n\r\n/* ========================================================= */\r\n\r\n\r\n#modal {\r\n    background-color: black;\r\n    opacity: 0.8;\r\n    position:absolute;\r\n    justify-content: center;\r\n    top:0;\r\n    left:0;\r\n    z-index: 1;\r\n    width: 30%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-content {\r\n    margin: 30% auto;\r\n    padding: 20px;\r\n    width: 80%;\r\n    font-size: 4rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    text-align: center;\r\n}\r\n\r\n.modal-content li {\r\n    margin-top: 30px;\r\n}\r\n\r\n.modal-content a {\r\n    color: #fff;\r\n    opacity: 0.5;\r\n}\r\n\r\n.modal-content a:hover {\r\n    opacity: 1;\r\n}\r\n\r\n.close {\r\n    color: #ffffff;\r\n    opacity: 0.5;\r\n    margin-top: 50px;\r\n    margin-right: 100px;\r\n    float: right;\r\n    font-size: 2rem;\r\n    font-weight: bold;\r\n}\r\n\r\n.close:hover,\r\n.close:focus {\r\n    text-decoration: none;\r\n    cursor: pointer;\r\n    opacity: 1;\r\n}\r\n\r\n/* ========================================================= */\r\n\r\n/* .login-main {\r\n    width: 70%;\r\n    display: grid;\r\n    grid-template-columns: repeat(2, minmax(550px, 1fr));\r\n    justify-content: center;\r\n    align-items: center;\r\n} */\r\n\r\n.login-main {\r\n    width: 50%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: auto;\r\n    text-align: center;\r\n    padding-left: 100px;\r\n    padding-right: 100px;\r\n}\r\n\r\n.login-main-center {\r\n    width: 400px;\r\n}\r\n\r\n.login-main-center h2 { \r\n    font-size: 2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.login-main-center p { \r\n    font-size: 1rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    opacity: 0.7;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.login-main-center input {\r\n    margin-top: 15px;\r\n    width: 400px;\r\n    /* height: 50px; */\r\n    /* width: 80%; */\r\n    background: rgba(255, 255, 255, 0.2);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n}\r\n\r\n.login-main-center input:focus {\r\n    outline: none;\r\n    background: rgba(255, 255, 255, 0.5);\r\n}\r\n\r\n.login-main-center button {\r\n    margin-top: 15px;\r\n    /* width: 80%; */\r\n    width: 400px;\r\n    color: #000000c5;\r\n    background: rgba(255, 255, 255, 1);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    opacity: 0.7;\r\n}\r\n\r\n.login-main-center a {\r\n    margin-top: 15px;\r\n    /* width: 80%; */\r\n    width: 400px;\r\n    color: #000000c5;\r\n    background: rgba(255, 255, 255, 1);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 14px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    opacity: 0.7;\r\n    display: inline-block;\r\n}\r\n\r\n.login-main-center button:hover {\r\n    opacity: 1;\r\n}\r\n\r\n.login-main-center a:hover {\r\n    opacity: 1;\r\n}\r\n\r\n/* \r\n.login-main-right h2 {\r\n    font-size: 2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.login-main-right p { \r\n    font-size: 1rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    opacity: 0.7;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.login-main-right button {\r\n    margin-top: 15px;\r\n    width: 500px;\r\n    height: 50px;\r\n    background: rgba(255, 255, 255, 1);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    color: #000000c5;\r\n    margin-bottom: 20px;\r\n    opacity: 0.7;\r\n}\r\n\r\n.login-main-right button:hover {\r\n    opacity: 1;\r\n    cursor: pointer;\r\n} */\r\n\r\n/* .login-main-right {\r\n    height: 500px;\r\n    padding-left: 160px;\r\n}\r\n\r\n@media (max-width: 900px) {\r\n    .login-main {\r\n        grid-template-columns: repeat(1, minmax(0, 1fr));\r\n    }\r\n} */\r\n/* ========================================================= */\r\n\r\n.registation-main {\r\n    width: 50%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: auto;\r\n    text-align: center;\r\n    padding-left: 100px;\r\n    padding-right: 100px;\r\n}\r\n\r\n.registation-main-center h2 { \r\n    font-size: 2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.registation-main-center label { \r\n    width: 400px;\r\n    margin-bottom: 10px;\r\n    display: inline-block;\r\n    font-size: 1rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    opacity: 0.7;\r\n    text-align: left;\r\n}\r\n\r\n.registation-main-center input {\r\n    width: 400px;\r\n    /* height: 50px; */\r\n    /* width: 80%; */\r\n    background: rgba(255, 255, 255, 0.2);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.registation-main-center input:focus {\r\n    outline: none;\r\n    background: rgba(255, 255, 255, 0.5);\r\n}\r\n\r\n.registation-main-center button {\r\n    /* width: 80%; */\r\n    margin-top: 10px;\r\n    width: 400px;\r\n    color: #000000c5;\r\n    background: rgba(255, 255, 255, 1);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    opacity: 0.7;\r\n}\r\n\r\n\r\n.registation-main-center button:hover {\r\n    opacity: 1;\r\n}\r\n\r\n.registation-main-center-none {\r\n    display: none;\r\n}\r\n\r\n.genderbox {\r\n    width: 400px;\r\n    margin: auto;\r\n    color: #fff;\r\n    text-align: left;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.genderbox input {\r\n    width: 20px;\r\n    display: inline-block;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -37881,6 +37976,161 @@ module.exports = function (list, options) {
     lastIdentifiers = newLastIdentifiers;
   };
 };
+
+/***/ }),
+
+/***/ "./node_modules/vue-cookies/vue-cookies.js":
+/*!*************************************************!*\
+  !*** ./node_modules/vue-cookies/vue-cookies.js ***!
+  \*************************************************/
+/***/ ((module) => {
+
+/**
+ * Vue Cookies v1.8.3
+ * https://github.com/cmp-cc/vue-cookies
+ *
+ * Copyright 2016, cmp-cc
+ * Released under the MIT license
+ */
+
+ (function () {
+
+  var defaultConfig = {
+    expires: '1d',
+    path: '; path=/',
+    domain: '',
+    secure: '',
+    sameSite: '; SameSite=Lax'
+  };
+
+  var VueCookies = {
+    // install of Vue
+    install: function (Vue, options) {
+      if (options) this.config(options.expires, options.path, options.domain, options.secure, options.sameSite);
+      if (Vue.prototype) Vue.prototype.$cookies = this;
+      if (Vue.config && Vue.config.globalProperties) {
+        Vue.config.globalProperties.$cookies = this;
+        Vue.provide('$cookies', this);
+      }
+      Vue.$cookies = this;
+    },
+    config: function (expires, path, domain, secure, sameSite) {
+      defaultConfig.expires = expires ? expires : '1d';
+      defaultConfig.path = path ? '; path=' + path : '; path=/';
+      defaultConfig.domain = domain ? '; domain=' + domain : '';
+      defaultConfig.secure = secure ? '; Secure' : '';
+      defaultConfig.sameSite = sameSite ? '; SameSite=' + sameSite : '; SameSite=Lax';
+    },
+    get: function (key) {
+      var value = decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(key).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1')) || null;
+
+      if (value && ((value.substring(0, 1) === '{' && value.substring(value.length - 1, value.length) === '}') || (value.substring(0, 1) === '[' && value.substring(value.length - 1, value.length) === ']'))) {
+        try {
+          value = JSON.parse(value);
+        } catch (e) {
+          return value;
+        }
+      }
+      return value;
+    },
+    set: function (key, value, expires, path, domain, secure, sameSite) {
+      if (!key) {
+        throw new Error('Cookie name is not found in the first argument.');
+      } else if (/^(?:expires|max\-age|path|domain|secure|SameSite)$/i.test(key)) {
+        throw new Error('Cookie name illegality. Cannot be set to ["expires","max-age","path","domain","secure","SameSite"]\t current key name: ' + key);
+      }
+      // support json object
+      if (value && typeof value === 'object') {
+        value = JSON.stringify(value);
+      }
+      var _expires = '';
+      expires = expires == undefined ? defaultConfig.expires : expires;
+      if (expires && expires != 0) {
+        switch (expires.constructor) {
+          case Number:
+            if (expires === Infinity || expires === -1) _expires = '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+            else _expires = '; max-age=' + expires;
+            break;
+          case String:
+            if (/^(?:\d+(y|m|d|h|min|s))$/i.test(expires)) {
+              // get capture number group
+              var _expireTime = expires.replace(/^(\d+)(?:y|m|d|h|min|s)$/i, '$1');
+              // get capture type group , to lower case
+              switch (expires.replace(/^(?:\d+)(y|m|d|h|min|s)$/i, '$1').toLowerCase()) {
+                  // Frequency sorting
+                case 'm':
+                  _expires = '; max-age=' + +_expireTime * 2592000;
+                  break; // 60 * 60 * 24 * 30
+                case 'd':
+                  _expires = '; max-age=' + +_expireTime * 86400;
+                  break; // 60 * 60 * 24
+                case 'h':
+                  _expires = '; max-age=' + +_expireTime * 3600;
+                  break; // 60 * 60
+                case 'min':
+                  _expires = '; max-age=' + +_expireTime * 60;
+                  break; // 60
+                case 's':
+                  _expires = '; max-age=' + _expireTime;
+                  break;
+                case 'y':
+                  _expires = '; max-age=' + +_expireTime * 31104000;
+                  break; // 60 * 60 * 24 * 30 * 12
+                default:
+                  new Error('unknown exception of "set operation"');
+              }
+            } else {
+              _expires = '; expires=' + expires;
+            }
+            break;
+          case Date:
+            _expires = '; expires=' + expires.toUTCString();
+            break;
+        }
+      }
+      document.cookie =
+          encodeURIComponent(key) + '=' + encodeURIComponent(value) +
+          _expires +
+          (domain ? '; domain=' + domain : defaultConfig.domain) +
+          (path ? '; path=' + path : defaultConfig.path) +
+          (secure == undefined ? defaultConfig.secure : secure ? '; Secure' : '') +
+          (sameSite == undefined ? defaultConfig.sameSite : (sameSite ? '; SameSite=' + sameSite : ''));
+      return this;
+    },
+    remove: function (key, path, domain) {
+      if (!key || !this.isKey(key)) {
+        return false;
+      }
+      document.cookie = encodeURIComponent(key) +
+          '=; expires=Thu, 01 Jan 1970 00:00:00 GMT' +
+          (domain ? '; domain=' + domain : defaultConfig.domain) +
+          (path ? '; path=' + path : defaultConfig.path) +
+          '; SameSite=Lax';
+      return true;
+    },
+    isKey: function (key) {
+      return (new RegExp('(?:^|;\\s*)' + encodeURIComponent(key).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=')).test(document.cookie);
+    },
+    keys: function () {
+      if (!document.cookie) return [];
+      var _keys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, '').split(/\s*(?:\=[^;]*)?;\s*/);
+      for (var _index = 0; _index < _keys.length; _index++) {
+        _keys[_index] = decodeURIComponent(_keys[_index]);
+      }
+      return _keys;
+    }
+  };
+
+  if (true) {
+    module.exports = VueCookies;
+  } else {}
+  // vue-cookies can exist independently,no dependencies library
+  if (typeof window !== 'undefined') {
+    window.$cookies = VueCookies;
+  }
+
+})();
+
 
 /***/ }),
 

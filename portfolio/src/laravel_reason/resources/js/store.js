@@ -1,16 +1,19 @@
 import { createStore } from 'vuex';
 import axios from 'axios';
 import router from "./router.js"
+import VueCookies from "vue-cookies";
+
 
 const store = createStore({
     // state() : 데이터를 저장하는 영역
     state() {
         return {
             allowScroll: true,
-            // 토큰을 저장하는 상태
-            email_token: null,
-            // 로그인 상태 플래그
-            isLoggedIn: false,
+            loggedIn: false,
+            // 로그인 상태 토큰
+            userToken: null,
+            loginErrorMessage: '',
+
         }
     },
 
@@ -20,17 +23,14 @@ const store = createStore({
         setScrollPermission(state, value) {
             state.allowScroll = value;
         },
-        setToken(state, token) {
-            state.email_token = token;
-        },
-        clearToken(state) {
-            state.email_token = null;
-        },
         setLoggedIn(state, isLoggedIn) {
-            state.isLoggedIn = isLoggedIn;
+            state.loggedIn = isLoggedIn;
         },
-        setUserData(state, userData) {
-            state.userData = userData;
+        setToken(state, token) {
+            state.userToken = token;
+        },
+        setLoginErrorMessage(state, message) {
+            state.loginErrorMessage = message;
         },
     },
     // actions : ajax로 서버에 데이터를 요청할 때나 시간 함수등 비동기 처리는 actions에 정의
@@ -54,7 +54,8 @@ const store = createStore({
 
             axios.post(url, frm, header)
             .then(res => { 
-                console.log(res.data);
+                // console.log(res.data);
+                router.push('/'); 
             })
             .catch(err => console.log(err.response.data))
         },
@@ -74,36 +75,40 @@ const store = createStore({
             .then(res => { 
                 // console.log(res.data);
                 if (res.data.success) {
-                    // context.commit('setToken', res.data.token);
-                    // 로그인이 성공했을 때의 처리
-                    // context.commit('setToken', res.data.token);
-                    // console.log(res.data);
-                    // context.commit('setUserData', res.data.user);
-                    context.commit('setLoggedIn', true);
+                    const oneDayInSeconds = 24 * 60 * 60;
+                    VueCookies.set('remember_token', res.data.cookie, oneDayInSeconds, '/');
+                    // console.log(VueCookies.get('remember_token'));
                     router.push('/'); 
                 } else {
                     // 로그인이 실패했을 때의 처리
-                    console.log(res.data.message);
+                    // console.log('로그인 실패');
+                    // console.log(res.data.message);
+                    context.commit('setLoginErrorMessage', res.data.message);
+                    // console.log('로그인 실패:', res.data.message);
                     // 예: 에러 메시지를 표시
                 }
             })
             .catch(err => console.log(err.response.data))
         },
-        checkLoginStatus(context) {
-            // 이 부분에서 서버로부터 사용자 정보를 가져오는 API 호출을 수행하고
-            // 성공한 경우 사용자 정보를 스토어에 저장할 수 있습니다.
-        axios.get('/api/login')
-            .then(response => {
-                const userData = response.data; // 서버에서 받아온 사용자 정보
-                context.commit('setLoggedIn', true);
-                context.commit('setUserData', userData);
+        logout(context, data) {
+            const url = '/api/Logout'
+            const header = {
+                headers: {
+                    "Content-Type": 'application/json',
+                },
+            }
+
+            axios.post(url, header)
+            .then(res => {
+                // console.log(res);
             })
-            .catch(error => {
-                // 로그인 상태가 아닌 경우에 대한 처리
-                context.commit('setLoggedIn', false);
-                context.commit('setUserData', null);
-            });
-        },
+            .catch(err => console.log(err.response.data))
+            // 쿠키 삭제
+            VueCookies.remove('remember_token');
+            router.push('/login'); 
+
+            // commit('SET_USER', null);
+        }
     }, 
 });
 

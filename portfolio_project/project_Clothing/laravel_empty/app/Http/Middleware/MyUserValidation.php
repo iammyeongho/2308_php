@@ -19,10 +19,12 @@ class MyUserValidation
      */
     public function handle(Request $request, Closure $next)
     {
+        Log::debug("============================== 오류 확인 ==============================");
         // Log::debug("****************** 유저 유효성 체크 시작 ******************");
         // Log::debug("값 :" .$request);
         $arrBaseKey = [
-            'email'
+            'user_id'
+            ,'email'
             ,'password'
             ,'password_chk'
             ,'name'
@@ -32,7 +34,8 @@ class MyUserValidation
         ];
 
         $arrBaseValidation = [
-            'email' => 'regex:/^\S+@\S+\.\S+$/'
+            'user_id' => 'regex:/^\S+@\S+\.\S+$/'
+            ,'email' => 'regex:/^\S+@\S+\.\S+$/'
             ,'password' => 'required|string|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/'
             ,'password_chk' => 'required|string|same:password'
             ,'name' => 'required|string|min:2|regex:/^[a-zA-Z ]+$/'

@@ -77,6 +77,7 @@ const store = createStore({
                 if (res.data.success) {
                     const oneDayInSeconds = 24 * 60 * 60;
                     VueCookies.set('remember_token', res.data.cookie, oneDayInSeconds, '/');
+                    VueCookies.set('user_id', res.data.user_id,oneDayInSeconds, '/');
                     // console.log(VueCookies.get('remember_token'));
                     router.push('/'); 
                 } else {
@@ -97,15 +98,15 @@ const store = createStore({
                     "Content-Type": 'application/json',
                 },
             }
-
             axios.post(url, header)
             .then(res => {
-                // console.log(res);
+                // 쿠키 삭제
+                VueCookies.remove('remember_token');
+                VueCookies.remove('user_id');
+                router.push('/login'); 
             })
             .catch(err => console.log(err.response.data))
-            // 쿠키 삭제
-            VueCookies.remove('remember_token');
-            router.push('/login'); 
+            
 
             // commit('SET_USER', null);
         }

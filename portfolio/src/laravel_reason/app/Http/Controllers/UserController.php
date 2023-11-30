@@ -33,23 +33,26 @@ class UserController extends Controller
     
         // 유저 인증 작업
         Auth::login($result);
+
+        $userId = Auth::id();
     
         $token = Str::random(60);
 
         // 데이터베이스에 토큰 저장
         $result->update(['remember_token' => $token]);
 
-        Log::debug($token);
-        Log::debug($request);
+        // Log::debug($token);
+        // Log::debug($request);
         if (Auth::check()) {
             session(['user' => Auth::user()]);
-            $allSessionData = session()->all();
+            // $allSessionData = session()->all();
 
-            Log::debug($allSessionData);
+            // Log::debug($allSessionData);
 
             // $request->session()->put('login_status', 'authenticated');
 
             return response()->json([
+                'user_id' => $userId,
                 'success' => true,
                 'message' => '로그인이 성공적으로 수행되었습니다.',
                 'cookie' => $token,
@@ -64,15 +67,19 @@ class UserController extends Controller
     }
 
     // 로그아웃 처리
-    public function logout() {
-        // 세션 파기
-        Session::flush();
-        // 로그아웃 처리
-        Auth::logout();
+    public function logout(Request $request)
+    {
+        // 특정 쿠키 값 가져오기
+        $user_id = $request->cookie('user_id');
+
+        $user = User::find($user_id);
+
+        $user->update(['remember_token' => null]);
+
+        Log::debug($user);
 
         return response()->json(['message' => '로그아웃 성공']);
     }
-
     // 회원가입
     function store (Request $request) {
 
@@ -80,7 +87,7 @@ class UserController extends Controller
 
         // 비밀번호 암호화
         $data['password'] = Hash::make($data['password']);
-        Log::info($request);
+        // Log::info($request);
         // 회원가입 정보 DB 저장
         $result = User::create($data);
 

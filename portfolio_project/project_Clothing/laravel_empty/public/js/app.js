@@ -19335,41 +19335,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _LoginComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoginComponent.vue */ "./resources/components/LoginComponent.vue");
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'AppComponent',
-  mounted: function mounted() {
-    // 휠 이벤트 리스너 등록
-    document.addEventListener('wheel', this.handleWheelEvent, {
-      passive: false
-    });
-  },
-  beforeDestroy: function beforeDestroy() {
-    // 컴포넌트가 파괴되기 전에 이벤트 리스너 제거
-    document.removeEventListener('wheel', this.handleWheelEvent);
-  },
   data: function data() {
-    return {
-      modalVisible: false
-    };
+    return {};
   },
-  methods: {
-    handleWheelEvent: function handleWheelEvent(event) {
-      event.preventDefault();
-    },
-    openModal: function openModal() {
-      this.modalVisible = true;
-      document.body.style.overflow = "hidden";
-    },
-    closeModal: function closeModal() {
-      this.modalVisible = false;
-      document.body.style.overflow = "auto";
-    }
-  },
-  components: {
-    LoginComponent: _LoginComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  }
+  methods: {},
+  components: {}
 });
 
 /***/ }),
@@ -19386,28 +19358,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'LoginComponent',
-  data: function data() {
-    return {
-      frmUserLoginData: {
-        email: '',
-        password: ''
-      },
-      userBasePTag1: '가입하신 아이디와 비밀번호를 입력해주세요.',
-      userBasePTag2: '비밀번호는 대소문자를 구분합니다'
-    };
-  },
-  computed: {
-    loginErrorMessage: function loginErrorMessage() {
-      return this.$store.state.loginErrorMessage;
-    }
-  },
-  methods: {
-    submitUserLoginData: function submitUserLoginData() {
-      this.$store.dispatch('submitUserLoginData', this.frmUserLoginData);
-    }
-  },
-  components: {}
+  name: 'LoginComponent'
 });
 
 /***/ }),
@@ -19424,11 +19375,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  methods: {
-    logout: function logout() {
-      this.$store.dispatch('logout');
-    }
-  }
+  name: 'MainComponent'
 });
 
 /***/ }),
@@ -19448,16 +19395,14 @@ __webpack_require__.r(__webpack_exports__);
   name: 'RegistrationComponent',
   data: function data() {
     return {
-      regiflg1: false,
-      regiflg2: true,
       frmUserData: {
-        name: '',
-        gender: '',
-        birthdate: '',
-        phone_number: '',
+        user_id: '',
         email: '',
         password: '',
-        password_chk: ''
+        password_chk: '',
+        name: '',
+        birthdate: '',
+        phone_number: ''
       }
     };
   },
@@ -19484,48 +19429,69 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  id: "modal"
+  id: "wrap"
 };
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal-content\"><ul><li><a href=\"\">소개</a></li><li><a href=\"\">전체 도서</a></li><li><a href=\"\">추천 도서</a></li><li><a href=\"\">문장 수집</a></li><li><a href=\"\">문의</a></li></ul></div>", 1);
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "/img/icon.png",
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  id: "topBanner"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "desc"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
+  id: "list_txt"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: ""
+}, "[래플] 아식스 x 키코 코스타디노브 x 히스테릭 글래머 젤 퀀텀 코튼 캔디")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li")])])], -1 /* HOISTED */);
+var _hoisted_3 = {
+  id: "header"
+};
+var _hoisted_4 = {
+  "class": "navigation"
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<ul class=\"nav_left sideNav\"><li><a href=\"\">ALL BRANDS</a></li><li><a href=\"\">CATEGORY +</a></li><li><a href=\"\">ARCHIVE</a></li><li><a href=\"\">BLACK E( )PTY</a></li><li><a href=\"\">RAFFLE</a></li></ul>", 1);
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/img/v2_14378e7f2adb0ec0ad8cddaaf3b0fbdd_0DXltiM6xt_top.jpg",
   alt: ""
 }, null, -1 /* HOISTED */);
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "/img/user.png",
-  alt: ""
-}, null, -1 /* HOISTED */);
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer><div class=\"footer-span\"><a class=\"footer-span1\" href=\"\">이용약관</a><span> | </span><a class=\"footer-span2\" href=\"\">개인정보보호</a></div><div><img src=\"/img/test.png\" alt=\"\"><img src=\"/img/test.png\" alt=\"\"><img src=\"/img/test.png\" alt=\"\"></div></footer>", 1);
+var _hoisted_7 = {
+  "class": "sideNav"
+};
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: ""
+}, "CART", -1 /* HOISTED */);
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: ""
+}, "MY PAGE", -1 /* HOISTED */);
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: ""
+}, "SEARCH", -1 /* HOISTED */);
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "",
+  "class": "menuBtn"
+}, "MENU", -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    "class": "close",
-    onClick: _cache[0] || (_cache[0] = function () {
-      return $options.closeModal && $options.closeModal.apply($options, arguments);
-    })
-  }, "X"), _hoisted_2], 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.modalVisible]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    onClick: _cache[1] || (_cache[1] = function () {
-      return $options.openModal && $options.openModal.apply($options, arguments);
-    }),
-    src: "/img/menu.png",
-    alt: "",
-    id: "open-modal"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: "/"
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/main"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3];
+      return [_hoisted_6];
+    }),
+    _: 1 /* STABLE */
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/registration"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("SIGN UP")];
     }),
     _: 1 /* STABLE */
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/login"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_4];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("LOGIN")];
     }),
     _: 1 /* STABLE */
-  })]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)], 64 /* STABLE_FRAGMENT */);
+  }), _hoisted_8, _hoisted_9, _hoisted_10, _hoisted_11])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -19544,57 +19510,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "login-main"
+  "class": "login_help_box"
 };
-var _hoisted_2 = {
-  "class": "login-main-center"
-};
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "회원 로그인", -1 /* HOISTED */);
-var _hoisted_4 = {
-  key: 0
-};
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  style: {
-    "color": "#F03"
-  }
-}, "잘못된 아이디 또는 비밀번호입니다.", -1 /* HOISTED */);
-var _hoisted_6 = {
-  style: {
-    "color": "#F03"
-  }
-};
-var _hoisted_7 = {
-  key: 1
-};
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"login_sm_l\"><ul><li><span>HELP</span></li><li><a href=\"\">자주하시는 질문</a></li><li><a href=\"\">1:1 상담</a></li></ul><ul><li><span>MY PAGE</span></li><li><a href=\"\">마이페이지</a></li><li><a href=\"\">주문목록</a></li><li><a href=\"\">관심상품</a></li><li><a href=\"\">회원혜택</a></li><li><a href=\"\">쿠폰</a></li><li><a href=\"\">응모내역확인</a></li></ul></div><div class=\"login_center\"><main><div class=\"login_han_box\"><div class=\"login_title_area\"><h2>LOGIN</h2><div><span><strong>EMPTY</strong> 회원이 되시면 다양한 혜택과 서비스를 받으실 수 있습니다.</span><span><a href=\"\">JOIN US</a><a href=\"\">FIND ID</a><a href=\"\">FIND PASSWORD</a></span></div></div><div class=\"login\"><fieldset class=\"form\"><legend>회원로그인</legend><div class=\"labels\"><div><label>ID</label><input class=\"inputTypeText\" type=\"text\" placeholder=\"ID\"></div><div><label>PASSWORD</label><input class=\"inputTypeText\" type=\"text\" placeholder=\"PASSWORD\"></div></div><div class=\"login__button\"><button>SIGN UP</button><button>LOGIN</button></div><div class=\"login__sns\"><a href=\"\">kakao login</a></div></fieldset></div></div></main></div><div class=\"login_sm_r\"><ul><li><span>customer service</span></li><li>문의에 대한 빠른 답변을 원하시면 전화로 연락주세요.</li><li><strong>TEL. 1833-9118</strong></li><li><strong>customerservice@empty.seoul.kr</strong></li></ul><ul><li><span>customer support</span></li><li>상담업무시간</li><li>평일 <strong>10:00 ~ 17:00</strong> (점심시간 <strong>12시~1시</strong> 제외)</li></ul><ul><li><span>contact us</span></li><li>입점 / 협업 및 비즈니스 관련 문의</li><li><strong>contact@empty.seoul.kr</strong></li></ul></div>", 3);
+var _hoisted_5 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, $options.loginErrorMessage ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.loginErrorMessage), 1 /* TEXT */)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.userBasePTag1), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.userBasePTag2), 1 /* TEXT */)])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    placeholder: "email",
-    name: "email",
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $data.frmUserLoginData.email = $event;
-    })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserLoginData.email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "password",
-    placeholder: "password",
-    name: "password",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $data.frmUserLoginData.password = $event;
-    })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserLoginData.password]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    type: "button",
-    onClick: _cache[2] || (_cache[2] = function ($event) {
-      return $options.submitUserLoginData();
-    })
-  }, "로그인"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: "/registration"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("회원가입")];
-    }),
-    _: 1 /* STABLE */
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <h4>{{ $VueCookies }}</h4> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button type=\"button\">아이디 / 비밀번호 찾기</button> ")])]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [].concat(_hoisted_5));
 }
 
 /***/ }),
@@ -19612,27 +19533,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "login-main"
-};
-var _hoisted_2 = {
-  "class": "login-main-center"
-};
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<hr class=\"layout\"><div id=\"container\"><main id=\"contents\"><div id=\"main_mrap\"><div class=\"main_visual\"><img src=\"/img/screencapture-empty-seoul-kr-web-banner-20231120-blackday-2-webp-2023-11-30-14_56_22.png\" alt=\"\"></div><div class=\"main_visual_button\"><div class=\"main_visual_c_wrap\"><h2><span>E( )PTY IS A HIGHLY EXCLUSIVE SELECT SHOP</span></h2><section class=\"collection\"><div class=\"ci-group-l\"></div><div class=\"ci-group-r\"></div></section></div><div class=\"main_visual_c_wrap\"><div class=\"xans-product-1\"><h2><span>NEW ARRIVALS</span></h2><ul class=\"prd_list\"><li><div class=\"box\"><img src=\"\" alt=\"\"><div class=\"c-product-detai\"><ul><li></li></ul></div></div></li><li><div class=\"box\"><img src=\"\" alt=\"\"><div class=\"c-product-detai\"><ul><li></li></ul></div></div></li><li><div class=\"box\"><img src=\"\" alt=\"\"><div class=\"c-product-detai\"><ul><li></li></ul></div></div></li><li><div class=\"box\"><img src=\"\" alt=\"\"><div class=\"c-product-detai\"><ul><li></li></ul></div></div></li><li><div class=\"box\"><img src=\"\" alt=\"\"><div class=\"c-product-detai\"><ul><li></li></ul></div></div></li></ul></div></div></div></div></main></div>", 2);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: "/login"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("로그인")];
-    }),
-    _: 1 /* STABLE */
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    type: "button",
-    onClick: _cache[0] || (_cache[0] = function () {
-      return $options.logout && $options.logout.apply($options, arguments);
-    })
-  }, "로그아웃")])]);
+  return _hoisted_1;
 }
 
 /***/ }),
@@ -19651,112 +19554,131 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "registation-main"
+  "class": "login_help_box"
 };
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "회원 가입", -1 /* HOISTED */);
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": ""
-}, "이름", -1 /* HOISTED */);
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": ""
-}, "성별", -1 /* HOISTED */);
-var _hoisted_5 = {
-  "class": "genderbox"
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"login_sm_l\"><ul><li><span>HELP</span></li><li><a href=\"\">자주하시는 질문</a></li><li><a href=\"\">1:1 상담</a></li></ul><ul><li><span>MY PAGE</span></li><li><a href=\"\">마이페이지</a></li><li><a href=\"\">주문목록</a></li><li><a href=\"\">관심상품</a></li><li><a href=\"\">회원혜택</a></li><li><a href=\"\">쿠폰</a></li><li><a href=\"\">응모내역확인</a></li></ul></div>", 1);
+var _hoisted_3 = {
+  "class": "login_center"
 };
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": ""
-}, "생년월일", -1 /* HOISTED */);
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": ""
-}, "전화번호", -1 /* HOISTED */);
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "회원 가입", -1 /* HOISTED */);
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": ""
-}, "이메일", -1 /* HOISTED */);
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": ""
-}, "비밀번호", -1 /* HOISTED */);
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": ""
-}, "비밀번호 확인", -1 /* HOISTED */);
-
+var _hoisted_4 = {
+  "class": "login_han_box"
+};
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"regist_title_area\"><h2>SIGN UP</h2><div><span class=\"regist_title_span\" style=\"opacity:0.5;\">1. THE TERMS AND CONDITIONS </span><span class=\"regist_title_span_bar\"> &gt; </span><span class=\"regist_title_span\">2. ENTER INFORMATION</span><span class=\"regist_title_span_bar\"> &gt; </span><span class=\"regist_title_span\" style=\"opacity:0.5;\">3. COMPLETION.</span></div></div>", 1);
+var _hoisted_6 = {
+  "class": "member_area"
+};
+var _hoisted_7 = {
+  "class": "ec_base_table"
+};
+var _hoisted_8 = {
+  border: "1"
+};
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("colgroup", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("col", {
+  style: {
+    "width": "40%"
+  }
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("col", {
+  style: {
+    "width": "60%"
+  }
+})], -1 /* HOISTED */);
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("ID "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  style: {
+    "color": "red"
+  }
+}, "*")], -1 /* HOISTED */);
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("E-MAIL "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  style: {
+    "color": "red"
+  }
+}, "*")], -1 /* HOISTED */);
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("PASSWORD "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  style: {
+    "color": "red"
+  }
+}, "*")], -1 /* HOISTED */);
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("CHECK THE PASSWORD "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  style: {
+    "color": "red"
+  }
+}, "*")], -1 /* HOISTED */);
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("NAME "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  style: {
+    "color": "red"
+  }
+}, "*")], -1 /* HOISTED */);
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("BIRTHDATE "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  style: {
+    "color": "red"
+  }
+}, "*")], -1 /* HOISTED */);
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("PHONE NUMBER "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  style: {
+    "color": "red"
+  }
+}, "*")], -1 /* HOISTED */);
+var _hoisted_17 = {
+  "class": "regist_bottom"
+};
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"login_sm_r\"><ul><li><span>customer service</span></li><li>문의에 대한 빠른 답변을 원하시면 전화로 연락주세요.</li><li><strong>TEL. 1833-9118</strong></li><li><strong>customerservice@empty.seoul.kr</strong></li></ul><ul><li><span>customer support</span></li><li>상담업무시간</li><li>평일 <strong>10:00 ~ 17:00</strong> (점심시간 <strong>12시~1시</strong> 제외)</li></ul><ul><li><span>contact us</span></li><li>입점 / 협업 및 비즈니스 관련 문의</li><li><strong>contact@empty.seoul.kr</strong></li></ul></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["registation-main-center", {
-      'registation-main-center-none': $data.regiflg1
-    }])
-  }, [_hoisted_2, _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
-    name: "name",
+    "class": "inputTypeText",
+    placeholder: "(영문소문자/숫자, 4~16자)",
+    name: "user_id",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $data.frmUserData.name = $event;
+      return $data.frmUserData.user_id = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.name]]), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "radio",
-    name: "gender",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $data.frmUserData.gender = $event;
-    }),
-    value: "0"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.frmUserData.gender]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 남성 "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "radio",
-    name: "gender",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return $data.frmUserData.gender = $event;
-    }),
-    value: "1"
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.frmUserData.gender]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 여성 ")]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "date",
-    name: "birthdate",
-    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-      return $data.frmUserData.birthdate = $event;
-    })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.birthdate]]), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "tel",
-    name: "phone_number",
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-      return $data.frmUserData.phone_number = $event;
-    })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.phone_number]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    type: "button",
-    onClick: _cache[5] || (_cache[5] = function ($event) {
-      $data.regiflg1 = true;
-      $data.regiflg2 = false;
-    })
-  }, "다음")], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["registation-main-center", {
-      'registation-main-center-none': $data.regiflg2
-    }])
-  }, [_hoisted_8, _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.user_id]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "email",
+    "class": "inputTypeText",
     name: "email",
-    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.frmUserData.email = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.email]]), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.email]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "password",
+    "class": "inputTypeText",
+    placeholder: "(영문 대소문자/숫자/특수문자, 8자~16자)",
     name: "password",
-    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.frmUserData.password = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.password]]), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.password]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "password",
+    "class": "inputTypeText",
     name: "password_chk",
-    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.frmUserData.password_chk = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.password_chk]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    type: "button",
-    onClick: _cache[9] || (_cache[9] = function ($event) {
-      $data.regiflg1 = false;
-      $data.regiflg2 = true;
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.password_chk]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    "class": "inputTypeText",
+    name: "name",
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $data.frmUserData.name = $event;
     })
-  }, "이전"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.name]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "tel",
+    "class": "inputTypeText",
+    name: "birthdate",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $data.frmUserData.birthdate = $event;
+    })
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.birthdate]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "tel",
+    "class": "inputTypeText",
+    name: "phone_number",
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+      return $data.frmUserData.phone_number = $event;
+    })
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.phone_number]])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
-    onClick: _cache[10] || (_cache[10] = function ($event) {
+    onClick: _cache[7] || (_cache[7] = function ($event) {
       return $options.submitUserData();
     })
-  }, "회원가입")], 2 /* CLASS */)]);
+  }, "REGISTER")])])])])]), _hoisted_18])]);
 }
 
 /***/ }),
@@ -19773,10 +19695,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router.js */ "./resources/js/router.js");
 /* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store.js */ "./resources/js/store.js");
 /* harmony import */ var _components_AppComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/AppComponent.vue */ "./resources/components/AppComponent.vue");
-/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-cookies */ "./node_modules/vue-cookies/vue-cookies.js");
-/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_cookies__WEBPACK_IMPORTED_MODULE_4__);
 __webpack_require__(/*! ./bootstrap.js */ "./resources/js/bootstrap.js");
-
 
 
 
@@ -19785,7 +19704,7 @@ __webpack_require__(/*! ./bootstrap.js */ "./resources/js/bootstrap.js");
   components: {
     AppComponent: _components_AppComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }
-}).use((vue_cookies__WEBPACK_IMPORTED_MODULE_4___default())).use(_router_js__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_store_js__WEBPACK_IMPORTED_MODULE_2__["default"]).mount("#app");
+}).use(_router_js__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_store_js__WEBPACK_IMPORTED_MODULE_2__["default"]).mount("#app");
 
 /***/ }),
 
@@ -19836,14 +19755,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.mjs");
 /* harmony import */ var _components_MainComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/MainComponent.vue */ "./resources/components/MainComponent.vue");
 /* harmony import */ var _components_LoginComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/LoginComponent.vue */ "./resources/components/LoginComponent.vue");
 /* harmony import */ var _components_RegistrationComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/RegistrationComponent.vue */ "./resources/components/RegistrationComponent.vue");
-/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-cookies */ "./node_modules/vue-cookies/vue-cookies.js");
-/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_cookies__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
-
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store */ "./resources/js/store.js");
 
 
 
@@ -19856,26 +19772,14 @@ var routes = [{
   path: '/main',
   component: _components_MainComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
+  path: '/login',
+  component: _components_LoginComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+}, {
   path: '/registration',
   component: _components_RegistrationComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-}, {
-  path: '/login',
-  component: _components_LoginComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-  beforeEnter: function beforeEnter(to, from, next) {
-    var rememberToken = vue_cookies__WEBPACK_IMPORTED_MODULE_3___default().get('remember_token');
-    if (rememberToken) {
-      // 이미 로그인된 경우 로그인 페이지로 이동 방지
-      next('/');
-    } else {
-      next();
-    }
-  }
-}, {
-  path: '/logout',
-  component: _components_MainComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }];
-var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_5__.createWebHistory)(),
+var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createWebHistory)(),
   routes: routes
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
@@ -19893,42 +19797,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router.js */ "./resources/js/router.js");
-/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-cookies */ "./node_modules/vue-cookies/vue-cookies.js");
-/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_cookies__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
-
-var store = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.createStore)({
+var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
   // state() : 데이터를 저장하는 영역
   state: function state() {
-    return {
-      allowScroll: true,
-      loggedIn: false,
-      // 로그인 상태 토큰
-      userToken: null,
-      loginErrorMessage: ''
-    };
+    return {};
   },
   // mutations : 데이터 수정용 함수 저장 영역
   mutations: {
     // 초기 데이터 세팅 (라라벨에서 받은)
-    setScrollPermission: function setScrollPermission(state, value) {
-      state.allowScroll = value;
-    },
-    setLoggedIn: function setLoggedIn(state, isLoggedIn) {
-      state.loggedIn = isLoggedIn;
-    },
-    setToken: function setToken(state, token) {
-      state.userToken = token;
-    },
-    setLoginErrorMessage: function setLoginErrorMessage(state, message) {
-      state.loginErrorMessage = message;
-    }
   },
   // actions : ajax로 서버에 데이터를 요청할 때나 시간 함수등 비동기 처리는 actions에 정의
   actions: {
@@ -19940,72 +19823,23 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.createStore)({
         }
       };
       var frm = new FormData();
+      frm.append('user_id', data.user_id);
       frm.append('name', data.name);
       frm.append('gender', data.gender);
       frm.append('birthdate', data.birthdate);
       frm.append('phone_number', data.phone_number);
       frm.append('email', data.email);
       frm.append('password', data.password);
-      frm.append('password_cnk', data.password_chk);
+      frm.append('password_chk', data.password_chk);
       axios__WEBPACK_IMPORTED_MODULE_0___default().post(url, frm, header).then(function (res) {
         // console.log(res.data);
         _router_js__WEBPACK_IMPORTED_MODULE_1__["default"].push('/');
       })["catch"](function (err) {
         return console.log(err.response.data);
       });
-    },
-    submitUserLoginData: function submitUserLoginData(context, data) {
-      var url = '/api/Login';
-      var header = {
-        headers: {
-          "Content-Type": 'application/json'
-        }
-      };
-      var requestData = {
-        email: data.email,
-        password: data.password
-      };
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post(url, requestData, header).then(function (res) {
-        // console.log(res.data);
-        if (res.data.success) {
-          var oneDayInSeconds = 24 * 60 * 60;
-          vue_cookies__WEBPACK_IMPORTED_MODULE_2___default().set('remember_token', res.data.cookie, oneDayInSeconds, '/');
-          vue_cookies__WEBPACK_IMPORTED_MODULE_2___default().set('user_id', res.data.user_id, oneDayInSeconds, '/');
-          // console.log(VueCookies.get('remember_token'));
-          _router_js__WEBPACK_IMPORTED_MODULE_1__["default"].push('/');
-        } else {
-          // 로그인이 실패했을 때의 처리
-          // console.log('로그인 실패');
-          // console.log(res.data.message);
-          context.commit('setLoginErrorMessage', res.data.message);
-          // console.log('로그인 실패:', res.data.message);
-          // 예: 에러 메시지를 표시
-        }
-      })["catch"](function (err) {
-        return console.log(err.response.data);
-      });
-    },
-    logout: function logout(context, data) {
-      var url = '/api/Logout';
-      var header = {
-        headers: {
-          "Content-Type": 'application/json'
-        }
-      };
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post(url, header).then(function (res) {
-        // 쿠키 삭제
-        vue_cookies__WEBPACK_IMPORTED_MODULE_2___default().remove('remember_token');
-        vue_cookies__WEBPACK_IMPORTED_MODULE_2___default().remove('user_id');
-        _router_js__WEBPACK_IMPORTED_MODULE_1__["default"].push('/login');
-      })["catch"](function (err) {
-        return console.log(err.response.data);
-      });
-
-      // commit('SET_USER', null);
     }
   }
 });
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
 
 /***/ }),
@@ -20014,60 +19848,6 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.createStore)({
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/AppComponent.vue?vue&type=style&index=0&id=1a737966&lang=css ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_public_css_common_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! -!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../public/css/common.css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./public/css/common.css");
-// Imports
-
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_public_css_common_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/LoginComponent.vue?vue&type=style&index=0&id=939b5e76&lang=css":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/LoginComponent.vue?vue&type=style&index=0&id=939b5e76&lang=css ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_public_css_common_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! -!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../public/css/common.css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./public/css/common.css");
-// Imports
-
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_public_css_common_css__WEBPACK_IMPORTED_MODULE_1__["default"]);
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/RegistrationComponent.vue?vue&type=style&index=0&id=6a596223&lang=css":
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/RegistrationComponent.vue?vue&type=style&index=0&id=6a596223&lang=css ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20109,7 +19889,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\tbox-sizing: border-box;\r\n}\r\n/* reset.css */\r\nhtml, body, div, span, applet, object, iframe,\r\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\r\na, abbr, acronym, address, big, cite, code,\r\ndel, dfn, em, img, ins, kbd, q, s, samp,\r\nsmall, strike, strong, sub, sup, tt, var,\r\nb, u, i, center,\r\ndl, dt, dd, ol, ul, li,\r\nfieldset, form, label, legend,\r\ntable, caption, tbody, tfoot, thead, tr, th, td,\r\narticle, aside, canvas, details, embed, \r\nfigure, figcaption, footer, header, hgroup, \r\nmenu, nav, output, ruby, section, summary,\r\ntime, mark, audio, video {\r\n    margin: 0;\r\n    padding: 0;\r\n    border: 0;\r\n    font-size: 100%;\r\n    font: inherit;\r\n    vertical-align: baseline;\r\n\ttext-decoration-line: none;\r\n    text-decoration: none;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle, aside, details, figcaption, figure, \r\nfooter, header, hgroup, menu, nav, section {\r\n    display: block;\r\n}\r\nbody {\r\n    line-height: 1;\r\n    background-color: #1B1C1F;\r\n    font-family: 'Noto Sans KR', sans-serif;\r\n    /* overflow: hidden; */\r\n    background-image: url(/img/backgroundimg.png);\r\n    background-size: cover; \r\n    background-repeat: no-repeat;\r\n    background-position: center;\r\n}\r\nol, ul {\r\n    list-style: none;\r\n}\r\nblockquote, q {\r\n    quotes: none;\r\n}\r\nblockquote:before, blockquote:after,\r\nq:before, q:after {\r\n    content: '';\r\n    content: none;\r\n}\r\ntable {\r\n    border-collapse: collapse;\r\n    border-spacing: 0;\r\n}\r\ninput {\r\n\tborder: none;\r\n\tbackground-color: transparent;\r\n}\r\n/* ========================================================= */\r\n\r\nheader {\r\n    padding: 20px;\r\n    padding-left: 50px;\r\n    padding-right: 50px;\r\n    width: 100%;\r\n    background-color: rgba(0, 0, 0, 1);\r\n    display: flex;\r\n    justify-content: space-between;\r\n    position:absolute;\r\n    top: 0px;\r\n    z-index: 1;\r\n}\r\n\r\nheader img {\r\n    opacity: 0.5;\r\n}\r\n\r\nheader img:hover {\r\n    opacity: 1;\r\n    cursor: pointer;\r\n}\r\n\r\n/* ========================================================= */\r\n\r\n/* ========================================================= */\r\nmain {\r\n    width: 100%;\r\n    background-size: cover; \r\n    background-repeat: no-repeat;\r\n    background-position: center;\r\n    height: 100vh;\r\n    /* padding-top: 200px; */\r\n    /* background-image: url(../img/a.png); */\r\n}\r\n\r\nmain span { \r\n    color: #fff;\r\n    font-size: 15rem;\r\n    font-weight: bold;\r\n    opacity: 0.5;\r\n}\r\n\r\n/* ========================================================= */\r\n\r\n/* ========================================================= */\r\n\r\nfooter {\r\n    padding: 20px;\r\n    padding-left: 50px;\r\n    padding-right: 50px;\r\n    width: 100%;\r\n    background-color: rgba(0, 0, 0, 1);\r\n    display: flex;\r\n    justify-content: space-between;\r\n    position:absolute;\r\n    bottom: 0px;\r\n    z-index: 1;\r\n}\r\n\r\n.footer-span {\r\n    font-size: 1.2rem;\r\n    font-weight: bold;\r\n    color: #fff;\r\n    display: flex;\r\n    align-items : center;\r\n}\r\n\r\n.footer-span1 {\r\n    color: #fff;\r\n    opacity: 0.5;\r\n    margin-right: 10px;\r\n}\r\n\r\n.footer-span1:hover {\r\n    opacity: 1;\r\n}\r\n\r\n.footer-span2 {\r\n    color: #fff;\r\n    opacity: 0.5;\r\n    margin-left: 10px;\r\n}\r\n\r\n.footer-span2:hover {\r\n    opacity: 1;\r\n}\r\n\r\n/* ========================================================= */\r\n\r\n\r\n#modal {\r\n    background-color: black;\r\n    opacity: 0.8;\r\n    position:absolute;\r\n    justify-content: center;\r\n    top:0;\r\n    left:0;\r\n    z-index: 2;\r\n    width: 30%;\r\n    height: 100%;\r\n}\r\n\r\n.modal-content {\r\n    margin: 30% auto;\r\n    padding: 20px;\r\n    width: 80%;\r\n    font-size: 4rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    text-align: center;\r\n}\r\n\r\n.modal-content li {\r\n    margin-top: 30px;\r\n}\r\n\r\n.modal-content a {\r\n    color: #fff;\r\n    opacity: 0.5;\r\n}\r\n\r\n.modal-content a:hover {\r\n    opacity: 1;\r\n}\r\n\r\n.close {\r\n    color: #ffffff;\r\n    opacity: 0.5;\r\n    margin-top: 50px;\r\n    margin-right: 100px;\r\n    float: right;\r\n    font-size: 2rem;\r\n    font-weight: bold;\r\n}\r\n\r\n.close:hover,\r\n.close:focus {\r\n    text-decoration: none;\r\n    cursor: pointer;\r\n    opacity: 1;\r\n}\r\n\r\n/* ========================================================= */\r\n\r\n/* .login-main {\r\n    width: 70%;\r\n    display: grid;\r\n    grid-template-columns: repeat(2, minmax(550px, 1fr));\r\n    justify-content: center;\r\n    align-items: center;\r\n} */\r\n\r\n.login-main {\r\n    width: 50%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: auto;\r\n    text-align: center;\r\n    padding-left: 100px;\r\n    padding-right: 100px;\r\n}\r\n\r\n.login-main-center {\r\n    width: 400px;\r\n}\r\n\r\n.login-main-center h2 { \r\n    font-size: 2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.login-main-center p { \r\n    font-size: 1rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    opacity: 0.7;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.login-main-center input {\r\n    margin-top: 15px;\r\n    width: 400px;\r\n    /* height: 50px; */\r\n    /* width: 80%; */\r\n    background: rgba(255, 255, 255, 0.2);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n}\r\n\r\n.login-main-center input:focus {\r\n    outline: none;\r\n    background: rgba(255, 255, 255, 0.5);\r\n}\r\n\r\n.login-main-center button {\r\n    margin-top: 15px;\r\n    /* width: 80%; */\r\n    width: 400px;\r\n    color: #000000c5;\r\n    background: rgba(255, 255, 255, 1);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    opacity: 0.7;\r\n}\r\n\r\n.login-main-center a {\r\n    margin-top: 15px;\r\n    /* width: 80%; */\r\n    width: 400px;\r\n    color: #000000c5;\r\n    background: rgba(255, 255, 255, 1);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 14px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    opacity: 0.7;\r\n    display: inline-block;\r\n}\r\n\r\n.login-main-center button:hover {\r\n    opacity: 1;\r\n}\r\n\r\n.login-main-center a:hover {\r\n    opacity: 1;\r\n}\r\n\r\n/* \r\n.login-main-right h2 {\r\n    font-size: 2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.login-main-right p { \r\n    font-size: 1rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    opacity: 0.7;\r\n    margin-bottom: 10px;\r\n}\r\n\r\n.login-main-right button {\r\n    margin-top: 15px;\r\n    width: 500px;\r\n    height: 50px;\r\n    background: rgba(255, 255, 255, 1);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    color: #000000c5;\r\n    margin-bottom: 20px;\r\n    opacity: 0.7;\r\n}\r\n\r\n.login-main-right button:hover {\r\n    opacity: 1;\r\n    cursor: pointer;\r\n} */\r\n\r\n/* .login-main-right {\r\n    height: 500px;\r\n    padding-left: 160px;\r\n}\r\n\r\n@media (max-width: 900px) {\r\n    .login-main {\r\n        grid-template-columns: repeat(1, minmax(0, 1fr));\r\n    }\r\n} */\r\n/* ========================================================= */\r\n\r\n.registation-main {\r\n    width: 50%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: auto;\r\n    text-align: center;\r\n    padding-left: 100px;\r\n    padding-right: 100px;\r\n}\r\n\r\n.registation-main-center h2 { \r\n    font-size: 2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.registation-main-center label { \r\n    width: 400px;\r\n    margin-bottom: 10px;\r\n    display: inline-block;\r\n    font-size: 1rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    opacity: 0.7;\r\n    text-align: left;\r\n}\r\n\r\n.registation-main-center input {\r\n    width: 400px;\r\n    /* height: 50px; */\r\n    /* width: 80%; */\r\n    background: rgba(255, 255, 255, 0.2);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.registation-main-center input:focus {\r\n    outline: none;\r\n    background: rgba(255, 255, 255, 0.5);\r\n}\r\n\r\n.registation-main-center button {\r\n    /* width: 80%; */\r\n    margin-top: 10px;\r\n    width: 400px;\r\n    color: #000000c5;\r\n    background: rgba(255, 255, 255, 1);\r\n    border-radius: 5px;\r\n    border: 1px solid #fff;\r\n    padding: 10px;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    cursor: pointer;\r\n    opacity: 0.7;\r\n}\r\n\r\n\r\n.registation-main-center button:hover {\r\n    opacity: 1;\r\n}\r\n\r\n.registation-main-center-none {\r\n    display: none;\r\n}\r\n\r\n.genderbox {\r\n    width: 400px;\r\n    margin: auto;\r\n    color: #fff;\r\n    text-align: left;\r\n    font-size: 1.2rem;\r\n    font-weight: 700;\r\n    color: #fff;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.genderbox input {\r\n    width: 20px;\r\n    display: inline-block;\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\tbox-sizing: border-box;\r\n}\r\n/* reset.css */\r\nhtml, body, div, span, applet, object, iframe,\r\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\r\na, abbr, acronym, address, big, cite, code,\r\ndel, dfn, em, img, ins, kbd, q, s, samp,\r\nsmall, strike, strong, sub, sup, tt, var,\r\nb, u, i, center,\r\ndl, dt, dd, ol, ul, li,\r\nfieldset, form, label, legend,\r\ntable, caption, tbody, tfoot, thead, tr, th, td,\r\narticle, aside, canvas, details, embed, \r\nfigure, figcaption, footer, header, hgroup, \r\nmenu, nav, output, ruby, section, summary,\r\ntime, mark, audio, video {\r\n    margin: 0;\r\n    padding: 0;\r\n    border: 0;\r\n    font-size: 100%;\r\n    font: inherit;\r\n    vertical-align: baseline;\r\n\ttext-decoration-line: none;\r\n    text-decoration: none;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle, aside, details, figcaption, figure, \r\nfooter, header, hgroup, menu, nav, section {\r\n    display: block;\r\n}\r\nbody {\r\n    position: relative;\r\n    left: 0;\r\n    transition: left 500ms cubic-bezier(0.25,0.46,0.45,0.94);\r\n    font-family: 'Noto Sans KR', sans-serif;\r\n    font-size: 0.6vw;\r\n    line-height: 0.7vw;\r\n}\r\nol, ul {\r\n    list-style: none;\r\n}\r\nblockquote, q {\r\n    quotes: none;\r\n}\r\nblockquote:before, blockquote:after,\r\nq:before, q:after {\r\n    content: '';\r\n    content: none;\r\n}\r\ntable {\r\n    border-collapse: collapse;\r\n    border-spacing: 0;\r\n}\r\ninput {\r\n\tborder: none;\r\n\tbackground-color: transparent;\r\n}\r\nstrong {\r\n    font-weight: 700;\r\n}\r\n/* ============================================================================================= */\r\n\r\n/* 메인 */\r\n\r\nhr.layout {\r\n    display: none;\r\n}\r\n\r\n#body {\r\n    position: relative;\r\n    left: 0;\r\n    transition: left 500ms cubic-bezier(0.25,0.46,0.45,0.94);\r\n}\r\n\r\n#topBanner {\r\n    position: relative;\r\n    overflow: hidden;\r\n    height: 30px;\r\n    text-align: center;\r\n    background: #000;\r\n}\r\n\r\n#topBanner .desc {\r\n    overflow: hidden;\r\n    font-size: 12px;\r\n    color: #fff;\r\n    box-sizing: border-box;\r\n    line-height: 30px;\r\n    white-space: nowrap;\r\n}\r\n\r\n#list_txt {\r\n    height: 30px;\r\n    overflow: hidden;\r\n    margin: 0px;\r\n    padding: 0px;\r\n    color: #fff;\r\n    top: 0;\r\n}\r\n\r\n#list_txt  a{\r\n    color: #fff;\r\n    font-weight: 700;\r\n}\r\n\r\nheader {\r\n    height: 100px;\r\n    padding: 0 4vw;\r\n}\r\n\r\nheader .navigation {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    position: relative !important;\r\n    height: 100%;\r\n}\r\n\r\n.navigation ul.nav_left {\r\n    display: flex;\r\n    gap: 1vw;\r\n}\r\n\r\n.sideNav {\r\n    gap: 1vw;\r\n    align-items: center;\r\n}\r\n\r\n.navigation h1 {\r\n    width: 100px;\r\n    position: absolute;\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    padding: 0;\r\n    height: 100%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.navigation h1 a img {\r\n    height: 2vw;\r\n    max-height: 40px;\r\n    transition: none !important;\r\n}\r\n\r\n.sideNav {\r\n    display: flex;\r\n    gap: 1vw;\r\n    align-items: center;\r\n}\r\n\r\n.sideNav a {\r\n    font-weight: 600;\r\n    font-family: Arial;\r\n    font-size: 10px !important;\r\n    color: #1e1e1e;\r\n    text-transform: uppercase;\r\n}\r\n\r\n.menuBtn {\r\n    background-color: #000;\r\n    color: #fff !important;\r\n    padding: 0.15vw 0.5vw;\r\n    border: 1px solid #000;\r\n}\r\n\r\n.main_wrap {\r\n    position: relative;\r\n    display: flex;\r\n}\r\n\r\n.main_visual {\r\n    width: 100%;\r\n    height: 32vw;\r\n    overflow: hidden;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    transition: all 0.2s;\r\n    background: #000;\r\n}\r\n\r\n.main_visual img {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    object-fit: contain;\r\n    transition: all 0.2s;\r\n    opacity: 0.9;\r\n}\r\n\r\n.main_visual_button {\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.main_visual_c_wrap {\r\n    position: relative;\r\n    padding: 0;\r\n    max-width: 2560px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.main_visual_c_wrap h2 {\r\n    padding: 4vw 0;\r\n    margin: 0 4vw;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 10px;\r\n}\r\n\r\n.collection {\r\n    display: flex;\r\n    gap: 2vw;\r\n    padding: 0 8vw;\r\n}\r\n\r\n.ci-group-l {\r\n    width: 50%;\r\n    height: 50vw;\r\n    max-height: 1280px;\r\n    display: flex;\r\n    gap: 0;\r\n    cursor: pointer;\r\n    transition: all 1s;\r\n    background-color: #000;\r\n}\r\n\r\n.ci-group-r {\r\n    width: 50%;\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 2vw;\r\n    cursor: pointer;\r\n    background-color: aqua;\r\n}\r\n\r\n.xans-product-1 {\r\n    margin: 22px 0 0;\r\n}\r\n\r\n.xans-product-1 h2 {\r\n    padding: 4vw 0;\r\n    margin: 0 4vw;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    font-size: 10px;\r\n}\r\n\r\n.prd_list {\r\n    position: relative;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\r\n    grid-template-rows: repeat(1,1fr);\r\n    column-gap: 2vw;\r\n    row-gap: 2vw;\r\n    padding: 0 8vw 4vw;\r\n    /* background-color: #1e1e1e; */\r\n}\r\n\r\n.box {\r\n    position: relative;\r\n    height: 25vw;\r\n    z-index: 2;\r\n    font-size: 11px;\r\n    transition: all 1s;\r\n    background-color: #000;\r\n}\r\n\r\n.c-product-detai {\r\n    position: absolute;\r\n    left: 1vw;\r\n    bottom: 1vw;\r\n    z-index: 3;\r\n    width: 80%;\r\n}\r\n\r\n/* ============================================================================================= */\r\n\r\n/* 로그인 */\r\n\r\n/* .login_help_box {\r\n    position: relative;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding: 4vw 8vw;\r\n    gap: 4vw;\r\n    line-height: 0.8vw;\r\n    text-transform: uppercase;\r\n    max-width: 1920px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.login_sm_l {\r\n    position: sticky;\r\n    top: 15px;\r\n    width: 20%;\r\n} */\r\n\r\n.login_help_box {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding: 4vw 8vw;\r\n    gap: 4vw;\r\n    line-height: 0.8vw;\r\n    text-transform: uppercase;\r\n    max-width: 1920px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.login_sm_l {\r\n    position: sticky;\r\n    top: 15px;\r\n    width: 20%;\r\n}\r\n\r\n.login_sm_l > ul {\r\n    margin: 1vw 0 2vw;\r\n}\r\n\r\n.login_sm_l > ul li:first-child {\r\n    margin: 0 0 0.5vw 0;\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n    color: #fff;\r\n}\r\n\r\n.login_sm_l > ul li:first-child span {\r\n    background: #000;\r\n    color: #fff;\r\n    padding: 1px 4px;\r\n}\r\n\r\n.login_sm_l li {\r\n    margin-top: 1.2vh;\r\n}\r\n\r\n.login_sm_l > ul li a {\r\n    color: #000000;\r\n    font-size: 10px;\r\n}\r\n\r\n/* .login_center {\r\n    width: 70%;\r\n    padding: 1vw 4vw;\r\n    max-width: 1024px;\r\n} */\r\n\r\n\r\n.login_center {\r\n    width: 70%;\r\n    padding: 1vw 4vw;\r\n    max-width: 1024px;\r\n}\r\n\r\n.login_title_area h2 {\r\n    padding: 0 0 1vw 0;\r\n    text-align: left;\r\n    font-weight: 600;\r\n    font-size: 30px;\r\n    margin: 0 0 10px 0;\r\n}\r\n\r\n.login_title_area div span {\r\n    line-height: 2em;\r\n    display: block;\r\n    font-size: 13px;\r\n}\r\n\r\n.login_title_area div a {\r\n    color: #000;\r\n    line-height: 2vw;\r\n    border-bottom: 1px solid #000;\r\n    margin-right: 2vw;\r\n    font-weight: 600;\r\n    padding-top: 4vw;\r\n    font-size: 15px;\r\n}\r\n\r\nfieldset {\r\n    border: none;\r\n    vertical-align: top;\r\n}\r\n\r\nlegend {\r\n    visibility: hidden;\r\n    position: absolute;\r\n    left: -9999px;\r\n    top: -9999px;\r\n    width: 0;\r\n    height: 0;\r\n    line-height: 0;\r\n}\r\n\r\n.labels {\r\n    margin-top: 10px;\r\n    display: flex;\r\n    gap: 1vw;\r\n    /* justify-content: space-between; */\r\n    /* justify-content: center; */\r\n}\r\n\r\n.labels label {\r\n    font-weight: 700;\r\n    display: block;\r\n}\r\n\r\n/* .inputTypeText { \r\n    padding: 8px;\r\n    margin: 5px 0 1vw 0;\r\n    display: inline-block;\r\n    border: 1px solid #000;\r\n    width: 400px;\r\n}\r\n\r\n.login__button {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin-top: 0;\r\n    gap: 10px;\r\n}\r\n\r\n.login__button button {\r\n    margin: 1vw 0;\r\n    font-size: 11px;\r\n    font-weight: 600;\r\n    width: inherit;\r\n    height: inherit;\r\n    padding: 0.5vw 1vw;\r\n    text-decoration: none;\r\n    vertical-align: middle;\r\n    word-spacing: -0.5px;\r\n    letter-spacing: 0;\r\n    text-align: center;\r\n    white-space: nowrap;\r\n    color: #fff;\r\n    background-color: #000;\r\n    border: 1px solid transparent;\r\n}\r\n\r\n.login__sns {\r\n    display: flex;\r\n    justify-content: space-around;\r\n    margin: 30px 0 0;\r\n} */\r\n\r\n.labels {\r\n    margin-top: 10px;\r\n    display: flex;\r\n    flex-direction: column; /* 세로로 쌓도록 변경 */\r\n}\r\n\r\n.labels div {\r\n    margin-bottom: 1vw; /* 각 라벨과 입력 상자 사이에 간격 추가 */\r\n}\r\n\r\n.labels label {\r\n    font-weight: 700;\r\n}\r\n\r\n.inputTypeText {\r\n    padding: 8px;\r\n    margin: 5px 0;\r\n    border: 1px solid #000;\r\n    width: 100%; /* 부모 너비에 맞게 설정 */\r\n}\r\n\r\n.login__button {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin-top: 1vw;\r\n    gap: 10px;\r\n}\r\n\r\n.login__button button {\r\n    width: 100%; /* 부모 너비에 맞게 설정 */\r\n    margin: 1vw 0;\r\n    font-size: 11px;\r\n    font-weight: 600;\r\n    width: inherit;\r\n    height: inherit;\r\n    padding: 0.5vw 1vw;\r\n    text-decoration: none;\r\n    vertical-align: middle;\r\n    word-spacing: -0.5px;\r\n    letter-spacing: 0;\r\n    text-align: center;\r\n    white-space: nowrap;\r\n    color: #fff;\r\n    background-color: #000;\r\n    border: 1px solid transparent;\r\n}\r\n\r\n\r\n.login__sns {\r\n    flex-direction: column; /* 세로로 쌓도록 변경 */\r\n    margin-top: 20px;\r\n    text-align: center;\r\n}\r\n\r\n.login__sns a {\r\n    font-weight: 700;\r\n    font-size: 15px;\r\n    color: #000;\r\n    text-decoration: underline;\r\n}\r\n\r\n.login_sm_r {\r\n    width: 20%;\r\n    cursor: default;\r\n}\r\n\r\n.login_sm_r > ul li:first-child {\r\n    margin: 0 0 0.5vw 0;\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n    color: #fff;\r\n}\r\n\r\n.login_sm_r > ul li:first-child span {\r\n    background: #000;\r\n    color: #fff;\r\n    padding: 1px 4px;\r\n}\r\n\r\n.login_sm_r li {\r\n    margin-top: 1.2vh;\r\n}\r\n\r\n.login_sm_r > ul li a {\r\n    color: #000000;\r\n    font-size: 10px;\r\n}\r\n\r\n.login_sm_r ul {\r\n    margin: 1vw 0 2vw;\r\n}\r\n\r\n\r\n@media (max-width: 768px) {\r\n    .login_help_box {\r\n        flex-direction: column;\r\n        padding: 4vw;\r\n    }\r\n\r\n    .login_sm_l {\r\n        width: 100%;\r\n        position: relative;\r\n        top: auto;\r\n        display: none;\r\n    }\r\n\r\n    .login_center {\r\n        width: 100%;\r\n        padding: 1vw;\r\n    }\r\n\r\n    .login_sm_r {\r\n        width: 100%;\r\n        position: relative;\r\n        top: auto;\r\n    }\r\n}\r\n\r\n/* ============================================================================================= */\r\n\r\n.regist_title_area h2 {\r\n    padding: 0 0 1vw 0;\r\n    text-align: left;\r\n    font-weight: 600;\r\n    font-size: 30px;\r\n    margin: 0 0 10px 0;\r\n}\r\n\r\n.regist_title_area div span {\r\n    line-height: 2em;\r\n    font-size: 13px;\r\n    margin-right: 10px;\r\n    font-weight: 700;\r\n}\r\n\r\n.regist_title_area div a {\r\n    color: #000;\r\n    line-height: 2vw;\r\n    border-bottom: 1px solid #000;\r\n    margin-right: 2vw;\r\n    font-weight: 600;\r\n    padding-top: 4vw;\r\n    font-size: 15px;\r\n}\r\n\r\n@media (max-width: 1300px) { \r\n    .regist_title_span_bar {\r\n        display: none;\r\n    }\r\n    .regist_title_span {\r\n        display: block;\r\n    }\r\n}\r\n\r\n@media (min-width: 1025px){\r\n    .member_area {\r\n        max-width: 898px;\r\n        margin: 0 auto;\r\n    }\r\n}\r\n\r\n.ec_base_table {\r\n    margin-top: 20px;\r\n    border-top: 1px solid #000;\r\n    border-bottom: 1px solid #000;\r\n}\r\n\r\n.ec_base_table table {\r\n    border-spacing: 0;\r\n    border-collapse: collapse;\r\n}\r\n\r\n.ec_base_table table tr {\r\n    display: table-row;\r\n    vertical-align: inherit;\r\n    border-color: inherit;\r\n}\r\n\r\n/* 테이블 스타일 수정 */\r\n.ec_base_table table th {\r\n    vertical-align: middle;\r\n    border-right: 1px solid #0000002a;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n/* 작은 화면에서 스타일 수정 */\r\n@media (max-width: 1400px) {\r\n    .ec_base_table table th {\r\n        border-right: none; /* 우측 테두리 제거 */\r\n    }\r\n}\r\n\r\n.ec_base_table table td { \r\n    padding: 10px 20px;\r\n}\r\n\r\n.ec_base_table tbody {\r\n    display: table-row-group;\r\n    vertical-align: middle;\r\n    border-color: inherit;\r\n}\r\n\r\n.ec_base_table .inputTypeText {\r\n    margin-left: 20px;\r\n    width: 350px;\r\n    border: 1px solid #0000002a;\r\n    font-weight: 700;\r\n}\r\n\r\n.regist_bottom {\r\n    margin: 30px 0 0 0;\r\n    transition: all 0.5s;\r\n    text-align: center;\r\n}\r\n\r\n.regist_bottom button {\r\n    background-color: #fff;\r\n    color: #000;\r\n    border: 1px solid #000;\r\n    font-size: 11px;\r\n    line-height: 11px;\r\n    padding: 10px 25px 10px 25px;\r\n    font-weight: 700;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n.regist_bottom button:hover {\r\n    background-color: #000;\r\n    color: #fff;\r\n    cursor: pointer;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -37641,66 +37421,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/LoginComponent.vue?vue&type=style&index=0&id=939b5e76&lang=css":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/LoginComponent.vue?vue&type=style&index=0&id=939b5e76&lang=css ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LoginComponent_vue_vue_type_style_index_0_id_939b5e76_lang_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../node_modules/vue-loader/dist/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./LoginComponent.vue?vue&type=style&index=0&id=939b5e76&lang=css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/LoginComponent.vue?vue&type=style&index=0&id=939b5e76&lang=css");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LoginComponent_vue_vue_type_style_index_0_id_939b5e76_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LoginComponent_vue_vue_type_style_index_0_id_939b5e76_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
-/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/RegistrationComponent.vue?vue&type=style&index=0&id=6a596223&lang=css":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/RegistrationComponent.vue?vue&type=style&index=0&id=6a596223&lang=css ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_RegistrationComponent_vue_vue_type_style_index_0_id_6a596223_lang_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../node_modules/vue-loader/dist/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./RegistrationComponent.vue?vue&type=style&index=0&id=6a596223&lang=css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/RegistrationComponent.vue?vue&type=style&index=0&id=6a596223&lang=css");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_RegistrationComponent_vue_vue_type_style_index_0_id_6a596223_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_RegistrationComponent_vue_vue_type_style_index_0_id_6a596223_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
@@ -37980,161 +37700,6 @@ module.exports = function (list, options) {
 
 /***/ }),
 
-/***/ "./node_modules/vue-cookies/vue-cookies.js":
-/*!*************************************************!*\
-  !*** ./node_modules/vue-cookies/vue-cookies.js ***!
-  \*************************************************/
-/***/ ((module) => {
-
-/**
- * Vue Cookies v1.8.3
- * https://github.com/cmp-cc/vue-cookies
- *
- * Copyright 2016, cmp-cc
- * Released under the MIT license
- */
-
- (function () {
-
-  var defaultConfig = {
-    expires: '1d',
-    path: '; path=/',
-    domain: '',
-    secure: '',
-    sameSite: '; SameSite=Lax'
-  };
-
-  var VueCookies = {
-    // install of Vue
-    install: function (Vue, options) {
-      if (options) this.config(options.expires, options.path, options.domain, options.secure, options.sameSite);
-      if (Vue.prototype) Vue.prototype.$cookies = this;
-      if (Vue.config && Vue.config.globalProperties) {
-        Vue.config.globalProperties.$cookies = this;
-        Vue.provide('$cookies', this);
-      }
-      Vue.$cookies = this;
-    },
-    config: function (expires, path, domain, secure, sameSite) {
-      defaultConfig.expires = expires ? expires : '1d';
-      defaultConfig.path = path ? '; path=' + path : '; path=/';
-      defaultConfig.domain = domain ? '; domain=' + domain : '';
-      defaultConfig.secure = secure ? '; Secure' : '';
-      defaultConfig.sameSite = sameSite ? '; SameSite=' + sameSite : '; SameSite=Lax';
-    },
-    get: function (key) {
-      var value = decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(key).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1')) || null;
-
-      if (value && ((value.substring(0, 1) === '{' && value.substring(value.length - 1, value.length) === '}') || (value.substring(0, 1) === '[' && value.substring(value.length - 1, value.length) === ']'))) {
-        try {
-          value = JSON.parse(value);
-        } catch (e) {
-          return value;
-        }
-      }
-      return value;
-    },
-    set: function (key, value, expires, path, domain, secure, sameSite) {
-      if (!key) {
-        throw new Error('Cookie name is not found in the first argument.');
-      } else if (/^(?:expires|max\-age|path|domain|secure|SameSite)$/i.test(key)) {
-        throw new Error('Cookie name illegality. Cannot be set to ["expires","max-age","path","domain","secure","SameSite"]\t current key name: ' + key);
-      }
-      // support json object
-      if (value && typeof value === 'object') {
-        value = JSON.stringify(value);
-      }
-      var _expires = '';
-      expires = expires == undefined ? defaultConfig.expires : expires;
-      if (expires && expires != 0) {
-        switch (expires.constructor) {
-          case Number:
-            if (expires === Infinity || expires === -1) _expires = '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
-            else _expires = '; max-age=' + expires;
-            break;
-          case String:
-            if (/^(?:\d+(y|m|d|h|min|s))$/i.test(expires)) {
-              // get capture number group
-              var _expireTime = expires.replace(/^(\d+)(?:y|m|d|h|min|s)$/i, '$1');
-              // get capture type group , to lower case
-              switch (expires.replace(/^(?:\d+)(y|m|d|h|min|s)$/i, '$1').toLowerCase()) {
-                  // Frequency sorting
-                case 'm':
-                  _expires = '; max-age=' + +_expireTime * 2592000;
-                  break; // 60 * 60 * 24 * 30
-                case 'd':
-                  _expires = '; max-age=' + +_expireTime * 86400;
-                  break; // 60 * 60 * 24
-                case 'h':
-                  _expires = '; max-age=' + +_expireTime * 3600;
-                  break; // 60 * 60
-                case 'min':
-                  _expires = '; max-age=' + +_expireTime * 60;
-                  break; // 60
-                case 's':
-                  _expires = '; max-age=' + _expireTime;
-                  break;
-                case 'y':
-                  _expires = '; max-age=' + +_expireTime * 31104000;
-                  break; // 60 * 60 * 24 * 30 * 12
-                default:
-                  new Error('unknown exception of "set operation"');
-              }
-            } else {
-              _expires = '; expires=' + expires;
-            }
-            break;
-          case Date:
-            _expires = '; expires=' + expires.toUTCString();
-            break;
-        }
-      }
-      document.cookie =
-          encodeURIComponent(key) + '=' + encodeURIComponent(value) +
-          _expires +
-          (domain ? '; domain=' + domain : defaultConfig.domain) +
-          (path ? '; path=' + path : defaultConfig.path) +
-          (secure == undefined ? defaultConfig.secure : secure ? '; Secure' : '') +
-          (sameSite == undefined ? defaultConfig.sameSite : (sameSite ? '; SameSite=' + sameSite : ''));
-      return this;
-    },
-    remove: function (key, path, domain) {
-      if (!key || !this.isKey(key)) {
-        return false;
-      }
-      document.cookie = encodeURIComponent(key) +
-          '=; expires=Thu, 01 Jan 1970 00:00:00 GMT' +
-          (domain ? '; domain=' + domain : defaultConfig.domain) +
-          (path ? '; path=' + path : defaultConfig.path) +
-          '; SameSite=Lax';
-      return true;
-    },
-    isKey: function (key) {
-      return (new RegExp('(?:^|;\\s*)' + encodeURIComponent(key).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=')).test(document.cookie);
-    },
-    keys: function () {
-      if (!document.cookie) return [];
-      var _keys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, '').split(/\s*(?:\=[^;]*)?;\s*/);
-      for (var _index = 0; _index < _keys.length; _index++) {
-        _keys[_index] = decodeURIComponent(_keys[_index]);
-      }
-      return _keys;
-    }
-  };
-
-  if (true) {
-    module.exports = VueCookies;
-  } else {}
-  // vue-cookies can exist independently,no dependencies library
-  if (typeof window !== 'undefined') {
-    window.$cookies = VueCookies;
-  }
-
-})();
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/dist/exportHelper.js":
 /*!******************************************************!*\
   !*** ./node_modules/vue-loader/dist/exportHelper.js ***!
@@ -38201,16 +37766,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _LoginComponent_vue_vue_type_template_id_939b5e76__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoginComponent.vue?vue&type=template&id=939b5e76 */ "./resources/components/LoginComponent.vue?vue&type=template&id=939b5e76");
 /* harmony import */ var _LoginComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoginComponent.vue?vue&type=script&lang=js */ "./resources/components/LoginComponent.vue?vue&type=script&lang=js");
-/* harmony import */ var _LoginComponent_vue_vue_type_style_index_0_id_939b5e76_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoginComponent.vue?vue&type=style&index=0&id=939b5e76&lang=css */ "./resources/components/LoginComponent.vue?vue&type=style&index=0&id=939b5e76&lang=css");
-/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-
-
-const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_LoginComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_LoginComponent_vue_vue_type_template_id_939b5e76__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/components/LoginComponent.vue"]])
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_LoginComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_LoginComponent_vue_vue_type_template_id_939b5e76__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/components/LoginComponent.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -38260,16 +37822,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _RegistrationComponent_vue_vue_type_template_id_6a596223__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RegistrationComponent.vue?vue&type=template&id=6a596223 */ "./resources/components/RegistrationComponent.vue?vue&type=template&id=6a596223");
 /* harmony import */ var _RegistrationComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RegistrationComponent.vue?vue&type=script&lang=js */ "./resources/components/RegistrationComponent.vue?vue&type=script&lang=js");
-/* harmony import */ var _RegistrationComponent_vue_vue_type_style_index_0_id_6a596223_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RegistrationComponent.vue?vue&type=style&index=0&id=6a596223&lang=css */ "./resources/components/RegistrationComponent.vue?vue&type=style&index=0&id=6a596223&lang=css");
-/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-
-
-const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_RegistrationComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_RegistrationComponent_vue_vue_type_template_id_6a596223__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/components/RegistrationComponent.vue"]])
+const __exports__ = /*#__PURE__*/(0,_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_RegistrationComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_RegistrationComponent_vue_vue_type_template_id_6a596223__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/components/RegistrationComponent.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -38415,32 +37974,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AppComponent_vue_vue_type_style_index_0_id_1a737966_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/style-loader/dist/cjs.js!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../node_modules/vue-loader/dist/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AppComponent.vue?vue&type=style&index=0&id=1a737966&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/AppComponent.vue?vue&type=style&index=0&id=1a737966&lang=css");
-
-
-/***/ }),
-
-/***/ "./resources/components/LoginComponent.vue?vue&type=style&index=0&id=939b5e76&lang=css":
-/*!*********************************************************************************************!*\
-  !*** ./resources/components/LoginComponent.vue?vue&type=style&index=0&id=939b5e76&lang=css ***!
-  \*********************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_LoginComponent_vue_vue_type_style_index_0_id_939b5e76_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/style-loader/dist/cjs.js!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../node_modules/vue-loader/dist/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./LoginComponent.vue?vue&type=style&index=0&id=939b5e76&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/LoginComponent.vue?vue&type=style&index=0&id=939b5e76&lang=css");
-
-
-/***/ }),
-
-/***/ "./resources/components/RegistrationComponent.vue?vue&type=style&index=0&id=6a596223&lang=css":
-/*!****************************************************************************************************!*\
-  !*** ./resources/components/RegistrationComponent.vue?vue&type=style&index=0&id=6a596223&lang=css ***!
-  \****************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_RegistrationComponent_vue_vue_type_style_index_0_id_6a596223_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/style-loader/dist/cjs.js!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../node_modules/vue-loader/dist/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./RegistrationComponent.vue?vue&type=style&index=0&id=6a596223&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/components/RegistrationComponent.vue?vue&type=style&index=0&id=6a596223&lang=css");
 
 
 /***/ }),
@@ -38707,8 +38240,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _vue_devtools_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/devtools-api */ "./node_modules/@vue/devtools-api/lib/esm/index.js");
 /*!
- * vuex v4.0.2
- * (c) 2021 Evan You
+ * vuex v4.1.0
+ * (c) 2022 Evan You
  * @license MIT
  */
 
@@ -38825,6 +38358,7 @@ function resetStore (store, hot) {
 
 function resetStoreState (store, state, hot) {
   var oldState = store._state;
+  var oldScope = store._scope;
 
   // bind store public getters
   store.getters = {};
@@ -38832,22 +38366,33 @@ function resetStoreState (store, state, hot) {
   store._makeLocalGettersCache = Object.create(null);
   var wrappedGetters = store._wrappedGetters;
   var computedObj = {};
-  forEachValue(wrappedGetters, function (fn, key) {
-    // use computed to leverage its lazy-caching mechanism
-    // direct inline function use will lead to closure preserving oldState.
-    // using partial to return function with only arguments preserved in closure environment.
-    computedObj[key] = partial(fn, store);
-    Object.defineProperty(store.getters, key, {
-      // TODO: use `computed` when it's possible. at the moment we can't due to
-      // https://github.com/vuejs/vuex/pull/1883
-      get: function () { return computedObj[key](); },
-      enumerable: true // for local getters
+  var computedCache = {};
+
+  // create a new effect scope and create computed object inside it to avoid
+  // getters (computed) getting destroyed on component unmount.
+  var scope = (0,vue__WEBPACK_IMPORTED_MODULE_0__.effectScope)(true);
+
+  scope.run(function () {
+    forEachValue(wrappedGetters, function (fn, key) {
+      // use computed to leverage its lazy-caching mechanism
+      // direct inline function use will lead to closure preserving oldState.
+      // using partial to return function with only arguments preserved in closure environment.
+      computedObj[key] = partial(fn, store);
+      computedCache[key] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () { return computedObj[key](); });
+      Object.defineProperty(store.getters, key, {
+        get: function () { return computedCache[key].value; },
+        enumerable: true // for local getters
+      });
     });
   });
 
   store._state = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)({
     data: state
   });
+
+  // register the newly created effect scope to the store so that we can
+  // dispose the effects when this method runs again in the future.
+  store._scope = scope;
 
   // enable strict mode for new state
   if (store.strict) {
@@ -38862,6 +38407,11 @@ function resetStoreState (store, state, hot) {
         oldState.data = null;
       });
     }
+  }
+
+  // dispose previously registered effect scope if there is one.
+  if (oldScope) {
+    oldScope.stop();
   }
 }
 
@@ -39611,6 +39161,12 @@ var Store = function Store (options) {
   this._modulesNamespaceMap = Object.create(null);
   this._subscribers = [];
   this._makeLocalGettersCache = Object.create(null);
+
+  // EffectScope instance. when registering new getters, we wrap them inside
+  // EffectScope so that getters (computed) would not be destroyed on
+  // component unmount.
+  this._scope = null;
+
   this._devtools = devtools;
 
   // bind commit and dispatch to self
@@ -40153,7 +39709,7 @@ function pad (num, maxLength) {
 }
 
 var index = {
-  version: '4.0.2',
+  version: '4.1.0',
   Store: Store,
   storeKey: storeKey,
   createStore: createStore,

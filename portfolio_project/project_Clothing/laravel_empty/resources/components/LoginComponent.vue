@@ -24,7 +24,7 @@
                             <div>
                                 <span><strong>EMPTY</strong> 회원이 되시면 다양한 혜택과 서비스를 받으실 수 있습니다.</span>
                                 <span>
-                                    <a href="">JOIN US</a>
+                                    <router-link to="/registration">JOIN US</router-link>
                                     <a href="">FIND ID</a>
                                     <a href="">FIND PASSWORD</a>
                                 </span>
@@ -36,18 +36,19 @@
                                 <div class="labels">
                                     <div>
                                         <label>ID</label>
-                                        <input class="inputTypeText" type="text" placeholder="ID">
+                                        <input class="inputTypeText" type="text" placeholder="ID" name="user_id" v-model="frmUserLoginData.user_id">
+                                        <p style="color: red; font-size: 10px;">{{ $store.state.errorData.user_id }}</p>
                                     </div>
                                     <div>
                                         <label>PASSWORD</label>
-                                        <input class="inputTypeText" type="text" placeholder="PASSWORD">
+                                        <input class="inputTypeText" type="password" placeholder="PASSWORD" name="password" v-model="frmUserLoginData.password">
+                                        <p style="color: red; font-size: 10px;">{{ $store.state.errorData.password }} </p>
                                     </div>
                                 </div>
-                                <div class="login__button">
-                                    <button>SIGN UP</button>
-                                    <button>LOGIN</button>
+                                <div class="login_button">
+                                    <button type="button" @click="submitUserLoginData()">LOGIN</button>
                                 </div>
-                                <div class="login__sns">
+                                <div class="login_sns">
                                     <a href="">kakao login</a>
                                 </div>
                             </fieldset>
@@ -84,6 +85,22 @@
 <script>
 export default {
     name: 'LoginComponent',
+    data() {
+        return {
+            frmUserLoginData: {
+                user_id: '',
+                password: '',
+            },
+        }
+    },
+    
+    methods: {
+        submitUserLoginData() {
+            this.$store.dispatch('submitUserLoginData', this.frmUserLoginData);
+        },
+    }
+    
+
 }
 </script>
 <style>

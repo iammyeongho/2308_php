@@ -19337,10 +19337,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'AppComponent',
+  beforeUpdate: function beforeUpdate() {},
+  created: function created() {
+    this.$store.commit('setCookieLogin');
+  },
+  updated: function updated() {
+    this.$store.state.errorData = 0;
+  },
   data: function data() {
     return {};
   },
-  methods: {},
+  methods: {
+    logout: function logout() {
+      this.$store.dispatch('logout');
+    }
+  },
   components: {}
 });
 
@@ -19358,7 +19369,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'LoginComponent'
+  name: 'LoginComponent',
+  data: function data() {
+    return {
+      frmUserLoginData: {
+        user_id: '',
+        password: ''
+      }
+    };
+  },
+  methods: {
+    submitUserLoginData: function submitUserLoginData() {
+      this.$store.dispatch('submitUserLoginData', this.frmUserLoginData);
+    }
+  }
 });
 
 /***/ }),
@@ -19452,6 +19476,7 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   alt: ""
 }, null, -1 /* HOISTED */);
 var _hoisted_7 = {
+  key: 0,
   "class": "sideNav"
 };
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
@@ -19467,6 +19492,20 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   href: "",
   "class": "menuBtn"
 }, "MENU", -1 /* HOISTED */);
+var _hoisted_12 = {
+  key: 1,
+  "class": "sideNav"
+};
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: ""
+}, "CART", -1 /* HOISTED */);
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: ""
+}, "SEARCH", -1 /* HOISTED */);
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "",
+  "class": "menuBtn"
+}, "MENU", -1 /* HOISTED */);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
@@ -19477,7 +19516,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_6];
     }),
     _: 1 /* STABLE */
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), _ctx.$store.state.cookieLogin ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    onClick: _cache[0] || (_cache[0] = function () {
+      return $options.logout && $options.logout.apply($options, arguments);
+    })
+  }, "LOGOUT"), _hoisted_8, _hoisted_9, _hoisted_10, _hoisted_11])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/registration"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -19491,7 +19534,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("LOGIN")];
     }),
     _: 1 /* STABLE */
-  }), _hoisted_8, _hoisted_9, _hoisted_10, _hoisted_11])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)], 64 /* STABLE_FRAGMENT */);
+  }), _hoisted_13, _hoisted_14, _hoisted_15]))])])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_view, {
+    key: _ctx.$route.path
+  }))], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -19512,10 +19557,88 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "login_help_box"
 };
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"login_sm_l\"><ul><li><span>HELP</span></li><li><a href=\"\">자주하시는 질문</a></li><li><a href=\"\">1:1 상담</a></li></ul><ul><li><span>MY PAGE</span></li><li><a href=\"\">마이페이지</a></li><li><a href=\"\">주문목록</a></li><li><a href=\"\">관심상품</a></li><li><a href=\"\">회원혜택</a></li><li><a href=\"\">쿠폰</a></li><li><a href=\"\">응모내역확인</a></li></ul></div><div class=\"login_center\"><main><div class=\"login_han_box\"><div class=\"login_title_area\"><h2>LOGIN</h2><div><span><strong>EMPTY</strong> 회원이 되시면 다양한 혜택과 서비스를 받으실 수 있습니다.</span><span><a href=\"\">JOIN US</a><a href=\"\">FIND ID</a><a href=\"\">FIND PASSWORD</a></span></div></div><div class=\"login\"><fieldset class=\"form\"><legend>회원로그인</legend><div class=\"labels\"><div><label>ID</label><input class=\"inputTypeText\" type=\"text\" placeholder=\"ID\"></div><div><label>PASSWORD</label><input class=\"inputTypeText\" type=\"text\" placeholder=\"PASSWORD\"></div></div><div class=\"login__button\"><button>SIGN UP</button><button>LOGIN</button></div><div class=\"login__sns\"><a href=\"\">kakao login</a></div></fieldset></div></div></main></div><div class=\"login_sm_r\"><ul><li><span>customer service</span></li><li>문의에 대한 빠른 답변을 원하시면 전화로 연락주세요.</li><li><strong>TEL. 1833-9118</strong></li><li><strong>customerservice@empty.seoul.kr</strong></li></ul><ul><li><span>customer support</span></li><li>상담업무시간</li><li>평일 <strong>10:00 ~ 17:00</strong> (점심시간 <strong>12시~1시</strong> 제외)</li></ul><ul><li><span>contact us</span></li><li>입점 / 협업 및 비즈니스 관련 문의</li><li><strong>contact@empty.seoul.kr</strong></li></ul></div>", 3);
-var _hoisted_5 = [_hoisted_2];
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"login_sm_l\"><ul><li><span>HELP</span></li><li><a href=\"\">자주하시는 질문</a></li><li><a href=\"\">1:1 상담</a></li></ul><ul><li><span>MY PAGE</span></li><li><a href=\"\">마이페이지</a></li><li><a href=\"\">주문목록</a></li><li><a href=\"\">관심상품</a></li><li><a href=\"\">회원혜택</a></li><li><a href=\"\">쿠폰</a></li><li><a href=\"\">응모내역확인</a></li></ul></div>", 1);
+var _hoisted_3 = {
+  "class": "login_center"
+};
+var _hoisted_4 = {
+  "class": "login_han_box"
+};
+var _hoisted_5 = {
+  "class": "login_title_area"
+};
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "LOGIN", -1 /* HOISTED */);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "EMPTY"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" 회원이 되시면 다양한 혜택과 서비스를 받으실 수 있습니다.")], -1 /* HOISTED */);
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: ""
+}, "FIND ID", -1 /* HOISTED */);
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: ""
+}, "FIND PASSWORD", -1 /* HOISTED */);
+var _hoisted_10 = {
+  "class": "login"
+};
+var _hoisted_11 = {
+  "class": "form"
+};
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("legend", null, "회원로그인", -1 /* HOISTED */);
+var _hoisted_13 = {
+  "class": "labels"
+};
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "ID", -1 /* HOISTED */);
+var _hoisted_15 = {
+  style: {
+    "color": "red",
+    "font-size": "10px"
+  }
+};
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "PASSWORD", -1 /* HOISTED */);
+var _hoisted_17 = {
+  style: {
+    "color": "red",
+    "font-size": "10px"
+  }
+};
+var _hoisted_18 = {
+  "class": "login_button"
+};
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "login_sns"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: ""
+}, "kakao login")], -1 /* HOISTED */);
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"login_sm_r\"><ul><li><span>customer service</span></li><li>문의에 대한 빠른 답변을 원하시면 전화로 연락주세요.</li><li><strong>TEL. 1833-9118</strong></li><li><strong>customerservice@empty.seoul.kr</strong></li></ul><ul><li><span>customer support</span></li><li>상담업무시간</li><li>평일 <strong>10:00 ~ 17:00</strong> (점심시간 <strong>12시~1시</strong> 제외)</li></ul><ul><li><span>contact us</span></li><li>입점 / 협업 및 비즈니스 관련 문의</li><li><strong>contact@empty.seoul.kr</strong></li></ul></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [].concat(_hoisted_5));
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/registration"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("JOIN US")];
+    }),
+    _: 1 /* STABLE */
+  }), _hoisted_8, _hoisted_9])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("fieldset", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "inputTypeText",
+    type: "text",
+    placeholder: "ID",
+    name: "user_id",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.frmUserLoginData.user_id = $event;
+    })
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserLoginData.user_id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.errorData.user_id), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "inputTypeText",
+    type: "password",
+    placeholder: "PASSWORD",
+    name: "password",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.frmUserLoginData.password = $event;
+    })
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserLoginData.password]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.errorData.password), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "button",
+    onClick: _cache[2] || (_cache[2] = function ($event) {
+      return $options.submitUserLoginData();
+    })
+  }, "LOGIN")]), _hoisted_19])])])])]), _hoisted_20]);
 }
 
 /***/ }),
@@ -19629,51 +19752,57 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "user_id",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $data.frmUserData.user_id = $event;
-    })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.user_id]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    }),
+    minlength: "4",
+    maxlength: "16"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.user_id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.errorData.user_id), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "email",
     "class": "inputTypeText",
     name: "email",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.frmUserData.email = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.email]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.errorData.email), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "password",
     "class": "inputTypeText",
     placeholder: "(영문 대소문자/숫자/특수문자, 8자~16자)",
     name: "password",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.frmUserData.password = $event;
-    })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.password]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    }),
+    minlength: "8",
+    maxlength: "16"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.password]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.errorData.password), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "password",
     "class": "inputTypeText",
     name: "password_chk",
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.frmUserData.password_chk = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.password_chk]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.password_chk]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.errorData.password_chk), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "class": "inputTypeText",
     name: "name",
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $data.frmUserData.name = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.name]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "tel",
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.name]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.errorData.name), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
     "class": "inputTypeText",
     name: "birthdate",
     "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
       return $data.frmUserData.birthdate = $event;
-    })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.birthdate]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    }),
+    minlength: "8",
+    maxlength: "10"
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.birthdate]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.errorData.birthdate), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "tel",
     "class": "inputTypeText",
     name: "phone_number",
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return $data.frmUserData.phone_number = $event;
     })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.phone_number]])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.frmUserData.phone_number]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$store.state.errorData.phone_number), 1 /* TEXT */)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     onClick: _cache[7] || (_cache[7] = function ($event) {
       return $options.submitUserData();
@@ -19695,7 +19824,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router.js */ "./resources/js/router.js");
 /* harmony import */ var _store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store.js */ "./resources/js/store.js");
 /* harmony import */ var _components_AppComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/AppComponent.vue */ "./resources/components/AppComponent.vue");
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-cookies */ "./node_modules/vue-cookies/vue-cookies.js");
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_cookies__WEBPACK_IMPORTED_MODULE_4__);
 __webpack_require__(/*! ./bootstrap.js */ "./resources/js/bootstrap.js");
+
 
 
 
@@ -19704,7 +19836,7 @@ __webpack_require__(/*! ./bootstrap.js */ "./resources/js/bootstrap.js");
   components: {
     AppComponent: _components_AppComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   }
-}).use(_router_js__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_store_js__WEBPACK_IMPORTED_MODULE_2__["default"]).mount("#app");
+}).use(_router_js__WEBPACK_IMPORTED_MODULE_1__["default"]).use(_store_js__WEBPACK_IMPORTED_MODULE_2__["default"]).use((vue_cookies__WEBPACK_IMPORTED_MODULE_4___default())).mount("#app");
 
 /***/ }),
 
@@ -19797,21 +19929,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router.js */ "./resources/js/router.js");
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-cookies */ "./node_modules/vue-cookies/vue-cookies.js");
+/* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_cookies__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
-var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
+
+var store = (0,vuex__WEBPACK_IMPORTED_MODULE_3__.createStore)({
   // state() : 데이터를 저장하는 영역
   state: function state() {
-    return {};
+    return {
+      errorData: {
+        user_id: '',
+        email: '',
+        password: '',
+        password_chk: '',
+        name: '',
+        birthdate: '',
+        phone_number: ''
+      },
+      cookieLogin: ''
+    };
   },
   // mutations : 데이터 수정용 함수 저장 영역
   mutations: {
     // 초기 데이터 세팅 (라라벨에서 받은)
+    setErrorData: function setErrorData(state, error) {
+      state.errorData = error;
+    },
+    setCookieLogin: function setCookieLogin(state) {
+      state.cookieLogin = vue_cookies__WEBPACK_IMPORTED_MODULE_2___default().get('remember_token');
+    },
+    setCookieLogout: function setCookieLogout(state) {
+      state.cookieLogin = '';
+    }
   },
   // actions : ajax로 서버에 데이터를 요청할 때나 시간 함수등 비동기 처리는 actions에 정의
   actions: {
@@ -19835,8 +19990,66 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
         // console.log(res.data);
         _router_js__WEBPACK_IMPORTED_MODULE_1__["default"].push('/');
       })["catch"](function (err) {
+        console.log(err.response.data.errors);
+        context.commit('setErrorData', err.response.data.errors);
+        console.log(context.state.errorData.user_id);
+        // const errorValues = Object.values(err.response.data.errors);
+        // alert(`${errorValues.join('\n')}`);
+      });
+    },
+    submitUserLoginData: function submitUserLoginData(context, data) {
+      var url = '/api/login';
+      var header = {
+        headers: {
+          "Content-Type": 'application/json'
+        }
+      };
+      var requestData = {
+        user_id: data.user_id,
+        password: data.password
+      };
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post(url, requestData, header).then(function (res) {
+        console.log(res);
+        if (res.data.success) {
+          var oneDayInSeconds = 24 * 60 * 60;
+          vue_cookies__WEBPACK_IMPORTED_MODULE_2___default().set('remember_token', res.data.cookie, oneDayInSeconds, '/');
+          context.commit('set');
+          vue_cookies__WEBPACK_IMPORTED_MODULE_2___default().set('user_id', res.data.user_id, oneDayInSeconds, '/');
+          context.commit('setCookieLogin');
+          _router_js__WEBPACK_IMPORTED_MODULE_1__["default"].push('/');
+          // window.location.href = '/';
+        } else {
+          // 로그인이 실패했을 때의 처리
+          // console.log('로그인 실패');
+          // console.log(res.data.message);
+          console.log(err.response.data.errors);
+          // console.log('로그인 실패:', res.data.message);
+          // 예: 에러 메시지를 표시
+        }
+      })["catch"](function (err) {
+        console.log(err.response.data);
+        context.commit('setErrorData', err.response.data.errors);
+      });
+    },
+    logout: function logout(context, data) {
+      var url = '/api/logout';
+      var header = {
+        headers: {
+          "Content-Type": 'application/json'
+        }
+      };
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post(url, header).then(function (res) {
+        // 쿠키 삭제
+        vue_cookies__WEBPACK_IMPORTED_MODULE_2___default().remove('remember_token');
+        vue_cookies__WEBPACK_IMPORTED_MODULE_2___default().remove('user_id');
+        context.commit('setCookieLogout');
+        _router_js__WEBPACK_IMPORTED_MODULE_1__["default"].push('/login');
+        // window.location.href = '/';
+      })["catch"](function (err) {
         return console.log(err.response.data);
       });
+
+      // commit('SET_USER', null);
     }
   }
 });
@@ -19889,7 +20102,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\tbox-sizing: border-box;\r\n}\r\n/* reset.css */\r\nhtml, body, div, span, applet, object, iframe,\r\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\r\na, abbr, acronym, address, big, cite, code,\r\ndel, dfn, em, img, ins, kbd, q, s, samp,\r\nsmall, strike, strong, sub, sup, tt, var,\r\nb, u, i, center,\r\ndl, dt, dd, ol, ul, li,\r\nfieldset, form, label, legend,\r\ntable, caption, tbody, tfoot, thead, tr, th, td,\r\narticle, aside, canvas, details, embed, \r\nfigure, figcaption, footer, header, hgroup, \r\nmenu, nav, output, ruby, section, summary,\r\ntime, mark, audio, video {\r\n    margin: 0;\r\n    padding: 0;\r\n    border: 0;\r\n    font-size: 100%;\r\n    font: inherit;\r\n    vertical-align: baseline;\r\n\ttext-decoration-line: none;\r\n    text-decoration: none;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle, aside, details, figcaption, figure, \r\nfooter, header, hgroup, menu, nav, section {\r\n    display: block;\r\n}\r\nbody {\r\n    position: relative;\r\n    left: 0;\r\n    transition: left 500ms cubic-bezier(0.25,0.46,0.45,0.94);\r\n    font-family: 'Noto Sans KR', sans-serif;\r\n    font-size: 0.6vw;\r\n    line-height: 0.7vw;\r\n}\r\nol, ul {\r\n    list-style: none;\r\n}\r\nblockquote, q {\r\n    quotes: none;\r\n}\r\nblockquote:before, blockquote:after,\r\nq:before, q:after {\r\n    content: '';\r\n    content: none;\r\n}\r\ntable {\r\n    border-collapse: collapse;\r\n    border-spacing: 0;\r\n}\r\ninput {\r\n\tborder: none;\r\n\tbackground-color: transparent;\r\n}\r\nstrong {\r\n    font-weight: 700;\r\n}\r\n/* ============================================================================================= */\r\n\r\n/* 메인 */\r\n\r\nhr.layout {\r\n    display: none;\r\n}\r\n\r\n#body {\r\n    position: relative;\r\n    left: 0;\r\n    transition: left 500ms cubic-bezier(0.25,0.46,0.45,0.94);\r\n}\r\n\r\n#topBanner {\r\n    position: relative;\r\n    overflow: hidden;\r\n    height: 30px;\r\n    text-align: center;\r\n    background: #000;\r\n}\r\n\r\n#topBanner .desc {\r\n    overflow: hidden;\r\n    font-size: 12px;\r\n    color: #fff;\r\n    box-sizing: border-box;\r\n    line-height: 30px;\r\n    white-space: nowrap;\r\n}\r\n\r\n#list_txt {\r\n    height: 30px;\r\n    overflow: hidden;\r\n    margin: 0px;\r\n    padding: 0px;\r\n    color: #fff;\r\n    top: 0;\r\n}\r\n\r\n#list_txt  a{\r\n    color: #fff;\r\n    font-weight: 700;\r\n}\r\n\r\nheader {\r\n    height: 100px;\r\n    padding: 0 4vw;\r\n}\r\n\r\nheader .navigation {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    position: relative !important;\r\n    height: 100%;\r\n}\r\n\r\n.navigation ul.nav_left {\r\n    display: flex;\r\n    gap: 1vw;\r\n}\r\n\r\n.sideNav {\r\n    gap: 1vw;\r\n    align-items: center;\r\n}\r\n\r\n.navigation h1 {\r\n    width: 100px;\r\n    position: absolute;\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    padding: 0;\r\n    height: 100%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.navigation h1 a img {\r\n    height: 2vw;\r\n    max-height: 40px;\r\n    transition: none !important;\r\n}\r\n\r\n.sideNav {\r\n    display: flex;\r\n    gap: 1vw;\r\n    align-items: center;\r\n}\r\n\r\n.sideNav a {\r\n    font-weight: 600;\r\n    font-family: Arial;\r\n    font-size: 10px !important;\r\n    color: #1e1e1e;\r\n    text-transform: uppercase;\r\n}\r\n\r\n.menuBtn {\r\n    background-color: #000;\r\n    color: #fff !important;\r\n    padding: 0.15vw 0.5vw;\r\n    border: 1px solid #000;\r\n}\r\n\r\n.main_wrap {\r\n    position: relative;\r\n    display: flex;\r\n}\r\n\r\n.main_visual {\r\n    width: 100%;\r\n    height: 32vw;\r\n    overflow: hidden;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    transition: all 0.2s;\r\n    background: #000;\r\n}\r\n\r\n.main_visual img {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    object-fit: contain;\r\n    transition: all 0.2s;\r\n    opacity: 0.9;\r\n}\r\n\r\n.main_visual_button {\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.main_visual_c_wrap {\r\n    position: relative;\r\n    padding: 0;\r\n    max-width: 2560px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.main_visual_c_wrap h2 {\r\n    padding: 4vw 0;\r\n    margin: 0 4vw;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 10px;\r\n}\r\n\r\n.collection {\r\n    display: flex;\r\n    gap: 2vw;\r\n    padding: 0 8vw;\r\n}\r\n\r\n.ci-group-l {\r\n    width: 50%;\r\n    height: 50vw;\r\n    max-height: 1280px;\r\n    display: flex;\r\n    gap: 0;\r\n    cursor: pointer;\r\n    transition: all 1s;\r\n    background-color: #000;\r\n}\r\n\r\n.ci-group-r {\r\n    width: 50%;\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 2vw;\r\n    cursor: pointer;\r\n    background-color: aqua;\r\n}\r\n\r\n.xans-product-1 {\r\n    margin: 22px 0 0;\r\n}\r\n\r\n.xans-product-1 h2 {\r\n    padding: 4vw 0;\r\n    margin: 0 4vw;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    font-size: 10px;\r\n}\r\n\r\n.prd_list {\r\n    position: relative;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\r\n    grid-template-rows: repeat(1,1fr);\r\n    column-gap: 2vw;\r\n    row-gap: 2vw;\r\n    padding: 0 8vw 4vw;\r\n    /* background-color: #1e1e1e; */\r\n}\r\n\r\n.box {\r\n    position: relative;\r\n    height: 25vw;\r\n    z-index: 2;\r\n    font-size: 11px;\r\n    transition: all 1s;\r\n    background-color: #000;\r\n}\r\n\r\n.c-product-detai {\r\n    position: absolute;\r\n    left: 1vw;\r\n    bottom: 1vw;\r\n    z-index: 3;\r\n    width: 80%;\r\n}\r\n\r\n/* ============================================================================================= */\r\n\r\n/* 로그인 */\r\n\r\n/* .login_help_box {\r\n    position: relative;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding: 4vw 8vw;\r\n    gap: 4vw;\r\n    line-height: 0.8vw;\r\n    text-transform: uppercase;\r\n    max-width: 1920px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.login_sm_l {\r\n    position: sticky;\r\n    top: 15px;\r\n    width: 20%;\r\n} */\r\n\r\n.login_help_box {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding: 4vw 8vw;\r\n    gap: 4vw;\r\n    line-height: 0.8vw;\r\n    text-transform: uppercase;\r\n    max-width: 1920px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.login_sm_l {\r\n    position: sticky;\r\n    top: 15px;\r\n    width: 20%;\r\n}\r\n\r\n.login_sm_l > ul {\r\n    margin: 1vw 0 2vw;\r\n}\r\n\r\n.login_sm_l > ul li:first-child {\r\n    margin: 0 0 0.5vw 0;\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n    color: #fff;\r\n}\r\n\r\n.login_sm_l > ul li:first-child span {\r\n    background: #000;\r\n    color: #fff;\r\n    padding: 1px 4px;\r\n}\r\n\r\n.login_sm_l li {\r\n    margin-top: 1.2vh;\r\n}\r\n\r\n.login_sm_l > ul li a {\r\n    color: #000000;\r\n    font-size: 10px;\r\n}\r\n\r\n/* .login_center {\r\n    width: 70%;\r\n    padding: 1vw 4vw;\r\n    max-width: 1024px;\r\n} */\r\n\r\n\r\n.login_center {\r\n    width: 70%;\r\n    padding: 1vw 4vw;\r\n    max-width: 1024px;\r\n}\r\n\r\n.login_title_area h2 {\r\n    padding: 0 0 1vw 0;\r\n    text-align: left;\r\n    font-weight: 600;\r\n    font-size: 30px;\r\n    margin: 0 0 10px 0;\r\n}\r\n\r\n.login_title_area div span {\r\n    line-height: 2em;\r\n    display: block;\r\n    font-size: 13px;\r\n}\r\n\r\n.login_title_area div a {\r\n    color: #000;\r\n    line-height: 2vw;\r\n    border-bottom: 1px solid #000;\r\n    margin-right: 2vw;\r\n    font-weight: 600;\r\n    padding-top: 4vw;\r\n    font-size: 15px;\r\n}\r\n\r\nfieldset {\r\n    border: none;\r\n    vertical-align: top;\r\n}\r\n\r\nlegend {\r\n    visibility: hidden;\r\n    position: absolute;\r\n    left: -9999px;\r\n    top: -9999px;\r\n    width: 0;\r\n    height: 0;\r\n    line-height: 0;\r\n}\r\n\r\n.labels {\r\n    margin-top: 10px;\r\n    display: flex;\r\n    gap: 1vw;\r\n    /* justify-content: space-between; */\r\n    /* justify-content: center; */\r\n}\r\n\r\n.labels label {\r\n    font-weight: 700;\r\n    display: block;\r\n}\r\n\r\n/* .inputTypeText { \r\n    padding: 8px;\r\n    margin: 5px 0 1vw 0;\r\n    display: inline-block;\r\n    border: 1px solid #000;\r\n    width: 400px;\r\n}\r\n\r\n.login__button {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin-top: 0;\r\n    gap: 10px;\r\n}\r\n\r\n.login__button button {\r\n    margin: 1vw 0;\r\n    font-size: 11px;\r\n    font-weight: 600;\r\n    width: inherit;\r\n    height: inherit;\r\n    padding: 0.5vw 1vw;\r\n    text-decoration: none;\r\n    vertical-align: middle;\r\n    word-spacing: -0.5px;\r\n    letter-spacing: 0;\r\n    text-align: center;\r\n    white-space: nowrap;\r\n    color: #fff;\r\n    background-color: #000;\r\n    border: 1px solid transparent;\r\n}\r\n\r\n.login__sns {\r\n    display: flex;\r\n    justify-content: space-around;\r\n    margin: 30px 0 0;\r\n} */\r\n\r\n.labels {\r\n    margin-top: 10px;\r\n    display: flex;\r\n    flex-direction: column; /* 세로로 쌓도록 변경 */\r\n}\r\n\r\n.labels div {\r\n    margin-bottom: 1vw; /* 각 라벨과 입력 상자 사이에 간격 추가 */\r\n}\r\n\r\n.labels label {\r\n    font-weight: 700;\r\n}\r\n\r\n.inputTypeText {\r\n    padding: 8px;\r\n    margin: 5px 0;\r\n    border: 1px solid #000;\r\n    width: 100%; /* 부모 너비에 맞게 설정 */\r\n}\r\n\r\n.login__button {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin-top: 1vw;\r\n    gap: 10px;\r\n}\r\n\r\n.login__button button {\r\n    width: 100%; /* 부모 너비에 맞게 설정 */\r\n    margin: 1vw 0;\r\n    font-size: 11px;\r\n    font-weight: 600;\r\n    width: inherit;\r\n    height: inherit;\r\n    padding: 0.5vw 1vw;\r\n    text-decoration: none;\r\n    vertical-align: middle;\r\n    word-spacing: -0.5px;\r\n    letter-spacing: 0;\r\n    text-align: center;\r\n    white-space: nowrap;\r\n    color: #fff;\r\n    background-color: #000;\r\n    border: 1px solid transparent;\r\n}\r\n\r\n\r\n.login__sns {\r\n    flex-direction: column; /* 세로로 쌓도록 변경 */\r\n    margin-top: 20px;\r\n    text-align: center;\r\n}\r\n\r\n.login__sns a {\r\n    font-weight: 700;\r\n    font-size: 15px;\r\n    color: #000;\r\n    text-decoration: underline;\r\n}\r\n\r\n.login_sm_r {\r\n    width: 20%;\r\n    cursor: default;\r\n}\r\n\r\n.login_sm_r > ul li:first-child {\r\n    margin: 0 0 0.5vw 0;\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n    color: #fff;\r\n}\r\n\r\n.login_sm_r > ul li:first-child span {\r\n    background: #000;\r\n    color: #fff;\r\n    padding: 1px 4px;\r\n}\r\n\r\n.login_sm_r li {\r\n    margin-top: 1.2vh;\r\n}\r\n\r\n.login_sm_r > ul li a {\r\n    color: #000000;\r\n    font-size: 10px;\r\n}\r\n\r\n.login_sm_r ul {\r\n    margin: 1vw 0 2vw;\r\n}\r\n\r\n\r\n@media (max-width: 768px) {\r\n    .login_help_box {\r\n        flex-direction: column;\r\n        padding: 4vw;\r\n    }\r\n\r\n    .login_sm_l {\r\n        width: 100%;\r\n        position: relative;\r\n        top: auto;\r\n        display: none;\r\n    }\r\n\r\n    .login_center {\r\n        width: 100%;\r\n        padding: 1vw;\r\n    }\r\n\r\n    .login_sm_r {\r\n        width: 100%;\r\n        position: relative;\r\n        top: auto;\r\n    }\r\n}\r\n\r\n/* ============================================================================================= */\r\n\r\n.regist_title_area h2 {\r\n    padding: 0 0 1vw 0;\r\n    text-align: left;\r\n    font-weight: 600;\r\n    font-size: 30px;\r\n    margin: 0 0 10px 0;\r\n}\r\n\r\n.regist_title_area div span {\r\n    line-height: 2em;\r\n    font-size: 13px;\r\n    margin-right: 10px;\r\n    font-weight: 700;\r\n}\r\n\r\n.regist_title_area div a {\r\n    color: #000;\r\n    line-height: 2vw;\r\n    border-bottom: 1px solid #000;\r\n    margin-right: 2vw;\r\n    font-weight: 600;\r\n    padding-top: 4vw;\r\n    font-size: 15px;\r\n}\r\n\r\n@media (max-width: 1300px) { \r\n    .regist_title_span_bar {\r\n        display: none;\r\n    }\r\n    .regist_title_span {\r\n        display: block;\r\n    }\r\n}\r\n\r\n@media (min-width: 1025px){\r\n    .member_area {\r\n        max-width: 898px;\r\n        margin: 0 auto;\r\n    }\r\n}\r\n\r\n.ec_base_table {\r\n    margin-top: 20px;\r\n    border-top: 1px solid #000;\r\n    border-bottom: 1px solid #000;\r\n}\r\n\r\n.ec_base_table table {\r\n    border-spacing: 0;\r\n    border-collapse: collapse;\r\n}\r\n\r\n.ec_base_table table tr {\r\n    display: table-row;\r\n    vertical-align: inherit;\r\n    border-color: inherit;\r\n}\r\n\r\n/* 테이블 스타일 수정 */\r\n.ec_base_table table th {\r\n    vertical-align: middle;\r\n    border-right: 1px solid #0000002a;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n/* 작은 화면에서 스타일 수정 */\r\n@media (max-width: 1400px) {\r\n    .ec_base_table table th {\r\n        border-right: none; /* 우측 테두리 제거 */\r\n    }\r\n}\r\n\r\n.ec_base_table table td { \r\n    padding: 10px 20px;\r\n}\r\n\r\n.ec_base_table tbody {\r\n    display: table-row-group;\r\n    vertical-align: middle;\r\n    border-color: inherit;\r\n}\r\n\r\n.ec_base_table .inputTypeText {\r\n    margin-left: 20px;\r\n    width: 350px;\r\n    border: 1px solid #0000002a;\r\n    font-weight: 700;\r\n}\r\n\r\n.regist_bottom {\r\n    margin: 30px 0 0 0;\r\n    transition: all 0.5s;\r\n    text-align: center;\r\n}\r\n\r\n.regist_bottom button {\r\n    background-color: #fff;\r\n    color: #000;\r\n    border: 1px solid #000;\r\n    font-size: 11px;\r\n    line-height: 11px;\r\n    padding: 10px 25px 10px 25px;\r\n    font-weight: 700;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n.regist_bottom button:hover {\r\n    background-color: #000;\r\n    color: #fff;\r\n    cursor: pointer;\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n\tmargin: 0;\r\n\tpadding: 0;\r\n\tbox-sizing: border-box;\r\n}\r\n/* reset.css */\r\nhtml, body, div, span, applet, object, iframe,\r\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\r\na, abbr, acronym, address, big, cite, code,\r\ndel, dfn, em, img, ins, kbd, q, s, samp,\r\nsmall, strike, strong, sub, sup, tt, var,\r\nb, u, i, center,\r\ndl, dt, dd, ol, ul, li,\r\nfieldset, form, label, legend,\r\ntable, caption, tbody, tfoot, thead, tr, th, td,\r\narticle, aside, canvas, details, embed, \r\nfigure, figcaption, footer, header, hgroup, \r\nmenu, nav, output, ruby, section, summary,\r\ntime, mark, audio, video {\r\n    margin: 0;\r\n    padding: 0;\r\n    border: 0;\r\n    font-size: 100%;\r\n    font: inherit;\r\n    vertical-align: baseline;\r\n\ttext-decoration-line: none;\r\n    text-decoration: none;\r\n}\r\n/* HTML5 display-role reset for older browsers */\r\narticle, aside, details, figcaption, figure, \r\nfooter, header, hgroup, menu, nav, section {\r\n    display: block;\r\n}\r\nbody {\r\n    position: relative;\r\n    left: 0;\r\n    transition: left 500ms cubic-bezier(0.25,0.46,0.45,0.94);\r\n    font-family: 'Noto Sans KR', sans-serif;\r\n    font-size: 0.6vw;\r\n    line-height: 0.7vw;\r\n}\r\nol, ul {\r\n    list-style: none;\r\n}\r\nblockquote, q {\r\n    quotes: none;\r\n}\r\nblockquote:before, blockquote:after,\r\nq:before, q:after {\r\n    content: '';\r\n    content: none;\r\n}\r\ntable {\r\n    border-collapse: collapse;\r\n    border-spacing: 0;\r\n}\r\ninput {\r\n\tborder: none;\r\n\tbackground-color: transparent;\r\n}\r\nstrong {\r\n    font-weight: 700;\r\n}\r\n/* ============================================================================================= */\r\n\r\n/* 메인 */\r\n\r\nhr.layout {\r\n    display: none;\r\n}\r\n\r\n#body {\r\n    position: relative;\r\n    left: 0;\r\n    transition: left 500ms cubic-bezier(0.25,0.46,0.45,0.94);\r\n}\r\n\r\n#topBanner {\r\n    position: relative;\r\n    overflow: hidden;\r\n    height: 30px;\r\n    text-align: center;\r\n    background: #000;\r\n}\r\n\r\n#topBanner .desc {\r\n    overflow: hidden;\r\n    font-size: 12px;\r\n    color: #fff;\r\n    box-sizing: border-box;\r\n    line-height: 30px;\r\n    white-space: nowrap;\r\n}\r\n\r\n#list_txt {\r\n    height: 30px;\r\n    overflow: hidden;\r\n    margin: 0px;\r\n    padding: 0px;\r\n    color: #fff;\r\n    top: 0;\r\n}\r\n\r\n#list_txt  a{\r\n    color: #fff;\r\n    font-weight: 700;\r\n}\r\n\r\nheader {\r\n    height: 100px;\r\n    padding: 0 4vw;\r\n}\r\n\r\nheader .navigation {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    position: relative !important;\r\n    height: 100%;\r\n}\r\n\r\n.navigation ul.nav_left {\r\n    display: flex;\r\n    gap: 1vw;\r\n}\r\n\r\n.sideNav {\r\n    gap: 1vw;\r\n    align-items: center;\r\n}\r\n\r\n.navigation h1 {\r\n    width: 100px;\r\n    position: absolute;\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    padding: 0;\r\n    height: 100%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.navigation h1 a img {\r\n    height: 2vw;\r\n    max-height: 40px;\r\n    transition: none !important;\r\n}\r\n\r\n.sideNav {\r\n    display: flex;\r\n    gap: 1vw;\r\n    align-items: center;\r\n}\r\n\r\n.sideNav a {\r\n    font-weight: 600;\r\n    font-family: Arial;\r\n    font-size: 10px !important;\r\n    color: #1e1e1e;\r\n    text-transform: uppercase;\r\n    cursor: pointer ;\r\n}\r\n\r\n.menuBtn {\r\n    background-color: #000;\r\n    color: #fff !important;\r\n    padding: 0.15vw 0.5vw;\r\n    border: 1px solid #000;\r\n}\r\n\r\n.main_wrap {\r\n    position: relative;\r\n    display: flex;\r\n}\r\n\r\n.main_visual {\r\n    width: 100%;\r\n    height: 32vw;\r\n    overflow: hidden;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    transition: all 0.2s;\r\n    background: #000;\r\n}\r\n\r\n.main_visual img {\r\n    display: block;\r\n    width: 100%;\r\n    height: 100%;\r\n    object-fit: contain;\r\n    transition: all 0.2s;\r\n    opacity: 0.9;\r\n}\r\n\r\n.main_visual_button {\r\n    background-color: #fff;\r\n    position: relative;\r\n}\r\n\r\n.main_visual_c_wrap {\r\n    position: relative;\r\n    padding: 0;\r\n    max-width: 2560px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.main_visual_c_wrap h2 {\r\n    padding: 4vw 0;\r\n    margin: 0 4vw;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    font-weight: 700;\r\n    font-size: 10px;\r\n}\r\n\r\n.collection {\r\n    display: flex;\r\n    gap: 2vw;\r\n    padding: 0 8vw;\r\n}\r\n\r\n.ci-group-l {\r\n    width: 50%;\r\n    height: 50vw;\r\n    max-height: 1280px;\r\n    display: flex;\r\n    gap: 0;\r\n    cursor: pointer;\r\n    transition: all 1s;\r\n    background-color: #000;\r\n}\r\n\r\n.ci-group-r {\r\n    width: 50%;\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 2vw;\r\n    cursor: pointer;\r\n    background-color: aqua;\r\n}\r\n\r\n.xans-product-1 {\r\n    margin: 22px 0 0;\r\n}\r\n\r\n.xans-product-1 h2 {\r\n    padding: 4vw 0;\r\n    margin: 0 4vw;\r\n    text-align: center;\r\n    text-transform: uppercase;\r\n    font-size: 10px;\r\n}\r\n\r\n.prd_list {\r\n    position: relative;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));\r\n    grid-template-rows: repeat(1,1fr);\r\n    column-gap: 2vw;\r\n    row-gap: 2vw;\r\n    padding: 0 8vw 4vw;\r\n    /* background-color: #1e1e1e; */\r\n}\r\n\r\n.box {\r\n    position: relative;\r\n    height: 25vw;\r\n    z-index: 2;\r\n    font-size: 11px;\r\n    transition: all 1s;\r\n    background-color: #000;\r\n}\r\n\r\n.c-product-detai {\r\n    position: absolute;\r\n    left: 1vw;\r\n    bottom: 1vw;\r\n    z-index: 3;\r\n    width: 80%;\r\n}\r\n\r\n/* ============================================================================================= */\r\n\r\n/* 로그인 */\r\n\r\n/* .login_help_box {\r\n    position: relative;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding: 4vw 8vw;\r\n    gap: 4vw;\r\n    line-height: 0.8vw;\r\n    text-transform: uppercase;\r\n    max-width: 1920px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.login_sm_l {\r\n    position: sticky;\r\n    top: 15px;\r\n    width: 20%;\r\n} */\r\n\r\n.login_help_box {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding: 4vw 8vw;\r\n    gap: 4vw;\r\n    line-height: 0.8vw;\r\n    text-transform: uppercase;\r\n    max-width: 1920px;\r\n    margin: 0 auto;\r\n}\r\n\r\n.login_sm_l {\r\n    position: sticky;\r\n    top: 15px;\r\n    width: 20%;\r\n}\r\n\r\n.login_sm_l > ul {\r\n    margin: 1vw 0 2vw;\r\n}\r\n\r\n.login_sm_l > ul li:first-child {\r\n    margin: 0 0 0.5vw 0;\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n    color: #fff;\r\n}\r\n\r\n.login_sm_l > ul li:first-child span {\r\n    background: #000;\r\n    color: #fff;\r\n    padding: 1px 4px;\r\n}\r\n\r\n.login_sm_l li {\r\n    margin-top: 1.2vh;\r\n}\r\n\r\n.login_sm_l > ul li a {\r\n    color: #000000;\r\n    font-size: 10px;\r\n}\r\n\r\n/* .login_center {\r\n    width: 70%;\r\n    padding: 1vw 4vw;\r\n    max-width: 1024px;\r\n} */\r\n\r\n\r\n.login_center {\r\n    width: 70%;\r\n    padding: 1vw 4vw;\r\n    max-width: 1024px;\r\n}\r\n\r\n.login_title_area h2 {\r\n    padding: 0 0 1vw 0;\r\n    text-align: left;\r\n    font-weight: 600;\r\n    font-size: 30px;\r\n    margin: 0 0 10px 0;\r\n}\r\n\r\n.login_title_area div span {\r\n    line-height: 2em;\r\n    display: block;\r\n    font-size: 13px;\r\n}\r\n\r\n.login_title_area div a {\r\n    color: #000;\r\n    line-height: 2vw;\r\n    border-bottom: 1px solid #000;\r\n    margin-right: 2vw;\r\n    font-weight: 600;\r\n    padding-top: 4vw;\r\n    font-size: 15px;\r\n}\r\n\r\nfieldset {\r\n    border: none;\r\n    vertical-align: top;\r\n}\r\n\r\nlegend {\r\n    visibility: hidden;\r\n    position: absolute;\r\n    left: -9999px;\r\n    top: -9999px;\r\n    width: 0;\r\n    height: 0;\r\n    line-height: 0;\r\n}\r\n\r\n.labels {\r\n    margin-top: 10px;\r\n    display: flex;\r\n    gap: 1vw;\r\n    /* justify-content: space-between; */\r\n    /* justify-content: center; */\r\n}\r\n\r\n.labels label {\r\n    font-weight: 700;\r\n    display: block;\r\n}\r\n\r\n/* .inputTypeText { \r\n    padding: 8px;\r\n    margin: 5px 0 1vw 0;\r\n    display: inline-block;\r\n    border: 1px solid #000;\r\n    width: 400px;\r\n}\r\n\r\n.login__button {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin-top: 0;\r\n    gap: 10px;\r\n}\r\n\r\n.login__button button {\r\n    margin: 1vw 0;\r\n    font-size: 11px;\r\n    font-weight: 600;\r\n    width: inherit;\r\n    height: inherit;\r\n    padding: 0.5vw 1vw;\r\n    text-decoration: none;\r\n    vertical-align: middle;\r\n    word-spacing: -0.5px;\r\n    letter-spacing: 0;\r\n    text-align: center;\r\n    white-space: nowrap;\r\n    color: #fff;\r\n    background-color: #000;\r\n    border: 1px solid transparent;\r\n}\r\n\r\n.login__sns {\r\n    display: flex;\r\n    justify-content: space-around;\r\n    margin: 30px 0 0;\r\n} */\r\n\r\n.labels {\r\n    margin-top: 10px;\r\n    display: flex;\r\n    flex-direction: column; /* 세로로 쌓도록 변경 */\r\n}\r\n\r\n.labels div {\r\n    margin-bottom: 1vw; /* 각 라벨과 입력 상자 사이에 간격 추가 */\r\n}\r\n\r\n.labels label {\r\n    font-weight: 700;\r\n}\r\n\r\n.inputTypeText {\r\n    padding: 8px;\r\n    margin: 5px 0;\r\n    border: 1px solid #000;\r\n    width: 100%; /* 부모 너비에 맞게 설정 */\r\n}\r\n\r\n.login_button {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin-top: 1vw;\r\n    gap: 10px;\r\n}\r\n\r\n.login_button button {\r\n    margin: 1vw 0;\r\n    font-size: 11px;\r\n    font-weight: 600;\r\n    width: inherit;\r\n    height: inherit;\r\n    padding: 10px 15px;\r\n    vertical-align: middle;\r\n    text-align: center;\r\n    color: #000000;\r\n    /* background-color: #000; */\r\n    border: 1px solid #000;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n.login_button a {\r\n    color: #000000;\r\n}\r\n\r\n.login_button button:hover {\r\n    background-color: #000000;\r\n    color: #ffffff;\r\n    cursor: pointer;\r\n}\r\n\r\n.login_button a:hover {\r\n    color: #ffffff;\r\n}\r\n\r\n\r\n.login_sns {\r\n    flex-direction: column; /* 세로로 쌓도록 변경 */\r\n    margin-top: 20px;\r\n    text-align: center;\r\n}\r\n\r\n.login_sns a {\r\n    font-weight: 700;\r\n    font-size: 15px;\r\n    color: #000;\r\n    text-decoration: underline;\r\n}\r\n\r\n.login_sm_r {\r\n    width: 20%;\r\n    cursor: default;\r\n}\r\n\r\n.login_sm_r > ul li:first-child {\r\n    margin: 0 0 0.5vw 0;\r\n    font-size: 13px;\r\n    font-weight: 600;\r\n    color: #fff;\r\n}\r\n\r\n.login_sm_r > ul li:first-child span {\r\n    background: #000;\r\n    color: #fff;\r\n    padding: 1px 4px;\r\n}\r\n\r\n.login_sm_r li {\r\n    margin-top: 1.2vh;\r\n}\r\n\r\n.login_sm_r > ul li a {\r\n    color: #000000;\r\n    font-size: 10px;\r\n}\r\n\r\n.login_sm_r ul {\r\n    margin: 1vw 0 2vw;\r\n}\r\n\r\n\r\n@media (max-width: 768px) {\r\n    .login_help_box {\r\n        flex-direction: column;\r\n        padding: 4vw;\r\n    }\r\n\r\n    .login_sm_l {\r\n        width: 100%;\r\n        position: relative;\r\n        top: auto;\r\n        display: none;\r\n    }\r\n\r\n    .login_center {\r\n        width: 100%;\r\n        padding: 1vw;\r\n    }\r\n\r\n    .login_sm_r {\r\n        width: 100%;\r\n        position: relative;\r\n        top: auto;\r\n    }\r\n}\r\n\r\n/* ============================================================================================= */\r\n\r\n.regist_title_area h2 {\r\n    padding: 0 0 1vw 0;\r\n    text-align: left;\r\n    font-weight: 600;\r\n    font-size: 30px;\r\n    margin: 0 0 10px 0;\r\n}\r\n\r\n.regist_title_area div span {\r\n    line-height: 2em;\r\n    font-size: 13px;\r\n    margin-right: 10px;\r\n    font-weight: 700;\r\n}\r\n\r\n.regist_title_area div a {\r\n    color: #000;\r\n    line-height: 2vw;\r\n    border-bottom: 1px solid #000;\r\n    margin-right: 2vw;\r\n    font-weight: 600;\r\n    padding-top: 4vw;\r\n    font-size: 15px;\r\n}\r\n\r\n@media (max-width: 1300px) { \r\n    .regist_title_span_bar {\r\n        display: none;\r\n    }\r\n    .regist_title_span {\r\n        display: block;\r\n    }\r\n}\r\n\r\n@media (min-width: 1025px){\r\n    .member_area {\r\n        max-width: 898px;\r\n        margin: 0 auto;\r\n    }\r\n}\r\n\r\n.ec_base_table {\r\n    margin-top: 20px;\r\n    border-top: 1px solid #000;\r\n    border-bottom: 1px solid #000;\r\n}\r\n\r\n.ec_base_table table {\r\n    border-spacing: 0;\r\n    border-collapse: collapse;\r\n}\r\n\r\n.ec_base_table table tr {\r\n    display: table-row;\r\n    vertical-align: inherit;\r\n    border-color: inherit;\r\n}\r\n\r\n/* 테이블 스타일 수정 */\r\n.ec_base_table table th {\r\n    vertical-align: middle;\r\n    border-right: 1px solid #0000002a;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n/* 작은 화면에서 스타일 수정 */\r\n@media (max-width: 1400px) {\r\n    .ec_base_table table th {\r\n        border-right: none; /* 우측 테두리 제거 */\r\n    }\r\n}\r\n\r\n.ec_base_table table td { \r\n    padding: 10px 20px;\r\n    text-align: right;\r\n    font-size: 10px;\r\n    color: red;\r\n}\r\n\r\n.ec_base_table tbody {\r\n    display: table-row-group;\r\n    vertical-align: middle;\r\n    border-color: inherit;\r\n}\r\n\r\n.ec_base_table .inputTypeText {\r\n    margin-left: 20px;\r\n    width: 400px;\r\n    border: 1px solid #0000002a;\r\n    font-weight: 700;\r\n}\r\n\r\n.regist_bottom {\r\n    margin: 30px 0 0 0;\r\n    transition: all 0.5s;\r\n    text-align: center;\r\n}\r\n\r\n.regist_bottom button {\r\n    background-color: #fff;\r\n    color: #000;\r\n    border: 1px solid #000;\r\n    font-size: 11px;\r\n    line-height: 11px;\r\n    padding: 10px 25px 10px 25px;\r\n    font-weight: 700;\r\n    transition: background-color 0.3s, color 0.3s;\r\n}\r\n\r\n.regist_bottom button:hover {\r\n    background-color: #000;\r\n    color: #fff;\r\n    cursor: pointer;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -37697,6 +37910,161 @@ module.exports = function (list, options) {
     lastIdentifiers = newLastIdentifiers;
   };
 };
+
+/***/ }),
+
+/***/ "./node_modules/vue-cookies/vue-cookies.js":
+/*!*************************************************!*\
+  !*** ./node_modules/vue-cookies/vue-cookies.js ***!
+  \*************************************************/
+/***/ ((module) => {
+
+/**
+ * Vue Cookies v1.8.3
+ * https://github.com/cmp-cc/vue-cookies
+ *
+ * Copyright 2016, cmp-cc
+ * Released under the MIT license
+ */
+
+ (function () {
+
+  var defaultConfig = {
+    expires: '1d',
+    path: '; path=/',
+    domain: '',
+    secure: '',
+    sameSite: '; SameSite=Lax'
+  };
+
+  var VueCookies = {
+    // install of Vue
+    install: function (Vue, options) {
+      if (options) this.config(options.expires, options.path, options.domain, options.secure, options.sameSite);
+      if (Vue.prototype) Vue.prototype.$cookies = this;
+      if (Vue.config && Vue.config.globalProperties) {
+        Vue.config.globalProperties.$cookies = this;
+        Vue.provide('$cookies', this);
+      }
+      Vue.$cookies = this;
+    },
+    config: function (expires, path, domain, secure, sameSite) {
+      defaultConfig.expires = expires ? expires : '1d';
+      defaultConfig.path = path ? '; path=' + path : '; path=/';
+      defaultConfig.domain = domain ? '; domain=' + domain : '';
+      defaultConfig.secure = secure ? '; Secure' : '';
+      defaultConfig.sameSite = sameSite ? '; SameSite=' + sameSite : '; SameSite=Lax';
+    },
+    get: function (key) {
+      var value = decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(key).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1')) || null;
+
+      if (value && ((value.substring(0, 1) === '{' && value.substring(value.length - 1, value.length) === '}') || (value.substring(0, 1) === '[' && value.substring(value.length - 1, value.length) === ']'))) {
+        try {
+          value = JSON.parse(value);
+        } catch (e) {
+          return value;
+        }
+      }
+      return value;
+    },
+    set: function (key, value, expires, path, domain, secure, sameSite) {
+      if (!key) {
+        throw new Error('Cookie name is not found in the first argument.');
+      } else if (/^(?:expires|max\-age|path|domain|secure|SameSite)$/i.test(key)) {
+        throw new Error('Cookie name illegality. Cannot be set to ["expires","max-age","path","domain","secure","SameSite"]\t current key name: ' + key);
+      }
+      // support json object
+      if (value && typeof value === 'object') {
+        value = JSON.stringify(value);
+      }
+      var _expires = '';
+      expires = expires == undefined ? defaultConfig.expires : expires;
+      if (expires && expires != 0) {
+        switch (expires.constructor) {
+          case Number:
+            if (expires === Infinity || expires === -1) _expires = '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+            else _expires = '; max-age=' + expires;
+            break;
+          case String:
+            if (/^(?:\d+(y|m|d|h|min|s))$/i.test(expires)) {
+              // get capture number group
+              var _expireTime = expires.replace(/^(\d+)(?:y|m|d|h|min|s)$/i, '$1');
+              // get capture type group , to lower case
+              switch (expires.replace(/^(?:\d+)(y|m|d|h|min|s)$/i, '$1').toLowerCase()) {
+                  // Frequency sorting
+                case 'm':
+                  _expires = '; max-age=' + +_expireTime * 2592000;
+                  break; // 60 * 60 * 24 * 30
+                case 'd':
+                  _expires = '; max-age=' + +_expireTime * 86400;
+                  break; // 60 * 60 * 24
+                case 'h':
+                  _expires = '; max-age=' + +_expireTime * 3600;
+                  break; // 60 * 60
+                case 'min':
+                  _expires = '; max-age=' + +_expireTime * 60;
+                  break; // 60
+                case 's':
+                  _expires = '; max-age=' + _expireTime;
+                  break;
+                case 'y':
+                  _expires = '; max-age=' + +_expireTime * 31104000;
+                  break; // 60 * 60 * 24 * 30 * 12
+                default:
+                  new Error('unknown exception of "set operation"');
+              }
+            } else {
+              _expires = '; expires=' + expires;
+            }
+            break;
+          case Date:
+            _expires = '; expires=' + expires.toUTCString();
+            break;
+        }
+      }
+      document.cookie =
+          encodeURIComponent(key) + '=' + encodeURIComponent(value) +
+          _expires +
+          (domain ? '; domain=' + domain : defaultConfig.domain) +
+          (path ? '; path=' + path : defaultConfig.path) +
+          (secure == undefined ? defaultConfig.secure : secure ? '; Secure' : '') +
+          (sameSite == undefined ? defaultConfig.sameSite : (sameSite ? '; SameSite=' + sameSite : ''));
+      return this;
+    },
+    remove: function (key, path, domain) {
+      if (!key || !this.isKey(key)) {
+        return false;
+      }
+      document.cookie = encodeURIComponent(key) +
+          '=; expires=Thu, 01 Jan 1970 00:00:00 GMT' +
+          (domain ? '; domain=' + domain : defaultConfig.domain) +
+          (path ? '; path=' + path : defaultConfig.path) +
+          '; SameSite=Lax';
+      return true;
+    },
+    isKey: function (key) {
+      return (new RegExp('(?:^|;\\s*)' + encodeURIComponent(key).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=')).test(document.cookie);
+    },
+    keys: function () {
+      if (!document.cookie) return [];
+      var _keys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, '').split(/\s*(?:\=[^;]*)?;\s*/);
+      for (var _index = 0; _index < _keys.length; _index++) {
+        _keys[_index] = decodeURIComponent(_keys[_index]);
+      }
+      return _keys;
+    }
+  };
+
+  if (true) {
+    module.exports = VueCookies;
+  } else {}
+  // vue-cookies can exist independently,no dependencies library
+  if (typeof window !== 'undefined') {
+    window.$cookies = VueCookies;
+  }
+
+})();
+
 
 /***/ }),
 

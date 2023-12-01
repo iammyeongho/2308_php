@@ -25,11 +25,17 @@
                         <img src="/img/v2_14378e7f2adb0ec0ad8cddaaf3b0fbdd_0DXltiM6xt_top.jpg" alt="">
                     </router-link>
                 </h1>
-                <div class="sideNav">
+                <div v-if="$store.state.cookieLogin" class="sideNav">
+                    <a @click="logout">LOGOUT</a>
+                    <a href="">CART</a>
+                    <a href="">MY PAGE</a>
+                    <a href="">SEARCH</a>
+                    <a href="" class="menuBtn">MENU</a>
+                </div>
+                <div v-else class="sideNav">
                     <router-link to="/registration">SIGN UP</router-link>
                     <router-link to="/login">LOGIN</router-link>
                     <a href="">CART</a>
-                    <a href="">MY PAGE</a>
                     <a href="">SEARCH</a>
                     <a href="" class="menuBtn">MENU</a>
                 </div>
@@ -38,7 +44,7 @@
 
 
     </div>
-    <router-view></router-view>
+    <router-view :key="$route.path"></router-view>
 </template>
 
 <script>
@@ -46,12 +52,26 @@
 export default {
     name: 'AppComponent',
 
+    beforeUpdate() {
+    },
+
+    created() {
+        this.$store.commit('setCookieLogin');
+    },
+
+    updated() {
+        this.$store.state.errorData = 0;
+    },
+
     data() {
         return {
         };
     },
 
     methods: {
+        logout() {
+            this.$store.dispatch('logout');
+        },
     },
 
     components: {

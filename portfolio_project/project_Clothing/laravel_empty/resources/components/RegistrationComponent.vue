@@ -40,31 +40,31 @@
                                     <tbody>
                                         <tr>
                                             <th>ID <span style="color: red;">*</span></th>
-                                            <td><input type="text" class="inputTypeText" placeholder="(영문소문자/숫자, 4~16자)" name="user_id" v-model="frmUserData.user_id"></td>
+                                            <td><input type="text" class="inputTypeText" placeholder="(영문소문자/숫자, 4~16자)" name="user_id" v-model="frmUserData.user_id" minlength="4" maxlength="16">{{ $store.state.errorData.user_id }}</td>
                                         </tr>
                                         <tr>
                                             <th>E-MAIL <span style="color: red;">*</span></th>
-                                            <td><input type="email" class="inputTypeText" name="email" v-model="frmUserData.email"></td>
+                                            <td><input type="email" class="inputTypeText" name="email" v-model="frmUserData.email">{{ $store.state.errorData.email }}</td>
                                         </tr>
                                         <tr>
                                             <th>PASSWORD <span style="color: red;">*</span></th>
-                                            <td><input type="password" class="inputTypeText" placeholder="(영문 대소문자/숫자/특수문자, 8자~16자)" name="password" v-model="frmUserData.password"></td>
+                                            <td><input type="password" class="inputTypeText" placeholder="(영문 대소문자/숫자/특수문자, 8자~16자)" name="password" v-model="frmUserData.password" minlength="8" maxlength="16">{{ $store.state.errorData.password }}</td>
                                         </tr>
                                         <tr>
                                             <th>CHECK THE PASSWORD <span style="color: red;">*</span></th>
-                                            <td><input type="password" class="inputTypeText" name="password_chk" v-model="frmUserData.password_chk"></td>
+                                            <td><input type="password" class="inputTypeText" name="password_chk" v-model="frmUserData.password_chk">{{ $store.state.errorData.password_chk }}</td>
                                         </tr>
                                         <tr>
                                             <th>NAME <span style="color: red;">*</span></th>
-                                            <td><input type="text" class="inputTypeText" name="name" v-model="frmUserData.name"></td>
+                                            <td><input type="text" class="inputTypeText" name="name" v-model="frmUserData.name">{{ $store.state.errorData.name }}</td>
                                         </tr>
                                         <tr>
                                             <th>BIRTHDATE <span style="color: red;">*</span></th>
-                                            <td><input type="tel" class="inputTypeText" name="birthdate" v-model="frmUserData.birthdate"></td>
+                                            <td><input type="text" class="inputTypeText" name="birthdate" v-model="frmUserData.birthdate" minlength="8" maxlength="10">{{ $store.state.errorData.birthdate }}</td>
                                         </tr>
                                         <tr>
                                             <th>PHONE NUMBER <span style="color: red;">*</span></th>
-                                            <td><input type="tel" class="inputTypeText" name="phone_number" v-model="frmUserData.phone_number"></td>
+                                            <td><input type="tel" class="inputTypeText" name="phone_number" v-model="frmUserData.phone_number">{{ $store.state.errorData.phone_number }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

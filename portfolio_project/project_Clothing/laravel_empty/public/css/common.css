@@ -160,6 +160,7 @@ header .navigation {
     font-size: 10px !important;
     color: #1e1e1e;
     text-transform: uppercase;
+    cursor: pointer ;
 }
 
 .menuBtn {
@@ -472,7 +473,7 @@ legend {
     width: 100%; /* 부모 너비에 맞게 설정 */
 }
 
-.login__button {
+.login_button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -480,33 +481,43 @@ legend {
     gap: 10px;
 }
 
-.login__button button {
-    width: 100%; /* 부모 너비에 맞게 설정 */
+.login_button button {
     margin: 1vw 0;
     font-size: 11px;
     font-weight: 600;
     width: inherit;
     height: inherit;
-    padding: 0.5vw 1vw;
-    text-decoration: none;
+    padding: 10px 15px;
     vertical-align: middle;
-    word-spacing: -0.5px;
-    letter-spacing: 0;
     text-align: center;
-    white-space: nowrap;
-    color: #fff;
-    background-color: #000;
-    border: 1px solid transparent;
+    color: #000000;
+    /* background-color: #000; */
+    border: 1px solid #000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login_button a {
+    color: #000000;
+}
+
+.login_button button:hover {
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.login_button a:hover {
+    color: #ffffff;
 }
 
 
-.login__sns {
+.login_sns {
     flex-direction: column; /* 세로로 쌓도록 변경 */
     margin-top: 20px;
     text-align: center;
 }
 
-.login__sns a {
+.login_sns a {
     font-weight: 700;
     font-size: 15px;
     color: #000;
@@ -646,6 +657,9 @@ legend {
 
 .ec_base_table table td { 
     padding: 10px 20px;
+    text-align: right;
+    font-size: 10px;
+    color: red;
 }
 
 .ec_base_table tbody {
@@ -656,7 +670,7 @@ legend {
 
 .ec_base_table .inputTypeText {
     margin-left: 20px;
-    width: 350px;
+    width: 400px;
     border: 1px solid #0000002a;
     font-weight: 700;
 }

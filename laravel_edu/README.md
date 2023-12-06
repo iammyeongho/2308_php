@@ -22,7 +22,7 @@
 	- PHP 의존성 관리 도구
 	- 아래 사이트에 접속하여 다운로드
 		https://getcomposer.org/download/
-	- 설치 완료 후, 터미널에서 "composer"를 입력하여 설치 확인
+	- 설치 완료 후, 터미널에서 "composer"를 입력하여 설치 확인	
 
 3. Laravel 프로젝트 생성 (이하 터미널에서 커멘드라인으로 작업)
 	3-1. Laravel 프로젝트를 생성할 위치로 이동
@@ -139,3 +139,6 @@ root/
     4-3. .env.example 파일을 카피해서 .env로 이름 변
     4-4. 커맨드 실행 : php artisan key:generate
     4-5. 그 외 설정들 세팅
+
+
+	Terminal:Select Default Profile
